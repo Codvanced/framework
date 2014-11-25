@@ -1,0 +1,130 @@
+/* USE DATABASE */
+USE master
+GO
+
+/* CRIA플O DO DATABASE */
+IF(DB_ID('IoC_FW') IS NULL)
+	CREATE DATABASE IoC_FW
+GO
+
+/* USE DATABASE */
+USE IoC_FW
+GO
+
+/* ---------- SE OS OBJETOS J� EXISTIREM - DROP ---------- */
+IF(OBJECT_ID('Person') IS NOT NULL)
+	DROP TABLE Person
+GO
+
+IF(OBJECT_ID('Ocupation') IS NOT NULL)
+	DROP TABLE Ocupation
+GO
+
+IF(OBJECT_ID('ArtistGenre') IS NOT NULL)
+	DROP TABLE ArtistGenre
+GO
+
+IF(OBJECT_ID('Genre') IS NOT NULL)
+	DROP TABLE Genre
+GO
+	
+IF(OBJECT_ID('Artist') IS NOT NULL)
+	DROP TABLE Artist
+GO
+
+IF(OBJECT_ID('WT_NOTICIA') IS NOT NULL)
+	DROP TABLE WT_NOTICIA
+GO
+
+/* ---------- TABELAS TRANSACIONAIS ---------- */
+CREATE TABLE Person
+(
+	IdPerson			INT				NOT NULL IDENTITY(1,1)
+,	IdOcupation			INT				NOT NULL
+,	PersonName			VARCHAR(200)	NOT NULL
+,	Gender				VARCHAR(50)			NULL
+,	Created				DATETIME		NOT NULL DEFAULT GETDATE()
+,	Updated				DATETIME			NULL
+,	Activated			BIT				NOT NULL DEFAULT 1
+)
+
+CREATE TABLE Ocupation
+(
+	IdOcupation			INT				NOT NULL IDENTITY(1,1)
+,	OcupationName		VARCHAR(200)	NOT NULL
+,	Created				DATETIME		NOT NULL DEFAULT GETDATE()
+,	Updated				DATETIME			NULL
+,	Activated			BIT				NOT NULL DEFAULT 1
+)
+
+CREATE TABLE Artist
+(
+	IdArtist			INT				NOT NULL IDENTITY(1, 1)
+,	Name				VARCHAR(200)	NOT NULL
+)
+
+CREATE TABLE Genre
+(
+	IdGenre				INT				NOT NULL IDENTITY(1, 1)
+,	Name				VARCHAR(200)	NOT NULL
+)
+
+CREATE TABLE ArtistGenre
+(
+	IdArtistGenre		INT				NOT NULL IDENTITY(1, 1)
+,	IdArtist			INT				NOT NULL
+,	IdGenre				INT				NOT NULL
+)
+
+/* Tabela para teste de CRUD */
+CREATE TABLE WT_NOTICIA
+(
+	ID_NOTICIA 			INT 			NOT NULL IDENTITY(1,1)
+,	DSC_TITULO 			VARCHAR(150) 	NOT NULL
+,	DSC_DESCRICAO 		TEXT 			NOT NULL
+,	DSC_AUTOR			VARCHAR(100) 		NULL
+,	DAT_NOTICIA 		DATETIME 		NOT NULL
+,	DAT_CADASTRO 		DATETIME 		NOT NULL
+,	DAT_ALTERACAO 		DATETIME 			NULL
+)
+
+/* ---------- CRIA플O DE CHAVES PRIMARIAS ---------- */
+ALTER TABLE		Person
+ADD CONSTRAINT	PK_Person
+PRIMARY KEY		(IdPerson)
+
+ALTER TABLE		Ocupation
+ADD CONSTRAINT	PK_Ocupation
+PRIMARY KEY		(IdOcupation)
+
+ALTER TABLE		Artist
+ADD CONSTRAINT	PK_Artist
+PRIMARY KEY		(IdArtist)
+
+ALTER TABLE		Genre
+ADD CONSTRAINT	PK_Genre
+PRIMARY KEY		(IdGenre)
+
+ALTER TABLE		ArtistGenre
+ADD CONSTRAINT	PK_ArtistGenre
+PRIMARY KEY		(IdArtistGenre)
+
+ALTER TABLE 	WT_NOTICIA
+ADD CONSTRAINT 	PK_NOTICIA
+PRIMARY KEY 	(ID_NOTICIA)
+
+/* ---------- CRIA플O DE CHAVES Estrangeiras ---------- */
+ALTER TABLE		Person
+ADD CONSTRAINT	FK_Ocupation
+FOREIGN KEY		(IdOcupation)
+REFERENCES		Ocupation(IdOcupation)
+
+ALTER TABLE		ArtistGenre
+ADD CONSTRAINT	FK_ArtistGenre_Artist
+FOREIGN KEY		(IdArtist)
+REFERENCES		Artist (IdArtist)
+
+ALTER TABLE		ArtistGenre
+ADD CONSTRAINT	FK_ArtistGenre_Genre
+FOREIGN KEY		(IdGenre)
+REFERENCES		Genre (IdGenre)
