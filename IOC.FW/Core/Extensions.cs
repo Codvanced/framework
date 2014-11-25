@@ -233,10 +233,10 @@ namespace IOC.FW.Core
         /// <summary>
         /// Remove todas as tags e atributos de html exceto os que forem passados como parametro
         /// </summary>
-        /// <param name="source"></param>
-        /// <param name="allowedTags"></param>
-        /// <param name="allowedAttrs"></param>
-        /// <returns></returns>
+        /// <param name="source">O html sujo</param>
+        /// <param name="allowedTags">Lista de tags permitidas</param>
+        /// <param name="allowedAttrs">Lista de atributos permitidos</param>
+        /// <returns>O html limpo</returns>
         public static string CleanHtml(this string source, IList<String> allowedTags, IList<String> allowedAttrs)
         {
             if (allowedTags == null)
