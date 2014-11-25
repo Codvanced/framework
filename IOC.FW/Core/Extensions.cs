@@ -231,32 +231,116 @@ namespace IOC.FW.Core
         }
 
         /// <summary>
-        /// Remove todos os atributos HTML das tags html
+        /// Remove todas as tags e atributos de html exceto os que forem passados como parametro
         /// </summary>
-        public static string StripHtmlAttrs(this string source)
+        /// <param name="source"></param>
+        /// <param name="allowedTags"></param>
+        /// <param name="allowedAttrs"></param>
+        /// <returns></returns>
+        public static string CleanHtml(this string source, IList<String> allowedTags, IList<String> allowedAttrs)
         {
-            string _attrsRegexPattern = "(<[^\\s<>]+)([^<>]*)(>)";
-            // TODO: fazer selecionar attributos que não sejam removidos, ex: href
-            return Regex.Replace(source, _attrsRegexPattern, "$1$3", RegexOptions.Compiled|RegexOptions.Singleline);
-        }
+            if (allowedTags == null)
+            {
+                throw new ArgumentNullException("allowedTags");
+            }
 
-        /// <summary>
-        /// Remove atributos HTML das tags html deixando os atributos passados no array
-        /// </summary>
-        public static string StripHtmlAttrs(this string source, string keepAttr)
-        {
-            if (String.IsNullOrWhiteSpace(keepAttr))
+            if (allowedAttrs == null)
+            {
+                throw new ArgumentNullException("allowedAttrs");
+            }
+
+            if (String.IsNullOrEmpty(source))
             {
                 return source;
             }
 
-            string r = source;
-            string scaped = Regex.Escape(keepAttr);
+            allowedTags = EscapeItems(allowedTags);
 
-            string _attrsRegexPattern = String.Concat("(<[^\\s<>]+)(\\s?)(?(?=(((", scaped, ")=([\"'])[^\"']*?[\"'])))(\\3)|[^>])*(>)");
-            r = Regex.Replace(r, _attrsRegexPattern, "$1$2$3$7", RegexOptions.Compiled | RegexOptions.Singleline);
-            
-            return r;
+            // (<(?!(\/?tag1\s?|\/?tag2\s?|\/?tag3\s?|\/?a\s?))[^>]*>)
+            var tagsRegex = String.Format(@"(<(?!(/?{0}[\s>]))[^>]*>)", allowedTags.Count == 0 ? "0" : String.Join(@"[\s>]|/?", allowedTags));
+
+            // (</?[^\s>]+\s?)(.*?)(/?>)
+            var attrsRegex = @"(</?[^\s>]+\s?)(.*?)(/?>)";
+
+            var options = RegexOptions.IgnoreCase | RegexOptions.Singleline;
+
+            source = Regex.Replace(source, tagsRegex, String.Empty, options);
+
+            var attrsMatches = Regex.Matches(source, attrsRegex, options);
+
+            if (attrsMatches.Count > 0)
+            {
+                var attrs = new List<String>(attrsMatches.Count);
+
+                var separator = "%--ATTRS--%";
+
+                source = Regex.Replace(source, attrsRegex, String.Concat("$1", separator, "$3"), options);
+
+                var newSource = source.Split(new string[] { separator }, StringSplitOptions.None);
+
+                if (newSource.Length > 0)
+                {
+                    var builder = new StringBuilder();
+
+                    builder.Append(newSource[0]);
+
+                    allowedAttrs = EscapeItems(allowedAttrs);
+
+                    var validAttrsRegex = String.Format("({0})=([\"'].*?[\"'])", String.Join("|", allowedAttrs));
+
+                    for (int i = 0; i < attrsMatches.Count; i++)
+                    {
+                        var matchedAttrs = attrsMatches[i].Groups[2];
+                        if (!String.IsNullOrEmpty(matchedAttrs.Value))
+                        {
+                            var validAttrs = Regex.Matches(matchedAttrs.Value, validAttrsRegex);
+                            List<String> singleAttrs = null;
+
+                            if (validAttrs.Count > 0)
+                            {
+                                singleAttrs = new List<String>(validAttrs.Count);
+
+                                for (int j = 0; j < validAttrs.Count; j++)
+                                {
+                                    singleAttrs.Add(validAttrs[j].Value);
+                                }
+
+                                builder.Append(String.Join(" ", singleAttrs));
+                            }
+                        }
+                        builder.Append(newSource[i + 1]);
+                    }
+
+                    source = builder.ToString().Replace("javascript:", String.Empty);
+                    source = Regex.Replace(source, @"\s+", " ", options);
+                }
+            }
+
+            return source;
+        }
+
+        private static IList<String> EscapeItems(IList<String> items)
+        {
+            if (items == null)
+            {
+                throw new ArgumentNullException();
+            }
+
+            items = new List<String>(items);
+
+            for (int i = 0; i < items.Count; i++)
+            {
+                if (items[i] == null || (items[i] = items[i].Trim()).Length == 0)
+                {
+                    items.RemoveAt(i--);
+                }
+                else
+                {
+                    items[i] = Regex.Escape(items[i]);
+                }
+            }
+
+            return items;
         }
 
         #endregion
@@ -410,7 +494,24 @@ namespace IOC.FW.Core
         /// <returns>Retorna se o stream passado é imagem</returns>
         public static bool IsImage(this Stream stream)
         {
-            return (stream.Length > 0 && Image.FromStream(stream) != null);
+            if (stream == null)
+            {
+                return false;
+            }
+
+            if (!stream.CanRead)
+            {
+                return false;
+            }
+
+            try
+            {
+                return stream.Length > 0 && Image.FromStream(stream) != null;
+            }
+            catch
+            {
+                return false;
+            }
         }
         #endregion
 
