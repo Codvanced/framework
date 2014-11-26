@@ -20,8 +20,8 @@
     <HtmlHelpName>Documentation2</HtmlHelpName>
     <Language>en-US</Language>
     <DocumentationSources>
-      <DocumentationSource sourceFile="..\IOC.FW\bin\Debug\IOC.FW.XML" />
       <DocumentationSource sourceFile="..\IOC.FW\bin\Debug\IOC.FW.dll" />
+      <DocumentationSource sourceFile="..\IOC.FW\bin\Debug\IOC.FW.xml" />
     </DocumentationSources>
     <ApiFilter />
     <ComponentConfigurations />
@@ -34,7 +34,7 @@
     <WorkingPath />
     <ComponentPath />
     <BuildAssemblerVerbosity>OnlyWarningsAndErrors</BuildAssemblerVerbosity>
-    <HelpFileFormat>Website</HelpFileFormat>
+    <HelpFileFormat>OpenXml</HelpFileFormat>
     <IndentHtml>False</IndentHtml>
     <KeepLogFile>True</KeepLogFile>
     <DisableCodeBlockComponent>False</DisableCodeBlockComponent>

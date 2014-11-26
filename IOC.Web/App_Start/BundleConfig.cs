@@ -3,6 +3,9 @@ using System.Web.Optimization;
 
 namespace IOC.Web
 {
+    /// <summary>
+    /// Classe empacotadora do framework .net
+    /// </summary>
     public class BundleConfig
     {
         // For more information on Bundling, visit http://go.microsoft.com/fwlink/?LinkId=254725

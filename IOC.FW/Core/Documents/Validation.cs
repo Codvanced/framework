@@ -7,8 +7,16 @@ using System.Security.Cryptography;
 
 namespace IOC.FW.Core.Documents
 {
+    /// <summary>
+    /// Classe responsável por validar documentos
+    /// </summary>
     public static class Validation
     {
+        /// <summary>
+        /// Método responsável por gerar digito verificador de cartão de crédito (luhn digit)
+        /// </summary>
+        /// <param name="number">Número para calcular o digito</param>
+        /// <returns>Digito verificador</returns>
         public static int LuhnGenerate(string number)
         {
             Regex reg = new Regex(@"[\D\s]+");
@@ -34,11 +42,21 @@ namespace IOC.FW.Core.Documents
             return ((sum * 9) % 10);
         }
 
+        /// <summary>
+        /// Método responsável por validar um digito verificador (Luhn digit)
+        /// </summary>
+        /// <param name="number">Numero com digito</param>
+        /// <returns>Valor booleando indicando se o numero é valido</returns>
         public static bool CompareLuhnDigit(string number)
         {
             return LuhnGenerate(number) == 0;
         }
-
+        
+        /// <summary>
+        /// Método responsável por gerar os digitos verificadores de CPF
+        /// </summary>
+        /// <param name="cpf">Número de cpf sem os digitos</param>
+        /// <returns>CPF com os digitos</returns>
         public static string CpfDigits(string cpf)
         {
             Regex reg = new Regex(@"[\D\s]+");

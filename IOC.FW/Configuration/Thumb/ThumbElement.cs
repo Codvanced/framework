@@ -7,13 +7,13 @@ using System.Configuration;
 namespace IOC.FW.Configuration.Thumb
 {
     /// <summary>
-    /// Classe representa o elemento da coleção thumb.
+    /// Classe para representar o elemento da coleção thumb.
     /// </summary>
     public class ThumbElement
         : ConfigurationElement
     {
         /// <summary>
-        /// Propriedade representa o atributo notFound(imagem não encontrada) do elemento thumb.
+        /// Propriedade para representar o atributo notFound(imagem não encontrada) do elemento thumb.
         /// </summary>
         [ConfigurationProperty("notFoundPath", IsRequired = false)]
         public string NotFoundPath
@@ -24,6 +24,9 @@ namespace IOC.FW.Configuration.Thumb
             }
         }
 
+        /// <summary>
+        /// Propriedade para representar o atributo width padrão do elemento thumb.
+        /// </summary>
         [ConfigurationProperty("defaultWidth", IsRequired = false)]
         public int DefaultWidth
         {
@@ -33,6 +36,9 @@ namespace IOC.FW.Configuration.Thumb
             }
         }
 
+        /// <summary>
+        /// Propriedade para representar o atributo height padrão do elemento thumb.
+        /// </summary>
         [ConfigurationProperty("defaultHeight", IsRequired = false)]
         public int DefaultHeight
         {

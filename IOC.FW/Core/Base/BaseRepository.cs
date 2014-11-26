@@ -291,7 +291,13 @@ namespace IOC.FW.Core.Base
             return list;
         }
 
-
+        /// <summary>
+        /// Implementação de método de IBaseDAO destinado a executar querys customizadas e procedures.
+        /// </summary>
+        /// <param name="sql">Query ou nome de procedure</param>
+        /// <param name="parameters">Lista de tupla com a direção dos parâmetros e valores a incluir</param>
+        /// <param name="cmdType">Tipo de execução: query/procedure</param>
+        /// <returns>Objeto com o resultado obtido</returns>
         public IList<TModel> ExecuteQuery(string sql, List<Tuple<ParameterDirection, string, object>> parametersWithDirection, CommandType cmdType)
         {
             List<TModel> list = null;
@@ -421,6 +427,11 @@ namespace IOC.FW.Core.Base
             return model;
         }
 
+        /// <summary>
+        /// Método auxiliar destinado a abrir uma conexão com o banco e devolvê-la.
+        /// </summary>
+        /// <param name="context">Contexto do EntityFramework</param>
+        /// <returns>Objeto com conexão aberta</returns>
         private DbConnection OpenConnection(Repository<TModel> context)
         {
             DbConnection conn = null;
@@ -437,6 +448,13 @@ namespace IOC.FW.Core.Base
             return conn;
         }
 
+        /// <summary>
+        /// Método auxiliar destinado a criar um command baseado em um objeto de connection.
+        /// </summary>
+        /// <param name="conn">Objeto de conexão aberta</param>
+        /// <param name="sql">Comando a ser executado (Query ou procedure)</param>
+        /// <param name="cmdType">Tipo do comando</param>
+        /// <returns>Objeto de command</returns>
         private DbCommand CreateCommand(DbConnection conn, string sql, CommandType cmdType = CommandType.Text)
         {
             DbCommand comm = null;
@@ -454,6 +472,13 @@ namespace IOC.FW.Core.Base
             return comm;
         }
 
+        //TODO: modificar este método para VOID, está retornando algo que julgo ser inutil.
+        /// <summary>
+        /// Método auxiliar destinado a incluir parametros em um command.
+        /// </summary>
+        /// <param name="comm">Command a inserir os paramtros</param>
+        /// <param name="parameters">Dicionario de parametros a inserir</param>
+        /// <returns>Objeto de parametro</returns>
         private DbParameter SetParameter(DbCommand comm, Dictionary<string, object> parameters = null)
         {
             DbParameter param = null;
@@ -474,6 +499,13 @@ namespace IOC.FW.Core.Base
             return param;
         }
 
+        //TODO: modificar este método para VOID, está retornando algo que julgo ser inutil.
+        /// <summary>
+        /// Método auxiliar destinado a incluir parametros em um command.
+        /// </summary>
+        /// <param name="comm">Command a inserir os paramtros</param>
+        /// <param name="parameters">Lista de parametros a inserir</param>
+        /// <returns>Objeto de parametro</returns>
         private DbParameter SetParameter(DbCommand comm, List<Tuple<ParameterDirection, string, object>> parameters = null)
         {
             DbParameter param = null;
