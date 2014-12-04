@@ -1,44 +1,13 @@
 [Header]
-127.0.0.1 2014-11-25 15:21:39,656 [10] ERROR IOC.Web.Controllers.HomeController [(null)] - Erro na seguinte url => GET http://localhost:9566/: The Entity Framework provider type 'MySql.Data.MySqlClient.MySqlProviderServices, MySql.Data.Entity.EF6, Version=6.8.3.0, Culture=neutral, PublicKeyToken=c5687fc88969c44d' registered in the application config file for the ADO.NET provider with invariant name 'MySql.Data.MySqlClient' could not be loaded. Make sure that the assembly-qualified name is used and that the assembly is available to the running application. See http://go.microsoft.com/fwlink/?LinkId=260882 for more information.
-System.InvalidOperationException: The Entity Framework provider type 'MySql.Data.MySqlClient.MySqlProviderServices, MySql.Data.Entity.EF6, Version=6.8.3.0, Culture=neutral, PublicKeyToken=c5687fc88969c44d' registered in the application config file for the ADO.NET provider with invariant name 'MySql.Data.MySqlClient' could not be loaded. Make sure that the assembly-qualified name is used and that the assembly is available to the running application. See http://go.microsoft.com/fwlink/?LinkId=260882 for more information.
-   at System.Data.Entity.Infrastructure.DependencyResolution.ProviderServicesFactory.GetInstance(String providerTypeName, String providerInvariantName)
-   at System.Data.Entity.Internal.AppConfig.<.ctor>b__2(ProviderElement e)
-   at System.Linq.Enumerable.WhereSelectEnumerableIterator`2.MoveNext()
-   at System.Collections.Generic.List`1..ctor(IEnumerable`1 collection)
-   at System.Linq.Enumerable.ToList[TSource](IEnumerable`1 source)
-   at System.Data.Entity.Internal.AppConfig.<.ctor>b__1()
-   at System.Lazy`1.CreateValue()
-   at System.Lazy`1.LazyInitValue()
-   at System.Lazy`1.get_Value()
-   at System.Data.Entity.Internal.AppConfig.get_DbProviderServices()
-   at System.Data.Entity.Infrastructure.DependencyResolution.AppConfigDependencyResolver.RegisterDbProviderServices()
-   at System.Data.Entity.Infrastructure.DependencyResolution.AppConfigDependencyResolver.GetServiceFactory(Type type, String name)
-   at System.Data.Entity.Infrastructure.DependencyResolution.AppConfigDependencyResolver.<>c__DisplayClass1.<GetService>b__0(Tuple`2 t)
-   at System.Collections.Concurrent.ConcurrentDictionary`2.GetOrAdd(TKey key, Func`2 valueFactory)
-   at System.Data.Entity.Infrastructure.DependencyResolution.AppConfigDependencyResolver.GetService(Type type, Object key)
-   at System.Data.Entity.Infrastructure.DependencyResolution.DbDependencyResolverExtensions.GetServiceAsServices(IDbDependencyResolver resolver, Type type, Object key)
-   at System.Data.Entity.Infrastructure.DependencyResolution.AppConfigDependencyResolver.GetServices(Type type, Object key)
-   at System.Data.Entity.Infrastructure.DependencyResolution.ResolverChain.<>c__DisplayClass6.<GetServices>b__5(IDbDependencyResolver r)
-   at System.Linq.Enumerable.<SelectManyIterator>d__14`2.MoveNext()
-   at System.Linq.Enumerable.<ConcatIterator>d__71`1.MoveNext()
-   at System.Linq.Enumerable.<OfTypeIterator>d__aa`1.MoveNext()
-   at System.Data.Entity.Utilities.IEnumerableExtensions.Each[T](IEnumerable`1 ts, Action`1 action)
-   at System.Data.Entity.Infrastructure.DependencyResolution.InternalConfiguration.Lock()
-   at System.Data.Entity.Infrastructure.DependencyResolution.DbConfigurationManager.<.ctor>b__1()
-   at System.Lazy`1.CreateValue()
-   at System.Lazy`1.LazyInitValue()
-   at System.Lazy`1.get_Value()
-   at System.Data.Entity.Infrastructure.DependencyResolution.DbConfigurationManager.GetConfiguration()
-   at System.Data.Entity.Infrastructure.DependencyResolution.InternalConfiguration.get_Instance()
-   at System.Data.Entity.DbConfiguration.get_DependencyResolver()
-   at System.Data.Entity.DbContext.InitializeLazyInternalContext(IInternalConnection internalConnection, DbCompiledModel model)
-   at System.Data.Entity.DbContext..ctor(String nameOrConnectionString)
-   at IOC.FW.Core.Database.Repository`1..ctor(String nameOrConnectionString) in C:\DESENVOLVIMENTO\WUNDERMAN\SVN\WUNDERMAN\tecnologia\Projetos\IOC-FW\trunk\DotNet\IOC.FW\Core\Database\Repository.cs:line 33
-   at IOC.FW.Core.Base.BaseRepository`1.SelectAll(Expression`1[] navigationProperties) in C:\DESENVOLVIMENTO\WUNDERMAN\SVN\WUNDERMAN\tecnologia\Projetos\IOC-FW\trunk\DotNet\IOC.FW\Core\Base\BaseRepository.cs:line 80
-   at IOC.FW.Core.Base.BaseBusiness`1.SelectAll(Expression`1[] navigationProperties) in C:\DESENVOLVIMENTO\WUNDERMAN\SVN\WUNDERMAN\tecnologia\Projetos\IOC-FW\trunk\DotNet\IOC.FW\Core\Base\BaseBusiness.cs:line 59
-   at IOC.Web.Controllers.HomeController.Index() in C:\DESENVOLVIMENTO\WUNDERMAN\SVN\WUNDERMAN\tecnologia\Projetos\IOC-FW\trunk\DotNet\IOC.Web\Controllers\HomeController.cs:line 30
-   at lambda_method(Closure , ControllerBase , Object[] )
-   at System.Web.Mvc.ActionMethodDispatcher.Execute(ControllerBase controller, Object[] parameters)
+127.0.0.1 2014-12-03 15:44:44,123 [11] ERROR IOC.Web.Controllers.PhotoController [(null)] - Erro na seguinte url => GET http://localhost:9566/Photo/Thumb: The parameters dictionary contains a null entry for parameter 'width' of non-nullable type 'System.Int32' for method 'System.Web.Mvc.FileStreamResult Thumb(System.String, Int32)' in 'IOC.Web.Controllers.PhotoController'. An optional parameter must be a reference type, a nullable type, or be declared as an optional parameter.
+Parameter name: parameters
+System.ArgumentException: The parameters dictionary contains a null entry for parameter 'width' of non-nullable type 'System.Int32' for method 'System.Web.Mvc.FileStreamResult Thumb(System.String, Int32)' in 'IOC.Web.Controllers.PhotoController'. An optional parameter must be a reference type, a nullable type, or be declared as an optional parameter.
+Parameter name: parameters
+   at System.Web.Mvc.ActionDescriptor.ExtractParameterFromDictionary(ParameterInfo parameterInfo, IDictionary`2 parameters, MethodInfo methodInfo)
+   at System.Web.Mvc.ReflectedActionDescriptor.<>c__DisplayClass1.<Execute>b__0(ParameterInfo parameterInfo)
+   at System.Linq.Enumerable.WhereSelectArrayIterator`2.MoveNext()
+   at System.Linq.Buffer`1..ctor(IEnumerable`1 source)
+   at System.Linq.Enumerable.ToArray[TSource](IEnumerable`1 source)
    at System.Web.Mvc.ReflectedActionDescriptor.Execute(ControllerContext controllerContext, IDictionary`2 parameters)
    at System.Web.Mvc.ControllerActionInvoker.InvokeActionMethod(ControllerContext controllerContext, ActionDescriptor actionDescriptor, IDictionary`2 parameters)
    at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass42.<BeginInvokeSynchronousActionMethod>b__41()
@@ -52,6 +21,4 @@ System.InvalidOperationException: The Entity Framework provider type 'MySql.Data
    at System.Web.Mvc.Async.AsyncControllerActionInvoker.EndInvokeActionMethodWithFilters(IAsyncResult asyncResult)
    at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass25.<>c__DisplayClass2a.<BeginInvokeAction>b__20()
    at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass25.<BeginInvokeAction>b__22(IAsyncResult asyncResult)
-[Footer]
-[Header]
 [Footer]

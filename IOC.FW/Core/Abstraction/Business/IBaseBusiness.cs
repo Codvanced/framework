@@ -79,31 +79,5 @@ namespace IOC.FW.Core.Abstraction.Business
         /// </summary>
         /// <param name="items">Coleção de registros a deletar da base</param>
         void Delete(params TModel[] items);
-
-        /// <summary>
-        /// Implementação de método de IBaseDAO destinado a expor o Context de maneira segura para a DAO.
-        /// </summary>
-        /// <param name="lambda">Delegate para expor o Context e retornar uma Model preenchida</param>
-        /// <returns>Objeto de classe modelo preenchido com registro encontrado</returns>
-        //TModel Exec(Func<DbSet<TModel>, TModel> lambda);
-
-        /// <summary>
-        /// Implementação de método de IBaseDAO destinado a expor o Context de maneira segura para a DAO.
-        /// </summary>
-        /// <typeparam name="TGenericModel">Tipo de Model de entrada para preencher DbSet</typeparam>
-        /// <param name="lambda">Delegate para expor o Context e retornar uma Model preenchida</param>
-        /// <returns>Model de retorno preenchida com registro encontrado</returns>
-        //TGenericModel Exec<TGenericModel>(Func<DbSet<TGenericModel>, TGenericModel> lambda)
-        //    where TGenericModel : class, new();
-
-        /// <summary>
-        /// Implementação de método de IBaseDAO destinado a expor o Context de maneira segura para a DAO.
-        /// </summary>
-        /// <typeparam name="TGenericModel">Tipo de Model de entrada para preencher DbSet</typeparam>
-        /// <typeparam name="TGenericModeOut">Tipo de Model de saida</typeparam>
-        /// <param name="lambda">Delegate para expor o Context e retornar uma Model preenchida</param>
-        /// <returns>Model de retorno preenchida com registro encontrado</returns>
-        //TGenericModeOut Exec<TGenericModel, TGenericModeOut>(Func<DbSet<TGenericModel>, TGenericModeOut> lambda)
-        //    where TGenericModel : class, new();
     }
 }

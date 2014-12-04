@@ -142,10 +142,5 @@ namespace IOC.FW.Core.Abstraction.DAO
             List<Tuple<ParameterDirection, string, object>> parametersWithDirection,
             CommandType cmdType
         );
-
-        
-        
-        
-        
     }
 }

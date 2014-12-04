@@ -13,6 +13,7 @@ namespace IOC.Web
         {
             routes.IgnoreRoute("{resource}.axd/{*pathInfo}");
             routes.IgnoreRoute("{*thumb}", new { thumb = @".+\.thumb\.axd" });
+            routes.IgnoreRoute("{*transform}", new { transform = @".+\.transform\.axd" });
 
             routes.MapRoute(
                 name: "Default",

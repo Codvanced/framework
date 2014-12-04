@@ -38,24 +38,24 @@ namespace IOC.FW.Web
 
             int? height = null; int h = 0;
 
-            ReferencePoint refpoint = ReferencePoint.MiddleCenter;
+            var refpoint = Enumerators.ReferencePoint.MiddleCenter;
 
-            if (null != context.Request["refpoint"])
-                Enum.TryParse<ReferencePoint>(context.Request["refpoint"], out refpoint);
+            if (context.Request["refpoint"] != null)
+                Enum.TryParse<Enumerators.ReferencePoint>(context.Request["refpoint"], out refpoint);
 
-            if (null != context.Request["width"])
+            if (context.Request["width"] != null)
                 int.TryParse(context.Request["width"], out w);
 
-            if (0 < w)
+            if (w > 0)
                 width = w;
 
-            if (null != context.Request["height"])
+            if (context.Request["height"] != null)
                 int.TryParse(context.Request["height"], out h);
 
-            if (0 < h)
+            if (h > 0)
                 height = h;
 
-            if (null != context.Request["crop"])
+            if (context.Request["crop"] != null)
                 bool.TryParse(context.Request["crop"], out crop);
 
             if (!width.HasValue)
@@ -82,11 +82,11 @@ namespace IOC.FW.Web
                 using (img)
                 using (
                         var image = crop ?
-                            ImageTransformation.Crop(img, size, refpoint) :
-                            ImageTransformation.Resize(img, size)
+                            Thumbnail.Create(img, size, refpoint) :
+                            Thumbnail.Resize(img, size)
                     )
                 {
-                    var stream = ImageTransformation.Transform(image);
+                    var stream = Thumbnail.Transform(image);
                     context.Response.ContentType = "image/png";
                     context.Response.BinaryWrite(stream.ToArray());
                     context.Response.Flush();

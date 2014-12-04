@@ -1,42 +1,7 @@
 [Header]
-127.0.0.1 2014-11-25 15:16:44,632 [4] ERROR IOC.Web.Controllers.HomeController [(null)] - Erro na seguinte url => GET http://localhost:9566/: The Entity Framework provider type 'MySql.Data.MySqlClient.MySqlProviderServices, MySql.Data.Entity.EF6, Version=6.8.3.0, Culture=neutral, PublicKeyToken=c5687fc88969c44d' registered in the application config file for the ADO.NET provider with invariant name 'MySql.Data.MySqlClient' could not be loaded. Make sure that the assembly-qualified name is used and that the assembly is available to the running application. See http://go.microsoft.com/fwlink/?LinkId=260882 for more information.
-System.InvalidOperationException: The Entity Framework provider type 'MySql.Data.MySqlClient.MySqlProviderServices, MySql.Data.Entity.EF6, Version=6.8.3.0, Culture=neutral, PublicKeyToken=c5687fc88969c44d' registered in the application config file for the ADO.NET provider with invariant name 'MySql.Data.MySqlClient' could not be loaded. Make sure that the assembly-qualified name is used and that the assembly is available to the running application. See http://go.microsoft.com/fwlink/?LinkId=260882 for more information.
-   at System.Data.Entity.Infrastructure.DependencyResolution.ProviderServicesFactory.GetInstance(String providerTypeName, String providerInvariantName)
-   at System.Data.Entity.Internal.AppConfig.<.ctor>b__2(ProviderElement e)
-   at System.Linq.Enumerable.WhereSelectEnumerableIterator`2.MoveNext()
-   at System.Collections.Generic.List`1..ctor(IEnumerable`1 collection)
-   at System.Linq.Enumerable.ToList[TSource](IEnumerable`1 source)
-   at System.Data.Entity.Internal.AppConfig.<.ctor>b__1()
-   at System.Lazy`1.CreateValue()
-   at System.Lazy`1.LazyInitValue()
-   at System.Lazy`1.get_Value()
-   at System.Data.Entity.Internal.AppConfig.get_DbProviderServices()
-   at System.Data.Entity.Infrastructure.DependencyResolution.AppConfigDependencyResolver.RegisterDbProviderServices()
-   at System.Data.Entity.Infrastructure.DependencyResolution.AppConfigDependencyResolver.GetServiceFactory(Type type, String name)
-   at System.Data.Entity.Infrastructure.DependencyResolution.AppConfigDependencyResolver.<>c__DisplayClass1.<GetService>b__0(Tuple`2 t)
-   at System.Collections.Concurrent.ConcurrentDictionary`2.GetOrAdd(TKey key, Func`2 valueFactory)
-   at System.Data.Entity.Infrastructure.DependencyResolution.AppConfigDependencyResolver.GetService(Type type, Object key)
-   at System.Data.Entity.Infrastructure.DependencyResolution.DbDependencyResolverExtensions.GetServiceAsServices(IDbDependencyResolver resolver, Type type, Object key)
-   at System.Data.Entity.Infrastructure.DependencyResolution.AppConfigDependencyResolver.GetServices(Type type, Object key)
-   at System.Data.Entity.Infrastructure.DependencyResolution.ResolverChain.<>c__DisplayClass6.<GetServices>b__5(IDbDependencyResolver r)
-   at System.Linq.Enumerable.<SelectManyIterator>d__14`2.MoveNext()
-   at System.Linq.Enumerable.<ConcatIterator>d__71`1.MoveNext()
-   at System.Linq.Enumerable.<OfTypeIterator>d__aa`1.MoveNext()
-   at System.Data.Entity.Utilities.IEnumerableExtensions.Each[T](IEnumerable`1 ts, Action`1 action)
-   at System.Data.Entity.Infrastructure.DependencyResolution.InternalConfiguration.Lock()
-   at System.Data.Entity.Infrastructure.DependencyResolution.DbConfigurationManager.<.ctor>b__1()
-   at System.Lazy`1.CreateValue()
-   at System.Lazy`1.LazyInitValue()
-   at System.Lazy`1.get_Value()
-   at System.Data.Entity.Infrastructure.DependencyResolution.DbConfigurationManager.GetConfiguration()
-   at System.Data.Entity.Infrastructure.DependencyResolution.InternalConfiguration.get_Instance()
-   at System.Data.Entity.DbConfiguration.get_DependencyResolver()
-   at System.Data.Entity.DbContext.InitializeLazyInternalContext(IInternalConnection internalConnection, DbCompiledModel model)
-   at System.Data.Entity.DbContext..ctor(String nameOrConnectionString)
-   at IOC.FW.Core.Database.Repository`1..ctor(String nameOrConnectionString) in C:\DESENVOLVIMENTO\WUNDERMAN\SVN\WUNDERMAN\tecnologia\Projetos\IOC-FW\trunk\DotNet\IOC.FW\Core\Database\Repository.cs:line 33
-   at IOC.FW.Core.Base.BaseRepository`1.SelectAll(Expression`1[] navigationProperties) in C:\DESENVOLVIMENTO\WUNDERMAN\SVN\WUNDERMAN\tecnologia\Projetos\IOC-FW\trunk\DotNet\IOC.FW\Core\Base\BaseRepository.cs:line 80
-   at IOC.FW.Core.Base.BaseBusiness`1.SelectAll(Expression`1[] navigationProperties) in C:\DESENVOLVIMENTO\WUNDERMAN\SVN\WUNDERMAN\tecnologia\Projetos\IOC-FW\trunk\DotNet\IOC.FW\Core\Base\BaseBusiness.cs:line 59
-   at IOC.Web.Controllers.HomeController.Index() in C:\DESENVOLVIMENTO\WUNDERMAN\SVN\WUNDERMAN\tecnologia\Projetos\IOC-FW\trunk\DotNet\IOC.Web\Controllers\HomeController.cs:line 30
+127.0.0.1 2014-11-25 16:21:55,029 [17] ERROR IOC.Web.Controllers.LogTestController [(null)] - Erro na seguinte url => GET http://localhost:9566/LogTest: Erro
+System.Web.HttpException (0x80004005): Erro
+   at IOC.Web.Controllers.LogTestController.Index() in C:\DESENVOLVIMENTO\WUNDERMAN\SVN\WUNDERMAN\tecnologia\Projetos\IOC-FW\trunk\DotNet\IOC.Web\Controllers\LogTestController.cs:line 24
    at lambda_method(Closure , ControllerBase , Object[] )
    at System.Web.Mvc.ActionMethodDispatcher.Execute(ControllerBase controller, Object[] parameters)
    at System.Web.Mvc.ReflectedActionDescriptor.Execute(ControllerContext controllerContext, IDictionary`2 parameters)
@@ -52,6 +17,4 @@ System.InvalidOperationException: The Entity Framework provider type 'MySql.Data
    at System.Web.Mvc.Async.AsyncControllerActionInvoker.EndInvokeActionMethodWithFilters(IAsyncResult asyncResult)
    at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass25.<>c__DisplayClass2a.<BeginInvokeAction>b__20()
    at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass25.<BeginInvokeAction>b__22(IAsyncResult asyncResult)
-[Footer]
-[Header]
 [Footer]

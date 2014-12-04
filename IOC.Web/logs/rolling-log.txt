@@ -1,7 +1,9 @@
 [Header]
-127.0.0.1 2014-11-25 16:25:38,887 [6] ERROR IOC.Web.Controllers.LogTestController [(null)] - Erro na seguinte url => GET http://localhost:9566/LogTest: Erro
-System.Web.HttpException (0x80004005): Erro
-   at IOC.Web.Controllers.LogTestController.Index() in C:\DESENVOLVIMENTO\WUNDERMAN\SVN\WUNDERMAN\tecnologia\Projetos\IOC-FW\trunk\DotNet\IOC.Web\Controllers\LogTestController.cs:line 24
+127.0.0.1 2014-12-03 15:52:51,339 [6] ERROR IOC.Web.Controllers.PhotoController [(null)] - Erro na seguinte url => GET http://localhost:9566/Photo/Thumb?filename=/content/img/Koala.jpg&width=320: Sequence contains no matching element
+System.InvalidOperationException: Sequence contains no matching element
+   at System.Linq.Enumerable.First[TSource](IEnumerable`1 source, Func`2 predicate)
+   at IOC.FW.Core.Extensions.GetMimeType(ImageFormat imageFormat) in C:\DESENVOLVIMENTO\PESSOAL\ESTUDOS\PROGRAMACAO\VERSIONADO\GIT\Framework\IOC.FW\Core\Extensions.cs:line 522
+   at IOC.Web.Controllers.PhotoController.Thumb(String filename, Int32 width) in C:\DESENVOLVIMENTO\PESSOAL\ESTUDOS\PROGRAMACAO\VERSIONADO\GIT\Framework\IOC.Web\Controllers\PhotoController.cs:line 55
    at lambda_method(Closure , ControllerBase , Object[] )
    at System.Web.Mvc.ActionMethodDispatcher.Execute(ControllerBase controller, Object[] parameters)
    at System.Web.Mvc.ReflectedActionDescriptor.Execute(ControllerContext controllerContext, IDictionary`2 parameters)

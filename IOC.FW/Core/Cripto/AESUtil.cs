@@ -29,12 +29,12 @@ namespace IOC.FW.Core.Cripto
         }
 
         /// <summary>
-        /// 
+        /// Método responsável por encriptar textos
         /// </summary>
-        /// <param name="plainText"></param>
-        /// <param name="Key"></param>
-        /// <param name="IV"></param>
-        /// <returns></returns>
+        /// <param name="plainText">Texto puro</param>
+        /// <param name="Key">Chave (key)</param>
+        /// <param name="IV">Chave (iv)</param>
+        /// <returns>Array de bytes com texto encriptado</returns>
         public static byte[] Encrypt(
             string plainText,
             byte[] Key,
@@ -87,12 +87,12 @@ namespace IOC.FW.Core.Cripto
         }
 
         /// <summary>
-        /// 
+        /// Método responsável por decriptar textos
         /// </summary>
-        /// <param name="cipherText"></param>
-        /// <param name="Key"></param>
-        /// <param name="IV"></param>
-        /// <returns></returns>
+        /// <param name="cipherText">Texto cifrado</param>
+        /// <param name="Key">Chave (key)</param>
+        /// <param name="IV">Chave (iv)</param>
+        /// <returns>String com texto decriptado</returns>
         public static string Decrypt(
             byte[] cipherText, 
             byte[] Key, 

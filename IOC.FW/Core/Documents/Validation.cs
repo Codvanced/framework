@@ -96,6 +96,11 @@ namespace IOC.FW.Core.Documents
             return cpf;
         }
 
+        /// <summary>
+        /// Método responsável por validar CPF
+        /// </summary>
+        /// <param name="cpf">Número de cpf sem os digitos</param>
+        /// <returns>Indica se o CPF é válido</returns>
         public static bool ValidateCpf(string cpf)
         {
             bool isValid = false;
@@ -132,6 +137,10 @@ namespace IOC.FW.Core.Documents
             return isValid;
         }
 
+        /// <summary>
+        /// Método responsável por gerar CPF para testes
+        /// </summary>
+        /// <returns>Número válido de CPF</returns>
         public static string GenerateCpf()
         {
             var rand = new Random();

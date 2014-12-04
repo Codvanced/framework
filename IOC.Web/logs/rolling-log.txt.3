@@ -1,9 +1,13 @@
 [Header]
-127.0.0.1 2014-11-25 16:19:29,533 [10] ERROR IOC.Web.Controllers.LogTestController [(null)] - Erro na seguinte url => GET http://localhost:9566/LogTest: Erro
-System.Web.HttpException (0x80004005): Erro
-   at IOC.Web.Controllers.LogTestController.Index() in C:\DESENVOLVIMENTO\WUNDERMAN\SVN\WUNDERMAN\tecnologia\Projetos\IOC-FW\trunk\DotNet\IOC.Web\Controllers\LogTestController.cs:line 24
-   at lambda_method(Closure , ControllerBase , Object[] )
-   at System.Web.Mvc.ActionMethodDispatcher.Execute(ControllerBase controller, Object[] parameters)
+127.0.0.1 2014-12-03 15:45:12,179 [14] ERROR IOC.Web.Controllers.PhotoController [(null)] - Erro na seguinte url => GET http://localhost:9566/Photo/Thumb: The parameters dictionary contains a null entry for parameter 'width' of non-nullable type 'System.Int32' for method 'System.Web.Mvc.FileStreamResult Thumb(System.String, Int32)' in 'IOC.Web.Controllers.PhotoController'. An optional parameter must be a reference type, a nullable type, or be declared as an optional parameter.
+Parameter name: parameters
+System.ArgumentException: The parameters dictionary contains a null entry for parameter 'width' of non-nullable type 'System.Int32' for method 'System.Web.Mvc.FileStreamResult Thumb(System.String, Int32)' in 'IOC.Web.Controllers.PhotoController'. An optional parameter must be a reference type, a nullable type, or be declared as an optional parameter.
+Parameter name: parameters
+   at System.Web.Mvc.ActionDescriptor.ExtractParameterFromDictionary(ParameterInfo parameterInfo, IDictionary`2 parameters, MethodInfo methodInfo)
+   at System.Web.Mvc.ReflectedActionDescriptor.<>c__DisplayClass1.<Execute>b__0(ParameterInfo parameterInfo)
+   at System.Linq.Enumerable.WhereSelectArrayIterator`2.MoveNext()
+   at System.Linq.Buffer`1..ctor(IEnumerable`1 source)
+   at System.Linq.Enumerable.ToArray[TSource](IEnumerable`1 source)
    at System.Web.Mvc.ReflectedActionDescriptor.Execute(ControllerContext controllerContext, IDictionary`2 parameters)
    at System.Web.Mvc.ControllerActionInvoker.InvokeActionMethod(ControllerContext controllerContext, ActionDescriptor actionDescriptor, IDictionary`2 parameters)
    at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass42.<BeginInvokeSynchronousActionMethod>b__41()

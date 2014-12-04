@@ -117,7 +117,8 @@
     <Compile Include="Core\Abstraction\Business\IBaseBusiness.cs" />
     <Compile Include="Core\Abstraction\DAO\IBaseDAO.cs" />
     <Compile Include="Core\Abstraction\Factory\IInjectionModule.cs" />
-    <Compile Include="Core\Images\Transformation.cs" />
+    <Compile Include="Core\Images\Thumbnail.cs" />
+    <Compile Include="Core\Images\Transform.cs" />
     <Compile Include="Core\Logging\LogFactory.cs" />
     <Compile Include="Core\Pagination\Paginator.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

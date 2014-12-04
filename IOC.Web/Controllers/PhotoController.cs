@@ -31,24 +31,27 @@ namespace IOC.Web.Controllers
             }
 
             var image = Bitmap.FromFile(filename);
+            image = IOC.FW.Core.Images.Transform.Crop(image, new Rectangle(100, 100, 150, 150));
 
-            int oldWidth = image.Width;
-            int oldHeight = image.Height;
+            image.Save(memoryStream, ImageFormat.Png);
+            memoryStream.Position = 0;
+            //int oldWidth = image.Width;
+            //int oldHeight = image.Height;
 
-            int newHeight = (oldHeight * width / oldWidth);
+            //int newHeight = (oldHeight * width / oldWidth);
 
-            using (var newImage = new Bitmap(width, newHeight))
-            using (var graphic = Graphics.FromImage(newImage))
-            {
-                graphic.SmoothingMode = SmoothingMode.AntiAlias;
-                graphic.InterpolationMode = InterpolationMode.HighQualityBicubic;
-                graphic.PixelOffsetMode = PixelOffsetMode.HighQuality;
-                graphic.DrawImage(image, new Rectangle(0, 0, width, newHeight));
+            //using (var newImage = new Bitmap(width, newHeight))
+            //using (var graphic = Graphics.FromImage(newImage))
+            //{
+            //    graphic.SmoothingMode = SmoothingMode.AntiAlias;
+            //    graphic.InterpolationMode = InterpolationMode.HighQualityBicubic;
+            //    graphic.PixelOffsetMode = PixelOffsetMode.HighQuality;
+            //    graphic.DrawImage(image, new Rectangle(0, 0, width, newHeight));
 
-                newImage.Save(memoryStream, ImageFormat.Png);
-                memoryStream.Position = 0;
-            }
-            
+            //    newImage.Save(memoryStream, ImageFormat.Png);
+            //    memoryStream.Position = 0;
+            //}
+
             return new
                 FileStreamResult(memoryStream, image.RawFormat.GetMimeType());
         }
