@@ -12,22 +12,24 @@ using IOC.FW.Core.Logging;
 
 namespace IOC.FW.Web
 {
-    public class Thumb 
+    /// <summary>
+    /// Classe responsável por tratar as requisições atráves do "{imagem}.thumb.axd"
+    /// </summary>
+    public class Thumb
         : IHttpHandler
     {
         /// <summary>
-        /// You will need to configure this handler in the web.config file of your 
-        /// web and register it with IIS before being able to use it. For more information
-        /// see the following link: http://go.microsoft.com/?linkid=8101007
+        /// Propriedade referente a reutilização dos recursos para outras requests
         /// </summary>
-        #region IHttpHandler Members
         public bool IsReusable
         {
-            // Return false in case your Managed Handler cannot be reused for another request.
-            // Usually this would be false in case you have some state information preserved per request.
             get { return true; }
         }
 
+        /// <summary>
+        /// Método responsável por tratar a requisição para "{imagem}.thumb.axd"
+        /// </summary>
+        /// <param name="context">Contexto da requisição</param>
         public void ProcessRequest(HttpContext context)
         {
             string filename = context.Request.FilePath.Replace(".thumb.axd", string.Empty);
@@ -86,7 +88,7 @@ namespace IOC.FW.Web
                             Thumbnail.Resize(img, size)
                     )
                 {
-                    var stream = Thumbnail.Transform(image);
+                    var stream = Transform.Convert(image);
                     context.Response.ContentType = "image/png";
                     context.Response.BinaryWrite(stream.ToArray());
                     context.Response.Flush();
@@ -102,6 +104,5 @@ namespace IOC.FW.Web
                 }
             }
         }
-        #endregion
     }
 }

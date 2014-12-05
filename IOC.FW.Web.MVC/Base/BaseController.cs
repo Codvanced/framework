@@ -8,14 +8,16 @@ using IOC.FW.Core.Base;
 
 namespace IOC.FW.Web.MVC.Base
 {
+    /// <summary>
+    /// Classe responsável por oferecer recursos genéricos para controllers
+    /// </summary>
     public class BaseController
         : Controller
     {
-        public BaseController()
-        {
-
-        }
-
+        /// <summary>
+        /// Método sobreescrito responsável por tratar exceções em actions
+        /// </summary>
+        /// <param name="filterContext"></param>
         protected override void OnException(ExceptionContext filterContext)
         {
             if (!filterContext.ExceptionHandled)

@@ -1,9 +1,47 @@
 [Header]
-127.0.0.1 2014-12-03 15:52:51,339 [6] ERROR IOC.Web.Controllers.PhotoController [(null)] - Erro na seguinte url => GET http://localhost:9566/Photo/Thumb?filename=/content/img/Koala.jpg&width=320: Sequence contains no matching element
-System.InvalidOperationException: Sequence contains no matching element
-   at System.Linq.Enumerable.First[TSource](IEnumerable`1 source, Func`2 predicate)
-   at IOC.FW.Core.Extensions.GetMimeType(ImageFormat imageFormat) in C:\DESENVOLVIMENTO\PESSOAL\ESTUDOS\PROGRAMACAO\VERSIONADO\GIT\Framework\IOC.FW\Core\Extensions.cs:line 522
-   at IOC.Web.Controllers.PhotoController.Thumb(String filename, Int32 width) in C:\DESENVOLVIMENTO\PESSOAL\ESTUDOS\PROGRAMACAO\VERSIONADO\GIT\Framework\IOC.Web\Controllers\PhotoController.cs:line 55
+127.0.0.1 2014-12-04 15:10:55,851 [17] ERROR IOC.Web.Controllers.PersonController [(null)] - Erro na seguinte url => GET http://localhost:9566/Person: An error occurred while updating the entries. See the inner exception for details.
+System.Data.Entity.Infrastructure.DbUpdateException: An error occurred while updating the entries. See the inner exception for details. ---> System.Data.Entity.Core.UpdateException: An error occurred while updating the entries. See the inner exception for details. ---> System.Data.SqlClient.SqlException: Cannot insert the value NULL into column 'OcupationName', table 'IoC_FW.dbo.Ocupation'; column does not allow nulls. INSERT fails.
+The statement has been terminated.
+   at System.Data.SqlClient.SqlConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at System.Data.SqlClient.SqlInternalConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at System.Data.SqlClient.TdsParser.ThrowExceptionAndWarning(TdsParserStateObject stateObj, Boolean callerHasConnectionLock, Boolean asyncClose)
+   at System.Data.SqlClient.TdsParser.TryRun(RunBehavior runBehavior, SqlCommand cmdHandler, SqlDataReader dataStream, BulkCopySimpleResultSet bulkCopyHandler, TdsParserStateObject stateObj, Boolean& dataReady)
+   at System.Data.SqlClient.SqlDataReader.TryConsumeMetaData()
+   at System.Data.SqlClient.SqlDataReader.get_MetaData()
+   at System.Data.SqlClient.SqlCommand.FinishExecuteReader(SqlDataReader ds, RunBehavior runBehavior, String resetOptionsString)
+   at System.Data.SqlClient.SqlCommand.RunExecuteReaderTds(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, Boolean async, Int32 timeout, Task& task, Boolean asyncWrite, SqlDataReader ds)
+   at System.Data.SqlClient.SqlCommand.RunExecuteReader(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, String method, TaskCompletionSource`1 completion, Int32 timeout, Task& task, Boolean asyncWrite)
+   at System.Data.SqlClient.SqlCommand.RunExecuteReader(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, String method)
+   at System.Data.SqlClient.SqlCommand.ExecuteReader(CommandBehavior behavior, String method)
+   at System.Data.SqlClient.SqlCommand.ExecuteDbDataReader(CommandBehavior behavior)
+   at System.Data.Common.DbCommand.ExecuteReader(CommandBehavior behavior)
+   at System.Data.Entity.Infrastructure.Interception.DbCommandDispatcher.<>c__DisplayClassb.<Reader>b__8()
+   at System.Data.Entity.Infrastructure.Interception.InternalDispatcher`1.Dispatch[TInterceptionContext,TResult](Func`1 operation, TInterceptionContext interceptionContext, Action`1 executing, Action`1 executed)
+   at System.Data.Entity.Infrastructure.Interception.DbCommandDispatcher.Reader(DbCommand command, DbCommandInterceptionContext interceptionContext)
+   at System.Data.Entity.Internal.InterceptableDbCommand.ExecuteDbDataReader(CommandBehavior behavior)
+   at System.Data.Common.DbCommand.ExecuteReader(CommandBehavior behavior)
+   at System.Data.Entity.Core.Mapping.Update.Internal.DynamicUpdateCommand.Execute(Dictionary`2 identifierValues, List`1 generatedValues)
+   at System.Data.Entity.Core.Mapping.Update.Internal.UpdateTranslator.Update()
+   --- End of inner exception stack trace ---
+   at System.Data.Entity.Core.Mapping.Update.Internal.UpdateTranslator.Update()
+   at System.Data.Entity.Core.EntityClient.Internal.EntityAdapter.<Update>b__2(UpdateTranslator ut)
+   at System.Data.Entity.Core.EntityClient.Internal.EntityAdapter.Update[T](T noChangesResult, Func`2 updateFunction, Boolean throwOnClosedConnection)
+   at System.Data.Entity.Core.EntityClient.Internal.EntityAdapter.Update(Boolean throwOnClosedConnection)
+   at System.Data.Entity.Core.Objects.ObjectContext.<SaveChangesToStore>b__b()
+   at System.Data.Entity.Core.Objects.ObjectContext.ExecuteInTransaction[T](Func`1 func, IDbExecutionStrategy executionStrategy, Boolean startLocalTransaction, Boolean releaseConnectionOnSuccess)
+   at System.Data.Entity.Core.Objects.ObjectContext.SaveChangesToStore(SaveOptions options, IDbExecutionStrategy executionStrategy)
+   at System.Data.Entity.Core.Objects.ObjectContext.<>c__DisplayClass9.<SaveChanges>b__6()
+   at System.Data.Entity.SqlServer.DefaultSqlExecutionStrategy.Execute[TResult](Func`1 operation)
+   at System.Data.Entity.Core.Objects.ObjectContext.SaveChanges(SaveOptions options)
+   at System.Data.Entity.Internal.InternalContext.SaveChanges()
+   --- End of inner exception stack trace ---
+   at System.Data.Entity.Internal.InternalContext.SaveChanges()
+   at System.Data.Entity.Internal.LazyInternalContext.SaveChanges()
+   at System.Data.Entity.DbContext.SaveChanges()
+   at IOC.FW.Core.Base.BaseRepository`1.InsertToContext(TModel[] items, Repository`1 context) in C:\DESENVOLVIMENTO\PESSOAL\ESTUDOS\PROGRAMACAO\VERSIONADO\GIT\Framework\IOC.FW\Core\Base\BaseRepository.cs:line 181
+   at IOC.FW.Core.Base.BaseRepository`1.Insert(TModel[] items) in C:\DESENVOLVIMENTO\PESSOAL\ESTUDOS\PROGRAMACAO\VERSIONADO\GIT\Framework\IOC.FW\Core\Base\BaseRepository.cs:line 150
+   at IOC.FW.Core.Base.BaseBusiness`1.Insert(TModel[] items) in C:\DESENVOLVIMENTO\PESSOAL\ESTUDOS\PROGRAMACAO\VERSIONADO\GIT\Framework\IOC.FW\Core\Base\BaseBusiness.cs:line 96
+   at IOC.Web.Controllers.PersonController.Index() in C:\DESENVOLVIMENTO\PESSOAL\ESTUDOS\PROGRAMACAO\VERSIONADO\GIT\Framework\IOC.Web\Controllers\PersonController.cs:line 26
    at lambda_method(Closure , ControllerBase , Object[] )
    at System.Web.Mvc.ActionMethodDispatcher.Execute(ControllerBase controller, Object[] parameters)
    at System.Web.Mvc.ReflectedActionDescriptor.Execute(ControllerContext controllerContext, IDictionary`2 parameters)

@@ -8,8 +8,15 @@ using IOC.FW.Core.Logging;
 
 namespace IOC.FW.Web.MVC.Filters
 {
+    /// <summary>
+    /// Classe responsável por interceptar e logar exceções 
+    /// </summary>
     public class LogExceptionFilter : IExceptionFilter
     {
+        /// <summary>
+        /// Método responsável por logar exceções
+        /// </summary>
+        /// <param name="filterContext">Contexto da action que gerou a exceção</param>
         public void OnException(ExceptionContext filterContext)
         {
             var log = LogFactory.CreateLog(filterContext.Controller.GetType());

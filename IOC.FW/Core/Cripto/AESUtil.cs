@@ -49,20 +49,17 @@ namespace IOC.FW.Core.Cripto
             if (IV == null || IV.Length <= 0)
                 throw new ArgumentNullException("Key");
             byte[] encrypted;
-            // Create an Aes object 
-            // with the specified key and IV. 
+            
             using (Aes aesAlg = Aes.Create())
             {
                 aesAlg.Key = Key;
                 aesAlg.IV = IV;
 
-                // Create a decrytor to perform the stream transform.
                 ICryptoTransform encryptor = aesAlg.CreateEncryptor(
                     aesAlg.Key,
                     aesAlg.IV
                 );
 
-                // Create the streams used for encryption. 
                 using (MemoryStream msEncrypt = new MemoryStream())
                 {
                     using (CryptoStream csEncrypt = new CryptoStream(
@@ -74,7 +71,6 @@ namespace IOC.FW.Core.Cripto
                     {
                         using (StreamWriter swEncrypt = new StreamWriter(csEncrypt))
                         {
-                            //Write all data to the stream.
                             swEncrypt.Write(plainText);
                         }
                         encrypted = msEncrypt.ToArray();
@@ -82,7 +78,6 @@ namespace IOC.FW.Core.Cripto
                 }
             }
 
-            // Return the encrypted bytes from the memory stream. 
             return encrypted;
         }
 
@@ -99,7 +94,6 @@ namespace IOC.FW.Core.Cripto
             byte[] IV
         )
         {
-            // Check arguments. 
             if (cipherText == null || cipherText.Length <= 0)
                 throw new ArgumentNullException("cipherText");
             if (Key == null || Key.Length <= 0)
@@ -107,24 +101,18 @@ namespace IOC.FW.Core.Cripto
             if (IV == null || IV.Length <= 0)
                 throw new ArgumentNullException("Key");
 
-            // Declare the string used to hold 
-            // the decrypted text. 
             string plaintext = null;
 
-            // Create an Aes object 
-            // with the specified key and IV. 
             using (Aes aesAlg = Aes.Create())
             {
                 aesAlg.Key = Key;
                 aesAlg.IV = IV;
 
-                // Create a decrytor to perform the stream transform.
                 ICryptoTransform decryptor = aesAlg.CreateDecryptor(
                     aesAlg.Key,
                     aesAlg.IV
                 );
 
-                // Create the streams used for decryption. 
                 using (MemoryStream msDecrypt = new MemoryStream(cipherText))
                 {
                     using (CryptoStream csDecrypt = new CryptoStream(
@@ -136,8 +124,6 @@ namespace IOC.FW.Core.Cripto
                     {
                         using (StreamReader srDecrypt = new StreamReader(csDecrypt))
                         {
-                            // Read the decrypted bytes from the decrypting stream
-                            // and place them in a string.
                             plaintext = srDecrypt.ReadToEnd();
                         }
                     }

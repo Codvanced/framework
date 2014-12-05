@@ -16,8 +16,6 @@ namespace IOC.FW.Core
     /// </summary>
     public static class Extensions
     {
-        //TODO: Implementar extensions methods e os utils do Thiago Carreño
-
         #region Extensões para Double
         /// <summary>
         /// Método auxiliar para truncar decimais
@@ -161,6 +159,11 @@ namespace IOC.FW.Core
             return Regex.IsMatch(text, pattern, options);
         }
 
+        /// <summary>
+        /// Método responspavel por identificar se o texto informado remete a um arquivo de imagem
+        /// </summary>
+        /// <param name="image">Objeto para extender classe string</param>
+        /// <returns>Booleano informando se é uma imagem</returns>
         public static bool IsImage(this string image)
         {
             if (File.Exists(image))
@@ -319,6 +322,11 @@ namespace IOC.FW.Core
             return source;
         }
 
+        /// <summary>
+        /// Método responsável por modificar caracteres especiais pelos relativos escapes
+        /// </summary>
+        /// <param name="items">Lista de itens a aplicar escapes</param>
+        /// <returns>Lista com os escapes aplicados</returns>
         private static IList<String> EscapeItems(IList<String> items)
         {
             if (items == null)
@@ -516,6 +524,11 @@ namespace IOC.FW.Core
         #endregion
 
         #region Extensões para Image
+        /// <summary>
+        /// Método responsável por localizar mimetype de imagens.
+        /// </summary>
+        /// <param name="imageFormat">Objeto para extender a classe ImageFormat</param>
+        /// <returns>String com o mimetype da imagem</returns>
         public static string GetMimeType(this ImageFormat imageFormat)
         {
             IDictionary<Guid, string> mimeTypes = new Dictionary<Guid, string> { 
@@ -538,6 +551,14 @@ namespace IOC.FW.Core
         }
         #endregion
 
+        #region Extensões para Random
+        /// <summary>
+        /// Método responsável por randomizar valores em um range informado 
+        /// </summary>
+        /// <param name="randomizer">Objeto para extender a classe Random</param>
+        /// <param name="minValue">Valor mínimo</param>
+        /// <param name="maxValue">Valor máximo</param>
+        /// <returns>Número aleatorio entre o minimo e máximo</returns>
         public static int RandomNext(this Random randomizer, int minValue, int maxValue)
         {
             if (minValue > maxValue)
@@ -562,6 +583,7 @@ namespace IOC.FW.Core
                     return (int)(minValue + (rand % diff));
                 }
             }
-        }
+        } 
+        #endregion
     }
 }

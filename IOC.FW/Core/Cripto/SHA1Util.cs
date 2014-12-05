@@ -80,10 +80,8 @@ namespace IOC.FW.Core.Cripto
         /// <returns></returns>
         public static bool VerifyHash(string input, string hash, byte[] salt)
         {
-            // Hash the input. 
             string hashOfInput = string.Empty;
 
-            // Create a StringComparer an compare the hashes.
             StringComparer comparer = StringComparer.OrdinalIgnoreCase;
             string hashToCompare = GenerateSHA1(input, salt);
 

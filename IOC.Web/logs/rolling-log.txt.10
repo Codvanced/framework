@@ -1,5 +1,5 @@
 [Header]
-127.0.0.1 2014-11-25 15:18:09,567 [10] ERROR IOC.Web.Controllers.HomeController [(null)] - Erro na seguinte url => GET http://localhost:9566/: The Entity Framework provider type 'MySql.Data.MySqlClient.MySqlProviderServices, MySql.Data.Entity.EF6, Version=6.8.3.0, Culture=neutral, PublicKeyToken=c5687fc88969c44d' registered in the application config file for the ADO.NET provider with invariant name 'MySql.Data.MySqlClient' could not be loaded. Make sure that the assembly-qualified name is used and that the assembly is available to the running application. See http://go.microsoft.com/fwlink/?LinkId=260882 for more information.
+127.0.0.1 2014-11-25 15:21:39,656 [10] ERROR IOC.Web.Controllers.HomeController [(null)] - Erro na seguinte url => GET http://localhost:9566/: The Entity Framework provider type 'MySql.Data.MySqlClient.MySqlProviderServices, MySql.Data.Entity.EF6, Version=6.8.3.0, Culture=neutral, PublicKeyToken=c5687fc88969c44d' registered in the application config file for the ADO.NET provider with invariant name 'MySql.Data.MySqlClient' could not be loaded. Make sure that the assembly-qualified name is used and that the assembly is available to the running application. See http://go.microsoft.com/fwlink/?LinkId=260882 for more information.
 System.InvalidOperationException: The Entity Framework provider type 'MySql.Data.MySqlClient.MySqlProviderServices, MySql.Data.Entity.EF6, Version=6.8.3.0, Culture=neutral, PublicKeyToken=c5687fc88969c44d' registered in the application config file for the ADO.NET provider with invariant name 'MySql.Data.MySqlClient' could not be loaded. Make sure that the assembly-qualified name is used and that the assembly is available to the running application. See http://go.microsoft.com/fwlink/?LinkId=260882 for more information.
    at System.Data.Entity.Infrastructure.DependencyResolution.ProviderServicesFactory.GetInstance(String providerTypeName, String providerInvariantName)
    at System.Data.Entity.Internal.AppConfig.<.ctor>b__2(ProviderElement e)
@@ -29,6 +29,8 @@ System.InvalidOperationException: The Entity Framework provider type 'MySql.Data
    at System.Lazy`1.LazyInitValue()
    at System.Lazy`1.get_Value()
    at System.Data.Entity.Infrastructure.DependencyResolution.DbConfigurationManager.GetConfiguration()
+   at System.Data.Entity.Infrastructure.DependencyResolution.InternalConfiguration.get_Instance()
+   at System.Data.Entity.DbConfiguration.get_DependencyResolver()
    at System.Data.Entity.DbContext.InitializeLazyInternalContext(IInternalConnection internalConnection, DbCompiledModel model)
    at System.Data.Entity.DbContext..ctor(String nameOrConnectionString)
    at IOC.FW.Core.Database.Repository`1..ctor(String nameOrConnectionString) in C:\DESENVOLVIMENTO\WUNDERMAN\SVN\WUNDERMAN\tecnologia\Projetos\IOC-FW\trunk\DotNet\IOC.FW\Core\Database\Repository.cs:line 33

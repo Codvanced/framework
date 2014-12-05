@@ -1,31 +1,22 @@
 [Header]
-127.0.0.1 2014-12-03 15:45:19,645 [12] ERROR IOC.Web.Controllers.PhotoController [(null)] - Erro na seguinte url => GET http://localhost:9566/Photo/: The view 'Index' or its master was not found or no view engine supports the searched locations. The following locations were searched:
-~/Views/Photo/Index.aspx
-~/Views/Photo/Index.ascx
-~/Views/Shared/Index.aspx
-~/Views/Shared/Index.ascx
-~/Views/Photo/Index.cshtml
-~/Views/Photo/Index.vbhtml
-~/Views/Shared/Index.cshtml
-~/Views/Shared/Index.vbhtml
-System.InvalidOperationException: The view 'Index' or its master was not found or no view engine supports the searched locations. The following locations were searched:
-~/Views/Photo/Index.aspx
-~/Views/Photo/Index.ascx
-~/Views/Shared/Index.aspx
-~/Views/Shared/Index.ascx
-~/Views/Photo/Index.cshtml
-~/Views/Photo/Index.vbhtml
-~/Views/Shared/Index.cshtml
-~/Views/Shared/Index.vbhtml
-   at System.Web.Mvc.ViewResult.FindView(ControllerContext context)
-   at System.Web.Mvc.ViewResultBase.ExecuteResult(ControllerContext context)
-   at System.Web.Mvc.ControllerActionInvoker.InvokeActionResult(ControllerContext controllerContext, ActionResult actionResult)
-   at System.Web.Mvc.ControllerActionInvoker.<>c__DisplayClass1a.<InvokeActionResultWithFilters>b__17()
-   at System.Web.Mvc.ControllerActionInvoker.InvokeActionResultFilter(IResultFilter filter, ResultExecutingContext preContext, Func`1 continuation)
-   at System.Web.Mvc.ControllerActionInvoker.<>c__DisplayClass1a.<>c__DisplayClass1c.<InvokeActionResultWithFilters>b__19()
-   at System.Web.Mvc.ControllerActionInvoker.InvokeActionResultFilter(IResultFilter filter, ResultExecutingContext preContext, Func`1 continuation)
-   at System.Web.Mvc.ControllerActionInvoker.<>c__DisplayClass1a.<>c__DisplayClass1c.<InvokeActionResultWithFilters>b__19()
-   at System.Web.Mvc.ControllerActionInvoker.InvokeActionResultWithFilters(ControllerContext controllerContext, IList`1 filters, ActionResult actionResult)
+127.0.0.1 2014-12-03 15:52:51,339 [6] ERROR IOC.Web.Controllers.PhotoController [(null)] - Erro na seguinte url => GET http://localhost:9566/Photo/Thumb?filename=/content/img/Koala.jpg&width=320: Sequence contains no matching element
+System.InvalidOperationException: Sequence contains no matching element
+   at System.Linq.Enumerable.First[TSource](IEnumerable`1 source, Func`2 predicate)
+   at IOC.FW.Core.Extensions.GetMimeType(ImageFormat imageFormat) in C:\DESENVOLVIMENTO\PESSOAL\ESTUDOS\PROGRAMACAO\VERSIONADO\GIT\Framework\IOC.FW\Core\Extensions.cs:line 522
+   at IOC.Web.Controllers.PhotoController.Thumb(String filename, Int32 width) in C:\DESENVOLVIMENTO\PESSOAL\ESTUDOS\PROGRAMACAO\VERSIONADO\GIT\Framework\IOC.Web\Controllers\PhotoController.cs:line 55
+   at lambda_method(Closure , ControllerBase , Object[] )
+   at System.Web.Mvc.ActionMethodDispatcher.Execute(ControllerBase controller, Object[] parameters)
+   at System.Web.Mvc.ReflectedActionDescriptor.Execute(ControllerContext controllerContext, IDictionary`2 parameters)
+   at System.Web.Mvc.ControllerActionInvoker.InvokeActionMethod(ControllerContext controllerContext, ActionDescriptor actionDescriptor, IDictionary`2 parameters)
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass42.<BeginInvokeSynchronousActionMethod>b__41()
+   at System.Web.Mvc.Async.AsyncResultWrapper.<>c__DisplayClass8`1.<BeginSynchronous>b__7(IAsyncResult _)
+   at System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncResult`1.End()
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.EndInvokeActionMethod(IAsyncResult asyncResult)
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass37.<>c__DisplayClass39.<BeginInvokeActionMethodWithFilters>b__33()
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass4f.<InvokeActionMethodFilterAsynchronously>b__49()
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass37.<BeginInvokeActionMethodWithFilters>b__36(IAsyncResult asyncResult)
+   at System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncResult`1.End()
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.EndInvokeActionMethodWithFilters(IAsyncResult asyncResult)
    at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass25.<>c__DisplayClass2a.<BeginInvokeAction>b__20()
    at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass25.<BeginInvokeAction>b__22(IAsyncResult asyncResult)
 [Footer]

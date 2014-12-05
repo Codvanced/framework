@@ -8,7 +8,7 @@ namespace IOC.Scaffold
 {
     class Program
     {
-        static string replaceWord = "Wunderman.LogManager";
+        static string replaceWord = "%NAME_REPLACE%";
 
         static void Main(string[] args)
         {

@@ -36,6 +36,9 @@ namespace IOC.FW.Core
         //    Error = 2
         //}
 
+        /// <summary>
+        /// Enum responsável por pontos de referência para geração de thumbnails (Core\Images\Thumbnail.cs)
+        /// </summary>
         public enum ReferencePoint : byte
         {
             TopLeft = 1,
