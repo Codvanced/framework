@@ -12,9 +12,18 @@ using IOC.FW.Core.Base;
 
 namespace IOC.FW.Web.MVC.Handler
 {
+    /// <summary>
+    /// Classe responsável por gerenciar autenticações
+    /// </summary>
     public class BasicAuthenticationHandler
         : DelegatingHandler
     {
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="identity"></param>
+        /// <returns></returns>
         private bool OnAuthorize(BasicAuthenticationIdentity identity)
         {
             var authorize =

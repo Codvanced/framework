@@ -52,13 +52,13 @@
     <Folder Include="Implementation\" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\%25NAME_REPLACE%25.Abstraction\%25NAME_REPLACE%25.Abstraction.csproj">
+    <ProjectReference Include="..\%NAME_REPLACE%.Abstraction\%NAME_REPLACE%.Abstraction.csproj">
       <Project>{D8F81328-CCC5-4C56-9936-745AFAD1CAC7}</Project>
-      <Name>%25NAME_REPLACE%25.Abstraction</Name>
+      <Name>%NAME_REPLACE%.Abstraction</Name>
     </ProjectReference>
-    <ProjectReference Include="..\%25NAME_REPLACE%25.Model\%25NAME_REPLACE%25.csproj">
+    <ProjectReference Include="..\%NAME_REPLACE%.Model\%NAME_REPLACE%.csproj">
       <Project>{136A75A3-972E-49D3-90FA-AE8E4BD6AD2B}</Project>
-      <Name>%25NAME_REPLACE%25</Name>
+      <Name>%NAME_REPLACE%</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

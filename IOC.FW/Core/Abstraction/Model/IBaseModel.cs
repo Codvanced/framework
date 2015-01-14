@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
-//TODO: Implementar preenchimento das propriedades padrões quando utilizada em sub objetos complexos
 namespace IOC.FW.Core.Abstraction.Model
 {
     /// <summary>

@@ -37,7 +37,7 @@ namespace IOC.FW.Core.Base
         /// <summary>
         /// Método destinado a modificar a string de conexão usada pelo Entity Framework
         /// </summary>
-        /// <param name="connection">String de conexão</param>
+        /// <param name="nameOrConnectionString">String de conexão</param>
         public void SetConnection(string nameOrConnectionString)
         {
             if (string.IsNullOrEmpty(nameOrConnectionString))
@@ -221,13 +221,13 @@ namespace IOC.FW.Core.Base
                 );
 
                 if (modelFound != null)
-                { // Entity exist in the context, then update it by setting the values
+                { 
                     var attachedEntry = context.Entry(modelFound);
                     attachedEntry.CurrentValues.SetValues(item);
                 }
                 else
                 {
-                    context.Entry(item).State = EntityState.Modified; // This should attach entity
+                    context.Entry(item).State = EntityState.Modified; 
                 }
             }
 

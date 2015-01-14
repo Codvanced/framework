@@ -14,7 +14,7 @@ namespace IOC.Abstraction.Business
     {
         public AbstractNoticiaBusiness(AbstractNoticiaDAO dao)
             : base(dao)
-	    { }
+        { }
 
         public abstract bool TitleAlreadyExists(string Titulo, int? id = null);
         public abstract bool Teste(string Titulo);

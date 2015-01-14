@@ -10,7 +10,7 @@ using System.Linq.Expressions;
 namespace IOC.FW.Core.Base
 {
     /// <summary>
-    /// Classe base para a utilização de Business padronizadas, utilizando Entity Framework como Reposiorio Base...
+    /// Classe base para a utilização de Business padronizadas, utilizando Entity Framework como Reposiorio...
     /// </summary>
     /// <typeparam name="TModel">Tipo que representa a classe modelo referente a uma tabela do database</typeparam>
     public class BaseBusiness<TModel>
@@ -23,7 +23,7 @@ namespace IOC.FW.Core.Base
         /// Implementação de método de IBaseDAO destinado a retornar uma implementação de model
         /// </summary>
         /// <returns>Uma nova instância de TModel</returns>
-        public TModel Model() 
+        public TModel Model()
         {
             return new TModel();
         }
@@ -32,7 +32,7 @@ namespace IOC.FW.Core.Base
         /// Implementação de método de IBaseDAO destinado a retornar uma implementação de lista de model
         /// </summary>
         /// <returns>Uma nova instância de lista de TModel</returns>
-        public List<TModel> List() 
+        public List<TModel> List()
         {
             return new List<TModel>();
         }

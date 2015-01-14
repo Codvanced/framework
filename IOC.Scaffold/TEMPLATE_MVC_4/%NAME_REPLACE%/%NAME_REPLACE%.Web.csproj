@@ -255,10 +255,10 @@
     <Content Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="AppSettings.config" />
-    <Content Include="ConnectionString.config" />
-    <Content Include="CustomSection.config" />
-    <Content Include="log4net.config" />
+    <Content Include="Config\AppSettings.config" />
+    <Content Include="Config\ConnectionString.config" />
+    <Content Include="Config\CustomSection.config" />
+    <Content Include="Config\log4net.config" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\%NAME_REPLACE%.Abstraction\%NAME_REPLACE%.Abstraction.csproj">

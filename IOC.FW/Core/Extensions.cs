@@ -8,7 +8,6 @@ using System.IO;
 using System.Drawing;
 using System.Drawing.Imaging;
 
-//TODO: Implementar metodos commoms do William
 namespace IOC.FW.Core
 {
     /// <summary>
