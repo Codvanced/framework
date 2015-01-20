@@ -106,9 +106,9 @@ namespace IOC.FW.Core.Base
                 context._dbQuery = IncludeReference(context.DbObject, navigationProperties);
 
                 list = context._dbQuery
-                    .AsNoTracking()
-                    .Where(where)
-                    .ToList<TModel>();
+                   .AsNoTracking()
+                   .Where(where)
+                   .ToList<TModel>();
             }
 
             return list;

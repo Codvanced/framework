@@ -131,6 +131,5 @@ namespace IOC.FW.Core.Base
         {
             this._dao.Delete(items);
         }
-
     }
 }

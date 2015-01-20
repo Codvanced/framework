@@ -160,7 +160,7 @@ namespace IOC.Test
         public void ValidationTest(Container simpleInjector)
         {
             Noticia badNoticia = new Noticia();
-            
+
             NoticiaValidation validation = new NoticiaValidation();
             var result = validation.Validate(badNoticia);
             Assert.AreEqual(result.IsValid, false);
@@ -190,13 +190,13 @@ namespace IOC.Test
                 "TESTE1"
             };
 
-            var newsFound = 
+            var newsFound =
                 (
-                    from 
-                        search 
-                        in listDynamic 
-                    where 
-                        search.Like(pattern) 
+                    from
+                        search
+                        in listDynamic
+                    where
+                        search.Like(pattern)
                     select search
                 ).ToList();
             Assert.IsNotEmpty(newsFound);
@@ -262,6 +262,20 @@ namespace IOC.Test
             watch.Stop();
 
             var time = watch.ElapsedMilliseconds;
+        }
+
+        [Test, TestCaseSource("Configure")]
+        public void SelectOrderBy(Container simpleInjector)
+        {
+            Assert.NotNull(simpleInjector);
+            var business = InstanceFactory.GetImplementation<IBaseBusiness<Noticia>>();
+            
+            var result = business.Select(
+                where: w => w.IdNoticia > 5,
+                orderby: o => o.Titulo,
+                orderbyDescending: o => o.IdNoticia,
+                navigationProperties: null
+            );
         }
     }
 }

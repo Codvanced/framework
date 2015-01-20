@@ -8,7 +8,9 @@ namespace IOC.Scaffold
 {
     class Program
     {
-        static string replaceWord = "%NAME_REPLACE%";
+        static string replaceProjectNameWord = "%NAME_REPLACE%";
+        static string replaceMachineKeyWord = "%MACHINE_KEY%";
+        private static string XML_CODE = "<machineKey validation=\"{0}\" decryption=\"{1}\" validationKey=\"{2}\" decryptionKey=\"{3}\" />";
 
         static void Main(string[] args)
         {
@@ -73,7 +75,8 @@ namespace IOC.Scaffold
                         projectName = string.Concat(customer, ".", projectName);
                     }
 
-                    ProjectChanger(destinationPath, projectName);
+                    string machineKey = GenerateMachineKey("SHA1", "AES256");
+                    ProjectChanger(destinationPath, projectName, machineKey);
                 }
                 else
                 {
@@ -108,7 +111,7 @@ namespace IOC.Scaffold
             }
         }
 
-        static void ProjectChanger(string path, string projectName)
+        static void ProjectChanger(string path, string projectName, string machineKey)
         {
             string[] folders = Directory.GetDirectories(path);
             string[] files = Directory.GetFiles(path);
@@ -131,20 +134,29 @@ namespace IOC.Scaffold
                             content = reader.ReadToEnd();
                         }
 
-                        if (content.Contains(replaceWord))
+                        if (content.Contains(replaceProjectNameWord))
                         {
-                            content = content.Replace(replaceWord, projectName);
+                            content = content.Replace(replaceProjectNameWord, projectName);
                             using (var writer = new StreamWriter(info.FullName))
                             {
                                 writer.Write(content);
                             }
                         }
 
-                        if (info.Name.Contains(replaceWord))
+                        if (content.Contains(replaceMachineKeyWord))
+                        {
+                            content = content.Replace(replaceMachineKeyWord, machineKey);
+                            using (var writer = new StreamWriter(info.FullName))
+                            {
+                                writer.Write(content);
+                            }
+                        }
+
+                        if (info.Name.Contains(replaceProjectNameWord))
                         {
                             string newFilename = Path.Combine(
                                 info.DirectoryName,
-                                info.Name.Replace(replaceWord, projectName)
+                                info.Name.Replace(replaceProjectNameWord, projectName)
                             );
                             File.Move(file, newFilename);
                         }
@@ -157,15 +169,15 @@ namespace IOC.Scaffold
                 foreach (var folder in folders)
                 {
                     string newFoldername = folder;
-                    if (folder.Contains(replaceWord))
+                    if (folder.Contains(replaceProjectNameWord))
                     {
-                        newFoldername = folder.Replace(replaceWord, projectName);
+                        newFoldername = folder.Replace(replaceProjectNameWord, projectName);
                         Directory.Move(folder, newFoldername);
                     }
 
                     if (!folder.Equals("packages"))
                     {
-                        ProjectChanger(newFoldername, projectName);
+                        ProjectChanger(newFoldername, projectName, machineKey);
                     }
                 }
             }
@@ -235,5 +247,70 @@ IOC.Scaffold [Opções] ");
             };
         } 
         #endregion
+
+        static string GenerateMachineKey(string validationType, string decryptionType)
+        {
+            int validationKeyLength, decryptionKeyLength;
+            var validation = validationType ?? "HMACSHA256";
+            var decryption = decryptionType ?? "AES256";
+
+            switch (validation)
+            {
+                case "MD5":
+                    validationKeyLength = 128;
+                    break;
+                case "SHA1":
+                    validationKeyLength = 160;
+                    break;
+                case "3DES":
+                    validationKeyLength = 192;
+                    break;
+                case "AES":
+                case "HMACSHA256":
+                    validationKeyLength = 256;
+                    break;
+                case "HMACSHA384":
+                    validationKeyLength = 384;
+                    break;
+                case "HMACSHA512":
+                    validationKeyLength = 512;
+                    break;
+                default:
+                    return string.Empty;
+            }
+
+            switch (decryption)
+            {
+                case "DES":
+                    decryptionKeyLength = 64;
+                    break;
+                case "3DES":
+                    decryptionKeyLength = 192;
+                    break;
+                case "AES128":
+                    decryption = "AES";
+                    decryptionKeyLength = 128;
+                    break;
+                case "AES192":
+                    decryption = "AES";
+                    decryptionKeyLength = 192;
+                    break;
+                case "AES256":
+                    decryption = "AES";
+                    decryptionKeyLength = 256;
+                    break;
+                default:
+                    return string.Empty;
+            }
+
+            string machineKey = string.Format(XML_CODE,
+                validation,
+                decryption,
+                ChaosHelper.GenerateKey(validationKeyLength / 8, ChaosHelper.KeyEncoding.UpperHex),
+                ChaosHelper.GenerateKey(decryptionKeyLength / 8, ChaosHelper.KeyEncoding.UpperHex)
+            );
+
+            return machineKey;
+        }
     }
 }
