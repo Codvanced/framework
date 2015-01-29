@@ -13,6 +13,8 @@ using System.Data;
 using System.ComponentModel.DataAnnotations.Schema;
 using IOC.FW.Core.Database;
 using System.ComponentModel.DataAnnotations;
+using IOC.FW.Core.Abstraction.Miscellanous;
+using System.Reflection;
 
 namespace IOC.FW.Core.Base
 {
@@ -151,20 +153,6 @@ namespace IOC.FW.Core.Base
             }
         }
 
-        /// <summary>
-        /// Implementação de método de IBaseDAO destinado a atualizar uma coleção muitos de registros. Em uma única transaction.
-        /// </summary>
-        /// <param name="items">Coleção de registros a inserir na base</param>
-        public void BulkInsert(params TModel[] items)
-        {
-            using (var context = new Repository<TModel>(this.nameOrConnectionString))
-            using (var transaction = context.Database.BeginTransaction())
-            {
-                this.InsertToContext(items, context);
-                transaction.Commit();
-            }
-        }
-
         private void InsertToContext(TModel[] items, Repository<TModel> context)
         {
             foreach (TModel item in items)
@@ -190,20 +178,6 @@ namespace IOC.FW.Core.Base
             using (var context = new Repository<TModel>(this.nameOrConnectionString))
             {
                 this.UpdateToContext(items, context);
-            }
-        }
-
-        /// <summary>
-        /// Implementação de método de IBaseDAO destinado a atualizar uma coleção de registros.
-        /// </summary>
-        /// <param name="items">Coleção de registros a inserir na base</param>
-        public void BulkUpdate(params TModel[] items)
-        {
-            using (var context = new Repository<TModel>(this.nameOrConnectionString))
-            using (var transaction = context.Database.BeginTransaction())
-            {
-                this.UpdateToContext(items, context);
-                transaction.Commit();
             }
         }
 
@@ -525,6 +499,132 @@ namespace IOC.FW.Core.Base
             }
 
             return param;
+        }
+
+        /// <summary>
+        /// Implementacao de método para atualizar a prioridade do elemento na tabela
+        /// </summary>
+        /// <typeparam name="TPriorityModel">Tipo do model que implementa IPrioritySortable</typeparam>
+        /// <param name="items">Lista de models que implementam IPrioritySortable</param>
+        public void UpdatePriority<TPriorityModel>(TPriorityModel[] items) where TPriorityModel : TModel, IPrioritySortable
+        {
+            var ids = new List<int>();
+
+            PropertyInfo id = null;
+
+            for (var i = 0; i < items.Length; i++)
+            {
+                var item = items[i];
+
+                if (id == null)
+                {
+                    id = this.FindKeyProperty(item);
+                }
+
+                ids.Add((int)id.GetValue(item, null));
+
+                item.Priority = Int64.MaxValue - i;
+            }
+
+            var oldItems = this.Select(m => ids.Contains((int)id.GetValue(m, null)));
+
+            foreach (var item in items)
+            {
+                var oldItem = oldItems.Where(m => (int)id.GetValue(m, null) == (int)id.GetValue(item, null)).FirstOrDefault();
+
+                if (oldItem != null)
+                {
+                    ((IPrioritySortable)oldItem).Priority = item.Priority;
+                }
+            }
+
+            this.Update(oldItems.ToArray());
+        }
+
+        private PropertyInfo FindKeyProperty(TModel item)
+        {
+            var type = item.GetType();
+
+            var key = type.GetProperties()
+                                    .Where(pi => pi.GetCustomAttributes(typeof(KeyAttribute), true).Length > 0)
+                                    .FirstOrDefault();
+
+            if (key == null)
+            {
+                throw new InvalidOperationException("TModel não possui propriedade com o atributo Key");
+            }
+
+            return key;
+        }
+
+        public TModel Model()
+        {
+            return new TModel();
+        }
+
+        public List<TModel> List()
+        {
+            return new List<TModel>();
+        }
+
+        /// <summary>
+        /// Retorna a contagem de elementos
+        /// </summary>
+        public int Count()
+        {
+            return this.Count(m => true);
+        }
+
+        /// <summary>
+        /// Retorna a contagem de elementos
+        /// </summary>
+        /// <param name="where">Filtro</param>
+        public int Count(Func<TModel, bool> where)
+        {
+            int count;
+            using (var context = new Repository<TModel>(this.nameOrConnectionString))
+            {
+                count = this.Count(where, context);
+            }
+
+            return count;
+        }
+
+        private int Count(Func<TModel, bool> where, Repository<TModel> context)
+        {
+            return context._dbQuery
+                   .AsNoTracking()
+                   .Count(where);
+        }
+
+        /// <summary>
+        /// Retorna a contagem de elementos
+        /// </summary>
+        public long LongCount()
+        {
+            return this.LongCount(m => true);
+        }
+
+        /// <summary>
+        /// Retorna a contagem de elementos
+        /// </summary>
+        /// <param name="where">Filtro</param>
+        public long LongCount(Func<TModel, bool> where)
+        {
+            long count;
+            using (var context = new Repository<TModel>(this.nameOrConnectionString))
+            {
+                count = this.LongCount(where, context);
+            }
+
+            return count;
+        }
+
+        private long LongCount(Func<TModel, bool> where, Repository<TModel> context)
+        {
+            return context._dbQuery
+                   .AsNoTracking()
+                   .LongCount(where);
         }
     }
 }

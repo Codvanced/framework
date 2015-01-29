@@ -5,6 +5,8 @@ using System.Text;
 using System.Linq.Expressions;
 using System.Data.Entity;
 using System.Data;
+using IOC.FW.Core.Abstraction.Miscellanous;
+using IOC.FW.Core.Abstraction.Business;
 
 namespace IOC.FW.Core.Abstraction.DAO
 {
@@ -12,69 +14,9 @@ namespace IOC.FW.Core.Abstraction.DAO
     /// Interface responsável por padronizar DAOs de projetos
     /// </summary>
     /// <typeparam name="TModel">Tipo da classe modelo</typeparam>
-    public interface IBaseDAO<TModel>
+    public interface IBaseDAO<TModel> : IBaseBusiness<TModel>
         where TModel: class, new()
     {
-        /// <summary>
-        /// Implementação de método de IBaseDAO destinado a encontrar todos os registros de uma tabela vinculada a uma Model.
-        /// Há possibilidade de incluir objetos referenciais a chaves estrangeiras
-        /// </summary>
-        /// <param name="navigationProperties">Objetos de uma Model referentes a chaves estrangeiras no database</param>
-        /// <returns>Implementação de IList com os registros encontrados.</returns>
-        IList<TModel> SelectAll(params Expression<Func<TModel, object>>[] navigationProperties);
-
-        /// <summary>
-        /// Implementação de método de IBaseDAO destinado a encontrar todos os registros de uma tabela vinculada a uma model. 
-        /// </summary>
-        /// <param name="where">Delegate contendo parâmetros para composição de WHERE</param>
-        /// <param name="navigationProperties">Objetos de uma Model referentes a chaves estrangeiras no database</param>
-        /// <returns>Implementação de IList com os registros encontrados.</returns>
-        IList<TModel> Select(
-            Func<TModel, bool> where, 
-            params Expression<Func<TModel, object>>[] navigationProperties
-        );
-
-        /// <summary>
-        /// Implementação de método de IBaseDAO destinado a encontrar um unico registro de uma tabela vinculada a uma model. 
-        /// </summary>
-        /// <param name="where">Delegate contendo parâmetros para composição de WHERE</param>
-        /// <param name="navigationProperties">Objetos de uma Model referentes a chaves estrangeiras no database</param>
-        /// <returns>Objeto de classe modelo preenchido com registro encontrado</returns>
-        TModel SelectSingle(
-            Func<TModel, bool> where, 
-            params Expression<Func<TModel, object>>[] navigationProperties
-        );
-
-        /// <summary>
-        /// Implementação de método de IBaseDAO destinado a atualizar uma coleção de registros.
-        /// </summary>
-        /// <param name="items">Coleção de registros a inserir na base</param>
-        void Insert(params TModel[] items);
-
-        /// <summary>
-        /// Implementação de método de IBaseDAO destinado a atualizar uma coleção muitos de registros. Em uma única transaction.
-        /// </summary>
-        /// <param name="items">Coleção de registros a inserir na base</param>
-        void BulkInsert(params TModel[] items);
-
-        /// <summary>
-        /// Implementação de método de IBaseDAO destinado a atualizar uma coleção de registros.
-        /// </summary>
-        /// <param name="items">Coleção de registros a atualizar na base</param>
-        void Update(params TModel[] items);
-
-        /// <summary>
-        /// Implementação de método de IBaseDAO destinado a atualizar uma coleção de muitos registros. Em uma única transaction.
-        /// </summary>
-        /// <param name="items">Coleção de registros a atualizar na base</param>
-        void BulkUpdate(params TModel[] items);
-
-        /// <summary>
-        /// Implementação de método de IBaseDAO destinado a excluir (logicamente ou fisicamente) uma coleção de registros.
-        /// </summary>
-        /// <param name="items">Coleção de registros a deletar da base</param>
-        void Delete(params TModel[] items);
-
         /// <summary>
         /// Implementação de método de IBaseDAO destinado a executar querys customizadas e procedures.
         /// </summary>

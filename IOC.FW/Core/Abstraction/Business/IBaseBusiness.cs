@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Linq.Expressions;
 using System.Data.Entity;
+using IOC.FW.Core.Abstraction.Miscellanous;
 
 namespace IOC.FW.Core.Abstraction.Business
 {
@@ -57,27 +58,44 @@ namespace IOC.FW.Core.Abstraction.Business
         void Insert(params TModel[] items);
 
         /// <summary>
-        /// Implementação de método de IBaseDAO destinado a atualizar uma coleção muitos de registros. Em uma única transaction.
-        /// </summary>
-        /// <param name="items">Coleção de registros a inserir na base</param>
-        void BulkInsert(params TModel[] items);
-
-        /// <summary>
         /// Implementação de método de IBaseDAO destinado a atualizar uma coleção de registros.
         /// </summary>
         /// <param name="items">Coleção de registros a atualizar na base</param>
         void Update(params TModel[] items);
 
         /// <summary>
-        /// Implementação de método de IBaseDAO destinado a atualizar uma coleção de muitos registros. Em uma única transaction.
-        /// </summary>
-        /// <param name="items">Coleção de registros a atualizar na base</param>
-        void BulkUpdate(params TModel[] items);
-
-        /// <summary>
         /// Implementação de método de IBaseDAO destinado a excluir (logicamente ou fisicamente) uma coleção de registros.
         /// </summary>
         /// <param name="items">Coleção de registros a deletar da base</param>
         void Delete(params TModel[] items);
+
+        /// <summary>
+        /// Implementacao de método para atualizar a prioridade do elemento na tabela
+        /// </summary>
+        /// <typeparam name="TPriorityModel">Tipo do model que implementa IPrioritySortable</typeparam>
+        /// <param name="items">Lista de models que implementam IPrioritySortable</param>
+        void UpdatePriority<TPriorityModel>(params TPriorityModel[] items) where TPriorityModel : TModel, IPrioritySortable;
+
+        /// <summary>
+        /// Retorna a contagem de elementos
+        /// </summary>
+        int Count();
+
+        /// <summary>
+        /// Retorna a contagem de elementos
+        /// </summary>
+        /// <param name="where">Filtro</param>
+        int Count(Func<TModel, bool> where);
+
+        /// <summary>
+        /// Retorna a contagem de elementos
+        /// </summary>
+        long LongCount();
+
+        /// <summary>
+        /// Retorna a contagem de elementos
+        /// </summary>
+        /// <param name="where">Filtro</param>
+        long LongCount(Func<TModel, bool> where);
     }
 }

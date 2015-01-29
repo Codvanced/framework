@@ -6,6 +6,7 @@ using IOC.FW.Core.Factory;
 using IOC.FW.Core.Abstraction.Business;
 using IOC.FW.Core.Abstraction.DAO;
 using System.Linq.Expressions;
+using IOC.FW.Core.Abstraction.Miscellanous;
 
 namespace IOC.FW.Core.Base
 {
@@ -97,15 +98,6 @@ namespace IOC.FW.Core.Base
         }
 
         /// <summary>
-        /// Implementação de método de IBaseDAO destinado a atualizar uma coleção muitos de registros. Em uma única transaction.
-        /// </summary>
-        /// <param name="items">Coleção de registros a inserir na base</param>
-        public void BulkInsert(params TModel[] items)
-        {
-            this._dao.BulkInsert(items);
-        }
-
-        /// <summary>
         /// Implementação de método de IBaseDAO destinado a atualizar uma coleção de registros.
         /// </summary>
         /// <param name="items">Coleção de registros a atualizar na base</param>
@@ -115,21 +107,43 @@ namespace IOC.FW.Core.Base
         }
 
         /// <summary>
-        /// Implementação de método de IBaseDAO destinado a atualizar uma coleção de muitos registros. Em uma única transaction.
-        /// </summary>
-        /// <param name="items">Coleção de registros a atualizar na base</param>
-        public void BulkUpdate(params TModel[] items)
-        {
-            this._dao.BulkUpdate(items);
-        }
-
-        /// <summary>
         /// Implementação de método de IBaseDAO destinado a excluir (logicamente ou fisicamente) uma coleção de registros.
         /// </summary>
         /// <param name="items">Coleção de registros a deletar da base</param>
         public void Delete(params TModel[] items)
         {
             this._dao.Delete(items);
+        }
+
+        /// <summary>
+        /// Implementacao de método para atualizar a prioridade do elemento na tabela
+        /// </summary>
+        /// <typeparam name="TPriorityModel">Tipo do model que implementa IPrioritySortable</typeparam>
+        /// <param name="items">Lista de models que implementam IPrioritySortable</param>
+        public void UpdatePriority<TPriorityModel>(params TPriorityModel[] items) where TPriorityModel : TModel, IPrioritySortable
+        {
+            this._dao.UpdatePriority<TPriorityModel>(items);
+        }
+
+
+        public int Count()
+        {
+            return this.Count(m => true);
+        }
+
+        public int Count(Func<TModel, bool> where)
+        {
+            return this._dao.Count(where);
+        }
+
+        public long LongCount()
+        {
+            return this.LongCount(m => true);
+        }
+
+        public long LongCount(Func<TModel, bool> where)
+        {
+            return this._dao.LongCount(where);
         }
     }
 }

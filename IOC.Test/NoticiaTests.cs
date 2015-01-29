@@ -203,68 +203,6 @@ namespace IOC.Test
         }
 
         [Test, TestCaseSource("Configure")]
-        public void BulkInsertTest(Container simpleInjector)
-        {
-            Assert.NotNull(simpleInjector);
-
-            var business = InstanceFactory.GetImplementation<IBaseBusiness<Noticia>>();
-            Assert.NotNull(business);
-
-            var watch = Stopwatch.StartNew();
-
-            var length = 50;
-            var models = new Noticia[length];
-            Assert.NotNull(models);
-
-            for (var i = 0; i < length; i++)
-                models[i] = new Noticia()
-                {
-                    Autor = "Autor",
-                    Descricao = "Descrição",
-                    Titulo = "Titulo",
-                    DataNoticia = DateTime.Now,
-                    DataCadastro = DateTime.Now
-                };
-
-            business.Insert(models);
-
-            watch.Stop();
-
-            var time = watch.ElapsedMilliseconds;
-        }
-
-        [Test, TestCaseSource("Configure")]
-        public void BulkInsertTransactionTest(Container simpleInjector)
-        {
-            Assert.NotNull(simpleInjector);
-
-            var business = InstanceFactory.GetImplementation<IBaseBusiness<Noticia>>();
-            Assert.NotNull(business);
-
-            var watch = Stopwatch.StartNew();
-
-            var length = 50;
-            var models = new Noticia[length];
-            Assert.NotNull(models);
-
-            for (var i = 0; i < length; i++)
-                models[i] = new Noticia()
-                {
-                    Autor = "Autor",
-                    Descricao = "Descrição",
-                    Titulo = "Titulo",
-                    DataNoticia = DateTime.Now,
-                    DataCadastro = DateTime.Now
-                };
-
-            business.BulkInsert(models);
-
-            watch.Stop();
-
-            var time = watch.ElapsedMilliseconds;
-        }
-
-        [Test, TestCaseSource("Configure")]
         public void SelectOrderBy(Container simpleInjector)
         {
             Assert.NotNull(simpleInjector);
@@ -272,8 +210,6 @@ namespace IOC.Test
             
             var result = business.Select(
                 where: w => w.IdNoticia > 5,
-                orderby: o => o.Titulo,
-                orderbyDescending: o => o.IdNoticia,
                 navigationProperties: null
             );
         }

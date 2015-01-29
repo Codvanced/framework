@@ -113,6 +113,7 @@
     <Compile Include="Moqtestexample.cs" />
     <Compile Include="PerformanceTest.cs" />
     <Compile Include="PersonTest.cs" />
+    <Compile Include="PriorityTest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="NoticiaTests.cs" />
     <Compile Include="RSATest.cs" />

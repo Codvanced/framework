@@ -4,11 +4,12 @@ using System.Linq;
 using System.Text;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
+using IOC.FW.Core.Abstraction.Miscellanous;
 
 namespace IOC.Model
 {
     [Table("WT_Noticia")]
-    public class Noticia
+    public class Noticia : IPrioritySortable
     {
         [Key]
         [Column("ID_NOTICIA")]
@@ -52,5 +53,8 @@ namespace IOC.Model
         {
             return String.Concat(IdNoticia, Titulo, Descricao, Autor, DataNoticia).GetHashCode();
         }
+
+        [Column("Prioridade")]
+        public long Priority { get; set; }
     }
 }

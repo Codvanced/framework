@@ -96,6 +96,7 @@
     <Compile Include="Configuration\Injection\InjectionFactoryConfigurationElement.cs" />
     <Compile Include="Configuration\Thumb\ThumbElement.cs" />
     <Compile Include="Core\Abstraction\Binding\IModule.cs" />
+    <Compile Include="Core\Abstraction\Miscellanous\IPrioritySortable.cs" />
     <Compile Include="Core\Abstraction\Model\IBaseModel.cs" />
     <Compile Include="Core\Abstraction\Model\IModelCreating.cs" />
     <Compile Include="Core\Base\BaseBusiness.cs" />
