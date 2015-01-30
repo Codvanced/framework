@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using NUnit.Framework;
 using System.Security.Cryptography;
+using IOC.FW.Core.Cripto;
 
 namespace IOC.Test
 {
@@ -14,7 +15,7 @@ namespace IOC.Test
         public void DesTest()
         {
             string[] passwords = new string[] { 
-                 "@664971318@EstacioLP",               
+                 "teste123",               
             };
 
             for (int i = 0; i < passwords.Length; i++)
@@ -28,6 +29,8 @@ namespace IOC.Test
                 )
                 .Replace("-", string.Empty);
             }
+
+            string a = SHA1Util.GenerateSHA1("teste123");
         }
     }
 }

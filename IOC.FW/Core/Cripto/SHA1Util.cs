@@ -19,7 +19,14 @@ namespace IOC.FW.Core.Cripto
         public static string GenerateSHA1(string plainTextString)
         {
             var saltBytes = GenerateSalt(4);
-            return GenerateSHA1(plainTextString, saltBytes);
+            return BitConverter.ToString(
+                SHA1.Create().ComputeHash(
+                    Encoding.UTF8.GetBytes(
+                        plainTextString
+                    )
+                )
+            )
+            .Replace("-", string.Empty);
         }
 
         /// <summary>
@@ -31,13 +38,16 @@ namespace IOC.FW.Core.Cripto
         public static string GenerateSHA1(string plainTextString, byte[] salt)
         {
             HashAlgorithm algorithm = new SHA1Managed();
-            var plainTextBytes = Encoding.ASCII.GetBytes(plainTextString);
+            var plainTextBytes = Encoding.UTF8.GetBytes(plainTextString);
 
             var plainTextWithSaltBytes = AppendByteArray(plainTextBytes, salt);
-            var saltedSHA1Bytes = algorithm.ComputeHash(plainTextWithSaltBytes);
-            var saltedSHA1WithAppendedSaltBytes = AppendByteArray(saltedSHA1Bytes, salt);
+            var saltedSHA1 = BitConverter.ToString(
+                SHA1.Create().ComputeHash(
+                    plainTextWithSaltBytes
+                )
+            );
 
-            return Convert.ToBase64String(saltedSHA1WithAppendedSaltBytes);
+            return saltedSHA1;
         }
         
         /// <summary>
@@ -45,7 +55,7 @@ namespace IOC.FW.Core.Cripto
         /// </summary>
         /// <param name="saltSize">Quantidade de itens no array de bytes</param>
         /// <returns>Array de bytes preenchido com valores randomizados que representa chave de criptografia</returns>
-        private static byte[] GenerateSalt(int saltSize)
+        public static byte[] GenerateSalt(int saltSize)
         {
             var rng = new RNGCryptoServiceProvider();
             var buff = new byte[saltSize];

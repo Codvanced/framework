@@ -128,7 +128,6 @@ namespace IOC.FW.Core.Cripto
                         }
                     }
                 }
-
             }
 
             return plaintext;
