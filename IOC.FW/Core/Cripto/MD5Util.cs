@@ -16,7 +16,7 @@ namespace IOC.FW.Core.Cripto
         /// </summary>
         /// <param name="input">Texto puro</param>
         /// <returns>String contendo o hash</returns>
-        public static string GetHash(string input)
+        public static string GetHash(string input)  
         {
             StringBuilder sBuilder = new StringBuilder();
             using (MD5 md5Hash = MD5.Create())
