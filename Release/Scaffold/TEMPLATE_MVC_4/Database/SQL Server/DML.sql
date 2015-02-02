@@ -53,6 +53,26 @@ IF(OBJECT_ID('ArtistGenre') IS NOT NULL)
 	,	(4, 1)
 GO
 
+IF(OBJECT_ID('WT_NOTICIA') IS NOT NULL)
+	INSERT INTO WT_NOTICIA
+		(DSC_TITULO,
+		DSC_DESCRICAO,
+		DSC_AUTOR,
+		DAT_NOTICIA,
+		DAT_CADASTRO,
+		DAT_ALTERACAO)
+	VALUES
+		('Titulo',
+		'Descricao',
+		'Autor',
+		GETDATE(),
+		GETDATE(),
+		GETDATE()
+		)
+GO
+
+
+
 SELECT 
 	A.*
 ,	G.* 

@@ -31,7 +31,8 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="IOC.FW">
+    <Reference Include="IOC.FW, Version=1.0.0.17797, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
       <HintPath>..\FW-references\IOC.FW.dll</HintPath>
     </Reference>
     <Reference Include="System" />

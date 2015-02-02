@@ -53,7 +53,7 @@
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>
     <PostBuildEvent>xcopy  "$(TargetDir)$(TargetName).exe" "$(SolutionDir)Release\Scaffold\" /y
-xcopy "TEMPLATE_MVC_4" "$(SolutionDir)Release\Scaffold\TEMPLATE_MVC_4" /y /I /E</PostBuildEvent>
+xcopy "$(SolutionDir)IOC.Scaffold\TEMPLATE_MVC_4" "$(SolutionDir)Release\Scaffold\TEMPLATE_MVC_4" /y /I /E</PostBuildEvent>
   </PropertyGroup>
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
