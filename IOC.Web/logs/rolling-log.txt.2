@@ -1,9 +1,38 @@
 [Header]
-127.0.0.1 2014-12-03 15:52:51,339 [6] ERROR IOC.Web.Controllers.PhotoController [(null)] - Erro na seguinte url => GET http://localhost:9566/Photo/Thumb?filename=/content/img/Koala.jpg&width=320: Sequence contains no matching element
-System.InvalidOperationException: Sequence contains no matching element
-   at System.Linq.Enumerable.First[TSource](IEnumerable`1 source, Func`2 predicate)
-   at IOC.FW.Core.Extensions.GetMimeType(ImageFormat imageFormat) in C:\DESENVOLVIMENTO\PESSOAL\ESTUDOS\PROGRAMACAO\VERSIONADO\GIT\Framework\IOC.FW\Core\Extensions.cs:line 522
-   at IOC.Web.Controllers.PhotoController.Thumb(String filename, Int32 width) in C:\DESENVOLVIMENTO\PESSOAL\ESTUDOS\PROGRAMACAO\VERSIONADO\GIT\Framework\IOC.Web\Controllers\PhotoController.cs:line 55
+::1 2015-02-03 13:24:40,944 [130] ERROR IOC.Web.Controllers.HomeController [(null)] - Erro na seguinte url => GET http://localhost:9566/: An error occurred while executing the command definition. See the inner exception for details.
+System.Data.Entity.Core.EntityCommandExecutionException: An error occurred while executing the command definition. See the inner exception for details. ---> MySql.Data.MySqlClient.MySqlException: Unknown column 'Extent1.Prioridade' in 'field list'
+   at MySql.Data.MySqlClient.MySqlStream.ReadPacket()
+   at MySql.Data.MySqlClient.NativeDriver.GetResult(Int32& affectedRow, Int64& insertedId)
+   at MySql.Data.MySqlClient.Driver.GetResult(Int32 statementId, Int32& affectedRows, Int64& insertedId)
+   at MySql.Data.MySqlClient.Driver.NextResult(Int32 statementId, Boolean force)
+   at MySql.Data.MySqlClient.MySqlDataReader.NextResult()
+   at MySql.Data.MySqlClient.MySqlCommand.ExecuteReader(CommandBehavior behavior)
+   at MySql.Data.Entity.EFMySqlCommand.ExecuteDbDataReader(CommandBehavior behavior)
+   at System.Data.Common.DbCommand.ExecuteReader(CommandBehavior behavior)
+   at System.Data.Entity.Infrastructure.Interception.DbCommandDispatcher.<>c__DisplayClassb.<Reader>b__8()
+   at System.Data.Entity.Infrastructure.Interception.InternalDispatcher`1.Dispatch[TInterceptionContext,TResult](Func`1 operation, TInterceptionContext interceptionContext, Action`1 executing, Action`1 executed)
+   at System.Data.Entity.Infrastructure.Interception.DbCommandDispatcher.Reader(DbCommand command, DbCommandInterceptionContext interceptionContext)
+   at System.Data.Entity.Internal.InterceptableDbCommand.ExecuteDbDataReader(CommandBehavior behavior)
+   at System.Data.Common.DbCommand.ExecuteReader(CommandBehavior behavior)
+   at System.Data.Entity.Core.EntityClient.Internal.EntityCommandDefinition.ExecuteStoreCommands(EntityCommand entityCommand, CommandBehavior behavior)
+   --- End of inner exception stack trace ---
+   at System.Data.Entity.Core.EntityClient.Internal.EntityCommandDefinition.ExecuteStoreCommands(EntityCommand entityCommand, CommandBehavior behavior)
+   at System.Data.Entity.Core.Objects.Internal.ObjectQueryExecutionPlan.Execute[TResultType](ObjectContext context, ObjectParameterCollection parameterValues)
+   at System.Data.Entity.Core.Objects.ObjectQuery`1.<>c__DisplayClass3.<GetResults>b__2()
+   at System.Data.Entity.Core.Objects.ObjectContext.ExecuteInTransaction[T](Func`1 func, IDbExecutionStrategy executionStrategy, Boolean startLocalTransaction, Boolean releaseConnectionOnSuccess)
+   at System.Data.Entity.Core.Objects.ObjectQuery`1.<>c__DisplayClass3.<GetResults>b__1()
+   at System.Data.Entity.Infrastructure.DefaultExecutionStrategy.Execute[TResult](Func`1 operation)
+   at System.Data.Entity.Core.Objects.ObjectQuery`1.GetResults(Nullable`1 forMergeOption)
+   at System.Data.Entity.Core.Objects.ObjectQuery`1.<System.Collections.Generic.IEnumerable<T>.GetEnumerator>b__0()
+   at System.Lazy`1.CreateValue()
+   at System.Lazy`1.LazyInitValue()
+   at System.Lazy`1.get_Value()
+   at System.Data.Entity.Internal.LazyEnumerator`1.MoveNext()
+   at System.Collections.Generic.List`1..ctor(IEnumerable`1 collection)
+   at System.Linq.Enumerable.ToList[TSource](IEnumerable`1 source)
+   at IOC.FW.Core.Base.BaseRepository`1.SelectAll(Expression`1[] navigationProperties) in E:\Projetos\Source\Pessoal\Framework\IOC.FW\Core\Base\BaseRepository.cs:line 86
+   at IOC.FW.Core.Base.BaseBusiness`1.SelectAll(Expression`1[] navigationProperties) in E:\Projetos\Source\Pessoal\Framework\IOC.FW\Core\Base\BaseBusiness.cs:line 60
+   at IOC.Web.Controllers.HomeController.Index() in E:\Projetos\Source\Pessoal\Framework\IOC.Web\Controllers\HomeController.cs:line 30
    at lambda_method(Closure , ControllerBase , Object[] )
    at System.Web.Mvc.ActionMethodDispatcher.Execute(ControllerBase controller, Object[] parameters)
    at System.Web.Mvc.ReflectedActionDescriptor.Execute(ControllerContext controllerContext, IDictionary`2 parameters)

@@ -252,7 +252,7 @@ namespace IOC.FW.Core.Base
                 {
                     var conn = this.OpenConnection(context);
                     var comm = this.CreateCommand(conn, sql, cmdType);
-                    var param = this.SetParameter(comm, parameters);
+                    this.SetParameter(comm, parameters);
 
                     var reader = comm.ExecuteReader();
 
@@ -282,7 +282,7 @@ namespace IOC.FW.Core.Base
                 {
                     var conn = this.OpenConnection(context);
                     var comm = this.CreateCommand(conn, sql, cmdType);
-                    var param = this.SetParameter(comm, parametersWithDirection);
+                    this.SetParameter(comm, parametersWithDirection);
 
                     var reader = comm.ExecuteReader();
 
@@ -333,7 +333,7 @@ namespace IOC.FW.Core.Base
                 {
                     var conn = this.OpenConnection(context);
                     var comm = this.CreateCommand(conn, sql, cmdType);
-                    var param = this.SetParameter(comm, parameters);
+                    this.SetParameter(comm, parameters);
                     
                     result = comm.ExecuteScalar();
                 }
@@ -446,21 +446,19 @@ namespace IOC.FW.Core.Base
             return comm;
         }
 
-        //TODO: modificar este método para VOID, está retornando algo que julgo ser inutil.
         /// <summary>
         /// Método auxiliar destinado a incluir parametros em um command.
         /// </summary>
         /// <param name="comm">Command a inserir os paramtros</param>
         /// <param name="parameters">Dicionario de parametros a inserir</param>
-        /// <returns>Objeto de parametro</returns>
-        private DbParameter SetParameter(DbCommand comm, Dictionary<string, object> parameters = null)
+        private void SetParameter(DbCommand comm, Dictionary<string, object> parameters = null)
         {
-            DbParameter param = null;
-
             if (comm != null 
                 && parameters != null 
                 && parameters.Count > 0)
             {
+                DbParameter param = null;
+
                 foreach (var item in parameters)
                 {
                     param = comm.CreateParameter();
@@ -469,25 +467,21 @@ namespace IOC.FW.Core.Base
                     comm.Parameters.Add(param);
                 }
             }
-
-            return param;
         }
 
-        //TODO: modificar este método para VOID, está retornando algo que julgo ser inutil.
         /// <summary>
         /// Método auxiliar destinado a incluir parametros em um command.
         /// </summary>
         /// <param name="comm">Command a inserir os paramtros</param>
         /// <param name="parameters">Lista de parametros a inserir</param>
-        /// <returns>Objeto de parametro</returns>
-        private DbParameter SetParameter(DbCommand comm, List<Tuple<ParameterDirection, string, object>> parameters = null)
+        private void SetParameter(DbCommand comm, List<Tuple<ParameterDirection, string, object>> parameters = null)
         {
-            DbParameter param = null;
-
             if (comm != null
                 && parameters != null
                 && parameters.Count > 0)
             {
+                DbParameter param = null;
+
                 foreach (var item in parameters)
                 {
                     param = comm.CreateParameter();
@@ -497,8 +491,6 @@ namespace IOC.FW.Core.Base
                     comm.Parameters.Add(param);
                 }
             }
-
-            return param;
         }
 
         /// <summary>

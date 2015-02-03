@@ -9,7 +9,8 @@ using IOC.FW.Core.Abstraction.Miscellanous;
 namespace IOC.Model
 {
     [Table("WT_Noticia")]
-    public class Noticia : IPrioritySortable
+    public class Noticia 
+        : IPrioritySortable
     {
         [Key]
         [Column("ID_NOTICIA")]
