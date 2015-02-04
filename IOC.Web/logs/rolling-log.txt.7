@@ -1,30 +1,10 @@
 [Header]
-::1 2015-02-03 12:03:07,401 [9] ERROR IOC.Web.Controllers.HomeController [(null)] - Erro na seguinte url => GET http://localhost:9566/: An error occurred creating the configuration section handler for system.data: Column 'InvariantName' is constrained to be unique.  Value 'MySql.Data.MySqlClient' is already present. (E:\Projetos\Source\Pessoal\Framework\IOC.Web\web.config line 19)
-System.Configuration.ConfigurationErrorsException: An error occurred creating the configuration section handler for system.data: Column 'InvariantName' is constrained to be unique.  Value 'MySql.Data.MySqlClient' is already present. (E:\Projetos\Source\Pessoal\Framework\IOC.Web\web.config line 19) ---> System.Data.ConstraintException: Column 'InvariantName' is constrained to be unique.  Value 'MySql.Data.MySqlClient' is already present.
-   at System.Data.UniqueConstraint.CheckConstraint(DataRow row, DataRowAction action)
-   at System.Data.DataTable.RaiseRowChanging(DataRowChangeEventArgs args, DataRow eRow, DataRowAction eAction, Boolean fireEvent)
-   at System.Data.DataTable.SetNewRecordWorker(DataRow row, Int32 proposedRecord, DataRowAction action, Boolean isInMerge, Boolean suppressEnsurePropertyChanged, Int32 position, Boolean fireEvent, Exception& deferredException)
-   at System.Data.DataTable.InsertRow(DataRow row, Int64 proposedID, Int32 pos, Boolean fireEvent)
-   at System.Data.Common.DbProviderFactoriesConfigurationHandler.DbProviderDictionarySectionHandler.HandleAdd(XmlNode child, DataTable config)
-   at System.Data.Common.DbProviderFactoriesConfigurationHandler.DbProviderDictionarySectionHandler.CreateStatic(DataTable config, Object context, XmlNode section)
-   at System.Data.Common.DbProviderFactoriesConfigurationHandler.CreateStatic(Object parent, Object configContext, XmlNode section)
-   at System.Data.Common.DbProviderFactoriesConfigurationHandler.Create(Object parent, Object configContext, XmlNode section)
-   at System.Configuration.RuntimeConfigurationRecord.RuntimeConfigurationFactory.CreateSectionImpl(RuntimeConfigurationRecord configRecord, FactoryRecord factoryRecord, SectionRecord sectionRecord, Object parentConfig, ConfigXmlReader reader)
-   at System.Configuration.RuntimeConfigurationRecord.RuntimeConfigurationFactory.CreateSectionWithRestrictedPermissions(RuntimeConfigurationRecord configRecord, FactoryRecord factoryRecord, SectionRecord sectionRecord, Object parentConfig, ConfigXmlReader reader)
-   at System.Configuration.RuntimeConfigurationRecord.CreateSection(Boolean inputIsTrusted, FactoryRecord factoryRecord, SectionRecord sectionRecord, Object parentConfig, ConfigXmlReader reader)
-   at System.Configuration.BaseConfigurationRecord.CallCreateSection(Boolean inputIsTrusted, FactoryRecord factoryRecord, SectionRecord sectionRecord, Object parentConfig, ConfigXmlReader reader, String filename, Int32 line)
-   --- End of inner exception stack trace ---
-   at System.Configuration.BaseConfigurationRecord.EvaluateOne(String[] keys, SectionInput input, Boolean isTrusted, FactoryRecord factoryRecord, SectionRecord sectionRecord, Object parentResult)
-   at System.Configuration.BaseConfigurationRecord.Evaluate(FactoryRecord factoryRecord, SectionRecord sectionRecord, Object parentResult, Boolean getLkg, Boolean getRuntimeObject, Object& result, Object& resultRuntimeObject)
-   at System.Configuration.BaseConfigurationRecord.GetSectionRecursive(String configKey, Boolean getLkg, Boolean checkPermission, Boolean getRuntimeObject, Boolean requestIsHere, Object& result, Object& resultRuntimeObject)
-   at System.Configuration.BaseConfigurationRecord.GetSection(String configKey)
-   at System.Web.HttpContext.GetSection(String sectionName)
-   at System.Web.Configuration.HttpConfigurationSystem.GetSection(String sectionName)
-   at System.Web.Configuration.HttpConfigurationSystem.System.Configuration.Internal.IInternalConfigSystem.GetSection(String configKey)
-   at System.Configuration.ConfigurationManager.GetSection(String sectionName)
-   at System.Configuration.PrivilegedConfigurationManager.GetSection(String sectionName)
-   at System.Data.Common.DbProviderFactories.Initialize()
+::1 2015-02-04 14:04:00,001 [25] ERROR IOC.Web.Controllers.HomeController [(null)] - Erro na seguinte url => GET http://localhost:9566/: The ADO.NET provider with invariant name 'System.Data.SQLite' is either not registered in the machine or application config file, or could not be loaded. See the inner exception for details.
+System.ArgumentException: The ADO.NET provider with invariant name 'System.Data.SQLite' is either not registered in the machine or application config file, or could not be loaded. See the inner exception for details. ---> System.ArgumentException: Unable to find the requested .Net Framework Data Provider.  It may not be installed.
    at System.Data.Common.DbProviderFactories.GetFactory(String providerInvariantName)
+   at System.Data.Entity.Infrastructure.DependencyResolution.DefaultProviderFactoryResolver.GetService(Type type, Object key, Func`3 handleFailedLookup)
+   --- End of inner exception stack trace ---
+   at System.Data.Entity.Infrastructure.DependencyResolution.DefaultProviderFactoryResolver.<GetService>b__0(ArgumentException e, String n)
    at System.Data.Entity.Infrastructure.DependencyResolution.DefaultProviderFactoryResolver.GetService(Type type, Object key, Func`3 handleFailedLookup)
    at System.Data.Entity.Infrastructure.DependencyResolution.DefaultProviderFactoryResolver.GetService(Type type, Object key)
    at System.Data.Entity.Infrastructure.DependencyResolution.CachingDependencyResolver.<>c__DisplayClass1.<GetService>b__0(Tuple`2 k)

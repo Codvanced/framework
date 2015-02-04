@@ -1,8 +1,10 @@
 [Header]
-::1 2015-02-03 13:36:16,630 [112] ERROR IOC.Web.Controllers.HomeController [(null)] - Erro na seguinte url => GET http://localhost:9566/: Failed to find or load the registered .Net Framework Data Provider.
-System.Configuration.ConfigurationErrorsException: Failed to find or load the registered .Net Framework Data Provider.
-   at System.Data.Common.DbProviderFactories.GetFactory(DataRow providerRow)
+::1 2015-02-04 14:24:19,445 [50] ERROR IOC.Web.Controllers.HomeController [(null)] - Erro na seguinte url => GET http://localhost:9566/: The ADO.NET provider with invariant name 'System.Data.SQLite' is either not registered in the machine or application config file, or could not be loaded. See the inner exception for details.
+System.ArgumentException: The ADO.NET provider with invariant name 'System.Data.SQLite' is either not registered in the machine or application config file, or could not be loaded. See the inner exception for details. ---> System.ArgumentException: Unable to find the requested .Net Framework Data Provider.  It may not be installed.
    at System.Data.Common.DbProviderFactories.GetFactory(String providerInvariantName)
+   at System.Data.Entity.Infrastructure.DependencyResolution.DefaultProviderFactoryResolver.GetService(Type type, Object key, Func`3 handleFailedLookup)
+   --- End of inner exception stack trace ---
+   at System.Data.Entity.Infrastructure.DependencyResolution.DefaultProviderFactoryResolver.<GetService>b__0(ArgumentException e, String n)
    at System.Data.Entity.Infrastructure.DependencyResolution.DefaultProviderFactoryResolver.GetService(Type type, Object key, Func`3 handleFailedLookup)
    at System.Data.Entity.Infrastructure.DependencyResolution.DefaultProviderFactoryResolver.GetService(Type type, Object key)
    at System.Data.Entity.Infrastructure.DependencyResolution.CachingDependencyResolver.<>c__DisplayClass1.<GetService>b__0(Tuple`2 k)
