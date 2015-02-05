@@ -42,7 +42,7 @@ namespace IOC.Web
                 {
                     application.Context.Response.Headers.Remove("Server");
                 }
-                catch(Exception ex) 
+                catch(Exception ex)
                 {
                     // se ocorrer uma exception neste local, significa que você 
                     // está rodando no VS 2010 WebServer, em um ambiente de IIS/IIS Express não ocorrerá este problema

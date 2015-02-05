@@ -111,9 +111,11 @@
     <Error Condition="!Exists('$(SolutionDir)\.nuget\NuGet.targets')" Text="$([System.String]::Format('$(ErrorText)', '$(SolutionDir)\.nuget\NuGet.targets'))" />
   </Target>
   <PropertyGroup>
-    <PostBuildEvent>copy "$(TargetDir)$(TargetName).dll" "$(SolutionDir)Release\" /y
-copy "$(TargetDir)$(TargetName).dll" "$(SolutionDir)Release\Scaffold\TEMPLATE_MVC_4\FW-references\"
-copy "$(TargetDir)$(TargetName).dll" "$(SolutionDir)IOC.Scaffold\TEMPLATE_MVC_4\FW-references\"</PostBuildEvent>
+    <PostBuildEvent>if "$(ConfigurationName)" == "Release"  (
+    md "$(SolutionDir)\..\..\Release\FW-references\"
+    copy "$(TargetDir)$(TargetName).dll" "$(SolutionDir)\..\..\Release\FW-references\" /y
+    copy "$(TargetDir)$(TargetName).dll" "$(SolutionDir)\..\..\Release\Scaffold\TEMPLATE_MVC_4\FW-references\"
+)</PostBuildEvent>
   </PropertyGroup>
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

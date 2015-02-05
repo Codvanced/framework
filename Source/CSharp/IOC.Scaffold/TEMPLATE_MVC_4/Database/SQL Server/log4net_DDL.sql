@@ -1,6 +1,3 @@
-
-
-
 IF(OBJECT_ID('dbo.Log') IS NOT NULL)
 	DROP TABLE dbo.Log
 		

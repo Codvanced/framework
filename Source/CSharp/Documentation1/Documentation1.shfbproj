@@ -14,7 +14,7 @@
     <Name>Documentation1</Name>
     <!-- SHFB properties -->
     <FrameworkVersion>.NET Framework 4.0</FrameworkVersion>
-    <OutputPath>.\Help\</OutputPath>
+    <OutputPath>..\..\..\Release\Help Documentation\</OutputPath>
     <HtmlHelpName>Documentation1</HtmlHelpName>
     <Language>en-US</Language>
     <TransformComponentArguments>
@@ -27,8 +27,9 @@
       <Argument Key="maxVersionParts" Value="" xmlns="" />
     </TransformComponentArguments>
     <DocumentationSources>
-      <DocumentationSource sourceFile="..\IOC.FW\bin\Debug\IOC.FW.xml" />
-      <DocumentationSource sourceFile="..\IOC.FW\bin\Debug\IOC.FW.dll" />
+      <DocumentationSource sourceFile="..\IOC.FW\IOC.FW.csproj" />
+      <DocumentationSource sourceFile="..\IOC.FW.Web\IOC.FW.Web.csproj" />
+      <DocumentationSource sourceFile="..\IOC.FW.Web.MVC\IOC.FW.Web.MVC.csproj" />
     </DocumentationSources>
     <BuildAssemblerVerbosity>OnlyErrors</BuildAssemblerVerbosity>
     <HelpFileFormat>Website</HelpFileFormat>
@@ -38,11 +39,17 @@
     <CppCommentsFixup>False</CppCommentsFixup>
     <CleanIntermediates>True</CleanIntermediates>
     <MissingTags>Summary, Parameter, Returns, AutoDocumentCtors, TypeParameter, AutoDocumentDispose</MissingTags>
-    <VisibleItems>Protected, ProtectedInternalAsProtected</VisibleItems>
+    <VisibleItems>Privates, Protected, ProtectedInternalAsProtected</VisibleItems>
     <WebsiteSdkLinkType>Msdn</WebsiteSdkLinkType>
     <HtmlSdkLinkType>Msdn</HtmlSdkLinkType>
     <IncludeFavorites>False</IncludeFavorites>
     <BinaryTOC>True</BinaryTOC>
+    <HelpAttributes />
+    <HelpFileVersion>1.0.0.0</HelpFileVersion>
+    <PlugInNamespaces>ms.vsipcc+, ms.vsexpresscc+</PlugInNamespaces>
+    <CollectionTocStyle>Hierarchical</CollectionTocStyle>
+    <MSHelp2SdkLinkType>Msdn</MSHelp2SdkLinkType>
+    <IncludeStopWordList>True</IncludeStopWordList>
   </PropertyGroup>
   <!-- There are no properties for these groups.  AnyCPU needs to appear in order for Visual Studio to perform
 			 the build.  The others are optional common platform types that may appear. -->
