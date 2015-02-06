@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<shfbBuild product="Sandcastle Help File Builder" version="2015.1.12.0" projectFile="E:\Projetos\Outros\framework\Source\CSharp\Documentation1\Documentation1.shfbproj" started="06/02/2015 12:36:40">
+<buildStep step="Initializing">
+    Last step completed in 00:00:00,0030
+</buildStep>
+<buildStep step="Failed">
+
+SHFB: Error BE0030: The OutputPath and WorkingPath properties cannot be set to the same path
+   at SandcastleBuilder.Utils.BuildEngine.BuildProcess.Build()
+
+</buildStep>
+</shfbBuild>
