@@ -56,7 +56,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".nuget", ".nuget", "{CBC275
 		.nuget\NuGet.targets = .nuget\NuGet.targets
 	EndProjectSection
 EndProject
-Project("{7CF6DF6D-3B04-46F8-A40B-537D21BCA0B4}") = "Documentation1", "Documentation1\Documentation1.shfbproj", "{F6130A8C-386D-4C25-BF95-FC8753953050}"
+Project("{7CF6DF6D-3B04-46F8-A40B-537D21BCA0B4}") = "IOC.Documentation", "IOC.Documentation\IOC.Documentation.shfbproj", "{F6130A8C-386D-4C25-BF95-FC8753953050}"
 EndProject
 Global
 	GlobalSection(TestCaseManagementSettings) = postSolution
