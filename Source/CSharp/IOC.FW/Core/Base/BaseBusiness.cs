@@ -67,7 +67,7 @@ namespace IOC.FW.Core.Base
         /// <param name="navigationProperties">Objetos de uma Model referentes a chaves estrangeiras no database</param>
         /// <returns>Implementação de IList com os registros encontrados.</returns>
         public IList<TModel> Select(
-            Func<TModel, bool> where,
+            Expression<Func<TModel, bool>> where,
             params Expression<Func<TModel, object>>[] navigationProperties
         )
         {
@@ -81,7 +81,7 @@ namespace IOC.FW.Core.Base
         /// <param name="navigationProperties">Objetos de uma Model referentes a chaves estrangeiras no database</param>
         /// <returns>Objeto de classe modelo preenchido com registro encontrado</returns>
         public TModel SelectSingle(
-            Func<TModel, bool> where,
+            Expression<Func<TModel, bool>> where,
             params Expression<Func<TModel, object>>[] navigationProperties
         )
         {
@@ -131,7 +131,7 @@ namespace IOC.FW.Core.Base
             return this.Count(m => true);
         }
 
-        public int Count(Func<TModel, bool> where)
+        public int Count(Expression<Func<TModel, bool>> where)
         {
             return this._dao.Count(where);
         }
@@ -141,7 +141,7 @@ namespace IOC.FW.Core.Base
             return this.LongCount(m => true);
         }
 
-        public long LongCount(Func<TModel, bool> where)
+        public long LongCount(Expression<Func<TModel, bool>> where)
         {
             return this._dao.LongCount(where);
         }

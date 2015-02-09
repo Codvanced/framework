@@ -41,7 +41,7 @@ namespace IOC.FW.Core.Abstraction.Business
         /// <param name="where">Delegate contendo parâmetros para composição de WHERE</param>
         /// <param name="navigationProperties">Objetos de uma Model referentes a chaves estrangeiras no database</param>
         /// <returns>Implementação de IList com os registros encontrados.</returns>
-        IList<TModel> Select(Func<TModel, bool> where, params Expression<Func<TModel, object>>[] navigationProperties);
+        IList<TModel> Select(Expression<Func<TModel, bool>> where, params Expression<Func<TModel, object>>[] navigationProperties);
 
         /// <summary>
         /// Implementação de método de IBaseDAO destinado a encontrar um unico registro de uma tabela vinculada a uma model. 
@@ -49,7 +49,7 @@ namespace IOC.FW.Core.Abstraction.Business
         /// <param name="where">Delegate contendo parâmetros para composição de WHERE</param>
         /// <param name="navigationProperties">Objetos de uma Model referentes a chaves estrangeiras no database</param>
         /// <returns>Objeto de classe modelo preenchido com registro encontrado</returns>
-        TModel SelectSingle(Func<TModel, bool> where, params Expression<Func<TModel, object>>[] navigationProperties);
+        TModel SelectSingle(Expression<Func<TModel, bool>> where, params Expression<Func<TModel, object>>[] navigationProperties);
 
         /// <summary>
         /// Implementação de método de IBaseDAO destinado a atualizar uma coleção de registros.
@@ -85,7 +85,7 @@ namespace IOC.FW.Core.Abstraction.Business
         /// Retorna a contagem de elementos
         /// </summary>
         /// <param name="where">Filtro</param>
-        int Count(Func<TModel, bool> where);
+        int Count(Expression<Func<TModel, bool>> where);
 
         /// <summary>
         /// Retorna a contagem de elementos
@@ -96,6 +96,6 @@ namespace IOC.FW.Core.Abstraction.Business
         /// Retorna a contagem de elementos
         /// </summary>
         /// <param name="where">Filtro</param>
-        long LongCount(Func<TModel, bool> where);
+        long LongCount(Expression<Func<TModel, bool>> where);
     }
 }
