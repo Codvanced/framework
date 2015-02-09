@@ -97,7 +97,7 @@ namespace IOC.FW.Core.Base
         /// <param name="navigationProperties">Objetos de uma Model referentes a chaves estrangeiras no database</param>
         /// <returns>Implementação de IList com os registros encontrados.</returns>
         public IList<TModel> Select(
-            Func<TModel, bool> where,
+            Expression<Func<TModel, bool>> where,
             params Expression<Func<TModel, object>>[] navigationProperties
         )
         {
@@ -123,7 +123,7 @@ namespace IOC.FW.Core.Base
         /// <param name="navigationProperties">Objetos de uma Model referentes a chaves estrangeiras no database</param>
         /// <returns>Objeto de classe modelo preenchido com registro encontrado</returns>
         public TModel SelectSingle(
-            Func<TModel, bool> where,
+            Expression<Func<TModel, bool>> where,
             params Expression<Func<TModel, object>>[] navigationProperties
         )
         {
@@ -571,7 +571,7 @@ namespace IOC.FW.Core.Base
         /// Retorna a contagem de elementos
         /// </summary>
         /// <param name="where">Filtro</param>
-        public int Count(Func<TModel, bool> where)
+        public int Count(Expression<Func<TModel, bool>> where)
         {
             int count;
             using (var context = new Repository<TModel>(this.nameOrConnectionString))
@@ -582,7 +582,7 @@ namespace IOC.FW.Core.Base
             return count;
         }
 
-        private int Count(Func<TModel, bool> where, Repository<TModel> context)
+        private int Count(Expression<Func<TModel, bool>> where, Repository<TModel> context)
         {
             return context._dbQuery
                    .AsNoTracking()
@@ -601,7 +601,7 @@ namespace IOC.FW.Core.Base
         /// Retorna a contagem de elementos
         /// </summary>
         /// <param name="where">Filtro</param>
-        public long LongCount(Func<TModel, bool> where)
+        public long LongCount(Expression<Func<TModel, bool>> where)
         {
             long count;
             using (var context = new Repository<TModel>(this.nameOrConnectionString))
@@ -612,7 +612,7 @@ namespace IOC.FW.Core.Base
             return count;
         }
 
-        private long LongCount(Func<TModel, bool> where, Repository<TModel> context)
+        private long LongCount(Expression<Func<TModel, bool>> where, Repository<TModel> context)
         {
             return context._dbQuery
                    .AsNoTracking()
