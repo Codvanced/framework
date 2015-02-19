@@ -111,6 +111,10 @@
       <HintPath>..\packages\System.Data.SQLite.Linq.1.0.94.1\lib\net40\System.Data.SQLite.Linq.dll</HintPath>
     </Reference>
     <Reference Include="System.Web" />
+    <Reference Include="System.Web.Mvc, Version=4.0.0.1, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\Microsoft.AspNet.Mvc.4.0.20710.0\lib\net40\System.Web.Mvc.dll</HintPath>
+    </Reference>
     <Reference Include="System.Windows.Forms" />
     <Reference Include="System.XML" />
     <Reference Include="System.Xml.Linq" />
@@ -148,6 +152,14 @@
     <ProjectReference Include="..\IOC.Binding\IOC.Binding.csproj">
       <Project>{00540DF7-C93D-43C2-A270-8EFE04533C02}</Project>
       <Name>IOC.Binding</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\IOC.FW.Web.MVC\IOC.FW.Web.MVC.csproj">
+      <Project>{9A0F7B47-FBD0-48D3-B3C7-49C40D4E4877}</Project>
+      <Name>IOC.FW.Web.MVC</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\IOC.FW.Web\IOC.FW.Web.csproj">
+      <Project>{4682AE8E-90B7-4838-A4A6-B2FDD98BD7FE}</Project>
+      <Name>IOC.FW.Web</Name>
     </ProjectReference>
     <ProjectReference Include="..\IOC.FW\IOC.FW.csproj">
       <Project>{F7380D0C-AF5F-435A-8389-1E7344B20D86}</Project>

@@ -5,10 +5,10 @@ using System.Web;
 using System.Web.Mvc;
 using SimpleInjector;
 using IOC.Model;
-using IOC.Validation;
 using IOC.Abstraction.Business;
 using IOC.FW.Core.Abstraction.Business;
 using IOC.FW.Core.Factory;
+using IOC.Validation;
 
 namespace IOC.Web.Controllers
 {
@@ -21,7 +21,6 @@ namespace IOC.Web.Controllers
         {
             this._business = business;
         }
-
 
         //[HttpGet, OutputCache(Duration=10)]
         [HttpGet]

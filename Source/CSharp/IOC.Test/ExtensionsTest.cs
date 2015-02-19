@@ -6,6 +6,9 @@ using NUnit.Framework;
 using IOC.FW.Core;
 using System.IO;
 using System.Reflection;
+using System.Web.Mvc;
+using IOC.FW.Web.MVC;
+using FluentValidation.Results;
 
 namespace IOC.Test
 {
@@ -155,6 +158,20 @@ namespace IOC.Test
             //Assert.AreEqual("<p >lorem <a href=\"teste\">ipsum</a></p>", "<p style='font-face:verdana'>lorem <a href=\"teste\">ipsum</a></p>".StripHtmlAttrs("href"));
             //Assert.AreEqual("<p style='font-face:verdana'>lorem <a >ipsum</a></p>", "<p style='font-face:verdana'>lorem <a href=\"teste\">ipsum</a></p>".StripHtmlAttrs("style"));
             //Assert.AreEqual("<p style='font-face:verdana'>lorem <a href=\"teste\">ipsum</a></p>", "<p style='font-face:verdana'>lorem <a href=\"teste\">ipsum</a></p>".StripHtmlAttrs(""));
+        }
+
+        [Test]
+        public void TestAddModelErrors()
+        {
+            var modelStateDictionary = new ModelStateDictionary();
+            var validationResult = new ValidationResult();
+            var validationFailure = new ValidationFailure("Test", "Error Test");
+            
+            validationResult.Errors.Add(validationFailure);
+            Assert.IsNotNull(modelStateDictionary.HasElements());
+
+            modelStateDictionary.AddModelErrors(validationResult);
+            Assert.IsNotNull(modelStateDictionary);
         }
 
         class ClassTest

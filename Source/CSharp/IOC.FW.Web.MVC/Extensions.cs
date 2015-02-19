@@ -5,13 +5,15 @@ using System.Text;
 using System.Web;
 using System.Text.RegularExpressions;
 using System.IO;
+using System.Web.Mvc;
+using FluentValidation.Results;
 
 namespace IOC.FW.Web.MVC
 {
     public static class Extensions
     {
         public const int ImageMinimumBytes = 512;
-
+        
         public static bool IsImage(this HttpPostedFileBase postedFile)
         {
             
@@ -71,6 +73,20 @@ namespace IOC.FW.Web.MVC
             }
 
             return true;
+        }
+
+        public static void AddModelErrors(this ModelStateDictionary modelState, ValidationResult validationResult)
+        {
+            if (validationResult != null && !validationResult.IsValid)
+            {
+                foreach (var error in validationResult.Errors)
+                {
+                    modelState.AddModelError(
+                            error.PropertyName
+                        , error.ErrorMessage
+                    );
+                }
+            }
         }
     }
 }

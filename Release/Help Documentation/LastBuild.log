@@ -1,29 +1,32 @@
 <?xml version="1.0" encoding="utf-8"?>
-<shfbBuild product="Sandcastle Help File Builder" version="2015.1.12.0" projectFile="E:\Projetos\Outros\framework\Source\CSharp\IOC.Documentation\IOC.Documentation.shfbproj" started="09/02/2015 16:01:00">
+<shfbBuild product="Sandcastle Help File Builder" version="2015.1.12.0" projectFile="E:\Projetos\Source\Pessoal\Framework\Source\CSharp\IOC.Documentation\IOC.Documentation.shfbproj" started="10/02/2015 08:50:18">
 <buildStep step="Initializing">
 Finding tools...
 The Sandcastle tools are located in &#39;C:\Program Files (x86)\EWSoftware\Sandcastle Help File Builder\&#39;
 Locating components in the following folder(s):
-   E:\Projetos\Outros\framework\Source\CSharp\IOC.Documentation
+   E:\Projetos\Source\Pessoal\Framework\Source\CSharp\IOC.Documentation
 Using presentation style &#39;VS2013&#39; located in &#39;C:\Program Files (x86)\EWSoftware\Sandcastle Help File Builder\PresentationStyles\VS2013&#39;
 Loading and initializing plug-ins...
 Lightweight Website Style Version 2015.1.12.0
 Copyright &#169; 2006-2015, Eric Woodruff, All Rights Reserved
 Portions Copyright &#169; 2014, Sam Harwell, All Rights Reserved
 </buildStep>
+<buildStep step="ClearWorkFolder">
+Clearing working folder...
+</buildStep>
 <buildStep step="ValidatingDocumentationSources">
 Validating and copying documentation source information
-Source: E:\Projetos\Outros\framework\Source\CSharp\IOC.FW\IOC.FW.csproj
-    Found project &#39;E:\Projetos\Outros\framework\Source\CSharp\IOC.FW\IOC.FW.csproj&#39;
-Source: E:\Projetos\Outros\framework\Source\CSharp\IOC.FW.Web\IOC.FW.Web.csproj
-    Found project &#39;E:\Projetos\Outros\framework\Source\CSharp\IOC.FW.Web\IOC.FW.Web.csproj&#39;
-Source: E:\Projetos\Outros\framework\Source\CSharp\IOC.FW.Web.MVC\IOC.FW.Web.MVC.csproj
-    Found project &#39;E:\Projetos\Outros\framework\Source\CSharp\IOC.FW.Web.MVC\IOC.FW.Web.MVC.csproj&#39;
+Source: E:\Projetos\Source\Pessoal\Framework\Source\CSharp\IOC.FW\IOC.FW.csproj
+    Found project &#39;E:\Projetos\Source\Pessoal\Framework\Source\CSharp\IOC.FW\IOC.FW.csproj&#39;
+Source: E:\Projetos\Source\Pessoal\Framework\Source\CSharp\IOC.FW.Web\IOC.FW.Web.csproj
+    Found project &#39;E:\Projetos\Source\Pessoal\Framework\Source\CSharp\IOC.FW.Web\IOC.FW.Web.csproj&#39;
+Source: E:\Projetos\Source\Pessoal\Framework\Source\CSharp\IOC.FW.Web.MVC\IOC.FW.Web.MVC.csproj
+    Found project &#39;E:\Projetos\Source\Pessoal\Framework\Source\CSharp\IOC.FW.Web.MVC\IOC.FW.Web.MVC.csproj&#39;
 
 Parsing project files
-    Found assembly &#39;E:\Projetos\Outros\framework\Source\CSharp\IOC.FW\bin\Debug\IOC.FW.dll&#39;
-    Found assembly &#39;E:\Projetos\Outros\framework\Source\CSharp\IOC.FW.Web\bin\Debug\IOC.FW.Web.dll&#39;
-    Found assembly &#39;E:\Projetos\Outros\framework\Source\CSharp\IOC.FW.Web.MVC\bin\Debug\IOC.FW.Web.MVC.dll&#39;
+    Found assembly &#39;E:\Projetos\Source\Pessoal\Framework\Source\CSharp\IOC.FW\bin\Debug\IOC.FW.dll&#39;
+    Found assembly &#39;E:\Projetos\Source\Pessoal\Framework\Source\CSharp\IOC.FW.Web\bin\Debug\IOC.FW.Web.dll&#39;
+    Found assembly &#39;E:\Projetos\Source\Pessoal\Framework\Source\CSharp\IOC.FW.Web.MVC\bin\Debug\IOC.FW.Web.MVC.dll&#39;
 
 References to include (excluding framework assemblies):
     EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL
@@ -43,53 +46,53 @@ References to include (excluding framework assemblies):
     System.Web.Mvc, Version=4.0.0.1, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL
 
 Copying XML comments files
-    E:\Projetos\Outros\framework\Source\CSharp\IOC.FW\bin\Debug\IOC.FW.XML -&gt; E:\Projetos\Outros\framework\Source\CSharp\IOC.Documentation\Help\IOC.FW.XML
+    E:\Projetos\Source\Pessoal\Framework\Source\CSharp\IOC.FW\bin\Debug\IOC.FW.XML -&gt; E:\Projetos\Source\Pessoal\Framework\Source\CSharp\IOC.Documentation\Help\IOC.FW.XML
 </buildStep>
 <buildStep step="GenerateSharedContent">
 Generating shared content files (en-US, English (United States))...
 <plugIn name="Lightweight Website Style" behavior="After" priority="1000">
-</plugIn>    Last step completed in 00:00:00,0080
+</plugIn>    Last step completed in 00:00:00,0371
 </buildStep>
 <buildStep step="GenerateApiFilter">
 Generating API filter for MRefBuilder...
-    Last step completed in 00:00:00,0020
+    Last step completed in 00:00:00,0050
 </buildStep>
 <buildStep step="GenerateReflectionInfo">
 Generating reflection information...
-[C:\Windows\Microsoft.NET\Framework\v4.0.30319\MSBuild.exe]
-Compila‡&#198;o de 09/02/2015 16:01:02 iniciada.
-Projeto &quot;E:\Projetos\Outros\framework\Source\CSharp\IOC.Documentation\Help\GenerateRefInfo.proj&quot; no n&#162; 1 (destinos padr&#198;o).
+[C:\windows\Microsoft.NET\Framework\v4.0.30319\MSBuild.exe]
+Build started 10/02/2015 08:50:20.
+Project &quot;E:\Projetos\Source\Pessoal\Framework\Source\CSharp\IOC.Documentation\Help\GenerateRefInfo.proj&quot; on node 1 (default targets).
 PrepareForBuild:
-  Criando o diret&#162;rio &quot;obj\Debug\&quot;.
+  Creating directory &quot;obj\Debug\&quot;.
 GenerateRefInfo:
   MRefBuilder (v2015.1.12.0)
   Copyright &#184; 2006-2015, Microsoft Corporation, All Rights Reserved.
   Portions Copyright &#184; 2006-2014, Eric Woodruff, All Rights Reserved.
   Loaded 3 assemblies for reflection and 16 dependency assemblies.
   Wrote information on 25 namespaces, 51 types, and 259 members
-  Copiando o arquivo de &quot;reflection.org&quot; para &quot;reflection.all&quot;.
+  Copying file from &quot;reflection.org&quot; to &quot;reflection.all&quot;.
   XslTransform (v2015.1.12.0)
   Copyright &#184; 2006-2015, Microsoft Corporation, All Rights Reserved.
   Portions Copyright &#184; 2006-2014, Eric Woodruff, All Rights Reserved.
   Applying XSL transformation &#39;C:\Program Files (x86)\EWSoftware\Sandcastle Help File Builder\ProductionTransforms\MergeDuplicates.xsl&#39;.
-Projeto de compila‡&#198;o pronto &quot;E:\Projetos\Outros\framework\Source\CSharp\IOC.Documentation\Help\GenerateRefInfo.proj&quot; (destinos padr&#198;o).
+Done Building Project &quot;E:\Projetos\Source\Pessoal\Framework\Source\CSharp\IOC.Documentation\Help\GenerateRefInfo.proj&quot; (default targets).
 
-Compila‡&#198;o com ˆxito.
+Build succeeded.
 
-Tempo Decorrido 00:00:01.60
-    Last step completed in 00:00:01,9081
+Time Elapsed 00:00:00.88
+    Last step completed in 00:00:01,2908
 </buildStep>
 <buildStep step="TransformReflectionInfo">
 Transforming reflection output...
-[C:\Windows\Microsoft.NET\Framework\v4.0.30319\MSBuild.exe]
-Compila‡&#198;o de 09/02/2015 16:01:03 iniciada.
-Projeto &quot;E:\Projetos\Outros\framework\Source\CSharp\IOC.Documentation\Help\TransformManifest.proj&quot; no n&#162; 1 (destinos padr&#198;o).
+[C:\windows\Microsoft.NET\Framework\v4.0.30319\MSBuild.exe]
+Build started 10/02/2015 08:50:20.
+Project &quot;E:\Projetos\Source\Pessoal\Framework\Source\CSharp\IOC.Documentation\Help\TransformManifest.proj&quot; on node 1 (default targets).
 TransformManifest:
   XslTransform (v2015.1.12.0)
   Copyright &#184; 2006-2015, Microsoft Corporation, All Rights Reserved.
   Portions Copyright &#184; 2006-2014, Eric Woodruff, All Rights Reserved.
   Applying XSL transformation &#39;C:\Program Files (x86)\EWSoftware\Sandcastle Help File Builder\\ProductionTransforms\ApplyVSDocModel.xsl&#39;.
-  Copiando o arquivo de &quot;reflection.xml&quot; para &quot;reflection.nofilenames&quot;.
+  Copying file from &quot;reflection.xml&quot; to &quot;reflection.nofilenames&quot;.
   XslTransform (v2015.1.12.0)
   Copyright &#184; 2006-2015, Microsoft Corporation, All Rights Reserved.
   Portions Copyright &#184; 2006-2014, Eric Woodruff, All Rights Reserved.
@@ -98,16 +101,16 @@ TransformManifest:
   Copyright &#184; 2006-2015, Microsoft Corporation, All Rights Reserved.
   Portions Copyright &#184; 2006-2014, Eric Woodruff, All Rights Reserved.
   Applying XSL transformation &#39;C:\Program Files (x86)\EWSoftware\Sandcastle Help File Builder\ProductionTransforms\ReflectionToManifest.xsl&#39;.
-Projeto de compila‡&#198;o pronto &quot;E:\Projetos\Outros\framework\Source\CSharp\IOC.Documentation\Help\TransformManifest.proj&quot; (destinos padr&#198;o).
+Done Building Project &quot;E:\Projetos\Source\Pessoal\Framework\Source\CSharp\IOC.Documentation\Help\TransformManifest.proj&quot; (default targets).
 
-Compila‡&#198;o com ˆxito.
+Build succeeded.
 
-Tempo Decorrido 00:00:01.38
-    Last step completed in 00:00:01,6421
+Time Elapsed 00:00:02.80
+    Last step completed in 00:00:02,8990
 </buildStep>
 <buildStep step="GenerateNamespaceSummaries">
 Generating namespace summary information...
-    Last step completed in 00:00:00,1760
+    Last step completed in 00:00:00,0871
 </buildStep>
 <buildStep step="CopyConceptualContent">
 Copying conceptual content...
@@ -116,234 +119,74 @@ Checking for other token files...
 Checking for code snippets files...
 Copying images and creating the media map file...
 Generating conceptual topic files
-    Parsing topic file &#39;E:\Projetos\Outros\framework\Source\CSharp\IOC.Documentation\Content\Welcome.aml&#39;
-    E:\Projetos\Outros\framework\Source\CSharp\IOC.Documentation\Content\Welcome.aml -&gt; E:\Projetos\Outros\framework\Source\CSharp\IOC.Documentation\Help\ddueXml\6218875c-2dbd-4069-9f04-470b5dc752fd.xml
-    Parsing topic file &#39;E:\Projetos\Outros\framework\Source\CSharp\IOC.Documentation\Content\VersionHistory\VersionHistory.aml&#39;
-    E:\Projetos\Outros\framework\Source\CSharp\IOC.Documentation\Content\VersionHistory\VersionHistory.aml -&gt; E:\Projetos\Outros\framework\Source\CSharp\IOC.Documentation\Help\ddueXml\2dbfee8f-1367-4463-ba59-5e0c99fd78c0.xml
-    Parsing topic file &#39;E:\Projetos\Outros\framework\Source\CSharp\IOC.Documentation\Content\VersionHistory\v1.0.0.0.aml&#39;
-    E:\Projetos\Outros\framework\Source\CSharp\IOC.Documentation\Content\VersionHistory\v1.0.0.0.aml -&gt; E:\Projetos\Outros\framework\Source\CSharp\IOC.Documentation\Help\ddueXml\dc3a90c4-cf59-49a8-ac27-de6551d750b8.xml
-    Last step completed in 00:00:00,0700
+    Parsing topic file &#39;E:\Projetos\Source\Pessoal\Framework\Source\CSharp\IOC.Documentation\Content\Welcome.aml&#39;
+    E:\Projetos\Source\Pessoal\Framework\Source\CSharp\IOC.Documentation\Content\Welcome.aml -&gt; E:\Projetos\Source\Pessoal\Framework\Source\CSharp\IOC.Documentation\Help\ddueXml\6218875c-2dbd-4069-9f04-470b5dc752fd.xml
+    Parsing topic file &#39;E:\Projetos\Source\Pessoal\Framework\Source\CSharp\IOC.Documentation\Content\VersionHistory\VersionHistory.aml&#39;
+    E:\Projetos\Source\Pessoal\Framework\Source\CSharp\IOC.Documentation\Content\VersionHistory\VersionHistory.aml -&gt; E:\Projetos\Source\Pessoal\Framework\Source\CSharp\IOC.Documentation\Help\ddueXml\2dbfee8f-1367-4463-ba59-5e0c99fd78c0.xml
+    Parsing topic file &#39;E:\Projetos\Source\Pessoal\Framework\Source\CSharp\IOC.Documentation\Content\VersionHistory\v1.0.0.0.aml&#39;
+    E:\Projetos\Source\Pessoal\Framework\Source\CSharp\IOC.Documentation\Content\VersionHistory\v1.0.0.0.aml -&gt; E:\Projetos\Source\Pessoal\Framework\Source\CSharp\IOC.Documentation\Help\ddueXml\dc3a90c4-cf59-49a8-ac27-de6551d750b8.xml
+    Last step completed in 00:00:00,1362
 </buildStep>
 <buildStep step="CreateConceptualTopicConfigs">
 Creating conceptual topic configuration files...
     Companion files
     _ContentMetadata_.xml
     ConceptualManifest.xml
-    Last step completed in 00:00:00,0050
+    Last step completed in 00:00:00,0330
 </buildStep>
 <buildStep step="CopyAdditionalContent">
 Copying additional content files...
-E:\Projetos\Outros\framework\Source\CSharp\IOC.Documentation\icons\Help.png -&gt; E:\Projetos\Outros\framework\Source\CSharp\IOC.Documentation\Help\Output\Website\icons\Help.png
-    Last step completed in 00:00:00,0070
+E:\Projetos\Source\Pessoal\Framework\Source\CSharp\IOC.Documentation\icons\Help.png -&gt; E:\Projetos\Source\Pessoal\Framework\Source\CSharp\IOC.Documentation\Help\Output\Website\icons\Help.png
+    Last step completed in 00:00:00,0411
 </buildStep>
 <buildStep step="MergeTablesOfContents">
 Merging conceptual and additional tables of contents...
-    Last step completed in 00:00:00,0010
+    Last step completed in 00:00:00,0000
 </buildStep>
 <buildStep step="GenerateIntermediateTableOfContents">
 Generating intermediate table of contents file...
-[C:\Windows\Microsoft.NET\Framework\v4.0.30319\MSBuild.exe]
-Compila‡&#198;o de 09/02/2015 16:01:05 iniciada.
-Projeto &quot;E:\Projetos\Outros\framework\Source\CSharp\IOC.Documentation\Help\GenerateIntermediateTOC.proj&quot; no n&#162; 1 (destinos padr&#198;o).
+[C:\windows\Microsoft.NET\Framework\v4.0.30319\MSBuild.exe]
+Build started 10/02/2015 08:50:24.
+Project &quot;E:\Projetos\Source\Pessoal\Framework\Source\CSharp\IOC.Documentation\Help\GenerateIntermediateTOC.proj&quot; on node 1 (default targets).
 GenerateIntermediateTOC:
   XslTransform (v2015.1.12.0)
   Copyright &#184; 2006-2015, Microsoft Corporation, All Rights Reserved.
   Portions Copyright &#184; 2006-2014, Eric Woodruff, All Rights Reserved.
   Applying XSL transformation &#39;C:\Program Files (x86)\EWSoftware\Sandcastle Help File Builder\\ProductionTransforms\CreateVSToc.xsl&#39;.
-Projeto de compila‡&#198;o pronto &quot;E:\Projetos\Outros\framework\Source\CSharp\IOC.Documentation\Help\GenerateIntermediateTOC.proj&quot; (destinos padr&#198;o).
+Done Building Project &quot;E:\Projetos\Source\Pessoal\Framework\Source\CSharp\IOC.Documentation\Help\GenerateIntermediateTOC.proj&quot; (default targets).
 
-Compila‡&#198;o com ˆxito.
+Build succeeded.
 
-Tempo Decorrido 00:00:00.27
+Time Elapsed 00:00:00.13
 Generating conceptual content intermediate TOC file...
-    Last step completed in 00:00:00,5600
+    Last step completed in 00:00:00,3575
 </buildStep>
 <buildStep step="CreateBuildAssemblerConfigs">
 Creating Sandcastle configuration files...
     sandcastle.config
     conceptual.config
-    Last step completed in 00:00:00,9771
+    Last step completed in 00:00:02,9430
 </buildStep>
-<buildStep step="MergeCustomConfigs">
-Merging custom build component configurations
-E:\Projetos\Outros\framework\Source\CSharp\IOC.Documentation\Help\sandcastle.config
-E:\Projetos\Outros\framework\Source\CSharp\IOC.Documentation\Help\conceptual.config
-    Removing unused ExampleComponent.
-    Last step completed in 00:00:00,3100
-</buildStep>
-<buildStep step="BuildConceptualTopics">
-Building conceptual help topics...
-[C:\Windows\Microsoft.NET\Framework\v4.0.30319\MSBuild.exe]
-Compila‡&#198;o de 09/02/2015 16:01:07 iniciada.
-Projeto &quot;E:\Projetos\Outros\framework\Source\CSharp\IOC.Documentation\Help\BuildConceptualTopics.proj&quot; no n&#162; 1 (destinos padr&#198;o).
-BuildConceptualTopics:
-  BuildAssembler (v2015.1.12.0)
-  Copyright &#184; 2006-2015, Microsoft Corporation, All Rights Reserved.
-  Portions Copyright &#184; 2006-2014, Eric Woodruff, All Rights Reserved.
-  Loading configuration...
-  Processing topics...
-  Processed 3 topic(s)
-  CopyFromIndexComponent: &quot;metadata&quot; in-memory cache entries used: 1 of 15.
-Projeto de compila‡&#198;o pronto &quot;E:\Projetos\Outros\framework\Source\CSharp\IOC.Documentation\Help\BuildConceptualTopics.proj&quot; (destinos padr&#198;o).
+<buildStep step="Failed">
 
-Compila‡&#198;o com ˆxito.
+SHFB: Error BE0019: Unable to transform template &#39;JScript.xml&#39;: The requested operation cannot be performed on a file with a user-mapped section open.
 
-Tempo Decorrido 00:00:11.46
-    Last step completed in 00:00:11,9277
-</buildStep>
-<buildStep step="BuildReferenceTopics">
-Building reference help topics...
-[C:\Windows\Microsoft.NET\Framework\v4.0.30319\MSBuild.exe]
-Compila‡&#198;o de 09/02/2015 16:01:19 iniciada.
-Projeto &quot;E:\Projetos\Outros\framework\Source\CSharp\IOC.Documentation\Help\BuildReferenceTopics.proj&quot; no n&#162; 1 (destinos padr&#198;o).
-BuildReferenceTopics:
-  BuildAssembler (v2015.1.12.0)
-  Copyright &#184; 2006-2015, Microsoft Corporation, All Rights Reserved.
-  Portions Copyright &#184; 2006-2014, Eric Woodruff, All Rights Reserved.
-  Loading configuration...
-  Processing topics...
-  Processed 397 topic(s)
-  CopyFromIndexComponent: &quot;reflection&quot; in-memory cache entries used: 15 of 15.
-  CopyFromIndexComponent: &quot;comments&quot; in-memory cache entries used: 2 of 30.
-Projeto de compila‡&#198;o pronto &quot;E:\Projetos\Outros\framework\Source\CSharp\IOC.Documentation\Help\BuildReferenceTopics.proj&quot; (destinos padr&#198;o).
+   at SandcastleBuilder.Utils.BuildEngine.BuildProcess.TransformTemplate(String template, String sourceFolder, String destFolder)
+   at SandcastleBuilder.Utils.BuildEngine.BuildProcess.OnFieldMatch(Match match)
+   at System.Text.RegularExpressions.RegexReplacement.Replace(MatchEvaluator evaluator, Regex regex, String input, Int32 count, Int32 startat)
+   at System.Text.RegularExpressions.Regex.Replace(String input, MatchEvaluator evaluator, Int32 count, Int32 startat)
+   at System.Text.RegularExpressions.Regex.Replace(String input, MatchEvaluator evaluator)
+   at SandcastleBuilder.Utils.BuildEngine.BuildProcess.TransformTemplate(String template, String sourceFolder, String destFolder)
+   at SandcastleBuilder.Utils.BuildEngine.BuildProcess.Build()
+The requested operation cannot be performed on a file with a user-mapped section open.
 
-Compila‡&#198;o com ˆxito.
-
-Tempo Decorrido 00:00:28.08
-    Last step completed in 00:00:28,4366
-</buildStep>
-<buildStep step="CombiningIntermediateTocFiles">
-Combining conceptual and API intermediate TOC files...
-
-Clearing any prior web output
-    Last step completed in 00:00:00,4870
-</buildStep>
-<buildStep step="ExtractingHtmlInfo">
-Extracting HTML info for HTML Help 1 and/or website...
-[C:\Windows\Microsoft.NET\Framework\v4.0.30319\MSBuild.exe]
-Sandcastle Help File Builder, version 2015.1.12.0
-Copyright &#184; 2006-2015, Eric Woodruff, All Rights Reserved
-E-Mail: Eric@EWoodruff.us
-
-Using LCID &#39;1033&#39;, code page &#39;65001&#39;, encoding charset &#39;UTF-8&#39;.
-
-Processing website files in E:\Projetos\Outros\framework\Source\CSharp\IOC.Documentation\Help\Output\Website
-Processed 400 HTML files
-Sorting keywords and generating See Also indices
-Saving website keyword index to E:\Projetos\Outros\framework\Source\CSharp\IOC.Documentation\Help\WebKI.xml
-Saving website table of contents to E:\Projetos\Outros\framework\Source\CSharp\IOC.Documentation\Help\WebTOC.xml
-    Last step completed in 00:00:02,0681
-</buildStep>
-<buildStep step="CopyStandardHelpContent">
-Copying standard help content...
-C:\Program Files (x86)\EWSoftware\Sandcastle Help File Builder\PresentationStyles\VS2013\icons\AlertCaution.png -&gt; E:\Projetos\Outros\framework\Source\CSharp\IOC.Documentation\Help\Output\Website\icons\AlertCaution.png
-C:\Program Files (x86)\EWSoftware\Sandcastle Help File Builder\PresentationStyles\VS2013\icons\AlertNote.png -&gt; E:\Projetos\Outros\framework\Source\CSharp\IOC.Documentation\Help\Output\Website\icons\AlertNote.png
-C:\Program Files (x86)\EWSoftware\Sandcastle Help File Builder\PresentationStyles\VS2013\icons\AlertSecurity.png -&gt; E:\Projetos\Outros\framework\Source\CSharp\IOC.Documentation\Help\Output\Website\icons\AlertSecurity.png
-C:\Program Files (x86)\EWSoftware\Sandcastle Help File Builder\PresentationStyles\VS2013\icons\CFW.gif -&gt; E:\Projetos\Outros\framework\Source\CSharp\IOC.Documentation\Help\Output\Website\icons\CFW.gif
-C:\Program Files (x86)\EWSoftware\Sandcastle Help File Builder\PresentationStyles\VS2013\icons\CodeExample.png -&gt; E:\Projetos\Outros\framework\Source\CSharp\IOC.Documentation\Help\Output\Website\icons\CodeExample.png
-C:\Program Files (x86)\EWSoftware\Sandcastle Help File Builder\PresentationStyles\VS2013\icons\favicon.ico -&gt; E:\Projetos\Outros\framework\Source\CSharp\IOC.Documentation\Help\Output\Website\icons\favicon.ico
-C:\Program Files (x86)\EWSoftware\Sandcastle Help File Builder\PresentationStyles\VS2013\icons\privclass.gif -&gt; E:\Projetos\Outros\framework\Source\CSharp\IOC.Documentation\Help\Output\Website\icons\privclass.gif
-C:\Program Files (x86)\EWSoftware\Sandcastle Help File Builder\PresentationStyles\VS2013\icons\privdelegate.gif -&gt; E:\Projetos\Outros\framework\Source\CSharp\IOC.Documentation\Help\Output\Website\icons\privdelegate.gif
-C:\Program Files (x86)\EWSoftware\Sandcastle Help File Builder\PresentationStyles\VS2013\icons\privenumeration.gif -&gt; E:\Projetos\Outros\framework\Source\CSharp\IOC.Documentation\Help\Output\Website\icons\privenumeration.gif
-C:\Program Files (x86)\EWSoftware\Sandcastle Help File Builder\PresentationStyles\VS2013\icons\privevent.gif -&gt; E:\Projetos\Outros\framework\Source\CSharp\IOC.Documentation\Help\Output\Website\icons\privevent.gif
-C:\Program Files (x86)\EWSoftware\Sandcastle Help File Builder\PresentationStyles\VS2013\icons\privextension.gif -&gt; E:\Projetos\Outros\framework\Source\CSharp\IOC.Documentation\Help\Output\Website\icons\privextension.gif
-C:\Program Files (x86)\EWSoftware\Sandcastle Help File Builder\PresentationStyles\VS2013\icons\privfield.gif -&gt; E:\Projetos\Outros\framework\Source\CSharp\IOC.Documentation\Help\Output\Website\icons\privfield.gif
-C:\Program Files (x86)\EWSoftware\Sandcastle Help File Builder\PresentationStyles\VS2013\icons\privinterface.gif -&gt; E:\Projetos\Outros\framework\Source\CSharp\IOC.Documentation\Help\Output\Website\icons\privinterface.gif
-C:\Program Files (x86)\EWSoftware\Sandcastle Help File Builder\PresentationStyles\VS2013\icons\privmethod.gif -&gt; E:\Projetos\Outros\framework\Source\CSharp\IOC.Documentation\Help\Output\Website\icons\privmethod.gif
-C:\Program Files (x86)\EWSoftware\Sandcastle Help File Builder\PresentationStyles\VS2013\icons\privproperty.gif -&gt; E:\Projetos\Outros\framework\Source\CSharp\IOC.Documentation\Help\Output\Website\icons\privproperty.gif
-C:\Program Files (x86)\EWSoftware\Sandcastle Help File Builder\PresentationStyles\VS2013\icons\privstructure.gif -&gt; E:\Projetos\Outros\framework\Source\CSharp\IOC.Documentation\Help\Output\Website\icons\privstructure.gif
-C:\Program Files (x86)\EWSoftware\Sandcastle Help File Builder\PresentationStyles\VS2013\icons\protclass.gif -&gt; E:\Projetos\Outros\framework\Source\CSharp\IOC.Documentation\Help\Output\Website\icons\protclass.gif
-C:\Program Files (x86)\EWSoftware\Sandcastle Help File Builder\PresentationStyles\VS2013\icons\protdelegate.gif -&gt; E:\Projetos\Outros\framework\Source\CSharp\IOC.Documentation\Help\Output\Website\icons\protdelegate.gif
-C:\Program Files (x86)\EWSoftware\Sandcastle Help File Builder\PresentationStyles\VS2013\icons\protenumeration.gif -&gt; E:\Projetos\Outros\framework\Source\CSharp\IOC.Documentation\Help\Output\Website\icons\protenumeration.gif
-C:\Program Files (x86)\EWSoftware\Sandcastle Help File Builder\PresentationStyles\VS2013\icons\protevent.gif -&gt; E:\Projetos\Outros\framework\Source\CSharp\IOC.Documentation\Help\Output\Website\icons\protevent.gif
-C:\Program Files (x86)\EWSoftware\Sandcastle Help File Builder\PresentationStyles\VS2013\icons\protextension.gif -&gt; E:\Projetos\Outros\framework\Source\CSharp\IOC.Documentation\Help\Output\Website\icons\protextension.gif
-C:\Program Files (x86)\EWSoftware\Sandcastle Help File Builder\PresentationStyles\VS2013\icons\protfield.gif -&gt; E:\Projetos\Outros\framework\Source\CSharp\IOC.Documentation\Help\Output\Website\icons\protfield.gif
-C:\Program Files (x86)\EWSoftware\Sandcastle Help File Builder\PresentationStyles\VS2013\icons\protinterface.gif -&gt; E:\Projetos\Outros\framework\Source\CSharp\IOC.Documentation\Help\Output\Website\icons\protinterface.gif
-C:\Program Files (x86)\EWSoftware\Sandcastle Help File Builder\PresentationStyles\VS2013\icons\protmethod.gif -&gt; E:\Projetos\Outros\framework\Source\CSharp\IOC.Documentation\Help\Output\Website\icons\protmethod.gif
-C:\Program Files (x86)\EWSoftware\Sandcastle Help File Builder\PresentationStyles\VS2013\icons\protoperator.gif -&gt; E:\Projetos\Outros\framework\Source\CSharp\IOC.Documentation\Help\Output\Website\icons\protoperator.gif
-C:\Program Files (x86)\EWSoftware\Sandcastle Help File Builder\PresentationStyles\VS2013\icons\protproperty.gif -&gt; E:\Projetos\Outros\framework\Source\CSharp\IOC.Documentation\Help\Output\Website\icons\protproperty.gif
-C:\Program Files (x86)\EWSoftware\Sandcastle Help File Builder\PresentationStyles\VS2013\icons\protstructure.gif -&gt; E:\Projetos\Outros\framework\Source\CSharp\IOC.Documentation\Help\Output\Website\icons\protstructure.gif
-C:\Program Files (x86)\EWSoftware\Sandcastle Help File Builder\PresentationStyles\VS2013\icons\pubclass.gif -&gt; E:\Projetos\Outros\framework\Source\CSharp\IOC.Documentation\Help\Output\Website\icons\pubclass.gif
-C:\Program Files (x86)\EWSoftware\Sandcastle Help File Builder\PresentationStyles\VS2013\icons\pubdelegate.gif -&gt; E:\Projetos\Outros\framework\Source\CSharp\IOC.Documentation\Help\Output\Website\icons\pubdelegate.gif
-C:\Program Files (x86)\EWSoftware\Sandcastle Help File Builder\PresentationStyles\VS2013\icons\pubenumeration.gif -&gt; E:\Projetos\Outros\framework\Source\CSharp\IOC.Documentation\Help\Output\Website\icons\pubenumeration.gif
-C:\Program Files (x86)\EWSoftware\Sandcastle Help File Builder\PresentationStyles\VS2013\icons\pubevent.gif -&gt; E:\Projetos\Outros\framework\Source\CSharp\IOC.Documentation\Help\Output\Website\icons\pubevent.gif
-C:\Program Files (x86)\EWSoftware\Sandcastle Help File Builder\PresentationStyles\VS2013\icons\pubextension.gif -&gt; E:\Projetos\Outros\framework\Source\CSharp\IOC.Documentation\Help\Output\Website\icons\pubextension.gif
-C:\Program Files (x86)\EWSoftware\Sandcastle Help File Builder\PresentationStyles\VS2013\icons\pubfield.gif -&gt; E:\Projetos\Outros\framework\Source\CSharp\IOC.Documentation\Help\Output\Website\icons\pubfield.gif
-C:\Program Files (x86)\EWSoftware\Sandcastle Help File Builder\PresentationStyles\VS2013\icons\pubinterface.gif -&gt; E:\Projetos\Outros\framework\Source\CSharp\IOC.Documentation\Help\Output\Website\icons\pubinterface.gif
-C:\Program Files (x86)\EWSoftware\Sandcastle Help File Builder\PresentationStyles\VS2013\icons\pubmethod.gif -&gt; E:\Projetos\Outros\framework\Source\CSharp\IOC.Documentation\Help\Output\Website\icons\pubmethod.gif
-C:\Program Files (x86)\EWSoftware\Sandcastle Help File Builder\PresentationStyles\VS2013\icons\puboperator.gif -&gt; E:\Projetos\Outros\framework\Source\CSharp\IOC.Documentation\Help\Output\Website\icons\puboperator.gif
-C:\Program Files (x86)\EWSoftware\Sandcastle Help File Builder\PresentationStyles\VS2013\icons\pubproperty.gif -&gt; E:\Projetos\Outros\framework\Source\CSharp\IOC.Documentation\Help\Output\Website\icons\pubproperty.gif
-C:\Program Files (x86)\EWSoftware\Sandcastle Help File Builder\PresentationStyles\VS2013\icons\pubstructure.gif -&gt; E:\Projetos\Outros\framework\Source\CSharp\IOC.Documentation\Help\Output\Website\icons\pubstructure.gif
-C:\Program Files (x86)\EWSoftware\Sandcastle Help File Builder\PresentationStyles\VS2013\icons\SectionCollapsed.png -&gt; E:\Projetos\Outros\framework\Source\CSharp\IOC.Documentation\Help\Output\Website\icons\SectionCollapsed.png
-C:\Program Files (x86)\EWSoftware\Sandcastle Help File Builder\PresentationStyles\VS2013\icons\SectionExpanded.png -&gt; E:\Projetos\Outros\framework\Source\CSharp\IOC.Documentation\Help\Output\Website\icons\SectionExpanded.png
-C:\Program Files (x86)\EWSoftware\Sandcastle Help File Builder\PresentationStyles\VS2013\icons\slMobile.gif -&gt; E:\Projetos\Outros\framework\Source\CSharp\IOC.Documentation\Help\Output\Website\icons\slMobile.gif
-C:\Program Files (x86)\EWSoftware\Sandcastle Help File Builder\PresentationStyles\VS2013\icons\static.gif -&gt; E:\Projetos\Outros\framework\Source\CSharp\IOC.Documentation\Help\Output\Website\icons\static.gif
-C:\Program Files (x86)\EWSoftware\Sandcastle Help File Builder\PresentationStyles\VS2013\icons\xna.gif -&gt; E:\Projetos\Outros\framework\Source\CSharp\IOC.Documentation\Help\Output\Website\icons\xna.gif
-C:\Program Files (x86)\EWSoftware\Sandcastle Help File Builder\PresentationStyles\VS2013\scripts\branding.js -&gt; E:\Projetos\Outros\framework\Source\CSharp\IOC.Documentation\Help\Output\Website\scripts\branding.js
-C:\Program Files (x86)\EWSoftware\Sandcastle Help File Builder\PresentationStyles\VS2013\styles\branding-cs-CZ.css -&gt; E:\Projetos\Outros\framework\Source\CSharp\IOC.Documentation\Help\Output\Website\styles\branding-cs-CZ.css
-C:\Program Files (x86)\EWSoftware\Sandcastle Help File Builder\PresentationStyles\VS2013\styles\branding-de-DE.css -&gt; E:\Projetos\Outros\framework\Source\CSharp\IOC.Documentation\Help\Output\Website\styles\branding-de-DE.css
-C:\Program Files (x86)\EWSoftware\Sandcastle Help File Builder\PresentationStyles\VS2013\styles\branding-en-US.css -&gt; E:\Projetos\Outros\framework\Source\CSharp\IOC.Documentation\Help\Output\Website\styles\branding-en-US.css
-C:\Program Files (x86)\EWSoftware\Sandcastle Help File Builder\PresentationStyles\VS2013\styles\branding-es-ES.css -&gt; E:\Projetos\Outros\framework\Source\CSharp\IOC.Documentation\Help\Output\Website\styles\branding-es-ES.css
-C:\Program Files (x86)\EWSoftware\Sandcastle Help File Builder\PresentationStyles\VS2013\styles\branding-fr-FR.css -&gt; E:\Projetos\Outros\framework\Source\CSharp\IOC.Documentation\Help\Output\Website\styles\branding-fr-FR.css
-C:\Program Files (x86)\EWSoftware\Sandcastle Help File Builder\PresentationStyles\VS2013\styles\branding-Help1.css -&gt; E:\Projetos\Outros\framework\Source\CSharp\IOC.Documentation\Help\Output\Website\styles\branding-Help1.css
-C:\Program Files (x86)\EWSoftware\Sandcastle Help File Builder\PresentationStyles\VS2013\styles\branding-Help2.css -&gt; E:\Projetos\Outros\framework\Source\CSharp\IOC.Documentation\Help\Output\Website\styles\branding-Help2.css
-C:\Program Files (x86)\EWSoftware\Sandcastle Help File Builder\PresentationStyles\VS2013\styles\branding-HelpViewer.css -&gt; E:\Projetos\Outros\framework\Source\CSharp\IOC.Documentation\Help\Output\Website\styles\branding-HelpViewer.css
-C:\Program Files (x86)\EWSoftware\Sandcastle Help File Builder\PresentationStyles\VS2013\styles\branding-it-IT.css -&gt; E:\Projetos\Outros\framework\Source\CSharp\IOC.Documentation\Help\Output\Website\styles\branding-it-IT.css
-C:\Program Files (x86)\EWSoftware\Sandcastle Help File Builder\PresentationStyles\VS2013\styles\branding-ja-JP.css -&gt; E:\Projetos\Outros\framework\Source\CSharp\IOC.Documentation\Help\Output\Website\styles\branding-ja-JP.css
-C:\Program Files (x86)\EWSoftware\Sandcastle Help File Builder\PresentationStyles\VS2013\styles\branding-ko-KR.css -&gt; E:\Projetos\Outros\framework\Source\CSharp\IOC.Documentation\Help\Output\Website\styles\branding-ko-KR.css
-C:\Program Files (x86)\EWSoftware\Sandcastle Help File Builder\PresentationStyles\VS2013\styles\branding-pl-PL.css -&gt; E:\Projetos\Outros\framework\Source\CSharp\IOC.Documentation\Help\Output\Website\styles\branding-pl-PL.css
-C:\Program Files (x86)\EWSoftware\Sandcastle Help File Builder\PresentationStyles\VS2013\styles\branding-pt-BR.css -&gt; E:\Projetos\Outros\framework\Source\CSharp\IOC.Documentation\Help\Output\Website\styles\branding-pt-BR.css
-C:\Program Files (x86)\EWSoftware\Sandcastle Help File Builder\PresentationStyles\VS2013\styles\branding-ru-RU.css -&gt; E:\Projetos\Outros\framework\Source\CSharp\IOC.Documentation\Help\Output\Website\styles\branding-ru-RU.css
-C:\Program Files (x86)\EWSoftware\Sandcastle Help File Builder\PresentationStyles\VS2013\styles\branding-tr-TR.css -&gt; E:\Projetos\Outros\framework\Source\CSharp\IOC.Documentation\Help\Output\Website\styles\branding-tr-TR.css
-C:\Program Files (x86)\EWSoftware\Sandcastle Help File Builder\PresentationStyles\VS2013\styles\branding-Website.css -&gt; E:\Projetos\Outros\framework\Source\CSharp\IOC.Documentation\Help\Output\Website\styles\branding-Website.css
-C:\Program Files (x86)\EWSoftware\Sandcastle Help File Builder\PresentationStyles\VS2013\styles\branding-zh-CN.css -&gt; E:\Projetos\Outros\framework\Source\CSharp\IOC.Documentation\Help\Output\Website\styles\branding-zh-CN.css
-C:\Program Files (x86)\EWSoftware\Sandcastle Help File Builder\PresentationStyles\VS2013\styles\branding-zh-TW.css -&gt; E:\Projetos\Outros\framework\Source\CSharp\IOC.Documentation\Help\Output\Website\styles\branding-zh-TW.css
-C:\Program Files (x86)\EWSoftware\Sandcastle Help File Builder\PresentationStyles\VS2013\styles\branding.css -&gt; E:\Projetos\Outros\framework\Source\CSharp\IOC.Documentation\Help\Output\Website\styles\branding.css
-C:\Program Files (x86)\EWSoftware\Sandcastle Help File Builder\PresentationStyles\VS2013\Web\index.html -&gt; E:\Projetos\Outros\framework\Source\CSharp\IOC.Documentation\Help\Output\Website\index.html
-C:\Program Files (x86)\EWSoftware\Sandcastle Help File Builder\PresentationStyles\VS2013\Web\search.html -&gt; E:\Projetos\Outros\framework\Source\CSharp\IOC.Documentation\Help\Output\Website\search.html
-C:\Program Files (x86)\EWSoftware\Sandcastle Help File Builder\PresentationStyles\VS2013\Web\SearchHelp.aspx -&gt; E:\Projetos\Outros\framework\Source\CSharp\IOC.Documentation\Help\Output\Website\SearchHelp.aspx
-C:\Program Files (x86)\EWSoftware\Sandcastle Help File Builder\PresentationStyles\VS2013\Web\SearchHelp.inc.php -&gt; E:\Projetos\Outros\framework\Source\CSharp\IOC.Documentation\Help\Output\Website\SearchHelp.inc.php
-C:\Program Files (x86)\EWSoftware\Sandcastle Help File Builder\PresentationStyles\VS2013\Web\SearchHelp.php -&gt; E:\Projetos\Outros\framework\Source\CSharp\IOC.Documentation\Help\Output\Website\SearchHelp.php
-C:\Program Files (x86)\EWSoftware\Sandcastle Help File Builder\PresentationStyles\VS2013\Web\Web.Config -&gt; E:\Projetos\Outros\framework\Source\CSharp\IOC.Documentation\Help\Output\Website\Web.Config
-C:\Program Files (x86)\EWSoftware\Sandcastle Help File Builder\PresentationStyles\VS2013\Web\icons\Search.png -&gt; E:\Projetos\Outros\framework\Source\CSharp\IOC.Documentation\Help\Output\Website\icons\Search.png
-C:\Program Files (x86)\EWSoftware\Sandcastle Help File Builder\PresentationStyles\VS2013\Web\icons\TocClose.gif -&gt; E:\Projetos\Outros\framework\Source\CSharp\IOC.Documentation\Help\Output\Website\icons\TocClose.gif
-C:\Program Files (x86)\EWSoftware\Sandcastle Help File Builder\PresentationStyles\VS2013\Web\icons\TocCollapsed.gif -&gt; E:\Projetos\Outros\framework\Source\CSharp\IOC.Documentation\Help\Output\Website\icons\TocCollapsed.gif
-C:\Program Files (x86)\EWSoftware\Sandcastle Help File Builder\PresentationStyles\VS2013\Web\icons\TocExpanded.gif -&gt; E:\Projetos\Outros\framework\Source\CSharp\IOC.Documentation\Help\Output\Website\icons\TocExpanded.gif
-C:\Program Files (x86)\EWSoftware\Sandcastle Help File Builder\PresentationStyles\VS2013\Web\icons\TocOpen.gif -&gt; E:\Projetos\Outros\framework\Source\CSharp\IOC.Documentation\Help\Output\Website\icons\TocOpen.gif
-C:\Program Files (x86)\EWSoftware\Sandcastle Help File Builder\PresentationStyles\VS2013\Web\scripts\branding-Website.js -&gt; E:\Projetos\Outros\framework\Source\CSharp\IOC.Documentation\Help\Output\Website\scripts\branding-Website.js
-C:\Program Files (x86)\EWSoftware\Sandcastle Help File Builder\PresentationStyles\VS2013\Web\scripts\jquery-1.11.0.min.js -&gt; E:\Projetos\Outros\framework\Source\CSharp\IOC.Documentation\Help\Output\Website\scripts\jquery-1.11.0.min.js
-    Last step completed in 00:00:00,6420
-</buildStep>
-<buildStep step="GenerateHelpFormatTableOfContents">
-Generating website table of contents file...
-    Last step completed in 00:00:00,0000
-</buildStep>
-<buildStep step="GenerateFullTextIndex">
-Generating full-text index for the website...
-
-<plugIn name="Lightweight Website Style" behavior="After" priority="1000">
-Adding lightweight search and TOC elements to each topic...
-</plugIn>    Last step completed in 00:00:03,9362
-</buildStep>
-<buildStep step="CopyingWebsiteFiles">
-Copying website files to output folder...
-
-Copied 100 files
-Copied 200 files
-Copied 300 files
-Copied 400 files
-Copied 500 files
-Copied 600 files
-Copied 658 files for the website content
-    Last step completed in 00:00:01,5951
-</buildStep>
-<buildStep step="CleanIntermediates">
-Removing intermediate files...
-    Last step completed in 00:00:00,6260
-</buildStep>
-<buildStep step="Completed">
-
-Build completed successfully at 09/02/2015 16:01:57.  Total time: 00:00:56,6012
+   at System.IO.__Error.WinIOError(Int32 errorCode, String maybeFullPath)
+   at System.IO.FileStream.Init(String path, FileMode mode, FileAccess access, Int32 rights, Boolean useRights, FileShare share, Int32 bufferSize, FileOptions options, SECURITY_ATTRIBUTES secAttrs, String msgPath, Boolean bFromProxy, Boolean useLongPath, Boolean checkHost)
+   at System.IO.FileStream..ctor(String path, FileMode mode, FileAccess access, FileShare share, Int32 bufferSize, FileOptions options, String msgPath, Boolean bFromProxy, Boolean useLongPath, Boolean checkHost)
+   at System.IO.StreamWriter.CreateFile(String path, Boolean append, Boolean checkHost)
+   at System.IO.StreamWriter..ctor(String path, Boolean append, Encoding encoding, Int32 bufferSize, Boolean checkHost)
+   at System.IO.StreamWriter..ctor(String path, Boolean append, Encoding encoding)
+   at SandcastleBuilder.Utils.BuildEngine.BuildProcess.TransformTemplate(String template, String sourceFolder, String destFolder)
 
 </buildStep>
 </shfbBuild>
