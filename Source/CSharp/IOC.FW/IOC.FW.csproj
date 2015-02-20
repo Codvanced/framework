@@ -132,9 +132,10 @@
     <Compile Include="Core\Cripto\SHA1Util.cs" />
     <Compile Include="Core\Documents\Validation.cs" />
     <Compile Include="Core\Enumerators.cs" />
-    <Compile Include="Core\Extensions.cs" />
     <Compile Include="Core\Database\ORM.cs" />
     <Compile Include="Core\Database\Repository.cs" />
+    <Compile Include="Core\Extensions\Extensions.cs" />
+    <Compile Include="Core\Extensions\ParameterRebinder.cs" />
     <Compile Include="Core\Factory\InstanceFactory.cs" />
     <Compile Include="Core\Factory\SimpleInjectionModule.cs" />
     <Compile Include="Core\Abstraction\Business\IBaseBusiness.cs" />

@@ -1,12 +1,7 @@
 [Header]
-::1 2015-02-04 14:24:19,445 [50] ERROR IOC.Web.Controllers.HomeController [(null)] - Erro na seguinte url => GET http://localhost:9566/: The ADO.NET provider with invariant name 'System.Data.SQLite' is either not registered in the machine or application config file, or could not be loaded. See the inner exception for details.
-System.ArgumentException: The ADO.NET provider with invariant name 'System.Data.SQLite' is either not registered in the machine or application config file, or could not be loaded. See the inner exception for details. ---> System.ArgumentException: Unable to find the requested .Net Framework Data Provider.  It may not be installed.
-   at System.Data.Common.DbProviderFactories.GetFactory(String providerInvariantName)
-   at System.Data.Entity.Infrastructure.DependencyResolution.DefaultProviderFactoryResolver.GetService(Type type, Object key, Func`3 handleFailedLookup)
-   --- End of inner exception stack trace ---
-   at System.Data.Entity.Infrastructure.DependencyResolution.DefaultProviderFactoryResolver.<GetService>b__0(ArgumentException e, String n)
-   at System.Data.Entity.Infrastructure.DependencyResolution.DefaultProviderFactoryResolver.GetService(Type type, Object key, Func`3 handleFailedLookup)
-   at System.Data.Entity.Infrastructure.DependencyResolution.DefaultProviderFactoryResolver.GetService(Type type, Object key)
+::1 2015-02-04 14:23:06,881 [69] ERROR IOC.Web.Controllers.HomeController [(null)] - Erro na seguinte url => GET http://localhost:9566/: No Entity Framework provider found for the ADO.NET provider with invariant name 'System.Data.SQLite'. Make sure the provider is registered in the 'entityFramework' section of the application config file. See http://go.microsoft.com/fwlink/?LinkId=260882 for more information.
+System.InvalidOperationException: No Entity Framework provider found for the ADO.NET provider with invariant name 'System.Data.SQLite'. Make sure the provider is registered in the 'entityFramework' section of the application config file. See http://go.microsoft.com/fwlink/?LinkId=260882 for more information.
+   at System.Data.Entity.Infrastructure.DependencyResolution.DefaultProviderServicesResolver.GetService(Type type, Object key)
    at System.Data.Entity.Infrastructure.DependencyResolution.CachingDependencyResolver.<>c__DisplayClass1.<GetService>b__0(Tuple`2 k)
    at System.Collections.Concurrent.ConcurrentDictionary`2.GetOrAdd(TKey key, Func`2 valueFactory)
    at System.Data.Entity.Infrastructure.DependencyResolution.CachingDependencyResolver.GetService(Type type, Object key)
@@ -21,13 +16,15 @@ System.ArgumentException: The ADO.NET provider with invariant name 'System.Data.
    at System.Data.Entity.Infrastructure.DependencyResolution.ResolverChain.GetService(Type type, Object key)
    at System.Data.Entity.Infrastructure.DependencyResolution.CompositeResolver`2.GetService(Type type, Object key)
    at System.Data.Entity.Infrastructure.DependencyResolution.DbDependencyResolverExtensions.GetService[T](IDbDependencyResolver resolver, Object key)
-   at System.Data.Entity.Internal.LazyInternalConnection.CreateConnectionFromProviderName(String providerInvariantName)
-   at System.Data.Entity.Internal.LazyInternalConnection.InitializeFromConnectionStringSetting(ConnectionStringSettings appConfigConnection)
-   at System.Data.Entity.Internal.LazyInternalConnection.TryInitializeFromAppConfig(String name, AppConfig config)
-   at System.Data.Entity.Internal.LazyInternalConnection.Initialize()
-   at System.Data.Entity.Internal.LazyInternalConnection.get_ProviderName()
-   at System.Data.Entity.Internal.LazyInternalContext.get_ProviderName()
-   at System.Data.Entity.Internal.DefaultModelCacheKeyFactory.Create(DbContext context)
+   at System.Data.Entity.Utilities.DbProviderFactoryExtensions.GetProviderServices(DbProviderFactory factory)
+   at System.Data.Entity.Core.Common.DbProviderServices.GetProviderServices(DbConnection connection)
+   at System.Data.Entity.Infrastructure.DefaultManifestTokenResolver.<>c__DisplayClass1.<ResolveManifestToken>b__0(Tuple`3 k)
+   at System.Collections.Concurrent.ConcurrentDictionary`2.GetOrAdd(TKey key, Func`2 valueFactory)
+   at System.Data.Entity.Infrastructure.DefaultManifestTokenResolver.ResolveManifestToken(DbConnection connection)
+   at System.Data.Entity.Utilities.DbConnectionExtensions.GetProviderInfo(DbConnection connection, DbProviderManifest& providerManifest)
+   at System.Data.Entity.DbModelBuilder.Build(DbConnection providerConnection)
+   at System.Data.Entity.Internal.LazyInternalContext.CreateModel(LazyInternalContext internalContext)
+   at System.Data.Entity.Internal.RetryLazy`2.GetValue(TInput input)
    at System.Data.Entity.Internal.LazyInternalContext.InitializeContext()
    at System.Data.Entity.Internal.InternalContext.Initialize()
    at System.Data.Entity.Internal.InternalContext.GetEntitySetAndBaseTypeForType(Type entityType)
