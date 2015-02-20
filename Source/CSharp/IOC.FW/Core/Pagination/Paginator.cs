@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using IOC.FW.Core;
+using IOC.FW.Core.Extensions;
 
 namespace IOC.FW.Web.Pagination
 {
