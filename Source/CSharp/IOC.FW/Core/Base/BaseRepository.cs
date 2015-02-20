@@ -60,9 +60,9 @@ namespace IOC.FW.Core.Base
         private IQueryable<TModel> IncludeReference(DbSet<TModel> dbSet, params Expression<Func<TModel, object>>[] navigationProperties)
         {
             IQueryable<TModel> query = dbSet;
-
+                
                 foreach (Expression<Func<TModel, object>> navigationProperty in navigationProperties)
-                    query = query.Include<TModel, object>(navigationProperty);
+                     query = query.Include<TModel, object>(navigationProperty); 
 
             return query;
         }

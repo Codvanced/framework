@@ -9,6 +9,9 @@ using IOC.Abstraction.Business;
 using IOC.FW.Core.Abstraction.Business;
 using IOC.FW.Core.Factory;
 using IOC.Validation;
+using System.Linq.Expressions;
+using IOC.FW.Core.Extensions;
+
 //TODO: Refatorar o framework para aplicação a convenção de código proposta
 namespace IOC.Web.Controllers
 {
@@ -26,6 +29,7 @@ namespace IOC.Web.Controllers
         [HttpGet]
         public ActionResult Index()
         {
+
             IList<Noticia> allNews = this._business.SelectAll();
             return View(allNews);
         }
