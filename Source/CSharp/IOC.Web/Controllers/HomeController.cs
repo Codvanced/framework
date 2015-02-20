@@ -9,7 +9,7 @@ using IOC.Abstraction.Business;
 using IOC.FW.Core.Abstraction.Business;
 using IOC.FW.Core.Factory;
 using IOC.Validation;
-
+//TODO: Refatorar o framework para aplicação a convenção de código proposta
 namespace IOC.Web.Controllers
 {
     public class HomeController
