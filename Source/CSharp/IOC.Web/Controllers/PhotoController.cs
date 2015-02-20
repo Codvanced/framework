@@ -9,7 +9,7 @@ using System.IO;
 using System.Drawing.Imaging;
 using IOC.FW.Core;
 using IOC.FW.Configuration;
-
+using IOC.FW.Core.Extensions;
 namespace IOC.Web.Controllers
 {
     public class PhotoController

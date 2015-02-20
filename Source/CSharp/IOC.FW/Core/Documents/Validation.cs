@@ -4,7 +4,11 @@ using System.Linq;
 using System.Text;
 using System.Text.RegularExpressions;
 using System.Security.Cryptography;
+<<<<<<< HEAD
 using IOC.FW.Core;
+=======
+using IOC.FW.Core.Extensions;
+>>>>>>> 77fa2ca... Implementação de extensions de operações entre expressions
 
 namespace IOC.FW.Core.Documents
 {

@@ -9,7 +9,7 @@ using System.Drawing;
 using System.Drawing.Imaging;
 using System.Linq.Expressions;
 
-namespace IOC.FW.Core
+namespace IOC.FW.Core.Extensions
 {
     /// <summary>
     /// Classe destinada a armazenar os Extensions Methods do Framework
@@ -693,5 +693,9 @@ namespace IOC.FW.Core
                 return expr;
             }
         #endregion
+<<<<<<< HEAD:Source/CSharp/IOC.FW/Core/Extensions.cs
+=======
+
+>>>>>>> 77fa2ca... Implementação de extensions de operações entre expressions:Source/CSharp/IOC.FW/Core/Extensions/Extensions.cs
     }
 }

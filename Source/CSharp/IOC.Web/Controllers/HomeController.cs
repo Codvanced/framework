@@ -10,7 +10,11 @@ using IOC.FW.Core.Abstraction.Business;
 using IOC.FW.Core.Factory;
 using IOC.Validation;
 using System.Linq.Expressions;
+<<<<<<< HEAD
 using IOC.FW.Core;
+=======
+using IOC.FW.Core.Extensions;
+>>>>>>> 77fa2ca... Implementação de extensions de operações entre expressions
 
 //TODO: Refatorar o framework para aplicação a convenção de código proposta
 namespace IOC.Web.Controllers

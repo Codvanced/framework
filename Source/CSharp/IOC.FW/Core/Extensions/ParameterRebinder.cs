@@ -4,7 +4,11 @@ using System.Linq;
 using System.Text;
 using System.Linq.Expressions;
 
+<<<<<<< HEAD
 namespace IOC.FW.Core
+=======
+namespace IOC.FW.Core.Extensions
+>>>>>>> 77fa2ca... Implementação de extensions de operações entre expressions
 {
     public class ParameterRebinder : ExpressionVisitor
     {
