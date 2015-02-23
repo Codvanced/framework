@@ -5,10 +5,14 @@ using System.Text;
 using System.Text.RegularExpressions;
 using System.Security.Cryptography;
 <<<<<<< HEAD
+<<<<<<< HEAD
 using IOC.FW.Core;
 =======
 using IOC.FW.Core.Extensions;
 >>>>>>> 77fa2ca... Implementação de extensions de operações entre expressions
+=======
+using IOC.FW.Core;
+>>>>>>> f898fdb... remanejamento de pasta
 
 namespace IOC.FW.Core.Documents
 {

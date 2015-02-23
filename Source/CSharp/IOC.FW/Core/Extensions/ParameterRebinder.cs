@@ -5,10 +5,14 @@ using System.Text;
 using System.Linq.Expressions;
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 namespace IOC.FW.Core
 =======
 namespace IOC.FW.Core.Extensions
 >>>>>>> 77fa2ca... Implementação de extensions de operações entre expressions
+=======
+namespace IOC.FW.Core
+>>>>>>> f898fdb... remanejamento de pasta
 {
     public class ParameterRebinder : ExpressionVisitor
     {
