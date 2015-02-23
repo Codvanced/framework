@@ -10,7 +10,7 @@ using IOC.FW.Core.Abstraction.Business;
 using IOC.FW.Core.Factory;
 using IOC.Validation;
 using System.Linq.Expressions;
-using IOC.FW.Core.Extensions;
+using IOC.FW.Core;
 
 //TODO: Refatorar o framework para aplicação a convenção de código proposta
 namespace IOC.Web.Controllers
