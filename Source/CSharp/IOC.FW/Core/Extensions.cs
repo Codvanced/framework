@@ -9,7 +9,7 @@ using System.Drawing;
 using System.Drawing.Imaging;
 using System.Linq.Expressions;
 
-namespace IOC.FW.Core.Extensions
+namespace IOC.FW.Core
 {
     /// <summary>
     /// Classe destinada a armazenar os Extensions Methods do Framework

@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Text.RegularExpressions;
 using System.Security.Cryptography;
-using IOC.FW.Core.Extensions;
+using IOC.FW.Core;
 
 namespace IOC.FW.Core.Documents
 {
