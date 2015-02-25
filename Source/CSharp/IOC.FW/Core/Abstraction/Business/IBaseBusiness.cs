@@ -63,6 +63,8 @@ namespace IOC.FW.Core.Abstraction.Business
         /// <param name="items">Coleção de registros a atualizar na base</param>
         void Update(params TModel[] items);
 
+        void Update(TModel item, Expression<Func<TModel, object>>[] properties);
+
         /// <summary>
         /// Implementação de método de IBaseDAO destinado a excluir (logicamente ou fisicamente) uma coleção de registros.
         /// </summary>
