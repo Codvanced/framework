@@ -106,6 +106,11 @@ namespace IOC.FW.Core.Base
             this._dao.Update(items);
         }
 
+        public void Update(TModel item, Expression<Func<TModel, object>>[] properties)
+        {
+            this._dao.Update(item, properties);
+        }
+
         /// <summary>
         /// Implementação de método de IBaseDAO destinado a excluir (logicamente ou fisicamente) uma coleção de registros.
         /// </summary>
