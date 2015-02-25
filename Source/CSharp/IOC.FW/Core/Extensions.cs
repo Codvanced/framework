@@ -693,9 +693,12 @@ namespace IOC.FW.Core
                 return expr;
             }
         #endregion
+<<<<<<< HEAD
 <<<<<<< HEAD:Source/CSharp/IOC.FW/Core/Extensions.cs
 =======
 
 >>>>>>> 77fa2ca... Implementação de extensions de operações entre expressions:Source/CSharp/IOC.FW/Core/Extensions/Extensions.cs
+=======
+>>>>>>> b77b7df... Ajuste no método UpdatePriority para evitar fazer reflection.
     }
 }
