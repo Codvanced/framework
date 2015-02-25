@@ -11,6 +11,7 @@ using IOC.Validation;
 using NUnit.Framework;
 using SimpleInjector;
 using System.Diagnostics;
+using System.Linq.Expressions;
 
 namespace IOC.Test
 {
@@ -72,11 +73,21 @@ namespace IOC.Test
             Assert.Greater(foundNoticia.Count, 0);
 
             foundNoticia[0].Autor = "Modified";
-            foundNoticia[0].DataAlteracao = DateTime.Now;
+            //foundNoticia[0].DataAlteracao = DateTime.Now;
 
             business.Update(foundNoticia[0]);
+
+            var idNoticia = foundNoticia[0].IdNoticia;
             var updatedNoticia = business.SelectSingle(
-                noticia => noticia.IdNoticia == foundNoticia[0].IdNoticia
+                noticia => noticia.IdNoticia == idNoticia
+            );
+
+            updatedNoticia.Autor = "Modified";
+
+            Expression<Func<Noticia, object>>[] expr = { n => n.Autor };
+            business.Update(
+                updatedNoticia, 
+                expr
             );
 
             Assert.NotNull(updatedNoticia);

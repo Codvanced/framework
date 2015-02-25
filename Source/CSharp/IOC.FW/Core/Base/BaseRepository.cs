@@ -149,24 +149,19 @@ namespace IOC.FW.Core.Base
         {
             using (var context = new Repository<TModel>(this.nameOrConnectionString))
             {
-                this.InsertToContext(items, context);
-            }
-        }
-
-        private void InsertToContext(TModel[] items, Repository<TModel> context)
-        {
-            foreach (TModel item in items)
-            {
-                if (item is IBaseModel)
+                foreach (TModel item in items)
                 {
-                    var baseItem = (IBaseModel)item;
-                    baseItem.Created = DateTime.Now;
-                    baseItem.Activated = true;
-                }
+                    if (item is IBaseModel)
+                    {
+                        var baseItem = (IBaseModel)item;
+                        baseItem.Created = DateTime.Now;
+                        baseItem.Activated = true;
+                    }
 
-                context.Entry(item).State = EntityState.Added;
+                    context.Entry(item).State = EntityState.Added;
+                }
+                context.SaveChanges();
             }
-            context.SaveChanges();
         }
 
         /// <summary>
@@ -177,35 +172,51 @@ namespace IOC.FW.Core.Base
         {
             using (var context = new Repository<TModel>(this.nameOrConnectionString))
             {
-                this.UpdateToContext(items, context);
+                foreach (TModel item in items)
+                {
+                    if (item is IBaseModel)
+                    {
+                        ((IBaseModel)item).Updated = DateTime.Now;
+                    }
+
+                    var modelFound = context.Set<TModel>().Local.SingleOrDefault(
+                        e => e.Equals(item)
+                    );
+
+                    if (modelFound != null)
+                    {
+                        var attachedEntry = context.Entry(modelFound);
+                        attachedEntry.CurrentValues.SetValues(item);
+                    }
+                    else
+                    {
+                        context.Entry(item).State = EntityState.Modified;
+                    }
+                }
+
+                context.SaveChanges();
             }
         }
 
-        private void UpdateToContext(TModel[] items, Repository<TModel> context)
+        public void Update(TModel item, Expression<Func<TModel, object>>[] properties)
         {
-            foreach (TModel item in items)
+            using (var context = new Repository<TModel>(this.nameOrConnectionString))
             {
                 if (item is IBaseModel)
                 {
                     ((IBaseModel)item).Updated = DateTime.Now;
                 }
 
-                var modelFound = context.Set<TModel>().Local.SingleOrDefault(
-                    e => e.Equals(item)
-                );
-
-                if (modelFound != null)
-                { 
-                    var attachedEntry = context.Entry(modelFound);
-                    attachedEntry.CurrentValues.SetValues(item);
-                }
-                else
+                foreach (var property in properties)
                 {
-                    context.Entry(item).State = EntityState.Modified; 
-                }
-            }
+                    var propertyName = GetPropertyName(property);
 
-            context.SaveChanges();
+                    context.DbObject.Attach(item);
+                    context.Entry<TModel>(item).Property(propertyName).IsModified = true;
+                }
+
+                context.SaveChanges();
+            }
         }
 
         /// <summary>
@@ -498,55 +509,27 @@ namespace IOC.FW.Core.Base
         /// </summary>
         /// <typeparam name="TPriorityModel">Tipo do model que implementa IPrioritySortable</typeparam>
         /// <param name="items">Lista de models que implementam IPrioritySortable</param>
-        public void UpdatePriority<TPriorityModel>(TPriorityModel[] items) where TPriorityModel : TModel, IPrioritySortable
+        public void UpdatePriority<TPriorityModel>(TPriorityModel[] items)
+            where TPriorityModel : TModel, IPrioritySortable
         {
-            var ids = new List<int>();
-
-            PropertyInfo id = null;
-
-            for (var i = 0; i < items.Length; i++)
+            using (var context = new Repository<TModel>(this.nameOrConnectionString))
             {
-                var item = items[i];
-
-                if (id == null)
+                for (var i = 0; i < items.Length; i++)
                 {
-                    id = this.FindKeyProperty(item);
+                    var item = items[i];
+                    item.Priority = Int64.MaxValue - i;
+
+                    var propName = GetPropertyName(() => item.Priority);
+
+                    if (!string.IsNullOrEmpty(propName))
+                    {
+                        context.DbObject.Attach(item);
+                        context.Entry<TModel>(item).Property(propName).IsModified = true;
+                    }
                 }
 
-                ids.Add((int)id.GetValue(item, null));
-
-                item.Priority = Int64.MaxValue - i;
+                context.SaveChanges();
             }
-
-            var oldItems = this.Select(m => ids.Contains((int)id.GetValue(m, null)));
-
-            foreach (var item in items)
-            {
-                var oldItem = oldItems.Where(m => (int)id.GetValue(m, null) == (int)id.GetValue(item, null)).FirstOrDefault();
-
-                if (oldItem != null)
-                {
-                    ((IPrioritySortable)oldItem).Priority = item.Priority;
-                }
-            }
-
-            this.Update(oldItems.ToArray());
-        }
-
-        private PropertyInfo FindKeyProperty(TModel item)
-        {
-            var type = item.GetType();
-
-            var key = type.GetProperties()
-                                    .Where(pi => pi.GetCustomAttributes(typeof(KeyAttribute), true).Length > 0)
-                                    .FirstOrDefault();
-
-            if (key == null)
-            {
-                throw new InvalidOperationException("TModel não possui propriedade com o atributo Key");
-            }
-
-            return key;
         }
 
         public TModel Model()
@@ -617,6 +600,16 @@ namespace IOC.FW.Core.Base
             return context._dbQuery
                    .AsNoTracking()
                    .LongCount(where);
+        }
+
+        private static string GetPropertyName<T>(Expression<Func<T>> propertyExpression)
+        {
+            return (propertyExpression.Body as MemberExpression).Member.Name;
+        }
+
+        private static string GetPropertyName<T>(Expression<T> propertyExpression)
+        {
+            return (propertyExpression.Body as MemberExpression).Member.Name;
         }
     }
 }
