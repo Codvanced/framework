@@ -1,6 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <HelpKI>
   <HelpKINode Title="Activated property" Url="html/ef1b5897-63b1-fee9-6d67-ae25703c707b.htm" />
+  <HelpKINode Title="AddModelErrors method" Url="html/08a2b68a-233e-f989-bed9-fce1f53535ab.htm" />
   <HelpKINode Title="AESUtil class">
     <HelpKINode Title="AESUtil Class" Url="html/1c517ea0-2927-5505-1784-f7796cde4bc3.htm" />
     <HelpKINode Title="about AESUtil class" Url="html/1c517ea0-2927-5505-1784-f7796cde4bc3.htm" />
@@ -9,6 +10,10 @@
   <HelpKINode Title="AESUtil.Decrypt method" Url="html/9c83f9a8-3e1e-3039-5157-d4bdd6fd9f7d.htm" />
   <HelpKINode Title="AESUtil.Encrypt method" Url="html/ae838067-3ad4-cac6-096e-91a1c90f7d56.htm" />
   <HelpKINode Title="AESUtil.Keys method" Url="html/ae74b2a5-e214-d9ad-e106-7f94ef6c0c7a.htm" />
+  <HelpKINode Title="And(Of T) method" Url="html/91b0a4fb-2a5f-ca33-db2a-8141eeec178d.htm" />
+  <HelpKINode Title="And&lt;T&gt; method" Url="html/91b0a4fb-2a5f-ca33-db2a-8141eeec178d.htm" />
+  <HelpKINode Title="AndNot(Of T) method" Url="html/7c088145-6f7f-cb18-cf6a-ee7b2fc98c4b.htm" />
+  <HelpKINode Title="AndNot&lt;T&gt; method" Url="html/7c088145-6f7f-cb18-cf6a-ee7b2fc98c4b.htm" />
   <HelpKINode Title="AppendByteArray method" Url="html/cbe689c9-7c4e-7635-b500-5a4632796a11.htm" />
   <HelpKINode Title="BaseBusiness(Of TModel) class">
     <HelpKINode Title="BaseBusiness(TModel) Class" Url="html/88464728-f5ac-bc25-8e38-c9dff0f95283.htm" />
@@ -189,6 +194,7 @@
   <HelpKINode Title="CleanHtml method" Url="html/3ab77c66-2ff2-428b-2dec-aef76f7d9395.htm" />
   <HelpKINode Title="ColumnName property" Url="html/a63deb23-2435-c80e-f2a9-d4762c028c77.htm" />
   <HelpKINode Title="CompareLuhnDigit method" Url="html/52afc531-4757-977d-01ba-2b49983bca63.htm" />
+  <HelpKINode Title="Compose method" Url="html/2e10e92e-aaf0-e3ca-14ff-01c543d963f4.htm" />
   <HelpKINode Title="CompressedContent class">
     <HelpKINode Title="CompressedContent Class" Url="html/261109bc-a28e-3174-ca6a-dce20cb1f565.htm" />
     <HelpKINode Title="about CompressedContent class" Url="html/261109bc-a28e-3174-ca6a-dce20cb1f565.htm" />
@@ -300,15 +306,21 @@
     <HelpKINode Title="IBaseDAO(TModel).ExecuteScalar Method " Url="html/e92e9e79-3112-c3e3-6a0a-45eaaff7dbbc.htm" />
   </HelpKINode>
   <HelpKINode Title="Extensions class">
-    <HelpKINode Title="Extensions Class" Url="html/2efa636f-0a94-463e-26b6-9ff3c87c782b.htm" />
     <HelpKINode Title="Extensions Class" Url="html/6ca4571b-7f82-09e3-765c-9038986c93f0.htm" />
-    <HelpKINode Title="about Extensions class" Url="html/6ca4571b-7f82-09e3-765c-9038986c93f0.htm" />
+    <HelpKINode Title="Extensions Class" Url="html/2efa636f-0a94-463e-26b6-9ff3c87c782b.htm" />
     <HelpKINode Title="about Extensions class" Url="html/2efa636f-0a94-463e-26b6-9ff3c87c782b.htm" />
+    <HelpKINode Title="about Extensions class" Url="html/6ca4571b-7f82-09e3-765c-9038986c93f0.htm" />
     <HelpKINode Title="fields" Url="html/fed1db70-12a6-2617-f412-245bfe5676a9.htm" />
     <HelpKINode Title="methods" Url="html/2ad42206-964d-1b98-696d-747b4be4a396.htm" />
     <HelpKINode Title="methods" Url="html/a2b5f5f6-e973-88a1-6af9-b54e6b9aacc0.htm" />
   </HelpKINode>
+  <HelpKINode Title="Extensions.AddModelErrors method" Url="html/08a2b68a-233e-f989-bed9-fce1f53535ab.htm" />
+  <HelpKINode Title="Extensions.And(Of T) method" Url="html/91b0a4fb-2a5f-ca33-db2a-8141eeec178d.htm" />
+  <HelpKINode Title="Extensions.And&lt;T&gt; method" Url="html/91b0a4fb-2a5f-ca33-db2a-8141eeec178d.htm" />
+  <HelpKINode Title="Extensions.AndNot(Of T) method" Url="html/7c088145-6f7f-cb18-cf6a-ee7b2fc98c4b.htm" />
+  <HelpKINode Title="Extensions.AndNot&lt;T&gt; method" Url="html/7c088145-6f7f-cb18-cf6a-ee7b2fc98c4b.htm" />
   <HelpKINode Title="Extensions.CleanHtml method" Url="html/3ab77c66-2ff2-428b-2dec-aef76f7d9395.htm" />
+  <HelpKINode Title="Extensions.Compose method" Url="html/2e10e92e-aaf0-e3ca-14ff-01c543d963f4.htm" />
   <HelpKINode Title="Extensions.EscapeItems method" Url="html/7a012e3d-c3d1-4a5a-1f27-c61016ae1c2c.htm" />
   <HelpKINode Title="Extensions.FisherYates method" Url="html/38f5f28f-8bea-ffc3-de7a-d3f257ce6ffc.htm" />
   <HelpKINode Title="Extensions.GetMimeType method" Url="html/159f50e2-02b6-be66-01d4-7a6df221e5e5.htm" />
@@ -316,10 +328,16 @@
   <HelpKINode Title="Extensions.HasElements&lt;T&gt; method" Url="html/b23a811a-2afa-ece9-7ebe-c80da29ad2c8.htm" />
   <HelpKINode Title="Extensions.ImageMinimumBytes field" Url="html/3e0833cc-c119-8557-337f-10a09821ae40.htm" />
   <HelpKINode Title="Extensions.IsImage method">
-    <HelpKINode Title="Extensions.IsImage Method " Url="html/0b8d8f3e-301b-99fa-e70a-4f4f91fc8d9b.htm" />
     <HelpKINode Title="Extensions.IsImage Method " Url="html/181ad555-f67d-ac0b-74b3-c8b511f0def2.htm" />
+    <HelpKINode Title="Extensions.IsImage Method " Url="html/0b8d8f3e-301b-99fa-e70a-4f4f91fc8d9b.htm" />
   </HelpKINode>
   <HelpKINode Title="Extensions.Like method" Url="html/600f4d0d-7854-d2cf-380c-226f569865c2.htm" />
+  <HelpKINode Title="Extensions.Not(Of T) method" Url="html/293aae0e-0b16-d8c4-5a4a-f8d24b912984.htm" />
+  <HelpKINode Title="Extensions.Not&lt;T&gt; method" Url="html/293aae0e-0b16-d8c4-5a4a-f8d24b912984.htm" />
+  <HelpKINode Title="Extensions.Or(Of T) method" Url="html/78897643-741a-ad19-e1b1-95c743b534a3.htm" />
+  <HelpKINode Title="Extensions.Or&lt;T&gt; method" Url="html/78897643-741a-ad19-e1b1-95c743b534a3.htm" />
+  <HelpKINode Title="Extensions.OrNot(Of T) method" Url="html/638b2f3f-72e1-6508-881a-b5329d2a8a51.htm" />
+  <HelpKINode Title="Extensions.OrNot&lt;T&gt; method" Url="html/638b2f3f-72e1-6508-881a-b5329d2a8a51.htm" />
   <HelpKINode Title="Extensions.PreparePattern method" Url="html/7ac1a18b-924c-bd0b-74ec-5316ed99a851.htm" />
   <HelpKINode Title="Extensions.RandomNext method" Url="html/5927ffee-3df6-0c43-d761-e61289e1331f.htm" />
   <HelpKINode Title="Extensions.RemoveSpecialChars method" Url="html/fc2ab204-24a9-841d-dea2-87f5f478865f.htm" />
@@ -571,6 +589,7 @@
   <HelpKINode Title="IOC.FW.Core.Images.Transform class" Url="html/005c655c-069a-d236-78fe-b4624481ae78.htm" />
   <HelpKINode Title="IOC.FW.Core.Logging namespace" Url="html/ee455878-51b7-da8f-52de-5d629474b09b.htm" />
   <HelpKINode Title="IOC.FW.Core.Logging.LogFactory class" Url="html/3f68b20c-4c51-2a56-e9c0-7fff2a097892.htm" />
+  <HelpKINode Title="IOC.FW.Core.ParameterRebinder class" Url="html/926f6eba-6c93-8285-5d10-293bdd2cf506.htm" />
   <HelpKINode Title="IOC.FW.Web namespace" Url="html/35f4e5aa-43c5-dec3-b8b8-6d5d6deb1a31.htm" />
   <HelpKINode Title="IOC.FW.Web.DeviceDetector class" Url="html/5fc0b623-14df-c0a6-1dc6-2f067c32e9d0.htm" />
   <HelpKINode Title="IOC.FW.Web.DeviceDetector.DeviceType enumeration" Url="html/d7ea4b30-35b4-594e-9c8c-43c1dbfea211.htm" />
@@ -601,8 +620,8 @@
   </HelpKINode>
   <HelpKINode Title="IPrioritySortable.Priority property" Url="html/b8def140-ed32-f931-a3ee-7f5877bb7dec.htm" />
   <HelpKINode Title="IsImage method">
-    <HelpKINode Title="Extensions.IsImage Method " Url="html/0b8d8f3e-301b-99fa-e70a-4f4f91fc8d9b.htm" />
     <HelpKINode Title="Extensions.IsImage Method " Url="html/181ad555-f67d-ac0b-74b3-c8b511f0def2.htm" />
+    <HelpKINode Title="Extensions.IsImage Method " Url="html/0b8d8f3e-301b-99fa-e70a-4f4f91fc8d9b.htm" />
   </HelpKINode>
   <HelpKINode Title="IsReusable property">
     <HelpKINode Title="Thumb.IsReusable Property " Url="html/6eb793f4-5fb4-f778-33d4-16d71890f1a5.htm" />
@@ -677,6 +696,8 @@
   </HelpKINode>
   <HelpKINode Title="NonCacheAttribute.NonCacheAttribute constructor" Url="html/0ea9abc1-c88e-3850-e2d4-0bc4c44a813c.htm" />
   <HelpKINode Title="NonCacheAttribute.OnActionExecuting method" Url="html/f43e7a39-7e51-6a6b-8dd4-31f82ec3cabd.htm" />
+  <HelpKINode Title="Not(Of T) method" Url="html/293aae0e-0b16-d8c4-5a4a-f8d24b912984.htm" />
+  <HelpKINode Title="Not&lt;T&gt; method" Url="html/293aae0e-0b16-d8c4-5a4a-f8d24b912984.htm" />
   <HelpKINode Title="NotFoundPath property" Url="html/fc37eaf8-6509-10fb-c365-9ab99e2cca54.htm" />
   <HelpKINode Title="OnActionExecuting method" Url="html/f43e7a39-7e51-6a6b-8dd4-31f82ec3cabd.htm" />
   <HelpKINode Title="OnAuthorization method" Url="html/ed320ad7-edc7-c2dd-acc2-f7c7ddcb0fe6.htm" />
@@ -689,6 +710,8 @@
   </HelpKINode>
   <HelpKINode Title="OnModelCreating method" Url="html/f3deca9b-1fd1-f79d-dab3-2e91d9bd16f1.htm" />
   <HelpKINode Title="OpenConnection method" Url="html/e22277f6-5e60-2482-f8fe-9d2346a4bea2.htm" />
+  <HelpKINode Title="Or(Of T) method" Url="html/78897643-741a-ad19-e1b1-95c743b534a3.htm" />
+  <HelpKINode Title="Or&lt;T&gt; method" Url="html/78897643-741a-ad19-e1b1-95c743b534a3.htm" />
   <HelpKINode Title="ORM class">
     <HelpKINode Title="ORM Class" Url="html/d4d02801-1ce1-1d80-eaa2-e823217ed86a.htm" />
     <HelpKINode Title="about ORM class" Url="html/d4d02801-1ce1-1d80-eaa2-e823217ed86a.htm" />
@@ -699,6 +722,8 @@
   <HelpKINode Title="ORM.GetModel&lt;TNewModel&gt; method" Url="html/cb79198e-fe11-4af0-ea12-dc974bcbb93f.htm" />
   <HelpKINode Title="ORM.GetProperties method" Url="html/82a41c16-fce7-43c0-1d85-b121b84451dd.htm" />
   <HelpKINode Title="ORM.ORM constructor" Url="html/c3ba74e6-7ddb-34ee-e959-d08f5652f4b3.htm" />
+  <HelpKINode Title="OrNot(Of T) method" Url="html/638b2f3f-72e1-6508-881a-b5329d2a8a51.htm" />
+  <HelpKINode Title="OrNot&lt;T&gt; method" Url="html/638b2f3f-72e1-6508-881a-b5329d2a8a51.htm" />
   <HelpKINode Title="Page field" Url="html/6d069765-ce4b-c4f1-4492-c9bd89acddf4.htm" />
   <HelpKINode Title="PageRange field" Url="html/33c6fdce-9c35-9b2d-9694-9756274a78d5.htm" />
   <HelpKINode Title="Paginator class">
@@ -725,6 +750,15 @@
   <HelpKINode Title="Paginator.TotalPages field" Url="html/b26d43d3-5e19-3e64-6664-290a22127d4b.htm" />
   <HelpKINode Title="Paginator.Url field" Url="html/7e4c0be6-9f3a-ef54-5781-600e2fd85c07.htm" />
   <HelpKINode Title="Paginator.UrlParams field" Url="html/37dea6f4-8f08-a3a4-7f84-8869da470249.htm" />
+  <HelpKINode Title="ParameterRebinder class">
+    <HelpKINode Title="ParameterRebinder Class" Url="html/926f6eba-6c93-8285-5d10-293bdd2cf506.htm" />
+    <HelpKINode Title="about ParameterRebinder class" Url="html/926f6eba-6c93-8285-5d10-293bdd2cf506.htm" />
+    <HelpKINode Title="constructor" Url="html/76819efb-a97a-e01d-1cdd-463f01c2ae5c.htm" />
+    <HelpKINode Title="methods" Url="html/e9c311a8-309c-4844-3930-17bbfa80955f.htm" />
+  </HelpKINode>
+  <HelpKINode Title="ParameterRebinder.ParameterRebinder constructor" Url="html/76819efb-a97a-e01d-1cdd-463f01c2ae5c.htm" />
+  <HelpKINode Title="ParameterRebinder.ReplaceParameters method" Url="html/305bb765-49d6-5a2a-3160-89f3f8d96332.htm" />
+  <HelpKINode Title="ParameterRebinder.VisitParameter method" Url="html/ed5ed7a1-4f13-821c-8cd4-71dd69bb8718.htm" />
   <HelpKINode Title="ParseAuthorizationHeader method">
     <HelpKINode Title="BasicAuthenticationFilter.ParseAuthorizationHeader Method " Url="html/9d20ea95-5834-40a1-4310-1ceea738bdab.htm" />
     <HelpKINode Title="BasicAuthenticationHandler.ParseAuthorizationHeader Method " Url="html/357d0a4f-0704-7930-38ae-9c051178ad95.htm" />
@@ -750,6 +784,7 @@
   <HelpKINode Title="RegisterModules method" Url="html/155a3a96-d796-3c36-539d-c76eb92bb4fe.htm" />
   <HelpKINode Title="RegisterWebApi method" Url="html/c37e359b-e2a2-00ec-4257-cae13d8939fe.htm" />
   <HelpKINode Title="RemoveSpecialChars method" Url="html/fc2ab204-24a9-841d-dea2-87f5f478865f.htm" />
+  <HelpKINode Title="ReplaceParameters method" Url="html/305bb765-49d6-5a2a-3160-89f3f8d96332.htm" />
   <HelpKINode Title="ReplaceSpecialChars method" Url="html/82d056ce-399a-44b7-44b7-ca36296b4829.htm" />
   <HelpKINode Title="Repository(Of TModel) class">
     <HelpKINode Title="Repository(TModel) Class" Url="html/aa21e10d-3411-9398-06a6-e34dece071b0.htm" />
@@ -976,6 +1011,7 @@
     <HelpKINode Title="1.0.0.0" Url="html/dc3a90c4-cf59-49a8-ac27-de6551d750b8.htm" />
     <HelpKINode Title="history" Url="html/2dbfee8f-1367-4463-ba59-5e0c99fd78c0.htm" />
   </HelpKINode>
+  <HelpKINode Title="VisitParameter method" Url="html/ed5ed7a1-4f13-821c-8cd4-71dd69bb8718.htm" />
   <HelpKINode Title="Welcome" Url="html/6218875c-2dbd-4069-9f04-470b5dc752fd.htm" />
   <HelpKINode Title="_dbQuery field" Url="html/efd3b4d0-8905-4dd7-e058-d3707ed21648.htm" />
 </HelpKI>

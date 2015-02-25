@@ -14,7 +14,8 @@ namespace IOC.FW.Core.Abstraction.DAO
     /// Interface responsável por padronizar DAOs de projetos
     /// </summary>
     /// <typeparam name="TModel">Tipo da classe modelo</typeparam>
-    public interface IBaseDAO<TModel> : IBaseBusiness<TModel>
+    public interface IBaseDAO<TModel> 
+        : IBaseBusiness<TModel>
         where TModel: class, new()
     {
         /// <summary>
