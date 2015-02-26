@@ -1,0 +1,11 @@
+DROP TABLE IF EXISTS Log;
+		
+CREATE TABLE dbo.Log ( 
+		LogId 					INTEGER         			NOT NULL PRIMARY KEY AUTOINCREMENT
+	,	Date					DATETIME					NOT NULL DEFAULT (DATETIME('NOW', 'LOCALTIME'))
+	,	Thread 				VARCHAR(255) 			NOT NULL 
+	,	Level					VARCHAR(20) 			NOT NULL
+	,	Logger 				VARCHAR(255) 			NOT NULL
+	,	Message 			VARCHAR(4000) 		NOT NULL 
+	,	StackTrace 		VARCHAR(4000) 				 NULL 
+)

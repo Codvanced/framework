@@ -5,7 +5,7 @@ using System.Text;
 using System.Linq.Expressions;
 using System.Data.Entity;
 using System.Data;
-using IOC.FW.Core.Abstraction.Miscellanous;
+using IOC.FW.Core.Abstraction.Miscellaneous;
 using IOC.FW.Core.Abstraction.Business;
 
 namespace IOC.FW.Core.Abstraction.DAO

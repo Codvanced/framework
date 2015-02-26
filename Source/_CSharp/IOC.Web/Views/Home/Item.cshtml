@@ -1,0 +1,35 @@
+﻿@model IOC.Model.Noticia
+@{
+    ViewBag.Title = "";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@using (Html.BeginForm("Item", "Home", FormMethod.Post))
+{
+    <h3>Edição de notícias</h3>
+    
+    @Html.ValidationSummary(false)
+    @Html.AntiForgeryToken()
+    
+    <p>
+        @Html.LabelFor(Model => Model.Titulo)
+        @Html.EditorFor(Model => Model.Titulo, null, "titulo")
+	</p>
+	<p>
+        @Html.LabelFor(Model => Model.Descricao)
+        @Html.EditorFor(Model => Model.Descricao, null, "descricao")
+	</p>	
+    <p>
+        @Html.LabelFor(Model => Model.DataNoticia)
+        @Html.EditorFor(Model => Model.DataNoticia, null, "data")
+	</p>
+	<p>
+        @Html.LabelFor(Model => Model.Autor)
+        @Html.EditorFor(Model => Model.Autor, null, "autor")
+	</p>
+
+	<p class="botoes">
+		<input type="button" value="Cancelar" onclick="javascript:window.location.href = '@Url.Content("~/Home/Index")'" />
+		<input type="submit" value="Salvar" />		
+	</p>
+}

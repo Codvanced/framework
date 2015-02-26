@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Linq.Expressions;
 using System.Data.Entity;
-using IOC.FW.Core.Abstraction.Miscellanous;
+using IOC.FW.Core.Abstraction.Miscellaneous;
 
 namespace IOC.FW.Core.Abstraction.Business
 {

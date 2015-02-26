@@ -72,7 +72,7 @@ namespace IOC.Test
             Assert.NotNull(foundNoticia);
             Assert.Greater(foundNoticia.Count, 0);
 
-            foundNoticia[0].Autor = "Modified";
+            foundNoticia[0].Autor = "Modified 1";
             //foundNoticia[0].DataAlteracao = DateTime.Now;
 
             business.Update(foundNoticia[0]);
@@ -82,13 +82,16 @@ namespace IOC.Test
                 noticia => noticia.IdNoticia == idNoticia
             );
 
-            updatedNoticia.Autor = "Modified";
+            updatedNoticia.Autor = "Modified 2";
 
             Expression<Func<Noticia, object>>[] expr = { n => n.Autor };
             business.Update(
-                updatedNoticia, 
+                updatedNoticia,
                 expr
             );
+
+            //TODO: Terminar implementação
+            //updatedNoticia.mapUpdate = new Expression<Func<Noticia, object>>[] { n => n.Autor };
 
             Assert.NotNull(updatedNoticia);
             Assert.AreEqual(updatedNoticia.Autor, foundNoticia[0].Autor);

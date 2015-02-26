@@ -6,7 +6,7 @@ using IOC.FW.Core.Factory;
 using IOC.FW.Core.Abstraction.Business;
 using IOC.FW.Core.Abstraction.DAO;
 using System.Linq.Expressions;
-using IOC.FW.Core.Abstraction.Miscellanous;
+using IOC.FW.Core.Abstraction.Miscellaneous;
 
 namespace IOC.FW.Core.Base
 {

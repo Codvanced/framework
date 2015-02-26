@@ -4,7 +4,8 @@ using System.Linq;
 using System.Text;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
-using IOC.FW.Core.Abstraction.Miscellanous;
+using IOC.FW.Core.Abstraction.Miscellaneous;
+using System.Linq.Expressions;
 
 namespace IOC.Model
 {
@@ -57,5 +58,7 @@ namespace IOC.Model
 
         [Column("Prioridade")]
         public long Priority { get; set; }
+
+        //public Expression<Func<Noticia, object>>[] mapUpdate { get; set; }
     }
 }

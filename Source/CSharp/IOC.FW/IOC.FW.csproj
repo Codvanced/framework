@@ -116,7 +116,7 @@
     <Compile Include="Configuration\Injection\InjectionFactoryConfigurationElement.cs" />
     <Compile Include="Configuration\Thumb\ThumbElement.cs" />
     <Compile Include="Core\Abstraction\Binding\IModule.cs" />
-    <Compile Include="Core\Abstraction\Miscellanous\IPrioritySortable.cs" />
+    <Compile Include="Core\Abstraction\Miscellaneous\IPrioritySortable.cs" />
     <Compile Include="Core\Abstraction\Model\IBaseModel.cs" />
     <Compile Include="Core\Abstraction\Model\IModelCreating.cs" />
     <Compile Include="Core\Base\BaseBusiness.cs" />
@@ -134,15 +134,7 @@
     <Compile Include="Core\Enumerators.cs" />
     <Compile Include="Core\Database\ORM.cs" />
     <Compile Include="Core\Database\Repository.cs" />
-<<<<<<< HEAD
-<<<<<<< HEAD
     <Compile Include="Core\Extensions.cs" />
-=======
-    <Compile Include="Core\Extensions\Extensions.cs" />
->>>>>>> 77fa2ca... Implementação de extensions de operações entre expressions
-=======
-    <Compile Include="Core\Extensions.cs" />
->>>>>>> f898fdb... remanejamento de pasta
     <Compile Include="Core\Extensions\ParameterRebinder.cs" />
     <Compile Include="Core\Factory\InstanceFactory.cs" />
     <Compile Include="Core\Factory\SimpleInjectionModule.cs" />

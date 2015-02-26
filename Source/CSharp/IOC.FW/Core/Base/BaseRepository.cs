@@ -13,7 +13,7 @@ using System.Data;
 using System.ComponentModel.DataAnnotations.Schema;
 using IOC.FW.Core.Database;
 using System.ComponentModel.DataAnnotations;
-using IOC.FW.Core.Abstraction.Miscellanous;
+using IOC.FW.Core.Abstraction.Miscellaneous;
 using System.Reflection;
 
 namespace IOC.FW.Core.Base
@@ -179,9 +179,12 @@ namespace IOC.FW.Core.Base
                         ((IBaseModel)item).Updated = DateTime.Now;
                     }
 
-                    var modelFound = context.Set<TModel>().Local.SingleOrDefault(
-                        e => e.Equals(item)
-                    );
+                    var modelFound = context
+                        .Set<TModel>()
+                        .Local
+                        .SingleOrDefault(
+                            e => e.Equals(item)
+                        );
 
                     if (modelFound != null)
                     {
@@ -198,7 +201,10 @@ namespace IOC.FW.Core.Base
             }
         }
 
-        public void Update(TModel item, Expression<Func<TModel, object>>[] properties)
+        public void Update(
+            TModel item,
+            Expression<Func<TModel, object>>[] properties
+        )
         {
             using (var context = new Repository<TModel>(this.nameOrConnectionString))
             {
@@ -207,15 +213,52 @@ namespace IOC.FW.Core.Base
                     ((IBaseModel)item).Updated = DateTime.Now;
                 }
 
+                var modelFound = context
+                    .Set<TModel>()
+                    .Local
+                    .SingleOrDefault(
+                        e => e.Equals(item)
+                    );
+
+                if (modelFound != null)
+                {
+                    var attachedEntry = context.Entry(modelFound);
+                    attachedEntry.CurrentValues.SetValues(item);
+                }
+                else
+                {
+                    context.DbObject.Attach(item);
+                }
+
                 foreach (var property in properties)
                 {
-                    var propertyName = GetPropertyName(property);
-
-                    context.DbObject.Attach(item);
-                    context.Entry<TModel>(item).Property(propertyName).IsModified = true;
+                    context.Entry<TModel>(item).Property(property).IsModified = true;
                 }
 
                 context.SaveChanges();
+            }
+        }
+
+        private void AttachedEntry(
+            TModel item,
+            Repository<TModel> context
+        )
+        {
+            var modelFound = context
+                .Set<TModel>()
+                .Local
+                .SingleOrDefault(
+                    m => m.Equals(item)
+                );
+
+            if (modelFound != default(DbEntityEntry<TModel>))
+            {
+                var entry = context.Entry<TModel>(modelFound);
+                entry.CurrentValues.SetValues(item);
+            }
+            else
+            {
+                context.DbObject.Attach(item);
             }
         }
 
@@ -518,14 +561,9 @@ namespace IOC.FW.Core.Base
                 {
                     var item = items[i];
                     item.Priority = Int64.MaxValue - i;
-
-                    var propName = GetPropertyName(() => item.Priority);
-
-                    if (!string.IsNullOrEmpty(propName))
-                    {
-                        context.DbObject.Attach(item);
-                        context.Entry<TModel>(item).Property(propName).IsModified = true;
-                    }
+                    
+                    context.DbObject.Attach(item);
+                    context.Entry<TModel>(item).Property(p => item.Priority).IsModified = true;
                 }
 
                 context.SaveChanges();
@@ -600,16 +638,6 @@ namespace IOC.FW.Core.Base
             return context._dbQuery
                    .AsNoTracking()
                    .LongCount(where);
-        }
-
-        private static string GetPropertyName<T>(Expression<Func<T>> propertyExpression)
-        {
-            return (propertyExpression.Body as MemberExpression).Member.Name;
-        }
-
-        private static string GetPropertyName<T>(Expression<T> propertyExpression)
-        {
-            return (propertyExpression.Body as MemberExpression).Member.Name;
         }
     }
 }
