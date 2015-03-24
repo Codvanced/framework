@@ -42,7 +42,6 @@ namespace IOC.FW.Core.Images
                 g.InterpolationMode = InterpolationMode.HighQualityBicubic;
                 g.SmoothingMode = SmoothingMode.HighQuality;
                 g.PixelOffsetMode = PixelOffsetMode.HighQuality;
-                g.Clear(Color.White);
 
                 g.DrawImage(img, -(p.X), -(p.Y), thumb.Width, thumb.Height);
             }
