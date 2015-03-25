@@ -57,7 +57,10 @@ namespace IOC.FW.Core.Base
         /// <param name="dbSet">Objeto de Entity Framework o qual permite acesso a uma tabela vinculada a uma Model pelo attribute "TableAttribute"</param>
         /// <param name="navigationProperties">Objetos de uma Model referentes a chaves estrangeiras no database</param>
         /// <returns>Objeto utilizado na query já possuindo a referencia relacional de chave estrangeira</returns>
-        private IQueryable<TModel> IncludeReference(DbSet<TModel> dbSet, params Expression<Func<TModel, object>>[] navigationProperties)
+        private IQueryable<TModel> IncludeReference(
+            DbSet<TModel> dbSet,
+            params Expression<Func<TModel, object>>[] navigationProperties
+        )
         {
             IQueryable<TModel> query = dbSet;
                 
@@ -178,7 +181,7 @@ namespace IOC.FW.Core.Base
                     {
                         ((IBaseModel)item).Updated = DateTime.Now;
                     }
-
+                    
                     var modelFound = context
                         .Set<TModel>()
                         .Local
@@ -193,7 +196,8 @@ namespace IOC.FW.Core.Base
                     }
                     else
                     {
-                        context.Entry(item).State = EntityState.Modified;
+                        //context.DbObject.Attach(item);
+                        context.Entry<TModel>(item).State = EntityState.Modified;
                     }
                 }
 
@@ -296,7 +300,11 @@ namespace IOC.FW.Core.Base
         /// <param name="parameters">Dicionaário com os parâmetros e valores a incluir</param>
         /// <param name="cmdType">Tipo de execução: query/procedure</param>
         /// <returns>Implementação de listagem contendo os resultados obtidos</returns>
-        public IList<TModel> ExecuteQuery(string sql, Dictionary<string, object> parameters = null, CommandType cmdType = CommandType.Text)
+        public IList<TModel> ExecuteQuery(
+            string sql,
+            Dictionary<string, object> parameters = null,
+            CommandType cmdType = CommandType.Text
+        )
         {
             List<TModel> list = null;
             
@@ -326,7 +334,11 @@ namespace IOC.FW.Core.Base
         /// <param name="parameters">Lista de tupla com a direção dos parâmetros e valores a incluir</param>
         /// <param name="cmdType">Tipo de execução: query/procedure</param>
         /// <returns>Objeto com o resultado obtido</returns>
-        public IList<TModel> ExecuteQuery(string sql, List<Tuple<ParameterDirection, string, object>> parametersWithDirection, CommandType cmdType)
+        public IList<TModel> ExecuteQuery(
+            string sql,
+            List<Tuple<ParameterDirection, string, object>> parametersWithDirection,
+            CommandType cmdType
+        )
         {
             List<TModel> list = null;
 
@@ -377,7 +389,11 @@ namespace IOC.FW.Core.Base
         /// <param name="parameters">Dicionaário com os parâmetros e valores a incluir</param>
         /// <param name="cmdType">Tipo de execução: query/procedure</param>
         /// <returns>Objeto contendo o retorno do Scalar</returns>
-        public object ExecuteScalar(string sql, Dictionary<string, object> parameters = null, CommandType cmdType = CommandType.Text)
+        public object ExecuteScalar(
+            string sql,
+            Dictionary<string, object> parameters = null,
+            CommandType cmdType = CommandType.Text
+        )
         {
             object result = null;
 
@@ -483,7 +499,11 @@ namespace IOC.FW.Core.Base
         /// <param name="sql">Comando a ser executado (Query ou procedure)</param>
         /// <param name="cmdType">Tipo do comando</param>
         /// <returns>Objeto de command</returns>
-        private DbCommand CreateCommand(DbConnection conn, string sql, CommandType cmdType = CommandType.Text)
+        private DbCommand CreateCommand(
+            DbConnection conn,
+            string sql,
+            CommandType cmdType = CommandType.Text
+        )
         {
             DbCommand comm = null;
 
@@ -505,7 +525,10 @@ namespace IOC.FW.Core.Base
         /// </summary>
         /// <param name="comm">Command a inserir os paramtros</param>
         /// <param name="parameters">Dicionario de parametros a inserir</param>
-        private void SetParameter(DbCommand comm, Dictionary<string, object> parameters = null)
+        private void SetParameter(
+            DbCommand comm,
+            Dictionary<string, object> parameters = null
+        )
         {
             if (comm != null 
                 && parameters != null 
@@ -528,7 +551,10 @@ namespace IOC.FW.Core.Base
         /// </summary>
         /// <param name="comm">Command a inserir os paramtros</param>
         /// <param name="parameters">Lista de parametros a inserir</param>
-        private void SetParameter(DbCommand comm, List<Tuple<ParameterDirection, string, object>> parameters = null)
+        private void SetParameter(
+            DbCommand comm,
+            List<Tuple<ParameterDirection, string, object>> parameters = null
+        )
         {
             if (comm != null
                 && parameters != null
@@ -563,7 +589,9 @@ namespace IOC.FW.Core.Base
                     item.Priority = Int64.MaxValue - i;
                     
                     context.DbObject.Attach(item);
-                    context.Entry<TModel>(item).Property(p => item.Priority).IsModified = true;
+                    context.Entry<TModel>(item)
+                        .Property("Priority")
+                        .IsModified = true;
                 }
 
                 context.SaveChanges();
@@ -603,7 +631,10 @@ namespace IOC.FW.Core.Base
             return count;
         }
 
-        private int Count(Expression<Func<TModel, bool>> where, Repository<TModel> context)
+        private int Count(
+            Expression<Func<TModel, bool>> where,
+            Repository<TModel> context
+        )
         {
             return context._dbQuery
                    .AsNoTracking()
@@ -633,7 +664,10 @@ namespace IOC.FW.Core.Base
             return count;
         }
 
-        private long LongCount(Expression<Func<TModel, bool>> where, Repository<TModel> context)
+        private long LongCount(
+            Expression<Func<TModel, bool>> where,
+            Repository<TModel> context
+        )
         {
             return context._dbQuery
                    .AsNoTracking()

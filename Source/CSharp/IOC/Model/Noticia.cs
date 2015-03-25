@@ -46,6 +46,9 @@ namespace IOC.Model
         [Display(Name = "Data de Alteração")]
         public DateTime? DataAlteracao { get; set; }
 
+        [Column("Prioridade")]
+        public long Priority { get; set; }
+
         public override bool Equals(object obj)
         {
             return this.GetHashCode() == obj.GetHashCode();
@@ -55,10 +58,5 @@ namespace IOC.Model
         {
             return String.Concat(IdNoticia, Titulo, Descricao, Autor, DataNoticia).GetHashCode();
         }
-
-        [Column("Prioridade")]
-        public long Priority { get; set; }
-
-        //public Expression<Func<Noticia, object>>[] mapUpdate { get; set; }
     }
 }
