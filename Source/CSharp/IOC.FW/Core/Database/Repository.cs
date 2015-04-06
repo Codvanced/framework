@@ -29,7 +29,7 @@ namespace IOC.FW.Core.Database
         /// <summary>
         /// Constructor padrão, iniciando o Entity Framework com uma string de conexão passada por parametro
         /// </summary>
-        /// <param name="connectionString"></param>
+        /// <param name="nameOrConnectionString"></param>
         public Repository(string nameOrConnectionString)
             : base(nameOrConnectionString)
         {

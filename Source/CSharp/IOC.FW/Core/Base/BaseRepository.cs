@@ -26,6 +26,9 @@ namespace IOC.FW.Core.Base
         : IBaseDAO<TModel>
         where TModel : class, new()
     {
+        /// <summary>
+        /// Nome de conexão ou a string propriamente dita
+        /// </summary>
         private string nameOrConnectionString = string.Empty;
 
         /// <summary>
@@ -196,7 +199,6 @@ namespace IOC.FW.Core.Base
                     }
                     else
                     {
-                        //context.DbObject.Attach(item);
                         context.Entry<TModel>(item).State = EntityState.Modified;
                     }
                 }
@@ -205,6 +207,11 @@ namespace IOC.FW.Core.Base
             }
         }
 
+        /// <summary>
+        /// Implementação de método de IBaseDAO destinado a atualizar propriedades específicas de um objeto.
+        /// </summary>
+        /// <param name="item">Item a atualizar na base</param>
+        /// <param name="properties">Propriedades do objeto a atualizar na base</param>
         public void Update(
             TModel item,
             Expression<Func<TModel, object>>[] properties
@@ -240,29 +247,6 @@ namespace IOC.FW.Core.Base
                 }
 
                 context.SaveChanges();
-            }
-        }
-
-        private void AttachedEntry(
-            TModel item,
-            Repository<TModel> context
-        )
-        {
-            var modelFound = context
-                .Set<TModel>()
-                .Local
-                .SingleOrDefault(
-                    m => m.Equals(item)
-                );
-
-            if (modelFound != default(DbEntityEntry<TModel>))
-            {
-                var entry = context.Entry<TModel>(modelFound);
-                entry.CurrentValues.SetValues(item);
-            }
-            else
-            {
-                context.DbObject.Attach(item);
             }
         }
 
@@ -331,7 +315,7 @@ namespace IOC.FW.Core.Base
         /// Implementação de método de IBaseDAO destinado a executar querys customizadas e procedures.
         /// </summary>
         /// <param name="sql">Query ou nome de procedure</param>
-        /// <param name="parameters">Lista de tupla com a direção dos parâmetros e valores a incluir</param>
+        /// <param name="parametersWithDirection">Lista de tupla com a direção dos parâmetros e valores a incluir</param>
         /// <param name="cmdType">Tipo de execução: query/procedure</param>
         /// <returns>Objeto com o resultado obtido</returns>
         public IList<TModel> ExecuteQuery(
@@ -598,28 +582,38 @@ namespace IOC.FW.Core.Base
             }
         }
 
+        /// <summary>
+        /// Implementacao de método para devolver um objeto de model
+        /// </summary>
+        /// <returns>Retorna novo objeto</returns>
         public TModel Model()
         {
             return new TModel();
         }
 
+        /// <summary>
+        /// Implementacao de método para devolver uma listade de model
+        /// </summary>
+        /// <returns>Retorna nova lista</returns>
         public List<TModel> List()
         {
             return new List<TModel>();
         }
 
         /// <summary>
-        /// Retorna a contagem de elementos
+        /// Implementação de método para retornar um count da tabela vinculada ao objeto
         /// </summary>
+        /// <returns>Quantidade de registros</returns>
         public int Count()
         {
             return this.Count(m => true);
         }
 
         /// <summary>
-        /// Retorna a contagem de elementos
+        /// Implementação de método para retornar um count da tabela vinculada ao objeto
         /// </summary>
-        /// <param name="where">Filtro</param>
+        /// <param name="where">Filtro de busca</param>
+        /// <returns>Quantidade de registros</returns>
         public int Count(Expression<Func<TModel, bool>> where)
         {
             int count;
@@ -631,6 +625,10 @@ namespace IOC.FW.Core.Base
             return count;
         }
 
+        /// <summary>
+        /// Implementação de método para retornar um count da tabela vinculada ao objeto
+        /// </summary>
+        /// <returns>Quantidade de registros</returns>
         private int Count(
             Expression<Func<TModel, bool>> where,
             Repository<TModel> context
@@ -642,17 +640,19 @@ namespace IOC.FW.Core.Base
         }
 
         /// <summary>
-        /// Retorna a contagem de elementos
+        /// Implementação de método para retornar um count da tabela vinculada ao objeto
         /// </summary>
+        /// <returns>Quantidade de registros</returns>
         public long LongCount()
         {
             return this.LongCount(m => true);
         }
 
         /// <summary>
-        /// Retorna a contagem de elementos
+        /// Implementação de método para retornar um count da tabela vinculada ao objeto
         /// </summary>
-        /// <param name="where">Filtro</param>
+        /// <param name="where">Filtro de busca</param>
+        /// <returns>Quantidade de registros</returns>
         public long LongCount(Expression<Func<TModel, bool>> where)
         {
             long count;
@@ -664,6 +664,12 @@ namespace IOC.FW.Core.Base
             return count;
         }
 
+        /// <summary>
+        /// Método auxiliar para retornar um count da tabela vinculada ao objeto e contexto
+        /// </summary>
+        /// <param name="where">Filtro de busca</param>
+        /// <param name="context">Contexto de repositorio para a execução da query</param>
+        /// <returns>Quantidade de registros</returns>
         private long LongCount(
             Expression<Func<TModel, bool>> where,
             Repository<TModel> context

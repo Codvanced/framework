@@ -77,7 +77,7 @@ namespace IOC.FW.Core.Abstraction.DAO
         /// Implementação de método de IBaseDAO destinado a executar querys customizadas e procedures.
         /// </summary>
         /// <param name="sql">Query ou nome de procedure</param>
-        /// <param name="parameters">Lista de tupla com a direção dos parâmetros e valores a incluir</param>
+        /// <param name="parametersWithDirection">Lista de tupla com a direção dos parâmetros e valores a incluir</param>
         /// <param name="cmdType">Tipo de execução: query/procedure</param>
         /// <returns>Objeto com o resultado obtido</returns>
         IList<TModel> ExecuteQuery(

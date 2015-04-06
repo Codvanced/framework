@@ -18,6 +18,9 @@ namespace IOC.FW.Core.Base
         : IBaseBusiness<TModel>
         where TModel : class, new()
     {
+        /// <summary>
+        /// Objeto de IBaseDao, usado para acessar os metodos de DAO
+        /// </summary>
         private readonly IBaseDAO<TModel> _dao;
 
         /// <summary>
@@ -106,6 +109,11 @@ namespace IOC.FW.Core.Base
             this._dao.Update(items);
         }
 
+        /// <summary>
+        /// Implementação de método de IBaseDAO destinado a atualizar propriedades específicas de um objeto.
+        /// </summary>
+        /// <param name="item">Item a atualizar na base</param>
+        /// <param name="properties">Propriedades do objeto a atualizar na base</param>
         public void Update(TModel item, Expression<Func<TModel, object>>[] properties)
         {
             this._dao.Update(item, properties);
@@ -130,22 +138,39 @@ namespace IOC.FW.Core.Base
             this._dao.UpdatePriority<TPriorityModel>(items);
         }
 
-
+        /// <summary>
+        /// Implementação de método para retornar um count da tabela vinculada ao objeto
+        /// </summary>
+        /// <returns>Quantidade de registros</returns>
         public int Count()
         {
             return this.Count(m => true);
         }
 
+        /// <summary>
+        /// Implementação de método para retornar um count da tabela vinculada ao objeto
+        /// </summary>
+        /// <param name="where">Filtro de busca</param>
+        /// <returns>Quantidade de registros</returns>
         public int Count(Expression<Func<TModel, bool>> where)
         {
             return this._dao.Count(where);
         }
 
+        /// <summary>
+        /// Implementação de método para retornar um count da tabela vinculada ao objeto
+        /// </summary>
+        /// <returns>Quantidade de registros</returns>
         public long LongCount()
         {
             return this.LongCount(m => true);
         }
 
+        /// <summary>
+        /// Implementação de método para retornar um count da tabela vinculada ao objeto
+        /// </summary>
+        /// <param name="where">Filtro de busca</param>
+        /// <returns>Quantidade de registros</returns>
         public long LongCount(Expression<Func<TModel, bool>> where)
         {
             return this._dao.LongCount(where);

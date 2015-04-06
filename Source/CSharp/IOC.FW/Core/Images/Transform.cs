@@ -78,7 +78,7 @@ namespace IOC.FW.Core.Images
         /// <summary>
         /// Método responsável por transformar objetos de image em memory stream
         /// </summary>
-        /// <param name="img">Objeto com a imagem para a conversão</param>
+        /// <param name="image">Objeto com a imagem para a conversão</param>
         /// <returns>Objeto de memory stream</returns>
         public static MemoryStream Convert(Image image)
         {
