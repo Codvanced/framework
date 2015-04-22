@@ -38,7 +38,7 @@ Neste momento você verá divisões de pastas para cada "camada" do projeto, exi
 
 1.  Project Configuration
   * conterá todas as configurações de bindings (abstração para classe concreta) para o Container usado fazer a injeção de dependências
-  * No projeto de bindings, terão duas estruturas de injeção, business module e dao module. Para incluir no processo de resolução e criação de objetos, basta incluir a seguinte linha nos arquivos especificos.
+  * No projeto de bindings, terão duas estruturas de injeção, business module e dao module. Para incluir no processo de resolução e criação de objetos, basta incluir a seguinte linha nos arquivos especificos:
 
   ```cs
     public void SetBinding(Container container)
@@ -68,7 +68,7 @@ Neste momento você verá divisões de pastas para cada "camada" do projeto, exi
   }
   ```
   
-  ##OBS ULTRA IMPORTANTE 1:
+  ###OBS ULTRA IMPORTANTE 1:
   Se o que você precisa já se encontra nas business padrões, não precisará criar abstração alguma, basta incluir sua model como Generic Type da BaseBusiness e pronto!
   
   Ex:
@@ -108,7 +108,7 @@ Neste momento você verá divisões de pastas para cada "camada" do projeto, exi
   }
 ```
   
-  ##OBS ULTRA IMPORTANTE 2:
+  ###OBS ULTRA IMPORTANTE 2:
   A BaseBusiness e BaseRepository tem todos os métodos padrões para um CRUD genérico, por isso incluímos estas extensões de classes nas abstrações. Isso não é necessário, é apenas um facilitador, para que você possa criar suas próprias regras customizadas sem ser obrigado a parar de utilizar a camada de ORM escolhido.
   
   
