@@ -5,8 +5,8 @@ A ideia é agilizar ainda mais o processo de concepção e estruturação de um 
 
 Para isso desconstruímos alguns raciocínios antiquados, como deixar o desenvolvedor preso a um fluxo de programação contínuo onde ele acaba se vendo preso e engessado, e optamos por um estilo mais flexível e maleável.
 
-Ferramental escolhido
-=======================
+##Ferramental escolhido
+
 Para tornar possível tudo isto, optamos por utilizar um ORM de mercado, um container para IoC, um validador com interface fluente, um logger flexível e muito bom senso!
 
 1.  [Entity Framework 6](https://www.nuget.org/packages/EntityFramework)
@@ -15,8 +15,9 @@ Para tornar possível tudo isto, optamos por utilizar um ORM de mercado, um cont
 3.  [FluentValidation](https://www.nuget.org/packages/FluentValidation/)
 4.  [log4net](https://www.nuget.org/packages/log4net/)
 
-Seja um programador mais feliz e comece a usar
-=================
+
+##Seja um programador mais feliz e comece a usar
+
 Chega de papo e vamos ao que interessa de verdade, faça um clone deste repositório e veja na raiz uma pasta chamada: 
 * Release
   * Scaffold
@@ -67,7 +68,7 @@ Neste momento você verá divisões de pastas para cada "camada" do projeto, exi
   }
   ```
   
-  #OBS ULTRA IMPORTANTE 1:#
+  ##OBS ULTRA IMPORTANTE 1:
   Se o que você precisa já se encontra nas business padrões, não precisará criar abstração alguma, basta incluir sua model como Generic Type da BaseBusiness e pronto!
   
   Ex:
@@ -107,7 +108,7 @@ Neste momento você verá divisões de pastas para cada "camada" do projeto, exi
   }
 ```
   
-  #OBS ULTRA IMPORTANTE 2:#
+  ##OBS ULTRA IMPORTANTE 2:
   A BaseBusiness e BaseRepository tem todos os métodos padrões para um CRUD genérico, por isso incluímos estas extensões de classes nas abstrações. Isso não é necessário, é apenas um facilitador, para que você possa criar suas próprias regras customizadas sem ser obrigado a parar de utilizar a camada de ORM escolhido.
   
   
@@ -138,8 +139,8 @@ Neste momento você verá divisões de pastas para cada "camada" do projeto, exi
   var business = InstanceFactory.GetImplementation<IBaseBusiness<Person>>();  
 ```
   
-Conclusão
-=======================
+##Conclusão
+
 Com isso tudo, estamos conseguindo criar projetos com mais qualidade, agilidade e testabilidade já que cada camada pode ser injetada independentemente.
 
 É isso, good coding!
