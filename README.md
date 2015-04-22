@@ -1,6 +1,4 @@
 #Codvanced Framework (a.k.a IOC FW)
-
-
 **Simplesmente um framework baseado em inversão de controle.**
 
 A ideia é agilizar ainda mais o processo de concepção e estruturação de um projeto mantendo os princípíos que afirmam a orientação a objetos descritos como [SOLID](http://en.wikipedia.org/wiki/SOLID_%28object-oriented_design%29).
@@ -52,7 +50,7 @@ Neste momento você verá divisões de pastas para cada "camada" do projeto, exi
   * para criar uma abstração nova, siga este exemplo:
   
   Para business:
-  ```
+  ```cs
   public abstract class AbstractPersonBusiness : BaseBusiness<Person>
   {
       public AbstractPersonBusiness(AbstractPersonDAO dao): base(dao)
