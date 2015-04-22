@@ -1,9 +1,9 @@
-Codvanced Framework (a.k.a IOC FW)
-====================
+#Codvanced Framework (a.k.a IOC FW)
+
 
 **Simplesmente um framework baseado em inversão de controle.**
 
-A ideia é agilizar ainda mais o processo de concepção e estruturação de um projeto mantendo os princípíos que afirmam a orientação a objetos descritos como SOLID (http://en.wikipedia.org/wiki/SOLID_%28object-oriented_design%29).
+A ideia é agilizar ainda mais o processo de concepção e estruturação de um projeto mantendo os princípíos que afirmam a orientação a objetos descritos como [SOLID](http://en.wikipedia.org/wiki/SOLID_%28object-oriented_design%29).
 
 Para isso desconstruímos alguns raciocínios antiquados, como deixar o desenvolvedor preso a um fluxo de programação contínuo onde ele acaba se vendo preso e engessado, e optamos por um estilo mais flexível e maleável.
 
@@ -11,11 +11,11 @@ Ferramental escolhido
 =======================
 Para tornar possível tudo isto, optamos por utilizar um ORM de mercado, um container para IoC, um validador com interface fluente, um logger flexível e muito bom senso!
 
-1.  Entity Framework 6 (https://www.nuget.org/packages/EntityFramework)
+1.  [Entity Framework 6](https://www.nuget.org/packages/EntityFramework)
   * Code first, criando a base na mão e com lazy loading desligado
-2.  SimpleInjector (https://www.nuget.org/packages/SimpleInjector/)
-3.  FluentValidation (https://www.nuget.org/packages/FluentValidation/)
-4.  log4net (https://www.nuget.org/packages/log4net/)
+2.  [SimpleInjector](https://www.nuget.org/packages/SimpleInjector/)
+3.  [FluentValidation](https://www.nuget.org/packages/FluentValidation/)
+4.  [log4net](https://www.nuget.org/packages/log4net/)
 
 Seja um programador mais feliz e comece a usar
 =================
@@ -28,7 +28,9 @@ Chega de papo e vamos ao que interessa de verdade, faça um clone deste reposit�
   * Help Documentation
 
 Para criar um projeto, use o seguinte comando:
-> create-project C:\desenvolvimento\projeto\local_do_projeto nome_do_projeto nome_do_cliente 
+
+>create-project C:\desenvolvimento\projeto\local_do_projeto nome_do_projeto nome_do_cliente 
+
 
 Agora que você já tem consigo o projeto na pasta escolhida, vamos nos familiarizar com a arquitetura...
 Para melhor entendimento, pense proximo ao design pattern de 3 camadas.
@@ -39,7 +41,7 @@ Neste momento você verá divisões de pastas para cada "camada" do projeto, exi
   * conterá todas as configurações de bindings (abstração para classe concreta) para o Container usado fazer a injeção de dependências
   * No projeto de bindings, terão duas estruturas de injeção, business module e dao module. Para incluir no processo de resolução e criação de objetos, basta incluir a seguinte linha nos arquivos especificos.
 
-  ```
+  ```cs
     public void SetBinding(Container container)
     {
       container.Register<AbstractPersonBusiness, PersonBusiness>(Lifestyle.Singleton);
@@ -59,7 +61,7 @@ Neste momento você verá divisões de pastas para cada "camada" do projeto, exi
   ```
   
   Para dao:
-  ```
+  ```cs
   public abstract class AbstractPersonDAO : BaseRepository<Person>
   {
       public AbstractPersonDAO(string connectionString = null) : base()
@@ -71,7 +73,7 @@ Neste momento você verá divisões de pastas para cada "camada" do projeto, exi
   Se o que você precisa já se encontra nas business padrões, não precisará criar abstração alguma, basta incluir sua model como Generic Type da BaseBusiness e pronto!
   
   Ex:
-  ```
+  ```cs
   using SimpleInjector;
   using IOC.Model;
   using IOC.Validation;
@@ -105,7 +107,7 @@ Neste momento você verá divisões de pastas para cada "camada" do projeto, exi
           }
       }
   }
-```
+```cs
   
   #OBS ULTRA IMPORTANTE 2:#
   A BaseBusiness e BaseRepository tem todos os métodos padrões para um CRUD genérico, por isso incluímos estas extensões de classes nas abstrações. Isso não é necessário, é apenas um facilitador, para que você possa criar suas próprias regras customizadas sem ser obrigado a parar de utilizar a camada de ORM escolhido.
@@ -118,7 +120,7 @@ Neste momento você verá divisões de pastas para cada "camada" do projeto, exi
   * Se sua aplicação não for Web ou não somente Web, não tem problema, temos uma classe que poderá também devolver depencências usando o mesmo ecossistema configurado.
   
 * Exemplo MVC 4:
-```
+```cs
   protected void Application_Start()
   {
       AreaRegistration.RegisterAllAreas();
@@ -133,7 +135,7 @@ Neste momento você verá divisões de pastas para cada "camada" do projeto, exi
   }
 ```
 * Exemplo aplicação não Web:
-```
+```cs
   var container = InstanceFactory.RegisterModules();
   var business = InstanceFactory.GetImplementation<IBaseBusiness<Person>>();  
 ```
