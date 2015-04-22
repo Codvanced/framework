@@ -105,7 +105,7 @@ Neste momento você verá divisões de pastas para cada "camada" do projeto, exi
           }
       }
   }
-```cs
+```
   
   #OBS ULTRA IMPORTANTE 2:#
   A BaseBusiness e BaseRepository tem todos os métodos padrões para um CRUD genérico, por isso incluímos estas extensões de classes nas abstrações. Isso não é necessário, é apenas um facilitador, para que você possa criar suas próprias regras customizadas sem ser obrigado a parar de utilizar a camada de ORM escolhido.
