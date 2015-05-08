@@ -55,12 +55,12 @@ namespace IOC.Test
             foundArtist.Last().Name = "Modified";
 
             business.Update(foundArtist.Last());
-            var updatedNoticia = business.SelectSingle(
-                noticia => noticia.IdArtist == foundArtist.Last().IdArtist
+            var updatedNews = business.SelectSingle(
+                n => n.IdArtist == foundArtist.Last().IdArtist
             );
 
-            Assert.NotNull(updatedNoticia);
-            Assert.AreEqual(updatedNoticia.IdArtist, foundArtist.Last().IdArtist);
+            Assert.NotNull(updatedNews);
+            Assert.AreEqual(updatedNews.IdArtist, foundArtist.Last().IdArtist);
         }
 
         [Test, TestCaseSource("Configure")]
@@ -76,11 +76,11 @@ namespace IOC.Test
             Assert.Greater(foundArtist.Count, 0);
 
             business.Delete(foundArtist.Last());
-            var updatedNoticia = business.SelectSingle(
-                noticia => noticia.IdArtist == foundArtist.Last().IdArtist
+            var updatedNews = business.SelectSingle(
+                n => n.IdArtist == foundArtist.Last().IdArtist
             );
 
-            Assert.IsNull(updatedNoticia);
+            Assert.IsNull(updatedNews);
         }
     }
 }

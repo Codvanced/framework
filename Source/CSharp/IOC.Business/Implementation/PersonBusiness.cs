@@ -10,9 +10,9 @@ using IOC.Abstraction.DAO;
 namespace IOC.Business.Implementation
 {
     public class PersonBusiness
-        : AbstractPersonBusiness
+        : PersonBusinessAbstract
     {
-        public PersonBusiness(AbstractPersonDAO dao)
+        public PersonBusiness(PersonDAOAbstract dao)
             : base(dao)
         { }
     }

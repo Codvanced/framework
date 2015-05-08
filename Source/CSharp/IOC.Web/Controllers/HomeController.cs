@@ -18,92 +18,88 @@ namespace IOC.Web.Controllers
     public class HomeController
         : Controller
     {
-        private readonly AbstractNoticiaBusiness _business;
+        private readonly NewsBusinessAbstract _business;
 
-        public HomeController(AbstractNoticiaBusiness business)
+        public HomeController(NewsBusinessAbstract business)
         {
             this._business = business;
         }
 
-        //[HttpGet, OutputCache(Duration=10)]
         [HttpGet]
         public ActionResult Index()
         {
-
-            IList<Noticia> allNews = this._business.SelectAll();
+            IList<News> allNews = this._business.SelectAll();
             return View(allNews);
         }
 
         [HttpGet]
         public ActionResult Item(int? id)
         {
-            Noticia noticia = this._business.SelectSingle(i => i.IdNoticia == id);
-            return View(noticia);
+            News news = this._business.SelectSingle(i => i.IdNews == id);
+            return View(news);
         }
 
         [HttpGet]
         public ActionResult Delete(int id)
         {
-            var noticiaDelete = _business.SelectSingle(noticia => noticia.IdNoticia == id);
-            _business.Delete(noticiaDelete);
+            var newsDelete = _business.SelectSingle(n => n.IdNews == id);
+            _business.Delete(newsDelete);
 
             return RedirectToAction("Index");
         }
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        //[OutputCache(Duration = 10)]
         public ActionResult Item(
             int? id,
-            string titulo,
-            string descricao,
-            DateTime? data,
-            string autor
+            string title,
+            string description,
+            DateTime? date,
+            string author
         )
         {
-            
-            Noticia noticia = new Noticia();
-            noticia.Titulo = titulo;
-            noticia.Autor = autor;
-            noticia.Descricao = descricao;
+            News news = new News();
+            news.Title = title;
+            news.Author = author;
+            news.NewsDescription = description;
 
-            if (data.HasValue)
-                noticia.DataNoticia = data.Value;
+            if (date.HasValue)
+                news.NewsDate = date.Value;
 
             if (id.HasValue && id.Value > 0)
-                noticia.IdNoticia = id.Value;
+                news.IdNews = id.Value;
 
-            NoticiaValidation validation = new NoticiaValidation();
-            var validateResult = validation.Validate(noticia);
+            NewsValidation validation = new NewsValidation();
+            var validateResult = validation.Validate(news);
 
             if (validateResult.IsValid)
             {
-                var teste = _business.TitleAlreadyExists(titulo, id);
-
-                if (!_business.TitleAlreadyExists(titulo, id))
+                if (!_business.TitleAlreadyExists(title, id))
                 {
                     if (id.HasValue && id.Value > 0)
                     {
-                        var tempNoticia = this._business.SelectSingle(i => i.IdNoticia == id.Value);
+                        var newsUpdated = this._business.SelectSingle(i => i.IdNews == id.Value);
 
-                        if (tempNoticia != null)
+                        if (newsUpdated != null)
                         {
-                            tempNoticia.Titulo = noticia.Titulo;
-                            tempNoticia.Autor = noticia.Autor;
-                            tempNoticia.DataAlteracao = DateTime.Now;
-                            tempNoticia.Descricao = noticia.Descricao;
-                            this._business.Update(tempNoticia);
+                            newsUpdated.Title = news.Title;
+                            newsUpdated.Author = news.Author;
+                            newsUpdated.NewsDescription = news.NewsDescription;
+                            newsUpdated.NewsDate = date.Value;
+                            newsUpdated.Updated = DateTime.Now;
+
+                            this._business.Update(newsUpdated);
                         }
                         else
                         {
-                            noticia.DataAlteracao = DateTime.Now;
-                            this._business.Insert(noticia);
+                            news.Updated = DateTime.Now;
+                            this._business.Insert(news);
                         }
                     }
                     else
                     {
-                        noticia.DataCadastro = DateTime.Now;
-                        this._business.Insert(noticia);
+                        news.Created = DateTime.Now;
+                        this._business.Insert(news);
                     }
 
                     return RedirectToAction("Index");
@@ -125,6 +121,11 @@ namespace IOC.Web.Controllers
                 );
             }
 
+            return View();
+        }
+
+        public ActionResult TestAxd() 
+        {
             return View();
         }
     }

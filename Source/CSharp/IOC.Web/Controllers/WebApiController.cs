@@ -18,9 +18,9 @@ namespace IOC.Web.Controllers
     public class WebApiController 
         : ApiController
     {
-        private readonly AbstractNoticiaBusiness _business;
+        private readonly NewsBusinessAbstract _business;
 
-        public WebApiController(AbstractNoticiaBusiness business)
+        public WebApiController(NewsBusinessAbstract business)
         {
             this._business = business;
         }
@@ -75,27 +75,3 @@ namespace IOC.Web.Controllers
         public bool Active { get; set; }
     }
 }
-
-
-//XmlSerializer xml = new XmlSerializer(typeof(ObjectTest));
-//var t1 = new ObjectTest
-//{
-//    ID = 1,
-//    Name = "Lucas",
-//    Sex = 'm',
-//    Age = 25,
-//    Create = DateTime.Now,
-//    Active = true
-//};
-
-//MemoryStream ms = new MemoryStream();
-//DataContractSerializer s = new DataContractSerializer(typeof(ObjectTest));
-//s.WriteObject(ms, t1);
-//ms.Close();
-//string xmlText = Encoding.Default.GetString(ms.ToArray());
-
-//ms = new MemoryStream();
-//DataContractJsonSerializer j = new DataContractJsonSerializer(typeof(ObjectTest));
-//j.WriteObject(ms, t1);
-//ms.Close();
-//xmlText = Encoding.Default.GetString(ms.ToArray());

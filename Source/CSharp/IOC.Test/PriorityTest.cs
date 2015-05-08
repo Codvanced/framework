@@ -23,14 +23,14 @@ namespace IOC.Test
         {
             Assert.NotNull(simpleInjector);
 
-            var business = InstanceFactory.GetImplementation<AbstractNoticiaBusiness>();
+            var business = InstanceFactory.GetImplementation<NewsBusinessAbstract>();
             Assert.NotNull(business);
 
             var items = business.SelectAll();
 
             Assert.IsNotEmpty(items);
 
-            business.UpdatePriority<Noticia>(items.ToArray());
+            business.UpdatePriority<News>(items.ToArray());
 
             var pr = items[0].Priority;
 

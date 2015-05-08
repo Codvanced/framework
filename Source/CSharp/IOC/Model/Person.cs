@@ -33,8 +33,6 @@ namespace IOC.Model
                 this.Ocupation.IdOcupation = value;
             } 
         }
-
-        //[ForeignKey("IdOcupation")]
         public virtual Ocupation Ocupation { get; set; }
 
         public string PersonName { get; set; }

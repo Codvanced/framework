@@ -58,7 +58,7 @@ namespace IOC.Test
 
             business.Update(foundArtistGenre.Last());
             var updatedGenre = business.SelectSingle(
-                noticia => noticia.IdGenre == foundArtistGenre.Last().IdGenre
+                n => n.IdGenre == foundArtistGenre.Last().IdGenre
             );
 
             Assert.NotNull(updatedGenre);
@@ -79,9 +79,9 @@ namespace IOC.Test
 
             business.Delete(foundArtistGenre.Last());
             var updatedArtistGenre = business.SelectSingle(
-                noticia => 
-                    noticia.IdGenre == foundArtistGenre.Last().IdGenre
-                    && noticia.IdArtist == foundArtistGenre.Last().IdArtist
+                n => 
+                    n.IdGenre == foundArtistGenre.Last().IdGenre
+                    && n.IdArtist == foundArtistGenre.Last().IdArtist
             );
 
             Assert.IsNull(updatedArtistGenre);

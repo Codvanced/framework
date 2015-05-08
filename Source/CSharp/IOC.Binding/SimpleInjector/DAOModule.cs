@@ -19,9 +19,9 @@ namespace IOC.Binding.SimpleInjector
     {
         public void SetBinding(Container container)
         {
-            container.Register<AbstractPersonDAO, PersonDAO>();
-            container.Register<AbstractNoticiaDAO, NoticiaDAO>();
-            container.Register<AbstractOcupationDAO, OcupationDAO>();
+            container.Register<PersonDAOAbstract, PersonDAO>();
+            container.Register<NewsDAOAbstract, NewsDAO>();
+            container.Register<OcupationDAOAbstract, OcupationDAO>();
         }
     }
 }

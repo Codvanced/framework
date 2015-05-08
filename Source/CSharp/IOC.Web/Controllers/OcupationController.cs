@@ -12,9 +12,9 @@ namespace IOC.Web.Controllers
     public class OcupationController
         : Controller
     {
-        private readonly AbstractOcupationBusiness _business;
+        private readonly OcupationBusinessAbstract _business;
 
-        public OcupationController(AbstractOcupationBusiness business)
+        public OcupationController(OcupationBusinessAbstract business)
         {
             this._business = business;
         }

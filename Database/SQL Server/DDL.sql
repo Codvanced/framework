@@ -1,17 +1,17 @@
-/* USE DATABASE */
-USE master
-GO
+/*-------------------------------------------------------------------------------------------------------------*/
+/*------------------- Script para Criação da Base de Dados de Testes do Codvanced Framework (IOC FW) ----------*/
+/*-------------------------------------------------------------------------------------------------------------*/
 
-/* CRIAÇÃO DO DATABASE */
+/* Cria a base de dados se não existir */
 IF(DB_ID('IoC_FW') IS NULL)
 	CREATE DATABASE IoC_FW
-GO
+	GO
 
-/* USE DATABASE */
+/* Usa a base de dados criada */
 USE IoC_FW
 GO
 
-/* ---------- SE OS OBJETOS JÁ EXISTIREM - DROP ---------- */
+/*------------------------- Apaga as Tabelas se Existirem -----------------------------------------------------*/
 IF(OBJECT_ID('Person') IS NOT NULL)
 	DROP TABLE Person
 GO
@@ -32,19 +32,19 @@ IF(OBJECT_ID('Artist') IS NOT NULL)
 	DROP TABLE Artist
 GO
 
-IF(OBJECT_ID('WT_NOTICIA') IS NOT NULL)
-	DROP TABLE WT_NOTICIA
+IF(OBJECT_ID('News') IS NOT NULL)
+	DROP TABLE News
 GO
 
-/* ---------- TABELAS TRANSACIONAIS ---------- */
+/*------------------------- Cria as Tabelas Transacionais -----------------------------------------------------*/
 CREATE TABLE Person
 (
 	IdPerson			INT				NOT NULL IDENTITY(1,1)
 ,	IdOcupation			INT				NOT NULL
 ,	PersonName			VARCHAR(200)	NOT NULL
 ,	Gender				VARCHAR(50)			NULL
-,	Created				DATETIME		NOT NULL DEFAULT GETDATE()
-,	Updated				DATETIME			NULL
+,	Created				DATETIME2		NOT NULL DEFAULT GETDATE()
+,	Updated				DATETIME2			NULL
 ,	Activated			BIT				NOT NULL DEFAULT 1
 )
 
@@ -52,8 +52,8 @@ CREATE TABLE Ocupation
 (
 	IdOcupation			INT				NOT NULL IDENTITY(1,1)
 ,	OcupationName		VARCHAR(200)	NOT NULL
-,	Created				DATETIME		NOT NULL DEFAULT GETDATE()
-,	Updated				DATETIME			NULL
+,	Created				DATETIME2		NOT NULL DEFAULT GETDATE()
+,	Updated				DATETIME2			NULL
 ,	Activated			BIT				NOT NULL DEFAULT 1
 )
 
@@ -76,19 +76,18 @@ CREATE TABLE ArtistGenre
 ,	IdGenre				INT				NOT NULL
 )
 
-/* Tabela para teste de CRUD */
-CREATE TABLE WT_NOTICIA
+CREATE TABLE News
 (
-	ID_NOTICIA 			INT 			NOT NULL IDENTITY(1,1)
-,	DSC_TITULO 			VARCHAR(150) 	NOT NULL
-,	DSC_DESCRICAO 		TEXT 			NOT NULL
-,	DSC_AUTOR			VARCHAR(100) 		NULL
-,	DAT_NOTICIA 		DATETIME 		NOT NULL
-,	DAT_CADASTRO 		DATETIME 		NOT NULL
-,	DAT_ALTERACAO 		DATETIME 			NULL
+	IdNews 				INT 			NOT NULL IDENTITY(1,1)
+,	Title 				VARCHAR(150) 	NOT NULL
+,	NewsDescription		TEXT 			NOT NULL
+,	Author				VARCHAR(100) 		NULL
+,	NewsDate	 		DATETIME2 		NOT NULL DEFAULT GETDATE()
+,	Created				DATETIME2 		NOT NULL DEFAULT GETDATE()
+,	Updated	 			DATETIME2 			NULL
 )
 
-/* ---------- CRIAÇÃO DE CHAVES PRIMARIAS ---------- */
+/*------------------------- Criação de Chaves Primárias -------------------------------------------------------*/
 ALTER TABLE		Person
 ADD CONSTRAINT	PK_Person
 PRIMARY KEY		(IdPerson)
@@ -109,11 +108,11 @@ ALTER TABLE		ArtistGenre
 ADD CONSTRAINT	PK_ArtistGenre
 PRIMARY KEY		(IdArtistGenre)
 
-ALTER TABLE 	WT_NOTICIA
-ADD CONSTRAINT 	PK_NOTICIA
-PRIMARY KEY 	(ID_NOTICIA)
+ALTER TABLE 	News
+ADD CONSTRAINT 	PK_Nerws
+PRIMARY KEY 	(IdNews)
 
-/* ---------- CRIAÇÃO DE CHAVES Estrangeiras ---------- */
+/*------------------------- Criação de Chaves Extrangeiras ----------------------------------------------------*/
 ALTER TABLE		Person
 ADD CONSTRAINT	FK_Ocupation
 FOREIGN KEY		(IdOcupation)

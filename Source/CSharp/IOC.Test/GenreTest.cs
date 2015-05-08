@@ -55,7 +55,7 @@ namespace IOC.Test
 
             business.Update(foundGenre.Last());
             var updatedGenre = business.SelectSingle(
-                noticia => noticia.IdGenre == foundGenre.Last().IdGenre
+                n => n.IdGenre == foundGenre.Last().IdGenre
             );
 
             Assert.NotNull(updatedGenre);
@@ -76,7 +76,7 @@ namespace IOC.Test
 
             business.Delete(foundGenre.Last());
             var updatedGenre = business.SelectSingle(
-                noticia => noticia.IdGenre == foundGenre.Last().IdGenre
+                n => n.IdGenre == foundGenre.Last().IdGenre
             );
 
             Assert.IsNull(updatedGenre);

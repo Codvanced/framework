@@ -9,7 +9,7 @@ using IOC.Abstraction.DAO;
 namespace IOC.DAO.Implementation
 {
     public class PersonDAO
-        : AbstractPersonDAO
+        : PersonDAOAbstract
     {
         public PersonDAO()
             : base()

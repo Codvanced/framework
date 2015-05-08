@@ -8,9 +8,9 @@ using IOC.Interface.DAO;
 namespace IOC.Business.Implementation
 {
     public class OcupationBusiness
-        : AbstractOcupationBusiness
+        : OcupationBusinessAbstract
     {
-        public OcupationBusiness(AbstractOcupationDAO dao)
+        public OcupationBusiness(OcupationDAOAbstract dao)
             : base(dao)
         { }
     }

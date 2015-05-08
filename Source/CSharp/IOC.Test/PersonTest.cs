@@ -45,7 +45,7 @@ namespace IOC.Test
         {
             Assert.NotNull(simpleInjector);
 
-            var business = InstanceFactory.GetImplementation<AbstractPersonBusiness>();
+            var business = InstanceFactory.GetImplementation<PersonBusinessAbstract>();
             Assert.NotNull(business);
 
             business.Insert(new Person
@@ -69,7 +69,7 @@ namespace IOC.Test
         {
             Assert.NotNull(simpleInjector);
 
-            var business = InstanceFactory.GetImplementation<AbstractPersonBusiness>();
+            var business = InstanceFactory.GetImplementation<PersonBusinessAbstract>();
             Assert.NotNull(business);
 
             var foundPessoa = business.SelectAll();
@@ -90,7 +90,7 @@ namespace IOC.Test
         {
             Assert.NotNull(simpleInjector);
 
-            var business = InstanceFactory.GetImplementation<AbstractPersonBusiness>();
+            var business = InstanceFactory.GetImplementation<PersonBusinessAbstract>();
             Assert.NotNull(business);
 
             var foundPessoa = business.SelectAll();
@@ -108,7 +108,7 @@ namespace IOC.Test
         {
             Assert.NotNull(simpleInjector);
 
-            var business = InstanceFactory.GetImplementation<AbstractPersonBusiness>();
+            var business = InstanceFactory.GetImplementation<PersonBusinessAbstract>();
             Assert.NotNull(business);
 
             var pessoas = business.SelectAll(pessoa => pessoa.Ocupation);
@@ -139,7 +139,7 @@ namespace IOC.Test
         {
             Assert.NotNull(simpleInjector);
 
-            var business = InstanceFactory.GetImplementation<AbstractPersonBusiness>();
+            var business = InstanceFactory.GetImplementation<PersonBusinessAbstract>();
             Assert.NotNull(business);
 
         }

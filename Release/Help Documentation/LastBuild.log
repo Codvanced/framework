@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<shfbBuild product="Sandcastle Help File Builder" version="2015.1.12.0" projectFile="E:\Projetos\Source\Pessoal\Framework\Source\CSharp\IOC.Documentation\IOC.Documentation.shfbproj" started="25/02/2015 09:59:37">
+<shfbBuild product="Sandcastle Help File Builder" version="2015.1.12.0" projectFile="E:\Projetos\Source\Pessoal\Framework\Source\CSharp\IOC.Documentation\IOC.Documentation.shfbproj" started="08/05/2015 15:08:56">
 <buildStep step="Initializing">
 Finding tools...
 The Sandcastle tools are located in &#39;C:\Program Files (x86)\EWSoftware\Sandcastle Help File Builder\&#39;
@@ -31,33 +31,33 @@ References to include (excluding framework assemblies):
     FluentValidation
     FluentValidation.Mvc
     log4net, Version=1.2.13.0, Culture=neutral, PublicKeyToken=669e0ddf0bb1aa2a, processorArchitecture=MSIL
-    MySql.Data, Version=6.9.5.0, Culture=neutral, PublicKeyToken=c5687fc88969c44d, processorArchitecture=MSIL
-    MySql.Data.Entity.EF6, Version=6.8.3.0, Culture=neutral, PublicKeyToken=c5687fc88969c44d, processorArchitecture=MSIL
-    SimpleInjector, Version=2.7.1.0, Culture=neutral, PublicKeyToken=984cb50dea722e99, processorArchitecture=MSIL
-    SimpleInjector.Diagnostics, Version=2.7.1.0, Culture=neutral, PublicKeyToken=984cb50dea722e99, processorArchitecture=MSIL
-    System.Data.SQLite, Version=1.0.94.0, Culture=neutral, PublicKeyToken=db937bc2d44ff139, processorArchitecture=MSIL
-    System.Data.SQLite.EF6, Version=1.0.94.0, Culture=neutral, PublicKeyToken=db937bc2d44ff139, processorArchitecture=MSIL
-    System.Data.SQLite.Linq, Version=1.0.94.0, Culture=neutral, PublicKeyToken=db937bc2d44ff139, processorArchitecture=MSIL
+    MySql.Data, Version=6.9.6.0, Culture=neutral, PublicKeyToken=c5687fc88969c44d, processorArchitecture=MSIL
+    MySql.Data.Entity.EF6, Version=6.9.6.0, Culture=neutral, PublicKeyToken=c5687fc88969c44d, processorArchitecture=MSIL
+    SimpleInjector, Version=2.8.0.0, Culture=neutral, PublicKeyToken=984cb50dea722e99, processorArchitecture=MSIL
+    System.Data.SQLite, Version=1.0.96.0, Culture=neutral, PublicKeyToken=db937bc2d44ff139, processorArchitecture=MSIL
+    System.Data.SQLite.EF6, Version=1.0.96.0, Culture=neutral, PublicKeyToken=db937bc2d44ff139, processorArchitecture=MSIL
+    System.Data.SQLite.Linq, Version=1.0.96.0, Culture=neutral, PublicKeyToken=db937bc2d44ff139, processorArchitecture=MSIL
     System.Net.Http, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL
     System.Net.Http.Formatting, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL
     System.Web.Http, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL
     System.Web.Http.WebHost, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL
     System.Web.Mvc, Version=4.0.0.1, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL
+    System.Web.WebPages, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL
 SHFB: Warning BE0062: No XML comments files found.  The help file will not contain any member comments.
 </buildStep>
 <buildStep step="GenerateSharedContent">
 Generating shared content files (en-US, English (United States))...
 <plugIn name="Lightweight Website Style" behavior="After" priority="1000">
-</plugIn>    Last step completed in 00:00:00,0800
+</plugIn>    Last step completed in 00:00:00,4400
 </buildStep>
 <buildStep step="GenerateApiFilter">
 Generating API filter for MRefBuilder...
-    Last step completed in 00:00:00,0000
+    Last step completed in 00:00:00,0100
 </buildStep>
 <buildStep step="GenerateReflectionInfo">
 Generating reflection information...
 [C:\windows\Microsoft.NET\Framework\v4.0.30319\MSBuild.exe]
-Build started 25/02/2015 09:59:45.
+Build started 08/05/2015 15:08:58.
 Project &quot;E:\Projetos\Source\Pessoal\Framework\Source\CSharp\IOC.Documentation\Help\GenerateRefInfo.proj&quot; on node 1 (default targets).
 PrepareForBuild:
   Creating directory &quot;obj\Debug\&quot;.
@@ -66,7 +66,7 @@ GenerateRefInfo:
   Copyright &#184; 2006-2015, Microsoft Corporation, All Rights Reserved.
   Portions Copyright &#184; 2006-2014, Eric Woodruff, All Rights Reserved.
   Loaded 3 assemblies for reflection and 18 dependency assemblies.
-  Wrote information on 25 namespaces, 52 types, and 270 members
+  Wrote information on 25 namespaces, 52 types, and 273 members
   Copying file from &quot;reflection.org&quot; to &quot;reflection.all&quot;.
   XslTransform (v2015.1.12.0)
   Copyright &#184; 2006-2015, Microsoft Corporation, All Rights Reserved.
@@ -76,13 +76,13 @@ Done Building Project &quot;E:\Projetos\Source\Pessoal\Framework\Source\CSharp\I
 
 Build succeeded.
 
-Time Elapsed 00:00:03.60
-    Last step completed in 00:00:05,7609
+Time Elapsed 00:00:00.99
+    Last step completed in 00:00:01,1800
 </buildStep>
 <buildStep step="TransformReflectionInfo">
 Transforming reflection output...
 [C:\windows\Microsoft.NET\Framework\v4.0.30319\MSBuild.exe]
-Build started 25/02/2015 09:59:49.
+Build started 08/05/2015 15:08:59.
 Project &quot;E:\Projetos\Source\Pessoal\Framework\Source\CSharp\IOC.Documentation\Help\TransformManifest.proj&quot; on node 1 (default targets).
 TransformManifest:
   XslTransform (v2015.1.12.0)
@@ -102,12 +102,12 @@ Done Building Project &quot;E:\Projetos\Source\Pessoal\Framework\Source\CSharp\I
 
 Build succeeded.
 
-Time Elapsed 00:00:01.88
-    Last step completed in 00:00:02,0000
+Time Elapsed 00:00:01.15
+    Last step completed in 00:00:01,2310
 </buildStep>
 <buildStep step="GenerateNamespaceSummaries">
 Generating namespace summary information...
-    Last step completed in 00:00:00,0800
+    Last step completed in 00:00:00,0900
 </buildStep>
 <buildStep step="CopyConceptualContent">
 Copying conceptual content...
@@ -122,14 +122,14 @@ Generating conceptual topic files
     E:\Projetos\Source\Pessoal\Framework\Source\CSharp\IOC.Documentation\Content\VersionHistory\VersionHistory.aml -&gt; E:\Projetos\Source\Pessoal\Framework\Source\CSharp\IOC.Documentation\Help\ddueXml\2dbfee8f-1367-4463-ba59-5e0c99fd78c0.xml
     Parsing topic file &#39;E:\Projetos\Source\Pessoal\Framework\Source\CSharp\IOC.Documentation\Content\VersionHistory\v1.0.0.0.aml&#39;
     E:\Projetos\Source\Pessoal\Framework\Source\CSharp\IOC.Documentation\Content\VersionHistory\v1.0.0.0.aml -&gt; E:\Projetos\Source\Pessoal\Framework\Source\CSharp\IOC.Documentation\Help\ddueXml\dc3a90c4-cf59-49a8-ac27-de6551d750b8.xml
-    Last step completed in 00:00:00,1600
+    Last step completed in 00:00:00,1400
 </buildStep>
 <buildStep step="CreateConceptualTopicConfigs">
 Creating conceptual topic configuration files...
     Companion files
     _ContentMetadata_.xml
     ConceptualManifest.xml
-    Last step completed in 00:00:00,0100
+    Last step completed in 00:00:00,0200
 </buildStep>
 <buildStep step="CopyAdditionalContent">
 Copying additional content files...
@@ -143,7 +143,7 @@ Merging conceptual and additional tables of contents...
 <buildStep step="GenerateIntermediateTableOfContents">
 Generating intermediate table of contents file...
 [C:\windows\Microsoft.NET\Framework\v4.0.30319\MSBuild.exe]
-Build started 25/02/2015 09:59:51.
+Build started 08/05/2015 15:09:00.
 Project &quot;E:\Projetos\Source\Pessoal\Framework\Source\CSharp\IOC.Documentation\Help\GenerateIntermediateTOC.proj&quot; on node 1 (default targets).
 GenerateIntermediateTOC:
   XslTransform (v2015.1.12.0)
@@ -156,25 +156,25 @@ Build succeeded.
 
 Time Elapsed 00:00:00.10
 Generating conceptual content intermediate TOC file...
-    Last step completed in 00:00:00,2900
+    Last step completed in 00:00:00,1800
 </buildStep>
 <buildStep step="CreateBuildAssemblerConfigs">
 Creating Sandcastle configuration files...
     sandcastle.config
     conceptual.config
-    Last step completed in 00:00:01,0800
+    Last step completed in 00:00:00,5000
 </buildStep>
 <buildStep step="MergeCustomConfigs">
 Merging custom build component configurations
 E:\Projetos\Source\Pessoal\Framework\Source\CSharp\IOC.Documentation\Help\sandcastle.config
 E:\Projetos\Source\Pessoal\Framework\Source\CSharp\IOC.Documentation\Help\conceptual.config
     Removing unused ExampleComponent.
-    Last step completed in 00:00:00,4900
+    Last step completed in 00:00:00,3000
 </buildStep>
 <buildStep step="BuildConceptualTopics">
 Building conceptual help topics...
 [C:\windows\Microsoft.NET\Framework\v4.0.30319\MSBuild.exe]
-Build started 25/02/2015 09:59:53.
+Build started 08/05/2015 15:09:01.
 Project &quot;E:\Projetos\Source\Pessoal\Framework\Source\CSharp\IOC.Documentation\Help\BuildConceptualTopics.proj&quot; on node 1 (default targets).
 BuildConceptualTopics:
   BuildAssembler (v2015.1.12.0)
@@ -188,13 +188,13 @@ Done Building Project &quot;E:\Projetos\Source\Pessoal\Framework\Source\CSharp\I
 
 Build succeeded.
 
-Time Elapsed 00:00:15.91
-    Last step completed in 00:00:16,1158
+Time Elapsed 00:00:04.79
+    Last step completed in 00:00:04,9452
 </buildStep>
 <buildStep step="BuildReferenceTopics">
 Building reference help topics...
 [C:\windows\Microsoft.NET\Framework\v4.0.30319\MSBuild.exe]
-Build started 25/02/2015 10:00:09.
+Build started 08/05/2015 15:09:06.
 Project &quot;E:\Projetos\Source\Pessoal\Framework\Source\CSharp\IOC.Documentation\Help\BuildReferenceTopics.proj&quot; on node 1 (default targets).
 BuildReferenceTopics:
   BuildAssembler (v2015.1.12.0)
@@ -202,22 +202,22 @@ BuildReferenceTopics:
   Portions Copyright &#184; 2006-2014, Eric Woodruff, All Rights Reserved.
   Loading configuration...
   Processing topics...
-  Processed 411 topic(s)
+  Processed 418 topic(s)
   CopyFromIndexComponent: &quot;reflection&quot; in-memory cache entries used: 15 of 15.
   CopyFromIndexComponent: &quot;comments&quot; in-memory cache entries used: 2 of 30.
 Done Building Project &quot;E:\Projetos\Source\Pessoal\Framework\Source\CSharp\IOC.Documentation\Help\BuildReferenceTopics.proj&quot; (default targets).
 
 Build succeeded.
 
-Time Elapsed 00:00:21.86
-    Last step completed in 00:00:22,0698
+Time Elapsed 00:00:17.66
+    Last step completed in 00:00:17,7737
 </buildStep>
 <buildStep step="CombiningIntermediateTocFiles">
 Combining conceptual and API intermediate TOC files...
 
 Clearing any prior web output
-    Ignoring folder &#39;E:\Projetos\Source\Pessoal\Framework\Release\Help Documentation\html&#39;: The process cannot access the file &#39;436affc4-d699-c426-26d9-23300239a051.htm&#39; because it is being used by another process.
-    Last step completed in 00:00:03,9500
+    Ignoring folder &#39;E:\Projetos\Source\Pessoal\Framework\Release\Help Documentation\html&#39;: The process cannot access the file &#39;3be3665c-f5b8-5a6f-97fe-b0b6187d16f6.htm&#39; because it is being used by another process.
+    Last step completed in 00:00:03,7161
 </buildStep>
 <buildStep step="ExtractingHtmlInfo">
 Extracting HTML info for HTML Help 1 and/or website...
@@ -229,11 +229,11 @@ E-Mail: Eric@EWoodruff.us
 Using LCID &#39;1033&#39;, code page &#39;65001&#39;, encoding charset &#39;UTF-8&#39;.
 
 Processing website files in E:\Projetos\Source\Pessoal\Framework\Source\CSharp\IOC.Documentation\Help\Output\Website
-Processed 414 HTML files
+Processed 421 HTML files
 Sorting keywords and generating See Also indices
 Saving website keyword index to E:\Projetos\Source\Pessoal\Framework\Source\CSharp\IOC.Documentation\Help\WebKI.xml
 Saving website table of contents to E:\Projetos\Source\Pessoal\Framework\Source\CSharp\IOC.Documentation\Help\WebTOC.xml
-    Last step completed in 00:00:07,9229
+    Last step completed in 00:00:03,4911
 </buildStep>
 <buildStep step="CopyStandardHelpContent">
 Copying standard help content...
@@ -313,7 +313,7 @@ C:\Program Files (x86)\EWSoftware\Sandcastle Help File Builder\PresentationStyle
 C:\Program Files (x86)\EWSoftware\Sandcastle Help File Builder\PresentationStyles\VS2013\Web\icons\TocOpen.gif -&gt; E:\Projetos\Source\Pessoal\Framework\Source\CSharp\IOC.Documentation\Help\Output\Website\icons\TocOpen.gif
 C:\Program Files (x86)\EWSoftware\Sandcastle Help File Builder\PresentationStyles\VS2013\Web\scripts\branding-Website.js -&gt; E:\Projetos\Source\Pessoal\Framework\Source\CSharp\IOC.Documentation\Help\Output\Website\scripts\branding-Website.js
 C:\Program Files (x86)\EWSoftware\Sandcastle Help File Builder\PresentationStyles\VS2013\Web\scripts\jquery-1.11.0.min.js -&gt; E:\Projetos\Source\Pessoal\Framework\Source\CSharp\IOC.Documentation\Help\Output\Website\scripts\jquery-1.11.0.min.js
-    Last step completed in 00:00:01,4600
+    Last step completed in 00:00:00,6600
 </buildStep>
 <buildStep step="GenerateHelpFormatTableOfContents">
 Generating website table of contents file...
@@ -324,7 +324,7 @@ Generating full-text index for the website...
 
 <plugIn name="Lightweight Website Style" behavior="After" priority="1000">
 Adding lightweight search and TOC elements to each topic...
-</plugIn>    Last step completed in 00:00:54,3175
+</plugIn>    Last step completed in 00:00:24,3850
 </buildStep>
 <buildStep step="CopyingWebsiteFiles">
 Copying website files to output folder...
@@ -335,16 +335,16 @@ Copied 300 files
 Copied 400 files
 Copied 500 files
 Copied 600 files
-Copied 669 files for the website content
-    Last step completed in 00:00:33,3237
+Copied 680 files for the website content
+    Last step completed in 00:00:20,7051
 </buildStep>
 <buildStep step="CleanIntermediates">
 Removing intermediate files...
-    Last step completed in 00:00:04,8000
+    Last step completed in 00:00:05,8796
 </buildStep>
 <buildStep step="Completed">
 
-Build completed successfully at 25/02/2015 10:02:17.  Total time: 00:02:39,7704
+Build completed successfully at 08/05/2015 15:10:23.  Total time: 00:01:26,9001
 
 </buildStep>
 </shfbBuild>

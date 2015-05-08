@@ -7,7 +7,7 @@ using IOC.Interface.DAO;
 namespace IOC.DAO.Implementation
 {
     public class OcupationDAO
-        : AbstractOcupationDAO
+        : OcupationDAOAbstract
     {
         public OcupationDAO()
             : base()

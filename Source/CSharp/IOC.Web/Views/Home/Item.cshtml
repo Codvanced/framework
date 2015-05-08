@@ -1,4 +1,4 @@
-﻿@model IOC.Model.Noticia
+﻿@model IOC.Model.News
 @{
     ViewBag.Title = "";
     Layout = "~/Views/Shared/_Layout.cshtml";
@@ -12,20 +12,20 @@
     @Html.AntiForgeryToken()
     
     <p>
-        @Html.LabelFor(Model => Model.Titulo)
-        @Html.EditorFor(Model => Model.Titulo, null, "titulo")
+        @Html.LabelFor(Model => Model.Title)
+        @Html.EditorFor(Model => Model.Title, null, "title")
 	</p>
 	<p>
-        @Html.LabelFor(Model => Model.Descricao)
-        @Html.EditorFor(Model => Model.Descricao, null, "descricao")
+        @Html.LabelFor(Model => Model.NewsDescription)
+        @Html.EditorFor(Model => Model.NewsDescription, null, "description")
 	</p>	
     <p>
-        @Html.LabelFor(Model => Model.DataNoticia)
-        @Html.EditorFor(Model => Model.DataNoticia, null, "data")
+        @Html.LabelFor(Model => Model.NewsDate)
+        @Html.EditorFor(Model => Model.NewsDate, null, "date")
 	</p>
 	<p>
-        @Html.LabelFor(Model => Model.Autor)
-        @Html.EditorFor(Model => Model.Autor, null, "autor")
+        @Html.LabelFor(Model => Model.Author)
+        @Html.EditorFor(Model => Model.Author, null, "author")
 	</p>
 
 	<p class="botoes">

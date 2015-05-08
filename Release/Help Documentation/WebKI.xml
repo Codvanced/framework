@@ -31,7 +31,7 @@
   <HelpKINode Title="BaseBusiness(Of TModel).Select method" Url="html/252916db-1efc-2e19-3c95-e94fe8f642d6.htm" />
   <HelpKINode Title="BaseBusiness(Of TModel).SelectAll method" Url="html/ce46200d-5db3-9757-fe9d-a256dce7345a.htm" />
   <HelpKINode Title="BaseBusiness(Of TModel).SelectSingle method" Url="html/9f4bc210-904a-91e3-3674-39548965d942.htm" />
-  <HelpKINode Title="BaseBusiness(Of TModel).Update method" Url="html/e2d41102-6e72-14e4-7ec1-f0a4789ed194.htm" />
+  <HelpKINode Title="BaseBusiness(Of TModel).Update method" Url="html/e86a6fed-f0e4-394b-4845-7561d9f1c044.htm" />
   <HelpKINode Title="BaseBusiness(Of TModel).UpdatePriority(Of TPriorityModel) method" Url="html/c67559a3-fc2f-a2dc-a7b9-4fff3069ee02.htm" />
   <HelpKINode Title="BaseBusiness&lt;TModel&gt; class">
     <HelpKINode Title="BaseBusiness(TModel) Class" Url="html/88464728-f5ac-bc25-8e38-c9dff0f95283.htm" />
@@ -49,7 +49,7 @@
   <HelpKINode Title="BaseBusiness&lt;TModel&gt;.Select method" Url="html/252916db-1efc-2e19-3c95-e94fe8f642d6.htm" />
   <HelpKINode Title="BaseBusiness&lt;TModel&gt;.SelectAll method" Url="html/ce46200d-5db3-9757-fe9d-a256dce7345a.htm" />
   <HelpKINode Title="BaseBusiness&lt;TModel&gt;.SelectSingle method" Url="html/9f4bc210-904a-91e3-3674-39548965d942.htm" />
-  <HelpKINode Title="BaseBusiness&lt;TModel&gt;.Update method" Url="html/e2d41102-6e72-14e4-7ec1-f0a4789ed194.htm" />
+  <HelpKINode Title="BaseBusiness&lt;TModel&gt;.Update method" Url="html/e86a6fed-f0e4-394b-4845-7561d9f1c044.htm" />
   <HelpKINode Title="BaseBusiness&lt;TModel&gt;.UpdatePriority&lt;TPriorityModel&gt; method" Url="html/c67559a3-fc2f-a2dc-a7b9-4fff3069ee02.htm" />
   <HelpKINode Title="BaseController class">
     <HelpKINode Title="BaseController Class" Url="html/c11f7fc6-56be-f42f-6e27-cd8e8c87fdb4.htm" />
@@ -105,10 +105,8 @@
   <HelpKINode Title="BaseRepository(Of TModel).Exec method" Url="html/c4512790-6462-6ce7-34a8-3599cf4afedc.htm" />
   <HelpKINode Title="BaseRepository(Of TModel).ExecuteQuery method" Url="html/a0e129ec-6074-77c8-9c57-7dab0f6dc5d1.htm" />
   <HelpKINode Title="BaseRepository(Of TModel).ExecuteScalar method" Url="html/335ff8c8-2a1e-7c06-5161-1e2444910493.htm" />
-  <HelpKINode Title="BaseRepository(Of TModel).FindKeyProperty method" Url="html/065b3b78-4176-2d45-05ad-64df4fc0a111.htm" />
   <HelpKINode Title="BaseRepository(Of TModel).IncludeReference method" Url="html/16dc61ce-f545-b178-d972-c831251a43fd.htm" />
   <HelpKINode Title="BaseRepository(Of TModel).Insert method" Url="html/72902cfe-ceb3-e418-1321-416d9bf22bc0.htm" />
-  <HelpKINode Title="BaseRepository(Of TModel).InsertToContext method" Url="html/295de589-8b36-60d0-5730-3dc69dd5f414.htm" />
   <HelpKINode Title="BaseRepository(Of TModel).List method" Url="html/fa8eaeab-668f-ba9b-db7f-dbed21f4969d.htm" />
   <HelpKINode Title="BaseRepository(Of TModel).LongCount method" Url="html/89d2bac7-da77-a812-cba8-5a5e9153f147.htm" />
   <HelpKINode Title="BaseRepository(Of TModel).Model method" Url="html/1b1de711-9c87-8b0f-2f73-db5fdb88767d.htm" />
@@ -118,9 +116,8 @@
   <HelpKINode Title="BaseRepository(Of TModel).SelectSingle method" Url="html/d8c88585-0b96-dd00-40b9-cf72b38f6964.htm" />
   <HelpKINode Title="BaseRepository(Of TModel).SetConnection method" Url="html/d00a1432-f71e-b80b-bfcf-9b7f4e39cd3b.htm" />
   <HelpKINode Title="BaseRepository(Of TModel).SetParameter method" Url="html/99e54cf2-3ce3-6b02-3d8e-5e8f4b2bf3cd.htm" />
-  <HelpKINode Title="BaseRepository(Of TModel).Update method" Url="html/9ffd00b9-9a85-82e4-e9b3-f79dc69cbbcd.htm" />
+  <HelpKINode Title="BaseRepository(Of TModel).Update method" Url="html/79c887a7-0f49-724b-ebd9-cef3001fa02d.htm" />
   <HelpKINode Title="BaseRepository(Of TModel).UpdatePriority(Of TPriorityModel) method" Url="html/e21c6d39-742c-d640-67cf-12c446bb56e0.htm" />
-  <HelpKINode Title="BaseRepository(Of TModel).UpdateToContext method" Url="html/b51c6fe2-98fd-a4a8-f2b8-63c06e7c3c74.htm" />
   <HelpKINode Title="BaseRepository&lt;TModel&gt; class">
     <HelpKINode Title="BaseRepository(TModel) Class" Url="html/cf3fac02-c64c-d2a3-8902-1d568c54d819.htm" />
     <HelpKINode Title="about BaseRepository&lt;TModel&gt; class" Url="html/cf3fac02-c64c-d2a3-8902-1d568c54d819.htm" />
@@ -134,10 +131,8 @@
   <HelpKINode Title="BaseRepository&lt;TModel&gt;.Exec method" Url="html/c4512790-6462-6ce7-34a8-3599cf4afedc.htm" />
   <HelpKINode Title="BaseRepository&lt;TModel&gt;.ExecuteQuery method" Url="html/a0e129ec-6074-77c8-9c57-7dab0f6dc5d1.htm" />
   <HelpKINode Title="BaseRepository&lt;TModel&gt;.ExecuteScalar method" Url="html/335ff8c8-2a1e-7c06-5161-1e2444910493.htm" />
-  <HelpKINode Title="BaseRepository&lt;TModel&gt;.FindKeyProperty method" Url="html/065b3b78-4176-2d45-05ad-64df4fc0a111.htm" />
   <HelpKINode Title="BaseRepository&lt;TModel&gt;.IncludeReference method" Url="html/16dc61ce-f545-b178-d972-c831251a43fd.htm" />
   <HelpKINode Title="BaseRepository&lt;TModel&gt;.Insert method" Url="html/72902cfe-ceb3-e418-1321-416d9bf22bc0.htm" />
-  <HelpKINode Title="BaseRepository&lt;TModel&gt;.InsertToContext method" Url="html/295de589-8b36-60d0-5730-3dc69dd5f414.htm" />
   <HelpKINode Title="BaseRepository&lt;TModel&gt;.List method" Url="html/fa8eaeab-668f-ba9b-db7f-dbed21f4969d.htm" />
   <HelpKINode Title="BaseRepository&lt;TModel&gt;.LongCount method" Url="html/89d2bac7-da77-a812-cba8-5a5e9153f147.htm" />
   <HelpKINode Title="BaseRepository&lt;TModel&gt;.Model method" Url="html/1b1de711-9c87-8b0f-2f73-db5fdb88767d.htm" />
@@ -147,9 +142,8 @@
   <HelpKINode Title="BaseRepository&lt;TModel&gt;.SelectSingle method" Url="html/d8c88585-0b96-dd00-40b9-cf72b38f6964.htm" />
   <HelpKINode Title="BaseRepository&lt;TModel&gt;.SetConnection method" Url="html/d00a1432-f71e-b80b-bfcf-9b7f4e39cd3b.htm" />
   <HelpKINode Title="BaseRepository&lt;TModel&gt;.SetParameter method" Url="html/99e54cf2-3ce3-6b02-3d8e-5e8f4b2bf3cd.htm" />
-  <HelpKINode Title="BaseRepository&lt;TModel&gt;.Update method" Url="html/9ffd00b9-9a85-82e4-e9b3-f79dc69cbbcd.htm" />
+  <HelpKINode Title="BaseRepository&lt;TModel&gt;.Update method" Url="html/79c887a7-0f49-724b-ebd9-cef3001fa02d.htm" />
   <HelpKINode Title="BaseRepository&lt;TModel&gt;.UpdatePriority&lt;TPriorityModel&gt; method" Url="html/e21c6d39-742c-d640-67cf-12c446bb56e0.htm" />
-  <HelpKINode Title="BaseRepository&lt;TModel&gt;.UpdateToContext method" Url="html/b51c6fe2-98fd-a4a8-f2b8-63c06e7c3c74.htm" />
   <HelpKINode Title="BasicAuthenticationFilter class">
     <HelpKINode Title="BasicAuthenticationFilter Class" Url="html/38bb87de-5c99-797a-7453-b19c55b2b176.htm" />
     <HelpKINode Title="about BasicAuthenticationFilter class" Url="html/38bb87de-5c99-797a-7453-b19c55b2b176.htm" />
@@ -191,6 +185,7 @@
     <HelpKINode Title="BasicAuthenticationFilter.Challenge Method " Url="html/a15d7795-8271-b273-43ab-2aecd0a68844.htm" />
     <HelpKINode Title="BasicAuthenticationHandler.Challenge Method " Url="html/2dc6b876-ed0c-5ed4-8876-21c87df237fb.htm" />
   </HelpKINode>
+  <HelpKINode Title="CheckBoxForHelper method" Url="html/93ccb1fa-698c-9c84-a02d-b58a67777e74.htm" />
   <HelpKINode Title="CleanHtml method" Url="html/3ab77c66-2ff2-428b-2dec-aef76f7d9395.htm" />
   <HelpKINode Title="ColumnName property" Url="html/a63deb23-2435-c80e-f2a9-d4762c028c77.htm" />
   <HelpKINode Title="CompareLuhnDigit method" Url="html/52afc531-4757-977d-01ba-2b49983bca63.htm" />
@@ -306,19 +301,20 @@
     <HelpKINode Title="IBaseDAO(TModel).ExecuteScalar Method " Url="html/e92e9e79-3112-c3e3-6a0a-45eaaff7dbbc.htm" />
   </HelpKINode>
   <HelpKINode Title="Extensions class">
-    <HelpKINode Title="Extensions Class" Url="html/6ca4571b-7f82-09e3-765c-9038986c93f0.htm" />
     <HelpKINode Title="Extensions Class" Url="html/2efa636f-0a94-463e-26b6-9ff3c87c782b.htm" />
-    <HelpKINode Title="about Extensions class" Url="html/2efa636f-0a94-463e-26b6-9ff3c87c782b.htm" />
+    <HelpKINode Title="Extensions Class" Url="html/6ca4571b-7f82-09e3-765c-9038986c93f0.htm" />
     <HelpKINode Title="about Extensions class" Url="html/6ca4571b-7f82-09e3-765c-9038986c93f0.htm" />
+    <HelpKINode Title="about Extensions class" Url="html/2efa636f-0a94-463e-26b6-9ff3c87c782b.htm" />
     <HelpKINode Title="fields" Url="html/fed1db70-12a6-2617-f412-245bfe5676a9.htm" />
-    <HelpKINode Title="methods" Url="html/2ad42206-964d-1b98-696d-747b4be4a396.htm" />
     <HelpKINode Title="methods" Url="html/a2b5f5f6-e973-88a1-6af9-b54e6b9aacc0.htm" />
+    <HelpKINode Title="methods" Url="html/2ad42206-964d-1b98-696d-747b4be4a396.htm" />
   </HelpKINode>
   <HelpKINode Title="Extensions.AddModelErrors method" Url="html/08a2b68a-233e-f989-bed9-fce1f53535ab.htm" />
   <HelpKINode Title="Extensions.And(Of T) method" Url="html/91b0a4fb-2a5f-ca33-db2a-8141eeec178d.htm" />
   <HelpKINode Title="Extensions.And&lt;T&gt; method" Url="html/91b0a4fb-2a5f-ca33-db2a-8141eeec178d.htm" />
   <HelpKINode Title="Extensions.AndNot(Of T) method" Url="html/7c088145-6f7f-cb18-cf6a-ee7b2fc98c4b.htm" />
   <HelpKINode Title="Extensions.AndNot&lt;T&gt; method" Url="html/7c088145-6f7f-cb18-cf6a-ee7b2fc98c4b.htm" />
+  <HelpKINode Title="Extensions.CheckBoxForHelper method" Url="html/93ccb1fa-698c-9c84-a02d-b58a67777e74.htm" />
   <HelpKINode Title="Extensions.CleanHtml method" Url="html/3ab77c66-2ff2-428b-2dec-aef76f7d9395.htm" />
   <HelpKINode Title="Extensions.Compose method" Url="html/2e10e92e-aaf0-e3ca-14ff-01c543d963f4.htm" />
   <HelpKINode Title="Extensions.EscapeItems method" Url="html/7a012e3d-c3d1-4a5a-1f27-c61016ae1c2c.htm" />
@@ -349,7 +345,6 @@
   <HelpKINode Title="Extensions.ToQueryString&lt;TValue&gt; method" Url="html/465b15f7-8254-034e-f3c2-5cef663ff57b.htm" />
   <HelpKINode Title="Extensions.Truncate method" Url="html/a1494475-a574-62b5-6af9-c71dce7e40fd.htm" />
   <HelpKINode Title="Extensions.ValidateIpAddress method" Url="html/67210b6e-8e64-e20c-9041-859162f1df01.htm" />
-  <HelpKINode Title="FindKeyProperty method" Url="html/065b3b78-4176-2d45-05ad-64df4fc0a111.htm" />
   <HelpKINode Title="FirstPageInRange field" Url="html/b66b1b04-1661-2c24-aa92-0b77dbd343f4.htm" />
   <HelpKINode Title="FisherYates method" Url="html/38f5f28f-8bea-ffc3-de7a-d3f257ce6ffc.htm" />
   <HelpKINode Title="FormatProperty class">
@@ -409,7 +404,7 @@
   <HelpKINode Title="IBaseBusiness(Of TModel).Select method" Url="html/61c74938-63f1-ef5c-f8e2-b71a6e40c9e5.htm" />
   <HelpKINode Title="IBaseBusiness(Of TModel).SelectAll method" Url="html/354ede53-daa4-cd36-f963-5c3b27b9c5d7.htm" />
   <HelpKINode Title="IBaseBusiness(Of TModel).SelectSingle method" Url="html/a5ce8bef-a7c4-0010-8bf1-197825590cfc.htm" />
-  <HelpKINode Title="IBaseBusiness(Of TModel).Update method" Url="html/f8cffe82-61b4-316e-4305-c444bbca8307.htm" />
+  <HelpKINode Title="IBaseBusiness(Of TModel).Update method" Url="html/137cbdac-570f-e86d-dee3-acf18b324653.htm" />
   <HelpKINode Title="IBaseBusiness(Of TModel).UpdatePriority(Of TPriorityModel) method" Url="html/dc468076-d56a-17ad-ce96-0cf258ecdb9f.htm" />
   <HelpKINode Title="IBaseBusiness&lt;TModel&gt; interface">
     <HelpKINode Title="IBaseBusiness(TModel) Interface" Url="html/c3e2b3ee-92ff-f46a-f939-fd2a05a53e8d.htm" />
@@ -425,7 +420,7 @@
   <HelpKINode Title="IBaseBusiness&lt;TModel&gt;.Select method" Url="html/61c74938-63f1-ef5c-f8e2-b71a6e40c9e5.htm" />
   <HelpKINode Title="IBaseBusiness&lt;TModel&gt;.SelectAll method" Url="html/354ede53-daa4-cd36-f963-5c3b27b9c5d7.htm" />
   <HelpKINode Title="IBaseBusiness&lt;TModel&gt;.SelectSingle method" Url="html/a5ce8bef-a7c4-0010-8bf1-197825590cfc.htm" />
-  <HelpKINode Title="IBaseBusiness&lt;TModel&gt;.Update method" Url="html/f8cffe82-61b4-316e-4305-c444bbca8307.htm" />
+  <HelpKINode Title="IBaseBusiness&lt;TModel&gt;.Update method" Url="html/137cbdac-570f-e86d-dee3-acf18b324653.htm" />
   <HelpKINode Title="IBaseBusiness&lt;TModel&gt;.UpdatePriority&lt;TPriorityModel&gt; method" Url="html/dc468076-d56a-17ad-ce96-0cf258ecdb9f.htm" />
   <HelpKINode Title="IBaseDAO(Of TModel) interface">
     <HelpKINode Title="IBaseDAO(TModel) Interface" Url="html/be594172-6136-c345-cfc9-e1356bd78b40.htm" />
@@ -517,7 +512,6 @@
     <HelpKINode Title="BaseRepository(TModel).Insert Method " Url="html/72902cfe-ceb3-e418-1321-416d9bf22bc0.htm" />
     <HelpKINode Title="IBaseBusiness(TModel).Insert Method " Url="html/3ee8f1e8-e415-99b1-af03-af32e568d2a1.htm" />
   </HelpKINode>
-  <HelpKINode Title="InsertToContext method" Url="html/295de589-8b36-60d0-5730-3dc69dd5f414.htm" />
   <HelpKINode Title="InstanceFactory class">
     <HelpKINode Title="InstanceFactory Class" Url="html/511b2b7d-c820-73f5-1716-b144059b4057.htm" />
     <HelpKINode Title="about InstanceFactory class" Url="html/511b2b7d-c820-73f5-1716-b144059b4057.htm" />
@@ -549,8 +543,8 @@
   <HelpKINode Title="IOC.FW.Core.Abstraction.Factory namespace" Url="html/1a0200d1-5d96-325e-56c5-9505a83372e3.htm" />
   <HelpKINode Title="IOC.FW.Core.Abstraction.Factory.IInjectionModule(Of T) interface" Url="html/e7d97c4c-5bb7-05e4-85d4-e4a4fa306069.htm" />
   <HelpKINode Title="IOC.FW.Core.Abstraction.Factory.IInjectionModule&lt;T&gt; interface" Url="html/e7d97c4c-5bb7-05e4-85d4-e4a4fa306069.htm" />
-  <HelpKINode Title="IOC.FW.Core.Abstraction.Miscellanous namespace" Url="html/d98c6912-9033-1f50-b895-4b606515f536.htm" />
-  <HelpKINode Title="IOC.FW.Core.Abstraction.Miscellanous.IPrioritySortable interface" Url="html/f438d689-25eb-7575-715a-4df45b4a46c4.htm" />
+  <HelpKINode Title="IOC.FW.Core.Abstraction.Miscellaneous namespace" Url="html/5b21c22f-48ac-9cfa-4444-f805e79fa7ee.htm" />
+  <HelpKINode Title="IOC.FW.Core.Abstraction.Miscellaneous.IPrioritySortable interface" Url="html/e5412b58-3680-c832-d408-1810def81791.htm" />
   <HelpKINode Title="IOC.FW.Core.Abstraction.Model namespace" Url="html/33017ba2-37b9-da42-2dda-547d628f8ccf.htm" />
   <HelpKINode Title="IOC.FW.Core.Abstraction.Model.IBaseModel interface" Url="html/265661bb-c205-5933-ce92-8a272baac6e5.htm" />
   <HelpKINode Title="IOC.FW.Core.Abstraction.Model.IModelCreating interface" Url="html/e223b6ed-8653-c63c-76f3-77c79222029b.htm" />
@@ -614,11 +608,11 @@
   <HelpKINode Title="IOC.FW.Web.Pagination.Paginator class" Url="html/b437e78f-5f45-925e-8801-a5df2e3f8c2d.htm" />
   <HelpKINode Title="IOC.FW.Web.Thumb class" Url="html/cee9263c-80cb-be6a-5706-4525f4d83f29.htm" />
   <HelpKINode Title="IPrioritySortable interface">
-    <HelpKINode Title="IPrioritySortable Interface" Url="html/f438d689-25eb-7575-715a-4df45b4a46c4.htm" />
-    <HelpKINode Title="about IPrioritySortable interface" Url="html/f438d689-25eb-7575-715a-4df45b4a46c4.htm" />
-    <HelpKINode Title="properties" Url="html/a283b0ba-2bd9-2844-1c95-e929f80eeff6.htm" />
+    <HelpKINode Title="IPrioritySortable Interface" Url="html/e5412b58-3680-c832-d408-1810def81791.htm" />
+    <HelpKINode Title="about IPrioritySortable interface" Url="html/e5412b58-3680-c832-d408-1810def81791.htm" />
+    <HelpKINode Title="properties" Url="html/79918456-9939-5d7b-5300-d4e75a38bdb6.htm" />
   </HelpKINode>
-  <HelpKINode Title="IPrioritySortable.Priority property" Url="html/b8def140-ed32-f931-a3ee-7f5877bb7dec.htm" />
+  <HelpKINode Title="IPrioritySortable.Priority property" Url="html/6658e1a1-b0ba-a32c-657b-d79f1f04ed49.htm" />
   <HelpKINode Title="IsImage method">
     <HelpKINode Title="Extensions.IsImage Method " Url="html/181ad555-f67d-ac0b-74b3-c8b511f0def2.htm" />
     <HelpKINode Title="Extensions.IsImage Method " Url="html/0b8d8f3e-301b-99fa-e70a-4f4f91fc8d9b.htm" />
@@ -766,7 +760,7 @@
   <HelpKINode Title="Password property" Url="html/3ef986c0-2648-45e0-84ae-61e5abcb3fe3.htm" />
   <HelpKINode Title="PreparePattern method" Url="html/7ac1a18b-924c-bd0b-74ec-5316ed99a851.htm" />
   <HelpKINode Title="PrevPage field" Url="html/8e9a07c7-4ad1-ec79-8abb-8aa7c78db5cd.htm" />
-  <HelpKINode Title="Priority property" Url="html/b8def140-ed32-f931-a3ee-7f5877bb7dec.htm" />
+  <HelpKINode Title="Priority property" Url="html/6658e1a1-b0ba-a32c-657b-d79f1f04ed49.htm" />
   <HelpKINode Title="ProcessRequest method">
     <HelpKINode Title="Thumb.ProcessRequest Method " Url="html/400e3d8a-69de-546b-f337-eca9ae4e43db.htm" />
     <HelpKINode Title="TransformHandler.ProcessRequest Method " Url="html/f62f1e86-b0b2-b2df-7c50-0e573123354c.htm" />
@@ -971,9 +965,9 @@
   <HelpKINode Title="TryComputeLength method" Url="html/c61debb2-92e2-df4e-477e-306d450da941.htm" />
   <HelpKINode Title="TV enumeration member" Url="html/d7ea4b30-35b4-594e-9c8c-43c1dbfea211.htm" />
   <HelpKINode Title="Update method">
-    <HelpKINode Title="BaseBusiness(TModel).Update Method " Url="html/e2d41102-6e72-14e4-7ec1-f0a4789ed194.htm" />
-    <HelpKINode Title="BaseRepository(TModel).Update Method " Url="html/9ffd00b9-9a85-82e4-e9b3-f79dc69cbbcd.htm" />
-    <HelpKINode Title="IBaseBusiness(TModel).Update Method " Url="html/f8cffe82-61b4-316e-4305-c444bbca8307.htm" />
+    <HelpKINode Title="BaseBusiness(TModel).Update Method " Url="html/e86a6fed-f0e4-394b-4845-7561d9f1c044.htm" />
+    <HelpKINode Title="BaseRepository(TModel).Update Method " Url="html/79c887a7-0f49-724b-ebd9-cef3001fa02d.htm" />
+    <HelpKINode Title="IBaseBusiness(TModel).Update Method " Url="html/137cbdac-570f-e86d-dee3-acf18b324653.htm" />
   </HelpKINode>
   <HelpKINode Title="Updated property" Url="html/d4d0cfb9-df0d-abac-ee01-1db99234df2d.htm" />
   <HelpKINode Title="UpdatePriority(Of TPriorityModel) method">
@@ -986,7 +980,6 @@
     <HelpKINode Title="BaseRepository(TModel).UpdatePriority(TPriorityModel) Method " Url="html/e21c6d39-742c-d640-67cf-12c446bb56e0.htm" />
     <HelpKINode Title="IBaseBusiness(TModel).UpdatePriority(TPriorityModel) Method " Url="html/dc468076-d56a-17ad-ce96-0cf258ecdb9f.htm" />
   </HelpKINode>
-  <HelpKINode Title="UpdateToContext method" Url="html/b51c6fe2-98fd-a4a8-f2b8-63c06e7c3c74.htm" />
   <HelpKINode Title="Url field" Url="html/7e4c0be6-9f3a-ef54-5781-600e2fd85c07.htm" />
   <HelpKINode Title="UrlParams field" Url="html/37dea6f4-8f08-a3a4-7f84-8869da470249.htm" />
   <HelpKINode Title="UserName property" Url="html/5e789bc0-9e0b-d550-d5a9-f8f4f6e24bfa.htm" />
