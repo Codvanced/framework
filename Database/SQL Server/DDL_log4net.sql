@@ -27,6 +27,6 @@ CREATE TABLE Log (
 )
 
 /*------------------------- Criação de Chave Primária --------------------------------------------------------*/
-ALTER TABLE dbo.Log
-ADD CONSTRAINT PK_Log
-PRIMARY KEY(LogId)
+ALTER TABLE 	Log
+ADD CONSTRAINT 	PK_Log
+PRIMARY KEY		(LogId)

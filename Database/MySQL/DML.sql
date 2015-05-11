@@ -1,19 +1,25 @@
-/* USE DATABASE */
+/*-------------------------------------------------------------------------------------------------------------*/
+/*-------------------------- Script para Inserção da Base de Dados do Codvanced Framework (IOC FW) ------------*/
+/*-------------------------------------------------------------------------------------------------------------*/
+
+/* Usa a base de dados criada */
 USE IoC_FW;
 
-/* --- INSERE OS REGISTROS SE OS OBJETOS JÁ EXISTIREM --- */
+/*--- Faz a carga se a tabela Ocupation ---*/
 INSERT INTO Ocupation (OcupationName)
 VALUES 
     ('Ocupation 1')
 ,   ('Ocupation 2')
 ,   ('Ocupation 3');
 
+/*--- Faz a carga se a tabela Person ---*/
 INSERT INTO Person (PersonName, IdOcupation, Gender)
 VALUES
     ('Person 1', 1, 'Masculino')
 ,   ('Person 2', 2, 'Feminino')
 ,   ('Person 3', 3, 'Masculino');
 
+/*--- Faz a carga se a tabela Artist ---*/
 INSERT INTO Artist (Name) 
 VALUES
     ('Artista1')
@@ -22,6 +28,7 @@ VALUES
 ,   ('Artista4')
 ,   ('Artista5');
 
+/*--- Faz a carga se a tabela Genre ---*/
 INSERT INTO Genre (Name) 
 VALUES
     ('Genre1')
@@ -29,6 +36,7 @@ VALUES
 ,   ('Genre3')
 ,   ('Genre4');
 
+/*--- Faz a carga se a tabela ArtistGenre ---*/
 INSERT INTO ArtistGenre(IdArtist, IdGenre)
 VALUES
     (1, 1)
@@ -41,19 +49,3 @@ VALUES
 ,   (3, 3)
 ,   (3, 4)
 ,   (4, 1);
-
-SELECT 
-	A.*
-,	G.* 
-FROM 
-	ArtistGenre AG
-INNER JOIN 
-	Artist A
-	ON AG.IdArtist = A.IdArtist
-INNER JOIN 
-	Genre G
-	ON AG.IdGenre = G.IdGenre;
-	
-SELECT * FROM Artist;
-SELECT * FROM Genre;
-SELECT * FROM ArtistGenre;

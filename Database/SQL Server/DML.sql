@@ -2,13 +2,13 @@
 /*-------------------------- Script para Inserção da Base de Dados do Codvanced Framework (IOC FW) ------------*/
 /*-------------------------------------------------------------------------------------------------------------*/
 
-/* Válida se a base de dados existe para criar a trigger */
+/* Válida se a base de dados existe para fazer a carga */
 IF(DB_ID('IoC_FW') IS NOT NULL)
 	/* Usa a base de dados criada */
 	USE IoC_FW;
 	GO
 	
-	/* --- Faz a carga se a tabela Ocupation existir --- */
+	/*--- Faz a carga se a tabela Ocupation existir ---*/
 	IF(OBJECT_ID('Ocupation') IS NOT NULL)
 		INSERT INTO Ocupation (OcupationName)
 		VALUES 
@@ -17,7 +17,7 @@ IF(DB_ID('IoC_FW') IS NOT NULL)
 		,	('Ocupation 3')
 	GO
 	
-	/* --- Faz a carga se a tabela Person existir --- */
+	/*--- Faz a carga se a tabela Person existir ---*/
 	IF(OBJECT_ID('Person') IS NOT NULL)
 		INSERT INTO Person (PersonName, IdOcupation, Gender)
 		VALUES
@@ -26,7 +26,7 @@ IF(DB_ID('IoC_FW') IS NOT NULL)
 		,	('Person 3', 3, 'Masculino')
 	GO
 
-	/* --- Faz a carga se a tabela Artist existir --- */
+	/*--- Faz a carga se a tabela Artist existir ---*/
 	IF(OBJECT_ID('Artist') IS NOT NULL)
 		INSERT INTO Artist (Name) 
 		VALUES
@@ -37,7 +37,7 @@ IF(DB_ID('IoC_FW') IS NOT NULL)
 		,	('Artista5')
 	GO
 
-	/* --- Faz a carga se a tabela Genre existir --- */
+	/*--- Faz a carga se a tabela Genre existir ---*/
 	IF(OBJECT_ID('Genre') IS NOT NULL)
 		INSERT INTO Genre (Name) 
 		VALUES
@@ -47,7 +47,7 @@ IF(DB_ID('IoC_FW') IS NOT NULL)
 		,	('Genre4')
 	GO
 
-	/* --- Faz a carga se a tabela ArtistGenre e as tabelas Artist e Genre existirem --- */
+	/*--- Faz a carga se a tabela ArtistGenre e as tabelas Artist e Genre existirem ---*/
 	IF(OBJECT_ID('ArtistGenre') IS NOT NULL AND OBJECT_ID('Artist') IS NOT NULL AND OBJECT_ID('Genre') IS NOT NULL)
 		INSERT INTO ArtistGenre(IdArtist, IdGenre)
 		VALUES
