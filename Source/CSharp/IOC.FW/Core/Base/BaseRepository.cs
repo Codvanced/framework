@@ -77,9 +77,11 @@ namespace IOC.FW.Core.Base
         /// Implementação de método de IBaseDAO destinado a encontrar todos os registros de uma tabela vinculada a uma Model.
         /// Há possibilidade de incluir objetos referenciais a chaves estrangeiras
         /// </summary>
+        /// <param name="order">Delegate contendo parâmetros de ordenação</param>
         /// <param name="navigationProperties">Objetos de uma Model referentes a chaves estrangeiras no database</param>
         /// <returns>Implementação de IList com os registros encontrados.</returns>
         public IList<TModel> SelectAll(
+            Func<IQueryable<TModel>, IOrderedQueryable<TModel>> order,
             params Expression<Func<TModel, object>>[] navigationProperties
         )
         {
@@ -87,13 +89,30 @@ namespace IOC.FW.Core.Base
 
             using (var context = new Repository<TModel>(this.nameOrConnectionString))
             {
-                context._dbQuery = IncludeReference(context.DbObject, navigationProperties);
+                var query = context._dbQuery;
+                query = IncludeReference(context.DbObject, navigationProperties);
 
-                list = context._dbQuery
-                    .AsNoTracking()
-                    .ToList<TModel>();
+                if (order != null)
+                    query = order(query);
+
+                list = query
+                   .AsNoTracking()
+                   .ToList<TModel>();
             }
             return list;
+        }
+
+        /// <summary>
+        /// Implementação de método de IBaseDAO destinado a encontrar todos os registros de uma tabela vinculada a uma Model.
+        /// Há possibilidade de incluir objetos referenciais a chaves estrangeiras
+        /// </summary>
+        /// <param name="navigationProperties">Objetos de uma Model referentes a chaves estrangeiras no database</param>
+        /// <returns>Implementação de IList com os registros encontrados.</returns>
+        public IList<TModel> SelectAll(
+            params Expression<Func<TModel, object>>[] navigationProperties
+        )
+        {
+            return SelectAll(null, navigationProperties);
         }
 
         /// <summary>
@@ -107,13 +126,33 @@ namespace IOC.FW.Core.Base
             params Expression<Func<TModel, object>>[] navigationProperties
         )
         {
+            return Select(where, null, navigationProperties);
+        }
+
+        /// <summary>
+        /// Implementação de método de IBaseDAO destinado a encontrar todos os registros de uma tabela vinculada a uma model. 
+        /// </summary>
+        /// <param name="where">Delegate contendo parâmetros para composição de WHERE</param>
+        /// <param name="navigationProperties">Objetos de uma Model referentes a chaves estrangeiras no database</param>
+        /// <param name="order">Delegate contendo parâmetros de ordenação</param>
+        /// <returns>Implementação de IList com os registros encontrados.</returns>
+        public IList<TModel> Select(
+            Expression<Func<TModel, bool>> where,
+            Func<IQueryable<TModel>, IOrderedQueryable<TModel>> order,
+            params Expression<Func<TModel, object>>[] navigationProperties
+        )
+        {
             List<TModel> list;
 
             using (var context = new Repository<TModel>(this.nameOrConnectionString))
             {
-                context._dbQuery = IncludeReference(context.DbObject, navigationProperties);
+                var query = context._dbQuery;
+                query = IncludeReference(context.DbObject, navigationProperties);
+                
+                if (order != null)
+                    query = order(query);
 
-                list = context._dbQuery
+                list = query
                    .AsNoTracking()
                    .Where(where)
                    .ToList<TModel>();
