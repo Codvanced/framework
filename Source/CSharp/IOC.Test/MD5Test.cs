@@ -14,7 +14,8 @@ namespace IOC.Test
         [Test]
         public void Md5Test()
         {
-            int maxTickets = 100000;
+            int maxTickets = 100;
+            //int maxTickets = 100000;
             var rngProvider = RNGCryptoServiceProvider.Create();
             byte[] rndBytes = new byte[maxTickets];
             
@@ -53,7 +54,7 @@ namespace IOC.Test
                     }
                 }
 
-                Thread.Sleep(50);
+                //Thread.Sleep(50);
             }
 
 
