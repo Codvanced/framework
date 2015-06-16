@@ -50,7 +50,7 @@ namespace IOC.Model
 
         public override int GetHashCode()
         {
-            return IdPerson.ToString().GetHashCode();
+            return IdPerson.GetHashCode();
         }
     }
 }
