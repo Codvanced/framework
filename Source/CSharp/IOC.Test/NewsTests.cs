@@ -39,7 +39,8 @@ namespace IOC.Test
         {
             Assert.NotNull(simpleInjector);
 
-            var business = InstanceFactory.GetImplementation<NewsBusinessAbstract>();
+            //var business = InstanceFactory.GetImplementation<NewsBusinessAbstract>();
+            var business = InstanceFactory.GetImplementation<IBaseBusiness<News>>();
             Assert.NotNull(business);
 
             business.Insert(

@@ -11,9 +11,11 @@ using IOC.FW.Core.Database;
 using System.Data.Entity;
 using System.Collections;
 using NUnit.Framework;
+using Moq;
 
 namespace IOC.Test
 {
+    [TestFixture]
     public class IBaseBusinessTest
     {
         public static IEnumerable<Container> Configure()
@@ -21,6 +23,7 @@ namespace IOC.Test
             yield return InstanceFactory.RegisterModules();
         }
 
+        [Test]
         public void BaseTest(Container simpleInjector)
         {
             var business = InstanceFactory.GetImplementation<IBaseBusiness<Person>>();
@@ -28,6 +31,7 @@ namespace IOC.Test
             var instanceListModel = business.List();
         }
 
+        [Test]
         public void OrderByTest()
         {
             var business = InstanceFactory.GetImplementation<IBaseBusiness<Person>>();
@@ -42,6 +46,7 @@ namespace IOC.Test
                 order
             );
 
+            filteredAndOrderedResults = null;
             Assert.IsNotNull(filteredAndOrderedResults);
 
             filteredAndOrderedResults = business.SelectAll(
@@ -50,5 +55,34 @@ namespace IOC.Test
 
             Assert.IsNotNull(filteredAndOrderedResults);
         }
+
+        public void create_model_test()
+        {
+            var business = InstanceFactory.GetImplementation<IBaseBusiness<Person>>();
+            Assert.IsNotNull(business);
+            
+            var model = business.Model();
+            Assert.IsNotNull(model);
+        }
+
+        public void create_list_model_test()
+        {
+            var business = InstanceFactory.GetImplementation<IBaseBusiness<Person>>();
+            Assert.IsNotNull(business);
+
+            var model = business.List();
+            Assert.IsNotNull(model);
+        }
+
+        public void insert_test()
+        {
+            var business = InstanceFactory.GetImplementation<IBaseBusiness<Person>>();
+            var model = business.Model();
+            model.Activated = (new Random().Next(0, 1)) == 1;
+            model.Created = DateTime.Now;
+            model.Gender = (new Random().Next(0, 1)) == 1 ? "M" : "F";
+            NUnit.Framework.Randomizer.GetRandomizer(model.PersonName.GetType());
+        }
+
     }
 }
