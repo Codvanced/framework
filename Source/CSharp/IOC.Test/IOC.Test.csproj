@@ -182,7 +182,7 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
       <SubType>Designer</SubType>
     </None>
-    <Content Include="App_Data\IoC_FW.mdf">
+    <Content Include="App_Data\SQL Server\IoC_FW.mdf">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="Assets\Files\TestFile.txt">
@@ -206,7 +206,7 @@
       <SubType>Designer</SubType>
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <Content Include="App_Data\IoC_FW.db">
+    <Content Include="App_Data\SQLite\IoC_FW.db">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <None Include="packages.config" />

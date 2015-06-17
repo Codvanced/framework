@@ -237,7 +237,7 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="App_Data\SQL Server\IoC_FW.mdf" />
+    <None Include="App_Data\SQL Server\IoC_FW.mdf" />
     <Content Include="Content\css\admin.css" />
     <Content Include="Content\css\admin_custom.css" />
     <Content Include="Content\img\bg_header_repeat.png" />

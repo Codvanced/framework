@@ -63,7 +63,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Business\NewsBusinessAbstract.cs" />
+    <Compile Include="Business\NewsBusinessAbstract.cs">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="Business\OcupationBusinessAbstract.cs" />
     <Compile Include="Business\PersonBusinessAbstract.cs" />
     <Compile Include="DAO\NewsDAOAbstract.cs" />
