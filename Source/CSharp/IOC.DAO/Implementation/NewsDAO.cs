@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using IOC.Model;
-using System.Data.SqlClient;
 using IOC.Abstraction.DAO;
 using System.Data;
 
@@ -12,7 +11,7 @@ namespace IOC.DAO.Implementation
     public class NewsDAO
         : NewsDAOAbstract
     {
-        public NewsDAO(OcupationDAOAbstract ocupationDAO)
+        public NewsDAO()
             : base()
         { }
 
