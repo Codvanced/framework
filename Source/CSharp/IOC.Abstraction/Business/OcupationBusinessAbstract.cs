@@ -4,9 +4,9 @@ using System.Linq;
 using System.Text;
 using IOC.FW.Core.Base;
 using IOC.Model;
-using IOC.Interface.DAO;
+using IOC.Abstraction.DAO;
 
-namespace IOC.Interface.Business
+namespace IOC.Abstraction.Business
 {
     public abstract class OcupationBusinessAbstract
         : BaseBusiness<Ocupation>

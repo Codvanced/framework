@@ -10,7 +10,6 @@ using IOC.Model;
 using IOC.Abstraction.Business;
 using IOC.FW.Core.Base;
 using IOC.FW.Core.Abstraction.Business;
-using IOC.Interface.Business;
 
 namespace IOC.Binding.SimpleInjector
 {

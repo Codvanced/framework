@@ -31,6 +31,8 @@ namespace IOC.FW.Core.Base
         /// </summary>
         private string nameOrConnectionString = string.Empty;
 
+        private DbConnection connection = null;
+
         /// <summary>
         /// Construtor padrão, inicializa a string de conexão com o parametrizado em ConnectionStrings.config (Name: DefaultConnection)
         /// </summary>
@@ -52,6 +54,11 @@ namespace IOC.FW.Core.Base
             }
 
             this.nameOrConnectionString = nameOrConnectionString;
+        }
+
+        public void SetConnection(DbConnection connection)
+        {
+            this.connection = connection;
         }
 
         /// <summary>
@@ -87,7 +94,7 @@ namespace IOC.FW.Core.Base
         {
             List<TModel> list;
 
-            using (var context = new Repository<TModel>(this.nameOrConnectionString))
+            using (var context = CreateContext())
             {
                 var query = context._dbQuery;
                 query = IncludeReference(context.DbObject, navigationProperties);
@@ -144,7 +151,7 @@ namespace IOC.FW.Core.Base
         {
             List<TModel> list;
 
-            using (var context = new Repository<TModel>(this.nameOrConnectionString))
+            using (var context = CreateContext())
             {
                 var query = context._dbQuery;
                 query = IncludeReference(context.DbObject, navigationProperties);
@@ -174,7 +181,7 @@ namespace IOC.FW.Core.Base
         {
             TModel item = null;
 
-            using (var context = new Repository<TModel>(this.nameOrConnectionString))
+            using (var context = CreateContext())
             {
                 context._dbQuery = IncludeReference(context.DbObject, navigationProperties);
 
@@ -192,7 +199,7 @@ namespace IOC.FW.Core.Base
         /// <param name="items">Coleção de registros a inserir na base</param>
         public void Insert(params TModel[] items)
         {
-            using (var context = new Repository<TModel>(this.nameOrConnectionString))
+            using (var context = CreateContext())
             {
                 foreach (TModel item in items)
                 {
@@ -215,7 +222,7 @@ namespace IOC.FW.Core.Base
         /// <param name="items">Coleção de registros a inserir na base</param>
         public void Update(params TModel[] items)
         {
-            using (var context = new Repository<TModel>(this.nameOrConnectionString))
+            using (var context = CreateContext())
             {
                 foreach (TModel item in items)
                 {
@@ -256,7 +263,7 @@ namespace IOC.FW.Core.Base
             Expression<Func<TModel, object>>[] properties
         )
         {
-            using (var context = new Repository<TModel>(this.nameOrConnectionString))
+            using (var context = CreateContext())
             {
                 if (item is IBaseModel)
                 {
@@ -295,7 +302,7 @@ namespace IOC.FW.Core.Base
         /// <param name="items">Coleção de registros a inserir na base</param>
         public void Delete(params TModel[] items)
         {
-            using (var context = new Repository<TModel>(this.nameOrConnectionString))
+            using (var context = CreateContext())
             {
                 foreach (TModel item in items)
                 {
@@ -333,7 +340,7 @@ namespace IOC.FW.Core.Base
             
             if (!String.IsNullOrEmpty(sql))
             {
-                using (var context = new Repository<TModel>(this.nameOrConnectionString))
+                using (var context = CreateContext())
                 {
                     var conn = this.OpenConnection(context);
                     var comm = this.CreateCommand(conn, sql, cmdType);
@@ -367,7 +374,7 @@ namespace IOC.FW.Core.Base
 
             if (!String.IsNullOrEmpty(sql))
             {
-                using (var context = new Repository<TModel>(this.nameOrConnectionString))
+                using (var context = CreateContext())
                 {
                     var conn = this.OpenConnection(context);
                     var comm = this.CreateCommand(conn, sql, cmdType);
@@ -422,7 +429,7 @@ namespace IOC.FW.Core.Base
 
             if (!String.IsNullOrEmpty(sql))
             {
-                using (var context = new Repository<TModel>(this.nameOrConnectionString))
+                using (var context = CreateContext())
                 {
                     var conn = this.OpenConnection(context);
                     var comm = this.CreateCommand(conn, sql, cmdType);
@@ -445,7 +452,7 @@ namespace IOC.FW.Core.Base
             TModel model = null;
             if (lambda != null)
             {
-                using (var context = new Repository<TModel>(this.nameOrConnectionString))
+                using (var context = CreateContext())
                 {
                     model = lambda(context.DbObject);
                 }
@@ -492,6 +499,36 @@ namespace IOC.FW.Core.Base
                 }
             }
             return model;
+        }
+
+        public void ExecuteWithTransaction(IsolationLevel isolation, Action<DbConnection> transactionExecution)
+        {
+            using (var context = CreateContext())
+            {
+                var transaction = context.Database.BeginTransaction(isolation);
+
+                try
+                {
+                    transactionExecution(context.Database.Connection);
+                    transaction.Commit();
+                }
+                catch (Exception ex)
+                {
+                    transaction.Rollback();
+                }
+            }
+        }
+
+        private Repository<TModel> CreateContext()
+        {
+            if (this.connection != null)
+            {
+                return new Repository<TModel>(this.connection, false);
+            }
+            else
+            {
+                return new Repository<TModel>(this.nameOrConnectionString);
+            }
         }
 
         /// <summary>
@@ -604,7 +641,7 @@ namespace IOC.FW.Core.Base
         public void UpdatePriority<TPriorityModel>(TPriorityModel[] items)
             where TPriorityModel : TModel, IPrioritySortable
         {
-            using (var context = new Repository<TModel>(this.nameOrConnectionString))
+            using (var context = CreateContext())
             {
                 for (var i = 0; i < items.Length; i++)
                 {
@@ -656,7 +693,7 @@ namespace IOC.FW.Core.Base
         public int Count(Expression<Func<TModel, bool>> where)
         {
             int count;
-            using (var context = new Repository<TModel>(this.nameOrConnectionString))
+            using (var context = CreateContext())
             {
                 count = this.Count(where, context);
             }
@@ -695,7 +732,7 @@ namespace IOC.FW.Core.Base
         public long LongCount(Expression<Func<TModel, bool>> where)
         {
             long count;
-            using (var context = new Repository<TModel>(this.nameOrConnectionString))
+            using (var context = CreateContext())
             {
                 count = this.LongCount(where, context);
             }

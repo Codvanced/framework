@@ -10,7 +10,6 @@ using IOC.FW.Core.Abstraction.Binding;
 using IOC.FW.Core.Abstraction.DAO;
 using IOC.FW.Core.Database;
 using IOC.FW.Core.Base;
-using IOC.Interface.DAO;
 
 namespace IOC.Binding.SimpleInjector
 {
