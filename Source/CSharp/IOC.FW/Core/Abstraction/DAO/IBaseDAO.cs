@@ -7,7 +7,6 @@ using System.Data.Entity;
 using System.Data;
 using IOC.FW.Core.Abstraction.Miscellaneous;
 using IOC.FW.Core.Abstraction.Business;
-using System.Data.Common;
 
 namespace IOC.FW.Core.Abstraction.DAO
 {
@@ -85,12 +84,6 @@ namespace IOC.FW.Core.Abstraction.DAO
             string sql,
             List<Tuple<ParameterDirection, string, object>> parametersWithDirection,
             CommandType cmdType
-        );
-
-        void ExecuteWithTransaction(
-            IsolationLevel isolation,
-            IBaseTransaction[] DAOs,
-            Action transactionExecution
         );
     }
 }

@@ -26,45 +26,36 @@ namespace IOC.FW.Core.Base
         : IBaseDAO<TModel>
         where TModel : class, new()
     {
+        #region Fields
         /// <summary>
         /// Nome de conexão ou a string propriamente dita
         /// </summary>
         private string nameOrConnectionString = string.Empty;
 
         /// <summary>
-        /// 
+        /// Field responsável por guardar o estado de uma conexão
         /// </summary>
         private DbConnection connection = null;
-        private DbTransaction transaction = null;
 
+        /// <summary>
+        /// Field responsável por guardar o estado de uma transação
+        /// </summary>
+        private DbTransaction transaction = null;
+        #endregion
+
+        #region Constructor
         /// <summary>
         /// Construtor padrão, inicializa a string de conexão com o parametrizado em ConnectionStrings.config (Name: DefaultConnection)
         /// </summary>
         public BaseRepository()
         {
+            //TODO: Modificar a atribuição de nome default para um configurador
             nameOrConnectionString = "DefaultConnection";
         }
+        #endregion
 
-        /// <summary>
-        /// Método destinado a modificar a string de conexão usada pelo Entity Framework
-        /// </summary>
-        /// <param name="nameOrConnectionString">String de conexão</param>
-        public void SetConnection(string nameOrConnectionString)
-        {
-            if (string.IsNullOrEmpty(nameOrConnectionString))
-            {
-                nameOrConnectionString = (ConfigurationManager.ConnectionStrings["DefaultConnection"]).ConnectionString;
-            }
-
-            this.nameOrConnectionString = nameOrConnectionString;
-        }
-
-        public void SetConnection(DbConnection connection, DbTransaction transaction)
-        {
-            this.connection = connection;
-            this.transaction = transaction;
-        }
-
+        #region Methods
+        #region Private Methods
         /// <summary>
         /// Método auxiliar destinado a incluir referências a classes com propriedades de chasves estrangeiras. 
         /// </summary>
@@ -84,6 +75,223 @@ namespace IOC.FW.Core.Base
             return query;
         }
 
+        /// <summary>
+        /// Método responsável por configurar uma transação para todas as DAOs informadas
+        /// </summary>
+        /// <param name="daos">Objetos de acesso a dados a configurar</param>
+        private void ConfigureTransaction(IBaseTransaction[] daos)
+        {
+            if (daos == null)
+            {
+                throw new ArgumentNullException("daos");
+            }
+
+            foreach (var dao in daos)
+            {
+                dao.SetConnection(
+                    this.connection,
+                    this.transaction
+                );
+            }
+        }
+
+        /// <summary>
+        /// Método responsável por gerenciar a criação de contextos de repositórios
+        /// </summary>
+        /// <returns>Contexto de repositório preparado para utilização</returns>
+        private Repository<TModel> CreateContext()
+        {
+            if (this.connection != null
+                && this.connection.State == ConnectionState.Open
+            )
+            {
+                var newRepo = new Repository<TModel>(this.connection, false);
+                newRepo.Database.UseTransaction(this.transaction);
+                return newRepo;
+            }
+            else
+            {
+                return new Repository<TModel>(this.nameOrConnectionString);
+            }
+        }
+
+        /// <summary>
+        /// Método auxiliar destinado a abrir uma conexão com o banco e devolvê-la.
+        /// </summary>
+        /// <param name="context">Contexto do EntityFramework</param>
+        /// <returns>Objeto com conexão aberta</returns>
+        private DbConnection OpenConnection(Repository<TModel> context)
+        {
+            DbConnection conn = null;
+
+            if (context != null
+                && context.Database != null
+                && context.Database.Connection != null
+                && context.Database.Connection is DbConnection
+                && context.Database.Connection.State != ConnectionState.Open)
+            {
+                conn = ((DbConnection)context.Database.Connection);
+                conn.Open();
+            }
+            else
+            {
+                conn = this.connection;
+            }
+
+            return conn;
+        }
+
+        /// <summary>
+        /// Método auxiliar destinado a criar um command baseado em um objeto de connection.
+        /// </summary>
+        /// <param name="conn">Objeto de conexão aberta</param>
+        /// <param name="sql">Comando a ser executado (Query ou procedure)</param>
+        /// <param name="cmdType">Tipo do comando</param>
+        /// <returns>Objeto de command</returns>
+        private DbCommand CreateCommand(
+            DbConnection conn,
+            string sql,
+            CommandType cmdType = CommandType.Text
+        )
+        {
+            if (conn == null)
+            {
+                throw new ArgumentNullException("conn");
+            }
+
+            if (string.IsNullOrWhiteSpace(sql))
+            {
+                throw new ArgumentNullException("sql");
+            }
+
+            DbCommand comm = null;
+
+            if (conn.State == ConnectionState.Open)
+            {
+                comm = conn.CreateCommand();
+                comm.CommandText = sql;
+                comm.CommandType = cmdType;
+                comm.CommandTimeout = 99999;
+                if (this.transaction != null)
+                {
+                    comm.Transaction = this.transaction;
+                }
+            }
+
+            return comm;
+        }
+
+        /// <summary>
+        /// Método auxiliar destinado a incluir parametros em um command.
+        /// </summary>
+        /// <param name="comm">Command a inserir os paramtros</param>
+        /// <param name="parameters">Dicionario de parametros a inserir</param>
+        private void SetParameter(
+            DbCommand comm,
+            Dictionary<string, object> parameters
+        )
+        {
+            if (comm == null)
+            {
+                throw new ArgumentNullException("comm");
+            }
+
+            if (parameters == null)
+            {
+                throw new ArgumentNullException("parameters");
+            }
+
+            if (parameters.Count <= 0)
+            {
+                throw new ArgumentException("The dictionary can't be empty", "parameters");
+            }
+
+            foreach (var item in parameters)
+            {
+                var param = comm.CreateParameter();
+                param.ParameterName = item.Key;
+                param.Value = item.Value;
+                comm.Parameters.Add(param);
+            }
+        }
+
+        /// <summary>
+        /// Método auxiliar destinado a incluir parametros em um command.
+        /// </summary>
+        /// <param name="comm">Command a inserir os paramtros</param>
+        /// <param name="parameters">Lista de parametros a inserir</param>
+        private void SetParameter(
+            DbCommand comm,
+            List<Tuple<ParameterDirection, string, object>> parameters
+        )
+        {
+            if (comm == null)
+            {
+                throw new ArgumentNullException("comm");
+            }
+
+            if (parameters == null)
+            {
+                throw new ArgumentNullException("parameters");
+            }
+
+            if (parameters.Count <= 0)
+            {
+                throw new ArgumentException("The list of tuples can't be empty", "parameters");
+            }
+
+            foreach (var item in parameters)
+            {
+                var param = comm.CreateParameter();
+                param.Direction = item.Item1;
+                param.ParameterName = item.Item2;
+                param.Value = item.Item3;
+                comm.Parameters.Add(param);
+            }
+        }
+
+        /// <summary>
+        /// Implementação de método para retornar um count da tabela vinculada ao objeto
+        /// </summary>
+        /// <returns>Quantidade de registros</returns>
+        private int Count(
+            Expression<Func<TModel, bool>> where,
+            Repository<TModel> context
+        )
+        {
+            if (context == null)
+            {
+                throw new ArgumentNullException("context");
+            }
+
+            return context._dbQuery
+                   .AsNoTracking()
+                   .Count(where);
+        }
+
+        /// <summary>
+        /// Método auxiliar para retornar um count da tabela vinculada ao objeto e contexto
+        /// </summary>
+        /// <param name="where">Filtro de busca</param>
+        /// <param name="context">Contexto de repositorio para a execução da query</param>
+        /// <returns>Quantidade de registros</returns>
+        private long LongCount(
+            Expression<Func<TModel, bool>> where,
+            Repository<TModel> context
+        )
+        {
+            if (context == null)
+            {
+                throw new ArgumentNullException("context");
+            }
+
+            return context._dbQuery
+                   .AsNoTracking()
+                   .LongCount(where);
+        }
+        #endregion
+
+        #region Public Methods
         /// <summary>
         /// Implementação de método de IBaseDAO destinado a encontrar todos os registros de uma tabela vinculada a uma Model.
         /// Há possibilidade de incluir objetos referenciais a chaves estrangeiras
@@ -203,6 +411,16 @@ namespace IOC.FW.Core.Base
         /// <param name="items">Coleção de registros a inserir na base</param>
         public void Insert(params TModel[] items)
         {
+            if (items == null)
+            {
+                throw new ArgumentNullException("items");
+            }
+
+            if (items.Length <= 0)
+            {
+                throw new ArgumentException("The array of itens is empty ", "items");
+            }
+
             using (var context = CreateContext())
             {
                 foreach (TModel item in items)
@@ -226,6 +444,16 @@ namespace IOC.FW.Core.Base
         /// <param name="items">Coleção de registros a inserir na base</param>
         public void Update(params TModel[] items)
         {
+            if (items == null)
+            {
+                throw new ArgumentNullException("items");
+            }
+
+            if (items.Length <= 0)
+            {
+                throw new ArgumentException("The array of itens is empty ", "items");
+            }
+
             using (var context = CreateContext())
             {
                 foreach (TModel item in items)
@@ -267,6 +495,11 @@ namespace IOC.FW.Core.Base
             Expression<Func<TModel, object>>[] properties
         )
         {
+            if (item == null)
+            {
+                throw new ArgumentNullException("item");
+            }
+
             using (var context = CreateContext())
             {
                 if (item is IBaseModel)
@@ -306,6 +539,16 @@ namespace IOC.FW.Core.Base
         /// <param name="items">Coleção de registros a inserir na base</param>
         public void Delete(params TModel[] items)
         {
+            if (items == null)
+            {
+                throw new ArgumentNullException("items");
+            }
+
+            if (items.Length <= 0)
+            {
+                throw new ArgumentException("The array of itens is empty ", "items");
+            }
+
             using (var context = CreateContext())
             {
                 foreach (TModel item in items)
@@ -349,7 +592,11 @@ namespace IOC.FW.Core.Base
                     var conn = this.OpenConnection(context);
 
                     var comm = this.CreateCommand(conn, sql, cmdType);
-                    this.SetParameter(comm, parameters);
+                    
+                    if (parameters != null && parameters.Count > 0)
+                    {
+                        this.SetParameter(comm, parameters);
+                    }
 
                     var reader = comm.ExecuteReader();
 
@@ -383,7 +630,11 @@ namespace IOC.FW.Core.Base
                 {
                     var conn = this.OpenConnection(context);
                     var comm = this.CreateCommand(conn, sql, cmdType);
-                    this.SetParameter(comm, parametersWithDirection);
+
+                    if (parametersWithDirection != null && parametersWithDirection.Count > 0)
+                    {
+                        this.SetParameter(comm, parametersWithDirection);
+                    }
 
                     var reader = comm.ExecuteReader();
 
@@ -438,7 +689,11 @@ namespace IOC.FW.Core.Base
                 {
                     var conn = this.OpenConnection(context);
                     var comm = this.CreateCommand(conn, sql, cmdType);
-                    this.SetParameter(comm, parameters);
+
+                    if (parameters != null && parameters.Count > 0)
+                    {
+                        this.SetParameter(comm, parameters);
+                    }
 
                     result = comm.ExecuteScalar();
                 }
@@ -506,20 +761,12 @@ namespace IOC.FW.Core.Base
             return model;
         }
 
-        private void ConfigureTransaction(IBaseTransaction[] daos)
-        {
-            if (daos != null)
-            {
-                foreach (var dao in daos)
-                {
-                    dao.SetConnection(
-                        this.connection,
-                        this.transaction
-                    );
-                }
-            }
-        }
-
+        /// <summary>
+        /// Implementação de método de IBaseTransaction destinado a executar comandos a partir de uma transaction 
+        /// </summary>
+        /// <param name="isolation">Nível de isolamento para a execução da transaction</param>
+        /// <param name="DAOs">Objetos de dados para configurar no mesmo contexto de transaction (todo e qualquer acesso a base através destes objetos será transacional)</param>
+        /// <param name="transactionExecution">Método para passar o controle de execução transacional</param>
         public void ExecuteWithTransaction(
             IsolationLevel isolation,
             IBaseTransaction[] DAOs,
@@ -551,133 +798,6 @@ namespace IOC.FW.Core.Base
 
                 this.connection = null;
                 this.transaction = null;
-            }
-        }
-
-        private Repository<TModel> CreateContext()
-        {
-            if (this.connection != null
-                && this.connection.State == ConnectionState.Open
-            )
-            {
-                var newRepo = new Repository<TModel>(this.connection, false);
-                newRepo.Database.UseTransaction(this.transaction);
-                return newRepo;
-            }
-            else
-            {
-                return new Repository<TModel>(this.nameOrConnectionString);
-            }
-        }
-
-        /// <summary>
-        /// Método auxiliar destinado a abrir uma conexão com o banco e devolvê-la.
-        /// </summary>
-        /// <param name="context">Contexto do EntityFramework</param>
-        /// <returns>Objeto com conexão aberta</returns>
-        private DbConnection OpenConnection(Repository<TModel> context)
-        {
-            DbConnection conn = null;
-
-            if (context != null
-                && context.Database != null
-                && context.Database.Connection != null
-                && context.Database.Connection is DbConnection
-                && context.Database.Connection.State != ConnectionState.Open)
-            {
-                conn = ((DbConnection)context.Database.Connection);
-                conn.Open();
-            }
-            else
-            {
-                conn = this.connection;
-            }
-
-            return conn;
-        }
-
-        /// <summary>
-        /// Método auxiliar destinado a criar um command baseado em um objeto de connection.
-        /// </summary>
-        /// <param name="conn">Objeto de conexão aberta</param>
-        /// <param name="sql">Comando a ser executado (Query ou procedure)</param>
-        /// <param name="cmdType">Tipo do comando</param>
-        /// <returns>Objeto de command</returns>
-        private DbCommand CreateCommand(
-            DbConnection conn,
-            string sql,
-            CommandType cmdType = CommandType.Text
-        )
-        {
-            DbCommand comm = null;
-
-            if (conn != null
-                && conn.State == ConnectionState.Open
-                && !string.IsNullOrEmpty(sql))
-            {
-                comm = conn.CreateCommand();
-                comm.CommandText = sql;
-                comm.CommandType = cmdType;
-                comm.CommandTimeout = 99999;
-                if (this.transaction != null)
-                {
-                    comm.Transaction = this.transaction;
-                }
-            }
-
-            return comm;
-        }
-
-        /// <summary>
-        /// Método auxiliar destinado a incluir parametros em um command.
-        /// </summary>
-        /// <param name="comm">Command a inserir os paramtros</param>
-        /// <param name="parameters">Dicionario de parametros a inserir</param>
-        private void SetParameter(
-            DbCommand comm,
-            Dictionary<string, object> parameters = null
-        )
-        {
-            if (comm != null
-                && parameters != null
-                && parameters.Count > 0)
-            {
-                DbParameter param = null;
-
-                foreach (var item in parameters)
-                {
-                    param = comm.CreateParameter();
-                    param.ParameterName = item.Key;
-                    param.Value = item.Value;
-                    comm.Parameters.Add(param);
-                }
-            }
-        }
-
-        /// <summary>
-        /// Método auxiliar destinado a incluir parametros em um command.
-        /// </summary>
-        /// <param name="comm">Command a inserir os paramtros</param>
-        /// <param name="parameters">Lista de parametros a inserir</param>
-        private void SetParameter(
-            DbCommand comm,
-            List<Tuple<ParameterDirection, string, object>> parameters = null
-        )
-        {
-            if (comm != null
-                && parameters != null
-                && parameters.Count > 0)
-            {
-                DbParameter param = null;
-
-                foreach (var item in parameters)
-                {
-                    param = comm.CreateParameter();
-                    param.Direction = item.Item1;
-                    param.ParameterName = item.Item2;
-                    param.Value = item.Item3;
-                    comm.Parameters.Add(param);
-                }
             }
         }
 
@@ -753,20 +873,6 @@ namespace IOC.FW.Core.Base
         /// Implementação de método para retornar um count da tabela vinculada ao objeto
         /// </summary>
         /// <returns>Quantidade de registros</returns>
-        private int Count(
-            Expression<Func<TModel, bool>> where,
-            Repository<TModel> context
-        )
-        {
-            return context._dbQuery
-                   .AsNoTracking()
-                   .Count(where);
-        }
-
-        /// <summary>
-        /// Implementação de método para retornar um count da tabela vinculada ao objeto
-        /// </summary>
-        /// <returns>Quantidade de registros</returns>
         public long LongCount()
         {
             return this.LongCount(m => true);
@@ -789,19 +895,30 @@ namespace IOC.FW.Core.Base
         }
 
         /// <summary>
-        /// Método auxiliar para retornar um count da tabela vinculada ao objeto e contexto
+        /// Implementação de método de IBaseTransaction responsável por atribuir uma string de conexão a um repositório 
         /// </summary>
-        /// <param name="where">Filtro de busca</param>
-        /// <param name="context">Contexto de repositorio para a execução da query</param>
-        /// <returns>Quantidade de registros</returns>
-        private long LongCount(
-            Expression<Func<TModel, bool>> where,
-            Repository<TModel> context
-        )
+        /// <param name="nameOrConnectionString">String de conexão</param>
+        public void SetConnection(string nameOrConnectionString)
         {
-            return context._dbQuery
-                   .AsNoTracking()
-                   .LongCount(where);
+            if (string.IsNullOrEmpty(nameOrConnectionString))
+            {
+                nameOrConnectionString = (ConfigurationManager.ConnectionStrings["DefaultConnection"]).ConnectionString;
+            }
+
+            this.nameOrConnectionString = nameOrConnectionString;
         }
+
+        /// <summary>
+        /// Implementação de método de IBaseTransaction responsável por associar uma transação a um repositório
+        /// </summary>
+        /// <param name="connection">Objeto de conexão que criou a transação</param>
+        /// <param name="transaction">Objeto de transação aberta</param>
+        public void SetConnection(DbConnection connection, DbTransaction transaction)
+        {
+            this.connection = connection;
+            this.transaction = transaction;
+        }
+        #endregion
+        #endregion
     }
 }
