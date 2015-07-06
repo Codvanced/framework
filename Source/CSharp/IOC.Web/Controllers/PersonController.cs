@@ -54,6 +54,7 @@ namespace IOC.Web.Controllers
             this._business.Delete(update);
 
             var person = this._business.SelectAll(p => p.Ocupation);
+
             return Json(person, JsonRequestBehavior.AllowGet);
         }
     }
