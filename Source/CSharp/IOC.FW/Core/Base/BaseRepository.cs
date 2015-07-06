@@ -38,7 +38,7 @@ namespace IOC.FW.Core.Base
         {
             nameOrConnectionString = "DefaultConnection";
         }
-        
+
         /// <summary>
         /// Método destinado a modificar a string de conexão usada pelo Entity Framework
         /// </summary>

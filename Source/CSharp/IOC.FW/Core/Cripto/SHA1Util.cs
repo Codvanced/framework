@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Security.Cryptography;
+using System.Diagnostics.Contracts;
 
 namespace IOC.FW.Core.Cripto
 {
@@ -16,17 +17,10 @@ namespace IOC.FW.Core.Cripto
         /// </summary>
         /// <param name="plainTextString">Texto puro</param>
         /// <returns>Texto encriptado</returns>
+        [Pure]
         public static string GenerateSHA1(string plainTextString)
         {
-            var saltBytes = GenerateSalt(4);
-            return BitConverter.ToString(
-                SHA1.Create().ComputeHash(
-                    Encoding.UTF8.GetBytes(
-                        plainTextString
-                    )
-                )
-            )
-            .Replace("-", string.Empty);
+            return GenerateSHA1(plainTextString, null);
         }
 
         /// <summary>
@@ -35,8 +29,18 @@ namespace IOC.FW.Core.Cripto
         /// <param name="plainTextString">Texto puro</param>
         /// <param name="salt">Array de bytes que representa chave de criptografia</param>
         /// <returns>Texto encriptado</returns>
+        [Pure]
         public static string GenerateSHA1(string plainTextString, byte[] salt)
         {
+            if (string.IsNullOrWhiteSpace(plainTextString))
+            {
+                throw new ArgumentNullException("plainTextString", "the string to be hashed needs to be different then null");
+            }
+
+            salt = salt == null 
+                ? new byte[0] 
+                : salt;
+
             HashAlgorithm algorithm = new SHA1Managed();
             var plainTextBytes = Encoding.UTF8.GetBytes(plainTextString);
 
@@ -45,7 +49,8 @@ namespace IOC.FW.Core.Cripto
                 SHA1.Create().ComputeHash(
                     plainTextWithSaltBytes
                 )
-            );
+            )
+            .Replace("-", string.Empty); ;
 
             return saltedSHA1;
         }
@@ -94,6 +99,22 @@ namespace IOC.FW.Core.Cripto
 
             StringComparer comparer = StringComparer.OrdinalIgnoreCase;
             string hashToCompare = GenerateSHA1(input, salt);
+
+            return comparer.Compare(hashToCompare, hash) == 0;
+        }
+
+        /// <summary>
+        /// Método responsável por verificar se uma entrada bate com um conteúdo encriptado
+        /// </summary>
+        /// <param name="input">Entrada em texto puro</param>
+        /// <param name="hash">Texto criptografado a fim de comparação</param>
+        /// <returns></returns>
+        public static bool VerifyHash(string input, string hash)
+        {
+            string hashOfInput = string.Empty;
+
+            StringComparer comparer = StringComparer.OrdinalIgnoreCase;
+            string hashToCompare = GenerateSHA1(input);
 
             return comparer.Compare(hashToCompare, hash) == 0;
         }
