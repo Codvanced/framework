@@ -112,6 +112,7 @@
     <Compile Include="Configuration\Injection\InjectionFactoryConfigurationElement.cs" />
     <Compile Include="Configuration\Thumb\ThumbElement.cs" />
     <Compile Include="Core\Abstraction\Binding\IModule.cs" />
+    <Compile Include="Core\Abstraction\DAO\IBaseTransaction.cs" />
     <Compile Include="Core\Abstraction\Miscellaneous\IPrioritySortable.cs" />
     <Compile Include="Core\Abstraction\Model\IBaseModel.cs" />
     <Compile Include="Core\Abstraction\Model\IModelCreating.cs" />

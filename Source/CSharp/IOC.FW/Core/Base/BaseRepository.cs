@@ -31,7 +31,11 @@ namespace IOC.FW.Core.Base
         /// </summary>
         private string nameOrConnectionString = string.Empty;
 
+        /// <summary>
+        /// 
+        /// </summary>
         private DbConnection connection = null;
+        private DbTransaction transaction = null;
 
         /// <summary>
         /// Construtor padrão, inicializa a string de conexão com o parametrizado em ConnectionStrings.config (Name: DefaultConnection)
@@ -40,7 +44,7 @@ namespace IOC.FW.Core.Base
         {
             nameOrConnectionString = "DefaultConnection";
         }
-        
+
         /// <summary>
         /// Método destinado a modificar a string de conexão usada pelo Entity Framework
         /// </summary>
@@ -49,16 +53,16 @@ namespace IOC.FW.Core.Base
         {
             if (string.IsNullOrEmpty(nameOrConnectionString))
             {
-                nameOrConnectionString =
-                    (ConfigurationManager.ConnectionStrings["DefaultConnection"]).ConnectionString;
+                nameOrConnectionString = (ConfigurationManager.ConnectionStrings["DefaultConnection"]).ConnectionString;
             }
 
             this.nameOrConnectionString = nameOrConnectionString;
         }
 
-        public void SetConnection(DbConnection connection)
+        public void SetConnection(DbConnection connection, DbTransaction transaction)
         {
             this.connection = connection;
+            this.transaction = transaction;
         }
 
         /// <summary>
@@ -73,9 +77,9 @@ namespace IOC.FW.Core.Base
         )
         {
             IQueryable<TModel> query = dbSet;
-                
-                foreach (Expression<Func<TModel, object>> navigationProperty in navigationProperties)
-                     query = query.Include<TModel, object>(navigationProperty); 
+
+            foreach (Expression<Func<TModel, object>> navigationProperty in navigationProperties)
+                query = query.Include<TModel, object>(navigationProperty);
 
             return query;
         }
@@ -155,7 +159,7 @@ namespace IOC.FW.Core.Base
             {
                 var query = context._dbQuery;
                 query = IncludeReference(context.DbObject, navigationProperties);
-                
+
                 if (order != null)
                     query = order(query);
 
@@ -230,7 +234,7 @@ namespace IOC.FW.Core.Base
                     {
                         ((IBaseModel)item).Updated = DateTime.Now;
                     }
-                    
+
                     var modelFound = context
                         .Set<TModel>()
                         .Local
@@ -337,12 +341,13 @@ namespace IOC.FW.Core.Base
         )
         {
             List<TModel> list = null;
-            
+
             if (!String.IsNullOrEmpty(sql))
             {
                 using (var context = CreateContext())
                 {
                     var conn = this.OpenConnection(context);
+
                     var comm = this.CreateCommand(conn, sql, cmdType);
                     this.SetParameter(comm, parameters);
 
@@ -399,8 +404,8 @@ namespace IOC.FW.Core.Base
                             if (indexFound >= 0)
                             {
                                 parametersWithDirection[indexFound] = new Tuple<ParameterDirection, string, object>(
-                                    itemParam.Direction, 
-                                    itemParam.ParameterName, 
+                                    itemParam.Direction,
+                                    itemParam.ParameterName,
                                     itemParam.Value
                                 );
                             }
@@ -434,7 +439,7 @@ namespace IOC.FW.Core.Base
                     var conn = this.OpenConnection(context);
                     var comm = this.CreateCommand(conn, sql, cmdType);
                     this.SetParameter(comm, parameters);
-                    
+
                     result = comm.ExecuteScalar();
                 }
             }
@@ -473,9 +478,9 @@ namespace IOC.FW.Core.Base
             if (lambda != null)
             {
                 using (var context = new Repository<TGenericModel>(this.nameOrConnectionString))
-	            {
+                {
                     model = lambda(context.DbObject);
-	            }
+                }
             }
             return model;
         }
@@ -501,29 +506,63 @@ namespace IOC.FW.Core.Base
             return model;
         }
 
-        public void ExecuteWithTransaction(IsolationLevel isolation, Action<DbConnection> transactionExecution)
+        private void ConfigureTransaction(IBaseTransaction[] daos)
+        {
+            if (daos != null)
+            {
+                foreach (var dao in daos)
+                {
+                    dao.SetConnection(
+                        this.connection,
+                        this.transaction
+                    );
+                }
+            }
+        }
+
+        public void ExecuteWithTransaction(
+            IsolationLevel isolation,
+            IBaseTransaction[] DAOs,
+            Action transactionExecution
+        )
         {
             using (var context = CreateContext())
             {
-                var transaction = context.Database.BeginTransaction(isolation);
+                DbContextTransaction transaction = null;
 
                 try
                 {
-                    transactionExecution(context.Database.Connection);
+                    transaction = context.Database.BeginTransaction(isolation);
+
+                    this.connection = context.Database.Connection;
+                    this.transaction = transaction.UnderlyingTransaction;
+
+                    ConfigureTransaction(DAOs);
+                    transactionExecution();
                     transaction.Commit();
                 }
                 catch (Exception ex)
                 {
-                    transaction.Rollback();
+                    if (transaction != null)
+                    {
+                        transaction.Rollback();
+                    }
                 }
+
+                this.connection = null;
+                this.transaction = null;
             }
         }
 
         private Repository<TModel> CreateContext()
         {
-            if (this.connection != null)
+            if (this.connection != null
+                && this.connection.State == ConnectionState.Open
+            )
             {
-                return new Repository<TModel>(this.connection, false);
+                var newRepo = new Repository<TModel>(this.connection, false);
+                newRepo.Database.UseTransaction(this.transaction);
+                return newRepo;
             }
             else
             {
@@ -540,15 +579,20 @@ namespace IOC.FW.Core.Base
         {
             DbConnection conn = null;
 
-            if (context != null 
+            if (context != null
                 && context.Database != null
                 && context.Database.Connection != null
-                && context.Database.Connection is DbConnection)
+                && context.Database.Connection is DbConnection
+                && context.Database.Connection.State != ConnectionState.Open)
             {
                 conn = ((DbConnection)context.Database.Connection);
                 conn.Open();
             }
-            
+            else
+            {
+                conn = this.connection;
+            }
+
             return conn;
         }
 
@@ -567,16 +611,20 @@ namespace IOC.FW.Core.Base
         {
             DbCommand comm = null;
 
-            if (conn != null 
+            if (conn != null
                 && conn.State == ConnectionState.Open
                 && !string.IsNullOrEmpty(sql))
             {
                 comm = conn.CreateCommand();
                 comm.CommandText = sql;
                 comm.CommandType = cmdType;
-                comm.CommandTimeout = 99999;    
+                comm.CommandTimeout = 99999;
+                if (this.transaction != null)
+                {
+                    comm.Transaction = this.transaction;
+                }
             }
-            
+
             return comm;
         }
 
@@ -590,8 +638,8 @@ namespace IOC.FW.Core.Base
             Dictionary<string, object> parameters = null
         )
         {
-            if (comm != null 
-                && parameters != null 
+            if (comm != null
+                && parameters != null
                 && parameters.Count > 0)
             {
                 DbParameter param = null;
@@ -647,7 +695,7 @@ namespace IOC.FW.Core.Base
                 {
                     var item = items[i];
                     item.Priority = Int64.MaxValue - i;
-                    
+
                     context.DbObject.Attach(item);
                     context.Entry<TModel>(item)
                         .Property("Priority")

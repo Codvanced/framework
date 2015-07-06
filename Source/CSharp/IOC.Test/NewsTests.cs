@@ -31,7 +31,8 @@ namespace IOC.Test
             var business = InstanceFactory.GetImplementation<NewsBusinessAbstract>();
             Assert.NotNull(business);
 
-            var news = business.Select(p => true).Take(2);
+            //ar news = business.Select(p => true).Take(2);
+            business.Test("");
         }
 
         [Test, TestCaseSource("Configure")]
