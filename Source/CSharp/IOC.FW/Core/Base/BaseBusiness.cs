@@ -71,7 +71,7 @@ namespace IOC.FW.Core.Base
         /// <param name="navigationProperties">Objetos de uma Model referentes a chaves estrangeiras no database</param>
         /// <returns>Implementação de IList com os registros encontrados.</returns>
         public IList<TModel> SelectAll(
-            Func<IQueryable<TModel>, IOrderedQueryable<TModel>> order, 
+            Func<IQueryable<TModel>, IOrderedQueryable<TModel>> order,
             params Expression<Func<TModel, object>>[] navigationProperties
         )
         {
@@ -86,8 +86,8 @@ namespace IOC.FW.Core.Base
         /// <param name="navigationProperties">Objetos de uma Model referentes a chaves estrangeiras no database</param>
         /// <returns>Implementação de IList com os registros encontrados.</returns>
         public IList<TModel> Select(
-            Expression<Func<TModel, bool>> where, 
-            Func<IQueryable<TModel>, IOrderedQueryable<TModel>> order, 
+            Expression<Func<TModel, bool>> where,
+            Func<IQueryable<TModel>, IOrderedQueryable<TModel>> order,
             params Expression<Func<TModel, object>>[] navigationProperties
         )
         {

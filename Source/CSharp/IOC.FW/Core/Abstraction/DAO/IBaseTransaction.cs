@@ -35,7 +35,7 @@ namespace IOC.FW.Core.Abstraction.DAO
         void ExecuteWithTransaction(
             IsolationLevel isolation,
             IBaseTransaction[] DAOs,
-            Action transactionExecution
+            Action<DbTransaction> transactionExecution
         );
     }
 }

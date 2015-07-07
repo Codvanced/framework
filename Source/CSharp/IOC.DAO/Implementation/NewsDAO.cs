@@ -6,6 +6,7 @@ using IOC.Model;
 using IOC.Abstraction.DAO;
 using System.Data;
 using IOC.FW.Core.Abstraction.DAO;
+using System.Data.Common;
 
 namespace IOC.DAO.Implementation
 {
@@ -29,14 +30,14 @@ namespace IOC.DAO.Implementation
                 new IBaseTransaction[] { 
                     _ocupationDAO
                 },
-                () => Execution(news, Title)
+                transaction => Execution(transaction, news, Title)
             );
 
             return news != null
                 && news.Any();
         }
 
-        private void Execution(IList<News> news, string Title)
+        private void Execution(DbTransaction transaction, IList<News> news, string Title)
         {
             var parameters = new Dictionary<string, object>(){
                 { "@Title", Title }
@@ -56,6 +57,8 @@ namespace IOC.DAO.Implementation
                 Activated = true,
                 Created = DateTime.Now
             });
+
+            transaction.Rollback();
         }
     }
 }

@@ -770,30 +770,37 @@ namespace IOC.FW.Core.Base
         public void ExecuteWithTransaction(
             IsolationLevel isolation,
             IBaseTransaction[] DAOs,
-            Action transactionExecution
+            Action<DbTransaction> transactionExecution
         )
         {
             using (var context = CreateContext())
             {
-                DbContextTransaction transaction = null;
+                DbContextTransaction contextTransaction = null;
 
                 try
                 {
-                    transaction = context.Database.BeginTransaction(isolation);
+                    contextTransaction = context.Database.BeginTransaction(isolation);
 
                     this.connection = context.Database.Connection;
-                    this.transaction = transaction.UnderlyingTransaction;
+                    this.transaction = contextTransaction.UnderlyingTransaction;
 
                     ConfigureTransaction(DAOs);
-                    transactionExecution();
-                    transaction.Commit();
+                    transactionExecution(this.transaction);
+
+                    if (this.transaction.Connection != null)
+                    {
+                        contextTransaction.Commit();
+                    }
                 }
                 catch (Exception ex)
                 {
-                    if (transaction != null)
+                    if (contextTransaction != null 
+                        && this.transaction.Connection != null)
                     {
-                        transaction.Rollback();
+                        contextTransaction.Rollback();
                     }
+
+                    throw ex;
                 }
 
                 this.connection = null;

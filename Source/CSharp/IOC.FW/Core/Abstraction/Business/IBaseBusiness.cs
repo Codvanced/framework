@@ -48,18 +48,18 @@ namespace IOC.FW.Core.Abstraction.Business
         /// Implementação de método de IBaseDAO destinado a encontrar todos os registros de uma tabela vinculada a uma model. 
         /// </summary>
         /// <param name="where">Delegate contendo parâmetros para composição de WHERE</param>
+        /// <param name="order">Delegate contendo parâmetros de ordenação</param>
         /// <param name="navigationProperties">Objetos de uma Model referentes a chaves estrangeiras no database</param>
         /// <returns>Implementação de IList com os registros encontrados.</returns>
-        IList<TModel> Select(Expression<Func<TModel, bool>> where, params Expression<Func<TModel, object>>[] navigationProperties);
+        IList<TModel> Select(Expression<Func<TModel, bool>> where, Func<IQueryable<TModel>, IOrderedQueryable<TModel>> order, params Expression<Func<TModel, object>>[] navigationProperties);
 
         /// <summary>
         /// Implementação de método de IBaseDAO destinado a encontrar todos os registros de uma tabela vinculada a uma model. 
         /// </summary>
         /// <param name="where">Delegate contendo parâmetros para composição de WHERE</param>
-        /// <param name="order">Delegate contendo parâmetros de ordenação</param>
         /// <param name="navigationProperties">Objetos de uma Model referentes a chaves estrangeiras no database</param>
         /// <returns>Implementação de IList com os registros encontrados.</returns>
-        IList<TModel> Select(Expression<Func<TModel, bool>> where, Func<IQueryable<TModel>, IOrderedQueryable<TModel>> order, params Expression<Func<TModel, object>>[] navigationProperties);
+        IList<TModel> Select(Expression<Func<TModel, bool>> where, params Expression<Func<TModel, object>>[] navigationProperties);
 
         /// <summary>
         /// Implementação de método de IBaseDAO destinado a encontrar um unico registro de uma tabela vinculada a uma model. 
