@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using IOC.Interface.DAO;
+using IOC.Abstraction.DAO;
 
 namespace IOC.DAO.Implementation
 {

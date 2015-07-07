@@ -16,23 +16,7 @@ namespace IOC.Model
         [Key]
         public int IdPerson { get; set; }
 
-        public int IdOcupation 
-        { 
-            get 
-            {
-                return 
-                    this.Ocupation != null 
-                    ? Ocupation.IdOcupation 
-                    : 0; 
-            } 
-            set 
-            {
-                if (this.Ocupation == null)
-                    this.Ocupation = new Ocupation();
-                    
-                this.Ocupation.IdOcupation = value;
-            } 
-        }
+        public int IdOcupation { get; set; }
         public virtual Ocupation Ocupation { get; set; }
 
         public string PersonName { get; set; }

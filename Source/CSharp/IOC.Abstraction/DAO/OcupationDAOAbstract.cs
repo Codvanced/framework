@@ -5,7 +5,7 @@ using System.Text;
 using IOC.Model;
 using IOC.FW.Core.Base;
 
-namespace IOC.Interface.DAO
+namespace IOC.Abstraction.DAO
 {
     public abstract class OcupationDAOAbstract
         : BaseRepository<Ocupation>

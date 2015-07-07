@@ -5,6 +5,7 @@ using System.Text;
 using System.Data.Entity;
 using System.Configuration;
 using IOC.FW.Core.Abstraction.Model;
+using System.Data.Common;
 
 namespace IOC.FW.Core.Database
 {
@@ -32,6 +33,17 @@ namespace IOC.FW.Core.Database
         /// <param name="nameOrConnectionString"></param>
         public Repository(string nameOrConnectionString)
             : base(nameOrConnectionString)
+        {
+            Setup();
+        }
+
+        public Repository(DbConnection connection, bool destroyAfterUse)
+            : base(connection, destroyAfterUse)
+        {
+            Setup();
+        }
+
+        private void Setup()
         {
             System.Data.Entity.Database.SetInitializer<Repository<TModel>>(null);
             this._dbQuery = this.DbObject;

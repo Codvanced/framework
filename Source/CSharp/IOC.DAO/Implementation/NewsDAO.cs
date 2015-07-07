@@ -3,71 +3,62 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using IOC.Model;
-using System.Data.SqlClient;
 using IOC.Abstraction.DAO;
-using IOC.Interface.DAO;
+using System.Data;
+using IOC.FW.Core.Abstraction.DAO;
+using System.Data.Common;
 
 namespace IOC.DAO.Implementation
 {
     public class NewsDAO
         : NewsDAOAbstract
     {
-        public NewsDAO()
+        private readonly OcupationDAOAbstract _ocupationDAO;
+
+        public NewsDAO(OcupationDAOAbstract ocupationDAO)
             : base()
         {
+            _ocupationDAO = ocupationDAO;
         }
 
         public override bool Test(string Title)
+        {
+            IList<News> news = null;
+
+            this.ExecuteWithTransaction(
+                IsolationLevel.Serializable,
+                new IBaseTransaction[] { 
+                    _ocupationDAO
+                },
+                transaction => Execution(transaction, news, Title)
+            );
+
+            return news != null
+                && news.Any();
+        }
+
+        private void Execution(DbTransaction transaction, IList<News> news, string Title)
         {
             var parameters = new Dictionary<string, object>(){
                 { "@Title", Title }
             };
 
-            string query = @"SELECT * FROM News WHERE Title = @Title";
-            var news = this.ExecuteQuery(query, parameters);
+            string query = @"SELECT 
+                                *
+                            FROM
+                                News
+                            WHERE
+                                Title = @Title";
 
-            int contador = this.Exec<News, int>(
-                p => 
-                { 
-                    return p.Count(); 
-                }
-            );
+            news = this.ExecuteQuery(query, parameters);
+            _ocupationDAO.Insert(new Ocupation
+            {
+                OcupationName = "Ocupation",
+                Activated = true,
+                Created = DateTime.Now
+            });
 
-            IList<News> listNews = this.SelectAll();
-
-            var whatever = (
-                from obj in listNews 
-                where obj.IdNews == 1 select obj
-            );
-
-            var whatever2 = listNews
-                .Where(n => n.IdNews == 1)
-                .Select(p => p);
-
-            var whatever3 = (
-                from obj in listNews 
-                where obj.IdNews == 1 
-                select new 
-                { 
-                    ID = obj.IdNews, 
-                    Name = obj.Author 
-                }
-            ).ToList();
-
-
-            var whatever4 = listNews
-                .Where(n => n.IdNews == 1)
-                .Select(
-                    p => new 
-                    { 
-                        ID = p.IdNews, 
-                        Name = p.Author 
-                    }
-                ).ToList();
-
-            return
-                news != null
-                && news.Any();
+            transaction.Rollback();
         }
     }
 }
