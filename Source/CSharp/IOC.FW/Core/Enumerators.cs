@@ -10,31 +10,14 @@ namespace IOC.FW.Core
     /// </summary>
     public class Enumerators
     {
-        //public enum RepositoryType : byte
-        //{
-        //    SqlServer = 0,
-        //    Oracle = 1,
-        //    MySql = 2,
-        //    TextFileStorage = 3,
-        //    XmlFileStorage = 4
-        //}
-
-        //public enum CompressionType : byte
-        //{
-        //    Zip = 0,
-        //    BZip2 = 1,
-        //    GZip = 2,
-        //    Tar = 3,
-        //    Rar = 4,
-        //    SevenZip = 5
-        //}
-
-        //public enum DebugType : byte
-        //{
-        //    Info = 0,
-        //    Warn = 1,
-        //    Error = 2
-        //}
+        public enum RepositoryType : byte
+        {
+            EntityFramework = 0,
+            NHabernate = 1,
+            ADO = 2,
+            TextFile = 3,
+            XmlFile = 4
+        }
 
         /// <summary>
         /// Enum responsável por pontos de referência para geração de thumbnails (Core\Images\Thumbnail.cs)
