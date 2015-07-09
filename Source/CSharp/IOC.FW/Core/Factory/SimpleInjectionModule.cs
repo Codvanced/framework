@@ -12,6 +12,7 @@ using SimpleInjector.Extensions;
 using IOC.FW.Core.Abstraction.Business;
 using IOC.FW.Core.Base;
 using IOC.FW.Core.Abstraction.DAO;
+using IOC.FW.Core.Database.Repository;
 
 namespace IOC.FW.Core.Factory
 {
@@ -19,7 +20,7 @@ namespace IOC.FW.Core.Factory
     /// Classe responsável pelo Container Simple Injector
     /// </summary>
     public class SimpleInjectionModule
-        : IInjectionModule<SimpleInjector.Container>
+        : IInjectionModule<Container>
     {
         /// <summary>
         /// Container de injeção (Simple Injector)
@@ -75,12 +76,6 @@ namespace IOC.FW.Core.Factory
                 typeof(IBaseBusiness<>),
                 typeof(BaseBusiness<>),
                 Lifestyle.Singleton
-            );
-
-            container.RegisterOpenGeneric(
-                typeof(IBaseDAO<>),
-                typeof(BaseRepository<>),
-                Lifestyle.Transient
             );
         }
     }

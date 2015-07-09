@@ -7,13 +7,13 @@ using System.Configuration;
 using IOC.FW.Core.Abstraction.Model;
 using System.Data.Common;
 
-namespace IOC.FW.Core.Database
+namespace IOC.FW.Core.Database.Repository
 {
     /// <summary>
     /// Classe utilizada como interface entre a aplicação e o database, é utilizada como UnitOfWork de DbContext e desabilita a criação automatica de tabelas.
     /// </summary>
     /// <typeparam name="TModel">Tipo que representa a classe modelo referente a uma tabela do database</typeparam>
-    public class Repository<TModel>
+    internal class EntityFrameworkContext<TModel>
         : DbContext
         where TModel : class, new()
     {
@@ -31,13 +31,13 @@ namespace IOC.FW.Core.Database
         /// Constructor padrão, iniciando o Entity Framework com uma string de conexão passada por parametro
         /// </summary>
         /// <param name="nameOrConnectionString"></param>
-        public Repository(string nameOrConnectionString)
+        public EntityFrameworkContext(string nameOrConnectionString)
             : base(nameOrConnectionString)
         {
             Setup();
         }
 
-        public Repository(DbConnection connection, bool destroyAfterUse)
+        public EntityFrameworkContext(DbConnection connection, bool destroyAfterUse)
             : base(connection, destroyAfterUse)
         {
             Setup();
@@ -45,7 +45,7 @@ namespace IOC.FW.Core.Database
 
         private void Setup()
         {
-            System.Data.Entity.Database.SetInitializer<Repository<TModel>>(null);
+            System.Data.Entity.Database.SetInitializer<EntityFrameworkContext<TModel>>(null);
             this._dbQuery = this.DbObject;
             this.Configuration.LazyLoadingEnabled = false;
             this.Configuration.ProxyCreationEnabled = false;

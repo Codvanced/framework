@@ -6,14 +6,14 @@ using IOC.FW.Core;
 using IOC.Model;
 using IOC.Abstraction.DAO;
 using IOC.FW.Core.Base;
+using IOC.FW.Core.Abstraction.Business;
 
 namespace IOC.Abstraction.Business
 {
-    public abstract class PersonBusinessAbstract
-        : BaseBusiness<Person>
+    public interface INewsBusiness
+        : IBaseBusiness<News>
     {
-        public PersonBusinessAbstract(PersonDAOAbstract dao)
-            : base(dao)
-        { }
+        bool TitleAlreadyExists(string Title, int? id = null);
+        bool Test(string Title);
     }
 }

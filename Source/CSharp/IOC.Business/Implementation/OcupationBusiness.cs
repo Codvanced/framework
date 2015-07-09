@@ -4,13 +4,16 @@ using System.Linq;
 using System.Text;
 using IOC.Abstraction.Business;
 using IOC.Abstraction.DAO;
+using IOC.FW.Core.Abstraction.DAO;
+using IOC.FW.Core.Base;
+using IOC.Model;
 
 namespace IOC.Business.Implementation
 {
     public class OcupationBusiness
-        : OcupationBusinessAbstract
+        : BaseBusiness<Ocupation>, IOcupationBusiness
     {
-        public OcupationBusiness(OcupationDAOAbstract dao)
+        public OcupationBusiness(IRepository<Ocupation> dao)
             : base(dao)
         { }
     }

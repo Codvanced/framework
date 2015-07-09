@@ -163,6 +163,8 @@
     <Compile Include="Core\Base\BaseBusiness.cs" />
     <Compile Include="Core\Base\BaseModel.cs" />
     <Compile Include="Core\Base\BaseRepository.cs" />
+    <Compile Include="Core\Database\Repository\ADO\ADORepository.cs" />
+    <Compile Include="Core\Database\Repository\EntityFramework\EntityFrameworkRepository.cs" />
     <Compile Include="Core\Base\BasicAuthenticationIdentity.cs" />
     <Compile Include="Core\Cripto\MD5Util.cs" />
     <Compile Include="Core\Cripto\RijdaelUtil.cs" />
@@ -174,13 +176,13 @@
     <Compile Include="Core\Documents\Validation.cs" />
     <Compile Include="Core\Enumerators.cs" />
     <Compile Include="Core\Database\ORM.cs" />
-    <Compile Include="Core\Database\Repository.cs" />
+    <Compile Include="Core\Database\Repository\EntityFramework\EntityFrameworkContext.cs" />
     <Compile Include="Core\Extensions.cs" />
     <Compile Include="Core\Extensions\ParameterRebinder.cs" />
     <Compile Include="Core\Factory\InstanceFactory.cs" />
     <Compile Include="Core\Factory\SimpleInjectionModule.cs" />
     <Compile Include="Core\Abstraction\Business\IBaseBusiness.cs" />
-    <Compile Include="Core\Abstraction\DAO\IBaseDAO.cs" />
+    <Compile Include="Core\Abstraction\DAO\IRepository.cs" />
     <Compile Include="Core\Abstraction\Factory\IInjectionModule.cs" />
     <Compile Include="Core\Images\Thumbnail.cs" />
     <Compile Include="Core\Images\Transform.cs" />
@@ -189,15 +191,10 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="app.config" />
     <None Include="ClassDiagram2.cd" />
     <None Include="Configuration\CustomSection.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="packages.config" />
-  </ItemGroup>
-  <ItemGroup>
-    <WCFMetadata Include="Service References\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Import Project="$(SolutionDir)\.nuget\NuGet.targets" Condition="Exists('$(SolutionDir)\.nuget\NuGet.targets')" />

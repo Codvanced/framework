@@ -21,7 +21,7 @@ namespace IOC.FW.Core.Base
         /// <summary>
         /// Objeto de IBaseDao, usado para acessar os metodos de DAO
         /// </summary>
-        private readonly IBaseDAO<TModel> _dao;
+        private readonly IRepository<TModel> _dao;
 
         /// <summary>
         /// Implementação de método de IBaseDAO destinado a retornar uma implementação de model
@@ -45,7 +45,7 @@ namespace IOC.FW.Core.Base
         /// Constructor recebendo uma implementação de DAO
         /// </summary>
         /// <param name="dao">Implementação de Base DAO</param>
-        public BaseBusiness(IBaseDAO<TModel> dao)
+        public BaseBusiness(IRepository<TModel> dao)
         {
             this._dao = dao;
         }

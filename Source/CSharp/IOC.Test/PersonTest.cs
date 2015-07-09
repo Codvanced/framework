@@ -10,6 +10,7 @@ using IOC.Model;
 using IOC.FW.Core.Abstraction.Business;
 using IOC.FW.Core.Abstraction.DAO;
 using System.Diagnostics;
+using IOC.Abstraction.DAO;
 
 namespace IOC.Test
 {

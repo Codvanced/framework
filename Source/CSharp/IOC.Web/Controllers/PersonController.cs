@@ -14,9 +14,9 @@ namespace IOC.Web.Controllers
     public class PersonController
         : BaseController
     {
-        private readonly PersonBusinessAbstract _business;
+        private readonly IPersonBusiness _business;
 
-        public PersonController(PersonBusinessAbstract business)
+        public PersonController(IPersonBusiness business)
         {
             this._business = business;
         }

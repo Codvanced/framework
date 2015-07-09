@@ -7,28 +7,29 @@ using IOC.Abstraction.DAO;
 using System.Data;
 using IOC.FW.Core.Abstraction.DAO;
 using System.Data.Common;
+using IOC.FW.Core.Base;
 
 namespace IOC.DAO.Implementation
 {
     public class NewsDAO
-        : NewsDAOAbstract
+        : BaseRepository<News>, INewsDAO
     {
-        private readonly OcupationDAOAbstract _ocupationDAO;
+        private readonly IRepository<Ocupation> _ocupationDAO;
 
-        public NewsDAO(OcupationDAOAbstract ocupationDAO)
-            : base()
+        public NewsDAO(IRepository<News> dao, IRepository<Ocupation> ocupationDAO)
+            : base(dao)
         {
             _ocupationDAO = ocupationDAO;
         }
 
-        public override bool Test(string Title)
+        public bool Test(string Title)
         {
             IList<News> news = null;
 
             this.ExecuteWithTransaction(
                 IsolationLevel.Serializable,
                 new IBaseTransaction[] { 
-                    _ocupationDAO
+                    //_ocupationDAO
                 },
                 transaction => Execution(transaction, news, Title)
             );

@@ -18,9 +18,9 @@ namespace IOC.Binding.SimpleInjector
     {
         public void SetBinding(Container container)
         {
-            container.Register<PersonBusinessAbstract, PersonBusiness>(Lifestyle.Singleton);
-            container.Register<NewsBusinessAbstract, NewsBusiness>(Lifestyle.Singleton);
-            container.Register<OcupationBusinessAbstract, OcupationBusiness>(Lifestyle.Singleton);
+            container.Register<IPersonBusiness, PersonBusiness>(Lifestyle.Singleton);
+            container.Register<INewsBusiness, NewsBusiness>(Lifestyle.Singleton);
+            container.Register<IOcupationBusiness, OcupationBusiness>(Lifestyle.Singleton);
         }
     }
 }

@@ -12,15 +12,14 @@ using IOC.Validation;
 using System.Linq.Expressions;
 using IOC.FW.Core;
 
-//TODO: Refatorar o framework para aplicação a convenção de código proposta
 namespace IOC.Web.Controllers
 {
     public class HomeController
         : Controller
     {
-        private readonly NewsBusinessAbstract _business;
+        private readonly INewsBusiness _business;
 
-        public HomeController(NewsBusinessAbstract business)
+        public HomeController(INewsBusiness business)
         {
             this._business = business;
         }

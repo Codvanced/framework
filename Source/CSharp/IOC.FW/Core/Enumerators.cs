@@ -10,6 +10,9 @@ namespace IOC.FW.Core
     /// </summary>
     public class Enumerators
     {
+        /// <summary>
+        /// Enum responsável por pontos de referência para configuração de qual ORM a DAO utilizará.
+        /// </summary>
         public enum RepositoryType : byte
         {
             EntityFramework = 0,
@@ -20,7 +23,7 @@ namespace IOC.FW.Core
         }
 
         /// <summary>
-        /// Enum responsável por pontos de referência para geração de thumbnails (Core\Images\Thumbnail.cs)
+        /// Enum responsável por pontos de referência para geração de thumbnails
         /// </summary>
         public enum ReferencePoint : byte
         {

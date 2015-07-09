@@ -13,6 +13,7 @@ namespace IOC.FW.Core.Factory
     {
         private static volatile Container _container;
         private static volatile Action<Container> _preAction;
+       
         /// <summary>
         /// Encontra o Container e o constrói
         /// </summary>
