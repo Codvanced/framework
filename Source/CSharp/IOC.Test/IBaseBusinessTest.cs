@@ -263,9 +263,9 @@ namespace IOC.Test
         [Test]
         public void Should_Work_With_A_Open_Transaction()
         {
-            var dao = InstanceFactory.GetImplementation<NewsDAOAbstract>();
-            var ocupationDAO = InstanceFactory.GetImplementation<OcupationDAOAbstract>();
-            var personDAO = InstanceFactory.GetImplementation<PersonDAOAbstract>();
+            var dao = InstanceFactory.GetImplementation<INewsDAO>();
+            var ocupationDAO = InstanceFactory.GetImplementation<IOcupationDAO>();
+            var personDAO = InstanceFactory.GetImplementation<IPersonDAO>();
 
             dao.ExecuteWithTransaction(
                 System.Data.IsolationLevel.Serializable,

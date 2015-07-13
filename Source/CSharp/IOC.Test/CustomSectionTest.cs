@@ -40,7 +40,7 @@ namespace IOC.Test
                     }
                 }
 
-                var business = InstanceFactory.GetImplementation<NewsBusinessAbstract>();
+                var business = InstanceFactory.GetImplementation<INewsBusiness>();
                 Assert.IsNotNull(business);
             }
         }

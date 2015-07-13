@@ -34,7 +34,7 @@ namespace IOC.Test
                 hashcode1 = objBiz.GetHashCode();
                 Debug.WriteLine("Person: BaseBusiness = {0}", hashcode1);
 
-                var objDao = InstanceFactory.GetImplementation<IBaseDAO<Person>>();
+                var objDao = InstanceFactory.GetImplementation<IRepository<Person>>();
                 hashcode2 = objDao.GetHashCode();
                 Debug.WriteLine("Person: DaoBusiness = {0}", hashcode2);
                 
@@ -46,7 +46,7 @@ namespace IOC.Test
         {
             Assert.NotNull(simpleInjector);
 
-            var business = InstanceFactory.GetImplementation<PersonBusinessAbstract>();
+            var business = InstanceFactory.GetImplementation<IPersonBusiness>();
             Assert.NotNull(business);
 
             business.Insert(new Person
@@ -70,7 +70,7 @@ namespace IOC.Test
         {
             Assert.NotNull(simpleInjector);
 
-            var business = InstanceFactory.GetImplementation<PersonBusinessAbstract>();
+            var business = InstanceFactory.GetImplementation<IPersonBusiness>();
             Assert.NotNull(business);
 
             var foundPessoa = business.SelectAll();
@@ -91,7 +91,7 @@ namespace IOC.Test
         {
             Assert.NotNull(simpleInjector);
 
-            var business = InstanceFactory.GetImplementation<PersonBusinessAbstract>();
+            var business = InstanceFactory.GetImplementation<IPersonBusiness>();
             Assert.NotNull(business);
 
             var foundPessoa = business.SelectAll();
@@ -109,14 +109,14 @@ namespace IOC.Test
         {
             Assert.NotNull(simpleInjector);
 
-            var business = InstanceFactory.GetImplementation<PersonBusinessAbstract>();
+            var business = InstanceFactory.GetImplementation<IPersonBusiness>();
             Assert.NotNull(business);
 
             var pessoas = business.SelectAll(pessoa => pessoa.Ocupation);
             Assert.NotNull(pessoas);
             Assert.Greater(pessoas.Count, 0);
 
-            var dao = InstanceFactory.GetImplementation<IBaseDAO<Person>>();
+            var dao = InstanceFactory.GetImplementation<IRepository<Person>>();
             var abc = dao.ExecuteQuery(
                 "GetPerson",
                 new Dictionary<string, object> 
@@ -140,7 +140,7 @@ namespace IOC.Test
         {
             Assert.NotNull(simpleInjector);
 
-            var business = InstanceFactory.GetImplementation<PersonBusinessAbstract>();
+            var business = InstanceFactory.GetImplementation<IPersonBusiness>();
             Assert.NotNull(business);
 
         }

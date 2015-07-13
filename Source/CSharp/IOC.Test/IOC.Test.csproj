@@ -171,6 +171,7 @@
     <Compile Include="ArtistGenreTest.cs" />
     <Compile Include="ArtistTest.cs" />
     <Compile Include="CustomSectionTest.cs" />
+    <Compile Include="DAO\IRepositoryTest.cs" />
     <Compile Include="DESUtilTest.cs" />
     <Compile Include="ExtensionsTest.cs" />
     <Compile Include="GenreTest.cs" />

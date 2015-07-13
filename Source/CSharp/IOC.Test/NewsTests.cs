@@ -28,7 +28,7 @@ namespace IOC.Test
         {
             Assert.NotNull(simpleInjector);
 
-            var business = InstanceFactory.GetImplementation<NewsBusinessAbstract>();
+            var business = InstanceFactory.GetImplementation<INewsBusiness>();
             Assert.NotNull(business);
 
             //ar news = business.Select(p => true).Take(2);
@@ -40,7 +40,7 @@ namespace IOC.Test
         {
             Assert.NotNull(simpleInjector);
 
-            //var business = InstanceFactory.GetImplementation<NewsBusinessAbstract>();
+            //var business = InstanceFactory.GetImplementation<INewsBusiness>();
             var business = InstanceFactory.GetImplementation<IBaseBusiness<News>>();
             Assert.NotNull(business);
 
@@ -70,7 +70,7 @@ namespace IOC.Test
         {
             Assert.NotNull(simpleInjector);
 
-            var business = InstanceFactory.GetImplementation<NewsBusinessAbstract>();
+            var business = InstanceFactory.GetImplementation<INewsBusiness>();
             Assert.NotNull(business);
 
             var foundNews = business.SelectAll();
@@ -104,7 +104,7 @@ namespace IOC.Test
         {
             Assert.NotNull(simpleInjector);
 
-            var business = InstanceFactory.GetImplementation<NewsBusinessAbstract>();
+            var business = InstanceFactory.GetImplementation<INewsBusiness>();
             Assert.NotNull(business);
 
             var foundNews = business.SelectAll();
@@ -124,7 +124,7 @@ namespace IOC.Test
         {
             Assert.NotNull(simpleInjector);
 
-            var business = InstanceFactory.GetImplementation<NewsBusinessAbstract>();
+            var business = InstanceFactory.GetImplementation<INewsBusiness>();
             Assert.NotNull(business);
 
             business.Insert(
@@ -156,14 +156,14 @@ namespace IOC.Test
             Assert.NotNull(simpleInjector);
 
             //Teste validando título
-            var business = InstanceFactory.GetImplementation<NewsBusinessAbstract>();
+            var business = InstanceFactory.GetImplementation<INewsBusiness>();
             Assert.NotNull(business);
 
             var result = business.TitleAlreadyExists("Titulo");
             Assert.NotNull(result);
 
             //Teste validando o Execute Scalar
-            var dao = InstanceFactory.GetImplementation<IBaseDAO<News>>();
+            var dao = InstanceFactory.GetImplementation<IRepository<News>>();
             Assert.NotNull(dao);
 
             var t = dao.ExecuteQuery(
