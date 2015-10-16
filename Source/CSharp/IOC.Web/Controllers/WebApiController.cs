@@ -18,9 +18,9 @@ namespace IOC.Web.Controllers
     public class WebApiController 
         : ApiController
     {
-        private readonly NewsBusinessAbstract _business;
+        private readonly INewsBusiness _business;
 
-        public WebApiController(NewsBusinessAbstract business)
+        public WebApiController(INewsBusiness business)
         {
             this._business = business;
         }

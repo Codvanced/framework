@@ -4,23 +4,21 @@ using System.Linq;
 using IOC.Abstraction.Business;
 using IOC.FW.Core;
 using IOC.FW.Core.Abstraction.Business;
-using IOC.FW.Core.Abstraction.DAO;
-using IOC.FW.Core.Factory;
+using IOC.FW.Core.Abstraction.Repository;
 using IOC.Model;
 using NUnit.Framework;
 using SimpleInjector;
-using System.Diagnostics;
 using System.Linq.Expressions;
 using IOC.Validation;
+using IOC.FW.Core.Implementation.DIContainer;
 
 namespace IOC.Test
 {
     [TestFixture]
     public class NewsTests
     {
-        public static IEnumerable<Container> Configure()
+        public static void Configure()
         {
-            yield return InstanceFactory.RegisterModules();
         }
 
         [Test, TestCaseSource("Configure")]
@@ -28,7 +26,7 @@ namespace IOC.Test
         {
             Assert.NotNull(simpleInjector);
 
-            var business = InstanceFactory.GetImplementation<NewsBusinessAbstract>();
+            var business = DependencyResolver.Adapter.Resolve<INewsBusiness>();
             Assert.NotNull(business);
 
             //ar news = business.Select(p => true).Take(2);
@@ -40,8 +38,8 @@ namespace IOC.Test
         {
             Assert.NotNull(simpleInjector);
 
-            //var business = InstanceFactory.GetImplementation<NewsBusinessAbstract>();
-            var business = InstanceFactory.GetImplementation<IBaseBusiness<News>>();
+            //var business = DependencyResolver.Adapter.Resolve<INewsBusiness>();
+            var business = DependencyResolver.Adapter.Resolve<IBaseBusiness<News>>();
             Assert.NotNull(business);
 
             business.Insert(
@@ -70,7 +68,7 @@ namespace IOC.Test
         {
             Assert.NotNull(simpleInjector);
 
-            var business = InstanceFactory.GetImplementation<NewsBusinessAbstract>();
+            var business = DependencyResolver.Adapter.Resolve<INewsBusiness>();
             Assert.NotNull(business);
 
             var foundNews = business.SelectAll();
@@ -104,7 +102,7 @@ namespace IOC.Test
         {
             Assert.NotNull(simpleInjector);
 
-            var business = InstanceFactory.GetImplementation<NewsBusinessAbstract>();
+            var business = DependencyResolver.Adapter.Resolve<INewsBusiness>();
             Assert.NotNull(business);
 
             var foundNews = business.SelectAll();
@@ -124,7 +122,7 @@ namespace IOC.Test
         {
             Assert.NotNull(simpleInjector);
 
-            var business = InstanceFactory.GetImplementation<NewsBusinessAbstract>();
+            var business = DependencyResolver.Adapter.Resolve<INewsBusiness>();
             Assert.NotNull(business);
 
             business.Insert(
@@ -156,14 +154,14 @@ namespace IOC.Test
             Assert.NotNull(simpleInjector);
 
             //Teste validando título
-            var business = InstanceFactory.GetImplementation<NewsBusinessAbstract>();
+            var business = DependencyResolver.Adapter.Resolve<INewsBusiness>();
             Assert.NotNull(business);
 
             var result = business.TitleAlreadyExists("Titulo");
             Assert.NotNull(result);
 
             //Teste validando o Execute Scalar
-            var dao = InstanceFactory.GetImplementation<IBaseDAO<News>>();
+            var dao = DependencyResolver.Adapter.Resolve<IRepository<News>>();
             Assert.NotNull(dao);
 
             var t = dao.ExecuteQuery(
@@ -228,7 +226,7 @@ namespace IOC.Test
         public void SelectOrderBy(Container simpleInjector)
         {
             Assert.NotNull(simpleInjector);
-            var business = InstanceFactory.GetImplementation<IBaseBusiness<News>>();
+            var business = DependencyResolver.Adapter.Resolve<IBaseBusiness<News>>();
             
             var result = business.Select(
                 where: w => w.IdNews > 5,

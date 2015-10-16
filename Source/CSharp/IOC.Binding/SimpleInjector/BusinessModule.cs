@@ -5,22 +5,37 @@ using System.Text;
 using SimpleInjector;
 using SimpleInjector.Extensions;
 using IOC.Business.Implementation;
-using IOC.FW.Core.Abstraction.Binding;
 using IOC.Model;
 using IOC.Abstraction.Business;
-using IOC.FW.Core.Base;
 using IOC.FW.Core.Abstraction.Business;
+using IOC.FW.Core.Abstraction.DIContainer.Binding;
+using IOC.FW.Core.Abstraction.DIContainer;
+using IOC.FW.Core;
 
 namespace IOC.Binding.SimpleInjector
 {
     public class BusinessModule
-        : IModule
+        : IBinding
     {
-        public void SetBinding(Container container)
+        public void SetBinding(IAdapter adapter)
         {
-            container.Register<PersonBusinessAbstract, PersonBusiness>(Lifestyle.Singleton);
-            container.Register<NewsBusinessAbstract, NewsBusiness>(Lifestyle.Singleton);
-            container.Register<OcupationBusinessAbstract, OcupationBusiness>(Lifestyle.Singleton);
+            adapter.Register(
+                typeof(IPersonBusiness),
+                typeof(PersonBusiness),
+                Enumerators.LifeCycleType.Transient
+            );
+
+            adapter.Register(
+                typeof(INewsBusiness),
+                typeof(NewsBusiness),
+                Enumerators.LifeCycleType.Transient
+            );
+
+            adapter.Register(
+                typeof(IOcupationBusiness),
+                typeof(OcupationBusiness),
+                Enumerators.LifeCycleType.Transient
+            );
         }
     }
 }

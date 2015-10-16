@@ -107,14 +107,14 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Business\NewsBusinessAbstract.cs">
+    <Compile Include="Business\IPersonBusiness.cs" />
+    <Compile Include="Business\INewsBusiness.cs">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="Business\OcupationBusinessAbstract.cs" />
-    <Compile Include="Business\PersonBusinessAbstract.cs" />
-    <Compile Include="DAO\NewsDAOAbstract.cs" />
-    <Compile Include="DAO\OcupationDAOAbstract.cs" />
-    <Compile Include="DAO\PersonDAOAbstract.cs" />
+    <Compile Include="Business\IOcupationBusiness.cs" />
+    <Compile Include="DAO\IPersonDAO.cs" />
+    <Compile Include="DAO\INewsDAO.cs" />
+    <Compile Include="DAO\IOcupationDAO.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -148,10 +148,6 @@
       <ProductName>Windows Installer 3.1</ProductName>
       <Install>true</Install>
     </BootstrapperPackage>
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="app.config" />
-    <None Include="packages.config" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Import Project="$(SolutionDir)\.nuget\NuGet.targets" Condition="Exists('$(SolutionDir)\.nuget\NuGet.targets')" />

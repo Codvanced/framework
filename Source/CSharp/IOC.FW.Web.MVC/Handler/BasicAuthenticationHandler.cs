@@ -8,7 +8,7 @@ using System.Threading;
 using System.Security.Principal;
 using System.Web;
 using System.Net;
-using IOC.FW.Core.Base;
+using IOC.FW.Core.Security.Authentication;
 
 namespace IOC.FW.Web.MVC.Handler
 {

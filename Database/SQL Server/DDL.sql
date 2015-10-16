@@ -84,7 +84,8 @@ CREATE TABLE News
 ,	Author				VARCHAR(100) 		NULL
 ,	NewsDate	 		DATETIME2 		NOT NULL DEFAULT GETDATE()
 ,	Created				DATETIME2 		NOT NULL DEFAULT GETDATE()
-,	Updated	 			BIT		 			NULL
+,	Updated	 			DATETIME2		 	NULL
+,	Activated			BIT				NOT NULL DEFAULT 1
 )
 
 /*------------------------- Criação de Chaves Primárias -------------------------------------------------------*/

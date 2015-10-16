@@ -11,7 +11,7 @@ using System.Net.Http;
 using System.Web.Http.Filters;
 using System.Web.Http.Controllers;
 using System.Web.Http;
-using IOC.FW.Core.Base;
+using IOC.FW.Core.Security.Authentication;
 
 namespace IOC.FW.Web.MVC.Filters
 {

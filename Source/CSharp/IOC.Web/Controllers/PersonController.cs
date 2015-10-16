@@ -5,7 +5,6 @@ using System.Web;
 using System.Web.Mvc;
 using IOC.Business.Implementation;
 using IOC.Model;
-using IOC.FW.Core.Factory;
 using IOC.Abstraction.Business;
 using IOC.FW.Web.MVC.Base;
 
@@ -14,9 +13,9 @@ namespace IOC.Web.Controllers
     public class PersonController
         : BaseController
     {
-        private readonly PersonBusinessAbstract _business;
+        private readonly IPersonBusiness _business;
 
-        public PersonController(PersonBusinessAbstract business)
+        public PersonController(IPersonBusiness business)
         {
             this._business = business;
         }

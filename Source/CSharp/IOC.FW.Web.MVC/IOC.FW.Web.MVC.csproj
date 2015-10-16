@@ -142,11 +142,8 @@
     <Compile Include="Handler\BasicAuthenticationHandler.cs" />
     <Compile Include="Handler\CompressHandler.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="SimpleInjector\Register.cs" />
-    <Compile Include="SimpleInjector\SimpleInjectorWebApiDependencyResolver.cs" />
-  </ItemGroup>
-  <ItemGroup>
-    <WCFMetadata Include="Service References\" />
+    <Compile Include="DIContainer\SimpleInjector\Register.cs" />
+    <Compile Include="DIContainer\SimpleInjector\SimpleInjectorWebApiDependencyResolver.cs" />
   </ItemGroup>
   <ItemGroup>
     <BootstrapperPackage Include=".NETFramework,Version=v4.0">
@@ -179,10 +176,6 @@
       <Project>{F7380D0C-AF5F-435A-8389-1E7344B20D86}</Project>
       <Name>IOC.FW</Name>
     </ProjectReference>
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="app.config" />
-    <None Include="packages.config" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>

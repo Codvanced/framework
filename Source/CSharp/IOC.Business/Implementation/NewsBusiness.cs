@@ -4,24 +4,25 @@ using System.Linq;
 using System.Text;
 using IOC.Model;
 using System.Data.SqlClient;
-using IOC.FW.Core.Factory;
 using IOC.Abstraction.Business;
 using IOC.Abstraction.DAO;
+using IOC.FW.Core.Abstraction.Repository;
+using IOC.FW.Core.Implementation.Base;
 
 namespace IOC.Business.Implementation
 {
     public class NewsBusiness
-        : NewsBusinessAbstract
+        : BaseBusiness<News>, INewsBusiness
     {
-        private readonly NewsDAOAbstract _dao;
+        private readonly INewsDAO _dao;
 
-        public NewsBusiness(NewsDAOAbstract dao)
+        public NewsBusiness(INewsDAO dao)
             : base(dao)
         {
             _dao = dao;
         }
 
-        public override bool TitleAlreadyExists(string Title, int? id)
+        public bool TitleAlreadyExists(string Title, int? id)
         {
             IList<News> newsFound = new List<News>();
 
@@ -44,7 +45,7 @@ namespace IOC.Business.Implementation
                 && newsFound.Any();
         }
 
-        public override bool Test(string Title)
+        public bool Test(string Title)
         {
             return _dao.Test(Title);
         }
