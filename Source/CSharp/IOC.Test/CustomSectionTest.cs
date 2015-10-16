@@ -1,15 +1,11 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 using NUnit.Framework;
-using System.Configuration;
 using IOC.FW.Configuration;
-using System.Collections.Specialized;
-using IOC.FW.Core.Abstraction.Binding;
 using SimpleInjector;
-using IOC.FW.Core.Factory;
 using IOC.Abstraction.Business;
+using IOC.FW.Core.Implementation.DIContainer;
+using IOC.FW.Core.Abstraction.DIContainer.Binding;
+using IOC.FW.Core.Implementation.DIContainer.SimpleInjector;
 
 namespace IOC.Test
 {
@@ -19,7 +15,7 @@ namespace IOC.Test
         [Test]
         public void InjectionFactoryTest()
         {
-            var container = new Container();
+            var adapter = new SimpleInjectorAdapter();
             var injectionFactory = Configurations.Current.InjectionFactory.Injection;
             if (injectionFactory != null && injectionFactory.Count > 0)
             {
@@ -31,16 +27,16 @@ namespace IOC.Test
                     if (assemblies != null && assemblies.Length >= 1)
                     {
                         var instance = Activator.CreateInstance(assemblies[0].Trim(), assemblies[1].Trim());
-                        var module = (IModule)instance.Unwrap();
+                        var module = (IBinding)instance.Unwrap();
 
-                        if (module is IModule)
+                        if (module is IBinding)
                         {
-                            module.SetBinding(container);
+                            module.SetBinding(adapter);
                         }
                     }
                 }
 
-                var business = InstanceFactory.GetImplementation<NewsBusinessAbstract>();
+                var business = DependencyResolver.Adapter.Resolve<INewsBusiness>();
                 Assert.IsNotNull(business);
             }
         }

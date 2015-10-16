@@ -4,18 +4,17 @@ using System.Linq;
 using System.Text;
 using NUnit.Framework;
 using SimpleInjector;
-using IOC.FW.Core.Factory;
 using IOC.Model;
 using IOC.FW.Core.Abstraction.Business;
+using IOC.FW.Core.Implementation.DIContainer;
 
 namespace IOC.Test
 {
     [TestFixture]
     public class ArtistTest
     {
-        public static IEnumerable<Container> Configure()
+        public static void Configure()
         {
-            yield return InstanceFactory.RegisterModules();
         }
 
         [Test, TestCaseSource("Configure")]
@@ -23,7 +22,7 @@ namespace IOC.Test
         {
             Assert.NotNull(simpleInjector);
 
-            var business = InstanceFactory.GetImplementation<IBaseBusiness<Artist>>();
+            var business = DependencyResolver.Adapter.Resolve<IBaseBusiness<Artist>>();
             Assert.NotNull(business);
 
             string nameGuid = string.Format("Artist-{0}", Guid.NewGuid().GetType());
@@ -45,7 +44,7 @@ namespace IOC.Test
         {
             Assert.NotNull(simpleInjector);
 
-            var business = InstanceFactory.GetImplementation<IBaseBusiness<Artist>>();
+            var business = DependencyResolver.Adapter.Resolve<IBaseBusiness<Artist>>();
             Assert.NotNull(business);
 
             var foundArtist = business.SelectAll();
@@ -68,7 +67,7 @@ namespace IOC.Test
         {
             Assert.NotNull(simpleInjector);
 
-            var business = InstanceFactory.GetImplementation<IBaseBusiness<Artist>>();
+            var business = DependencyResolver.Adapter.Resolve<IBaseBusiness<Artist>>();
             Assert.NotNull(business);
 
             var foundArtist = business.SelectAll();

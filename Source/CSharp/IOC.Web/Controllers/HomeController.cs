@@ -7,20 +7,20 @@ using SimpleInjector;
 using IOC.Model;
 using IOC.Abstraction.Business;
 using IOC.FW.Core.Abstraction.Business;
-using IOC.FW.Core.Factory;
 using IOC.Validation;
 using System.Linq.Expressions;
 using IOC.FW.Core;
+using IOC.FW.Core.Abstraction.Repository;
 
-//TODO: Refatorar o framework para aplicação a convenção de código proposta
 namespace IOC.Web.Controllers
 {
     public class HomeController
         : Controller
     {
-        private readonly NewsBusinessAbstract _business;
+        private readonly INewsBusiness _business;
+        private readonly IRepository<Ocupation> _xpto;
 
-        public HomeController(NewsBusinessAbstract business)
+        public HomeController(INewsBusiness business)
         {
             this._business = business;
         }

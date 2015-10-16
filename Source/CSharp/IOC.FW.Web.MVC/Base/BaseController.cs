@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Web.Mvc;
 using System.Web.Routing;
-using IOC.FW.Core.Base;
+using IOC.FW.Core.Model;
 
 namespace IOC.FW.Web.MVC.Base
 {
@@ -31,7 +31,7 @@ namespace IOC.FW.Web.MVC.Base
                 {
                     filterContext.Result = new JsonResult()
                     {
-                        Data = new BaseModel
+                        Data = new BaseServiceModel
                         {   
                             Data = null,
                             IdOp = -1,

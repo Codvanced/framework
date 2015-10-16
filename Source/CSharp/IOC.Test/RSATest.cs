@@ -1,15 +1,32 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Text;
 using NUnit.Framework;
-using IOC.FW.Core.Cripto;
+using IOC.FW.Core.Security.Cryptography;
 
 namespace IOC.Test
 {
     [TestFixture]
     public class RSATest
     {
+        [SetUp]
+        public void Should_Setup_All_Tests_And_Create_()
+        {
+            var publicKey = new System.IO.FileInfo(@"C:\Keys\PublicKey.key");
+            var privateKey = new System.IO.FileInfo(@"C:\Keys\PrivateKey.key");
+            var encryptText = new System.IO.FileInfo(@"C:\Keys\Encriptado\texto.txt");
+            var decryptText = new System.IO.FileInfo(@"C:\Keys\Decriptado\texto.txt");
+            var plainText = new System.IO.FileInfo(string.Format(@"C:\Keys\texto{0}.txt", Guid.NewGuid().ToString()));
+
+            if (!publicKey.Directory.Exists)
+                publicKey.Directory.Create();
+
+            if (!encryptText.Directory.Exists)
+                encryptText.Directory.Create();
+
+            if (!decryptText.Directory.Exists)
+                decryptText.Directory.Create();
+        }
+
         [Test]
         public void RsaTestsSecondOverload()
         {
@@ -37,15 +54,6 @@ namespace IOC.Test
             var encryptText = new System.IO.FileInfo(@"C:\Keys\Encriptado\texto.txt");
             var decryptText = new System.IO.FileInfo(@"C:\Keys\Decriptado\texto.txt");
             var plainText = new System.IO.FileInfo(string.Format(@"C:\Keys\texto{0}.txt", Guid.NewGuid().ToString()));
-
-            if (!publicKey.Directory.Exists)
-                publicKey.Directory.Create();
-
-            if (!encryptText.Directory.Exists)
-                encryptText.Directory.Create();
-
-            if (!decryptText.Directory.Exists)
-                decryptText.Directory.Create();
 
             if (!plainText.Exists)
             {

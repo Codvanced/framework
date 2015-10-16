@@ -1,4 +1,8 @@
 bin/
 obj/
 packages/
+PublishProfiles/
+.vs/
+Backup/
 *.suo
+UpgradeLog.htm

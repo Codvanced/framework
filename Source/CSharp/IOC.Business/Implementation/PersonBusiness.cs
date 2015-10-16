@@ -6,13 +6,15 @@ using IOC.FW.Core;
 using IOC.Model;
 using IOC.Abstraction.Business;
 using IOC.Abstraction.DAO;
+using IOC.FW.Core.Abstraction.Repository;
+using IOC.FW.Core.Implementation.Base;
 
 namespace IOC.Business.Implementation
 {
     public class PersonBusiness
-        : PersonBusinessAbstract
+        : BaseRepository<Person>, IPersonBusiness
     {
-        public PersonBusiness(PersonDAOAbstract dao)
+        public PersonBusiness(IRepository<Person> dao)
             : base(dao)
         { }
     }

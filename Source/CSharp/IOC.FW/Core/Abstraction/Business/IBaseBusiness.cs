@@ -33,7 +33,9 @@ namespace IOC.FW.Core.Abstraction.Business
         /// </summary>
         /// <param name="navigationProperties">Objetos de uma Model referentes a chaves estrangeiras no database</param>
         /// <returns>Implementação de IList com os registros encontrados.</returns>
-        IList<TModel> SelectAll(params Expression<Func<TModel, object>>[] navigationProperties);
+        IList<TModel> SelectAll(
+            params Expression<Func<TModel, object>>[] navigationProperties
+        );
 
          /// <summary>
         /// Implementação de método de IBaseDAO destinado a encontrar todos os registros de uma tabela vinculada a uma Model.
@@ -42,15 +44,11 @@ namespace IOC.FW.Core.Abstraction.Business
         /// <param name="order">Delegate contendo parâmetros de ordenação</param>
         /// <param name="navigationProperties">Objetos de uma Model referentes a chaves estrangeiras no database</param>
         /// <returns>Implementação de IList com os registros encontrados.</returns>
-        IList<TModel> SelectAll(Func<IQueryable<TModel>, IOrderedQueryable<TModel>> order, params Expression<Func<TModel, object>>[] navigationProperties);
-
-        /// <summary>
-        /// Implementação de método de IBaseDAO destinado a encontrar todos os registros de uma tabela vinculada a uma model. 
-        /// </summary>
-        /// <param name="where">Delegate contendo parâmetros para composição de WHERE</param>
-        /// <param name="navigationProperties">Objetos de uma Model referentes a chaves estrangeiras no database</param>
-        /// <returns>Implementação de IList com os registros encontrados.</returns>
-        IList<TModel> Select(Expression<Func<TModel, bool>> where, params Expression<Func<TModel, object>>[] navigationProperties);
+        IList<TModel> SelectAll(
+            Func<IQueryable<TModel>,
+            IOrderedQueryable<TModel>> order,
+            params Expression<Func<TModel, object>>[] navigationProperties
+        );
 
         /// <summary>
         /// Implementação de método de IBaseDAO destinado a encontrar todos os registros de uma tabela vinculada a uma model. 
@@ -59,7 +57,23 @@ namespace IOC.FW.Core.Abstraction.Business
         /// <param name="order">Delegate contendo parâmetros de ordenação</param>
         /// <param name="navigationProperties">Objetos de uma Model referentes a chaves estrangeiras no database</param>
         /// <returns>Implementação de IList com os registros encontrados.</returns>
-        IList<TModel> Select(Expression<Func<TModel, bool>> where, Func<IQueryable<TModel>, IOrderedQueryable<TModel>> order, params Expression<Func<TModel, object>>[] navigationProperties);
+        IList<TModel> Select(
+            Expression<Func<TModel, bool>> where,
+            Func<IQueryable<TModel>,
+            IOrderedQueryable<TModel>> order,
+            params Expression<Func<TModel, object>>[] navigationProperties
+        );
+
+        /// <summary>
+        /// Implementação de método de IBaseDAO destinado a encontrar todos os registros de uma tabela vinculada a uma model. 
+        /// </summary>
+        /// <param name="where">Delegate contendo parâmetros para composição de WHERE</param>
+        /// <param name="navigationProperties">Objetos de uma Model referentes a chaves estrangeiras no database</param>
+        /// <returns>Implementação de IList com os registros encontrados.</returns>
+        IList<TModel> Select(
+            Expression<Func<TModel, bool>> where, 
+            params Expression<Func<TModel, object>>[] navigationProperties
+        );
 
         /// <summary>
         /// Implementação de método de IBaseDAO destinado a encontrar um unico registro de uma tabela vinculada a uma model. 
@@ -67,39 +81,53 @@ namespace IOC.FW.Core.Abstraction.Business
         /// <param name="where">Delegate contendo parâmetros para composição de WHERE</param>
         /// <param name="navigationProperties">Objetos de uma Model referentes a chaves estrangeiras no database</param>
         /// <returns>Objeto de classe modelo preenchido com registro encontrado</returns>
-        TModel SelectSingle(Expression<Func<TModel, bool>> where, params Expression<Func<TModel, object>>[] navigationProperties);
+        TModel SelectSingle(
+            Expression<Func<TModel, bool>> where,
+            params Expression<Func<TModel, object>>[] navigationProperties
+        );
 
         /// <summary>
         /// Implementação de método de IBaseDAO destinado a atualizar uma coleção de registros.
         /// </summary>
         /// <param name="items">Coleção de registros a inserir na base</param>
-        void Insert(params TModel[] items);
+        void Insert(
+            params TModel[] items
+        );
 
         /// <summary>
         /// Implementação de método de IBaseDAO destinado a atualizar uma coleção de registros.
         /// </summary>
         /// <param name="items">Coleção de registros a atualizar na base</param>
-        void Update(params TModel[] items);
+        void Update(
+            params TModel[] items
+        );
 
         /// <summary>
         /// Implementação de método de IBaseDAO destinado a atualizar uma coleção de registros.
         /// </summary>
         /// <param name="items">Coleção de registros a inserir na base</param>
         /// <param name="properties">Propriedades a editar</param>
-        void Update(TModel item, Expression<Func<TModel, object>>[] properties);
+        void Update(
+            TModel item,
+            Expression<Func<TModel, object>>[] properties
+        );
 
         /// <summary>
         /// Implementação de método de IBaseDAO destinado a excluir (logicamente ou fisicamente) uma coleção de registros.
         /// </summary>
         /// <param name="items">Coleção de registros a deletar da base</param>
-        void Delete(params TModel[] items);
+        void Delete(
+            params TModel[] items
+        );
 
         /// <summary>
         /// Implementacao de método para atualizar a prioridade do elemento na tabela
         /// </summary>
         /// <typeparam name="TPriorityModel">Tipo do model que implementa IPrioritySortable</typeparam>
         /// <param name="items">Lista de models que implementam IPrioritySortable</param>
-        void UpdatePriority<TPriorityModel>(params TPriorityModel[] items) where TPriorityModel : TModel, IPrioritySortable;
+        void UpdatePriority<TPriorityModel>(
+            params TPriorityModel[] items
+        ) where TPriorityModel : TModel, IPrioritySortable;
 
         /// <summary>
         /// Retorna a contagem de elementos
@@ -110,7 +138,9 @@ namespace IOC.FW.Core.Abstraction.Business
         /// Retorna a contagem de elementos
         /// </summary>
         /// <param name="where">Filtro</param>
-        int Count(Expression<Func<TModel, bool>> where);
+        int Count(
+            Expression<Func<TModel, bool>> where
+        );
 
         /// <summary>
         /// Retorna a contagem de elementos
@@ -121,6 +151,8 @@ namespace IOC.FW.Core.Abstraction.Business
         /// Retorna a contagem de elementos
         /// </summary>
         /// <param name="where">Filtro</param>
-        long LongCount(Expression<Func<TModel, bool>> where);
+        long LongCount(
+            Expression<Func<TModel, bool>> where
+        );
     }
 }
