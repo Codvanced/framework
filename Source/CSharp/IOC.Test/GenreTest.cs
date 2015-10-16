@@ -1,21 +1,19 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
 using NUnit.Framework;
 using SimpleInjector;
-using IOC.FW.Core.Factory;
 using IOC.Model;
 using IOC.FW.Core.Abstraction.Business;
+using IOC.FW.Core.Implementation.DIContainer;
 
 namespace IOC.Test
 {
     [TestFixture]
     public class GenreTest
     {
-        public static IEnumerable<Container> Configure()
+        public static void Configure()
         {
-            yield return InstanceFactory.RegisterModules();
         }
 
         [Test, TestCaseSource("Configure")]
@@ -23,7 +21,7 @@ namespace IOC.Test
         {
             Assert.NotNull(simpleInjector);
 
-            var business = InstanceFactory.GetImplementation<IBaseBusiness<Genre>>();
+            var business = DependencyResolver.Adapter.Resolve<IBaseBusiness<Genre>>();
             Assert.NotNull(business);
 
             string nameGuid = string.Format("Genre-{0}", Guid.NewGuid().GetType());
@@ -44,7 +42,7 @@ namespace IOC.Test
         {
             Assert.NotNull(simpleInjector);
 
-            var business = InstanceFactory.GetImplementation<IBaseBusiness<Genre>>();
+            var business = DependencyResolver.Adapter.Resolve<IBaseBusiness<Genre>>();
             Assert.NotNull(business);
 
             var foundGenre = business.SelectAll();
@@ -67,7 +65,7 @@ namespace IOC.Test
         {
             Assert.NotNull(simpleInjector);
 
-            var business = InstanceFactory.GetImplementation<IBaseBusiness<Genre>>();
+            var business = DependencyResolver.Adapter.Resolve<IBaseBusiness<Genre>>();
             Assert.NotNull(business);
 
             var foundGenre = business.SelectAll();

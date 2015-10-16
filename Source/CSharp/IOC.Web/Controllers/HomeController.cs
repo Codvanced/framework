@@ -7,10 +7,10 @@ using SimpleInjector;
 using IOC.Model;
 using IOC.Abstraction.Business;
 using IOC.FW.Core.Abstraction.Business;
-using IOC.FW.Core.Factory;
 using IOC.Validation;
 using System.Linq.Expressions;
 using IOC.FW.Core;
+using IOC.FW.Core.Abstraction.Repository;
 
 namespace IOC.Web.Controllers
 {
@@ -18,6 +18,7 @@ namespace IOC.Web.Controllers
         : Controller
     {
         private readonly INewsBusiness _business;
+        private readonly IRepository<Ocupation> _xpto;
 
         public HomeController(INewsBusiness business)
         {

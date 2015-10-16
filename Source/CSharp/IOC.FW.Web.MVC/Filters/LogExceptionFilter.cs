@@ -11,7 +11,8 @@ namespace IOC.FW.Web.MVC.Filters
     /// <summary>
     /// Classe responsável por interceptar e logar exceções 
     /// </summary>
-    public class LogExceptionFilter : IExceptionFilter
+    public class LogExceptionFilter
+        : IExceptionFilter
     {
         /// <summary>
         /// Método responsável por logar exceções

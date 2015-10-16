@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using NUnit.Framework;
-using IOC.FW.Core;
+﻿using NUnit.Framework;
 
 namespace IOC.Test
 {
@@ -12,10 +7,10 @@ namespace IOC.Test
     {
         public void ValidateCpfTest() 
         {
-            bool isValid = IOC.FW.Core.Documents.Validation.ValidateCpf("33546645847");
+            bool isValid = FW.Core.Helper.Documents.Validation.ValidateCpf("33546645847");
             Assert.True(isValid);
 
-            isValid = IOC.FW.Core.Documents.Validation.ValidateCpf("33646545848");
+            isValid = FW.Core.Helper.Documents.Validation.ValidateCpf("33646545848");
             Assert.False(isValid);
         }
     }

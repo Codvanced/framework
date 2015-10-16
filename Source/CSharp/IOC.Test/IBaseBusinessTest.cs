@@ -1,21 +1,12 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using SimpleInjector;
-using IOC.FW.Core.Factory;
 using IOC.FW.Core.Abstraction.Business;
 using IOC.Model;
 using System.Linq.Expressions;
-using IOC.FW.Core.Database;
-using System.Data.Entity;
-using System.Collections;
 using NUnit.Framework;
-using Moq;
-using IOC.FW.Core.Abstraction.DAO;
-using IOC.FW.Core.Base;
-using IOC.Abstraction.Business;
+using IOC.FW.Core.Abstraction.Repository;
 using IOC.Abstraction.DAO;
+using IOC.FW.Core.Implementation.DIContainer;
 
 namespace IOC.Test
 {
@@ -25,7 +16,7 @@ namespace IOC.Test
         [Test]
         public void Should_Create_Model_Test()
         {
-            var business = InstanceFactory.GetImplementation<IBaseBusiness<News>>();
+            var business = DependencyResolver.Adapter.Resolve<IBaseBusiness<News>>();
             var model = business.Model();
             Assert.IsNotNull(model);
         }
@@ -33,7 +24,7 @@ namespace IOC.Test
         [Test]
         public void Should_Create_List_Model_Test()
         {
-            var business = InstanceFactory.GetImplementation<IBaseBusiness<News>>();
+            var business = DependencyResolver.Adapter.Resolve<IBaseBusiness<News>>();
             var model = business.List();
             Assert.IsNotNull(business);
             Assert.IsNotNull(model);
@@ -42,7 +33,7 @@ namespace IOC.Test
         [Test]
         public void Should_Insert_Model_Test()
         {
-            var business = InstanceFactory.GetImplementation<IBaseBusiness<News>>();
+            var business = DependencyResolver.Adapter.Resolve<IBaseBusiness<News>>();
             var model = business.Model();
 
             model.Author = "Autor";
@@ -58,7 +49,7 @@ namespace IOC.Test
         [Test]
         public void Should_Select_Model_With_Where_Clause_Test()
         {
-            var business = InstanceFactory.GetImplementation<IBaseBusiness<News>>();
+            var business = DependencyResolver.Adapter.Resolve<IBaseBusiness<News>>();
             var model = business.Model();
 
             model.Author = "Autor";
@@ -77,7 +68,7 @@ namespace IOC.Test
         [Test]
         public void Should_Select_Model_With_Where_And_OrderBy_Clause_Test()
         {
-            var business = InstanceFactory.GetImplementation<IBaseBusiness<News>>();
+            var business = DependencyResolver.Adapter.Resolve<IBaseBusiness<News>>();
             var model = business.Model();
 
             for (int i = 0; i < 3; i++)
@@ -106,7 +97,7 @@ namespace IOC.Test
         [Test]
         public void Should_Select_All_Model_Test()
         {
-            var business = InstanceFactory.GetImplementation<IBaseBusiness<News>>();
+            var business = DependencyResolver.Adapter.Resolve<IBaseBusiness<News>>();
             var model = business.Model();
 
             model.Author = "Autor";
@@ -125,7 +116,7 @@ namespace IOC.Test
         [Test]
         public void Should_Select_All_Model_With_OrderBy_Clause_Test()
         {
-            var business = InstanceFactory.GetImplementation<IBaseBusiness<News>>();
+            var business = DependencyResolver.Adapter.Resolve<IBaseBusiness<News>>();
             var model = business.Model();
 
             model.Author = "Autor";
@@ -149,7 +140,7 @@ namespace IOC.Test
         [Test]
         public void Should_Update_Model_Test()
         {
-            var business = InstanceFactory.GetImplementation<IBaseBusiness<News>>();
+            var business = DependencyResolver.Adapter.Resolve<IBaseBusiness<News>>();
             var model = business.Model();
             model.Author = "Autor";
             model.Title = "Titulo";
@@ -172,7 +163,7 @@ namespace IOC.Test
         [Test]
         public void Should_Update_Specific_Properties_Model_Test()
         {
-            var business = InstanceFactory.GetImplementation<IBaseBusiness<News>>();
+            var business = DependencyResolver.Adapter.Resolve<IBaseBusiness<News>>();
             var model = business.Model();
             model.Author = "Autor AAA";
             model.Title = "Titulo AAA";
@@ -205,7 +196,7 @@ namespace IOC.Test
         [Test]
         public void Should_Delete_Model_Test()
         {
-            var business = InstanceFactory.GetImplementation<IBaseBusiness<News>>();
+            var business = DependencyResolver.Adapter.Resolve<IBaseBusiness<News>>();
             var model = business.Model();
             model.Author = "Autor";
             model.Title = "Titulo";
@@ -226,7 +217,7 @@ namespace IOC.Test
         [Test]
         public void Should_Count_Model_Test()
         {
-            var business = InstanceFactory.GetImplementation<IBaseBusiness<News>>();
+            var business = DependencyResolver.Adapter.Resolve<IBaseBusiness<News>>();
             var count = business.Count();
 
             Assert.True(count > 0);
@@ -235,7 +226,7 @@ namespace IOC.Test
         [Test]
         public void Should_Long_Count_Model_Test()
         {
-            var business = InstanceFactory.GetImplementation<IBaseBusiness<News>>();
+            var business = DependencyResolver.Adapter.Resolve<IBaseBusiness<News>>();
             var count = business.LongCount();
 
             Assert.True(count > 0);
@@ -244,7 +235,7 @@ namespace IOC.Test
         [Test]
         public void Should_Update_Priority_Test()
         {
-            var business = InstanceFactory.GetImplementation<IBaseBusiness<News>>();
+            var business = DependencyResolver.Adapter.Resolve<IBaseBusiness<News>>();
             var all = business.SelectAll();
 
             business.UpdatePriority<News>(
@@ -263,9 +254,9 @@ namespace IOC.Test
         [Test]
         public void Should_Work_With_A_Open_Transaction()
         {
-            var dao = InstanceFactory.GetImplementation<INewsDAO>();
-            var ocupationDAO = InstanceFactory.GetImplementation<IOcupationDAO>();
-            var personDAO = InstanceFactory.GetImplementation<IPersonDAO>();
+            var dao = DependencyResolver.Adapter.Resolve<INewsDAO>();
+            var ocupationDAO = DependencyResolver.Adapter.Resolve<IOcupationDAO>();
+            var personDAO = DependencyResolver.Adapter.Resolve<IPersonDAO>();
 
             dao.ExecuteWithTransaction(
                 System.Data.IsolationLevel.Serializable,

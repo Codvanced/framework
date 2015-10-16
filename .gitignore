@@ -5,4 +5,4 @@ PublishProfiles/
 .vs/
 Backup/
 *.suo
-*UpgradeLog*.htm
+UpgradeLog.htm

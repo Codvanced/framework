@@ -1,18 +1,13 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Web;
 using System.Web.Http;
 using System.Web.Mvc;
 using System.Web.Optimization;
 using System.Web.Routing;
-using SimpleInjector;
 using SimpleInjector.Integration.Web.Mvc;
-using IOC.Business.Implementation;
-using System.Reflection;
-using IOC.FW.Core.Factory;
-using IOC.FW.Web.MVC.SimpleInjector;
 using IOC.FW.Core.Logging;
+using IOC.FW.Core.Implementation.DIContainer.SimpleInjector;
+using IOC.Abstraction.Business;
 
 namespace IOC.Web
 {
@@ -29,8 +24,12 @@ namespace IOC.Web
             RouteConfig.RegisterRoutes(RouteTable.Routes);
             BundleConfig.RegisterBundles(BundleTable.Bundles);
 
-            var container = InstanceFactory.RegisterModules(Register.RegisterWebApi);
-            var resolve = new SimpleInjectorDependencyResolver(container);
+            // Create dapater and revolver dependency with framework
+            var adapter = new SimpleInjectorAdapter();
+            FW.Core.Implementation.DIContainer.DependencyResolver.Resolve(adapter);
+
+            // Pass container of framework to dependency resolver of .NET MVC
+            var resolve = new SimpleInjectorDependencyResolver(adapter._container);
             DependencyResolver.SetResolver(resolve);
 
             MvcHandler.DisableMvcResponseHeader = true;

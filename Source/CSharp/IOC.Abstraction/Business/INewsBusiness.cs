@@ -5,7 +5,6 @@ using System.Text;
 using IOC.FW.Core;
 using IOC.Model;
 using IOC.Abstraction.DAO;
-using IOC.FW.Core.Base;
 using IOC.FW.Core.Abstraction.Business;
 
 namespace IOC.Abstraction.Business

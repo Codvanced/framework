@@ -5,9 +5,9 @@ using System.Text;
 using IOC.Model;
 using IOC.Abstraction.DAO;
 using System.Data;
-using IOC.FW.Core.Abstraction.DAO;
+using IOC.FW.Core.Abstraction.Repository;
 using System.Data.Common;
-using IOC.FW.Core.Base;
+using IOC.FW.Core.Implementation.Base;
 
 namespace IOC.DAO.Implementation
 {

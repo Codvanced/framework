@@ -6,29 +6,29 @@ using SimpleInjector;
 using SimpleInjector.Extensions;
 using IOC.DAO.Implementation;
 using IOC.Abstraction.DAO;
-using IOC.FW.Core.Abstraction.Binding;
-using IOC.FW.Core.Abstraction.DAO;
-using IOC.FW.Core.Database;
-using IOC.FW.Core.Base;
-using IOC.FW.Core.Database.Repository;
+using IOC.FW.Core.Abstraction.Repository;
+using IOC.FW.Core.Abstraction.DIContainer.Binding;
+using IOC.FW.Core.Abstraction.DIContainer;
+using IOC.FW.Core.Implementation.Repository.EntityFramework;
+using IOC.FW.Core;
 using IOC.Model;
 
 namespace IOC.Binding.SimpleInjector
 {
     public class DAOModule
-        : IModule
+        : IBinding
     {
-        public void SetBinding(Container container)
+        public void SetBinding(IAdapter adapter)
         {
-            container.RegisterOpenGeneric(
+            adapter.Register(
                 typeof(IRepository<>),
                 typeof(EntityFrameworkRepository<>),
-                Lifestyle.Transient
+                Enumerators.LifeCycleType.Transient
             );
 
-            container.Register<IPersonDAO, PersonDAO>();
-            container.Register<INewsDAO, NewsDAO>();
-            container.Register<IOcupationDAO, OcupationDAO>();
+            adapter.Register<IPersonDAO, PersonDAO>(Enumerators.LifeCycleType.Transient);
+            adapter.Register<INewsDAO, NewsDAO>(Enumerators.LifeCycleType.Transient);
+            adapter.Register<IOcupationDAO, OcupationDAO>(Enumerators.LifeCycleType.Transient);
         }
     }
 }

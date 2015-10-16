@@ -109,10 +109,11 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Handlers\Thumb.cs" />
-    <Compile Include="Handlers\TransformHandler.cs" />
+    <Compile Include="Handler\Thumb.cs" />
+    <Compile Include="Handler\TransformHandler.cs" />
+    <Compile Include="Helper\Pagination\Paginator.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="DeviceDetector.cs" />
+    <Compile Include="Helper\DeviceDetector.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\IOC.FW\IOC.FW.csproj">
