@@ -1,16 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Web;
 using System.Web.Mvc;
-using SimpleInjector;
 using IOC.Model;
 using IOC.Abstraction.Business;
-using IOC.FW.Core.Abstraction.Business;
-using IOC.Validation;
-using System.Linq.Expressions;
-using IOC.FW.Core;
 using IOC.FW.Core.Abstraction.Repository;
+using IOC.Business.Validation;
 
 namespace IOC.Web.Controllers
 {
@@ -69,7 +63,7 @@ namespace IOC.Web.Controllers
             if (id.HasValue && id.Value > 0)
                 news.IdNews = id.Value;
 
-            NewsValidation validation = new NewsValidation();
+            var validation = new NewsValidation();
             var validateResult = validation.Validate(news);
 
             if (validateResult.IsValid)

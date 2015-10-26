@@ -1,13 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.ComponentModel.DataAnnotations;
-using System.ComponentModel.DataAnnotations.Schema;
+﻿using System.ComponentModel.DataAnnotations;
+using System.Data.Linq.Mapping;
 
 namespace IOC.Model
 {
-    [Table("ArtistGenre")]
+    [Table(Name = "ArtistGenre")]
     public class ArtistGenre
     {
         [Key]

@@ -2,13 +2,10 @@
 using System.Web;
 using System.IO;
 using System.Drawing;
-using System.Drawing.Drawing2D;
-using System.Drawing.Imaging;
-using System.Configuration;
-using IOC.FW.Core;
-using IOC.FW.Core.Imaging;
 using IOC.FW.Configuration;
-using IOC.FW.Core.Logging;
+using IOC.FW.Shared.Enumerators;
+using IOC.FW.ImageTransformation;
+using IOC.FW.Logging;
 
 namespace IOC.FW.Web.Handler
 {
@@ -40,10 +37,10 @@ namespace IOC.FW.Web.Handler
 
             int? height = null; int h = 0;
 
-            var refpoint = Enumerators.ReferencePoint.MiddleCenter;
+            var refpoint = ImageEnumerator.ReferencePoint.MiddleCenter;
 
             if (context.Request["refpoint"] != null)
-                Enum.TryParse<Enumerators.ReferencePoint>(context.Request["refpoint"], out refpoint);
+                Enum.TryParse<ImageEnumerator.ReferencePoint>(context.Request["refpoint"], out refpoint);
 
             if (context.Request["width"] != null)
                 int.TryParse(context.Request["width"], out w);
