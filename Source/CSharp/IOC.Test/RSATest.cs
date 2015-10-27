@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Text;
 using NUnit.Framework;
-using IOC.FW.Core.Security.Cryptography;
+using IOC.FW.Cryptography;
 
 namespace IOC.Test
 {

@@ -96,6 +96,10 @@
     <CodeAnalysisRuleSet>AllRules.ruleset</CodeAnalysisRuleSet>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="DryIoc, Version=2.0.0.335, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\DryIoc.dll.2.0.0-rc3build337\lib\net40\DryIoc.dll</HintPath>
+    </Reference>
     <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
       <HintPath>..\packages\EntityFramework.6.1.3\lib\net40\EntityFramework.dll</HintPath>
       <Private>True</Private>
@@ -128,8 +132,8 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\packages\NUnit.2.6.4\lib\nunit.framework.dll</HintPath>
     </Reference>
-    <Reference Include="SimpleInjector, Version=2.8.0.0, Culture=neutral, PublicKeyToken=984cb50dea722e99, processorArchitecture=MSIL">
-      <HintPath>..\packages\SimpleInjector.2.8.0\lib\net40-client\SimpleInjector.dll</HintPath>
+    <Reference Include="SimpleInjector, Version=3.1.0.0, Culture=neutral, PublicKeyToken=984cb50dea722e99, processorArchitecture=MSIL">
+      <HintPath>..\packages\SimpleInjector.3.1.0\lib\net40-client\SimpleInjector.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="System" />
@@ -185,40 +189,6 @@
     <Compile Include="NewsTests.cs" />
     <Compile Include="RSATest.cs" />
     <Compile Include="SHA1Test.cs" />
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\IOC.Abstraction\IOC.Abstraction.csproj">
-      <Project>{B6063B30-9F1C-44A2-847B-F112D851AE17}</Project>
-      <Name>IOC.Abstraction</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\IOC.Binding\IOC.Binding.csproj">
-      <Project>{00540DF7-C93D-43C2-A270-8EFE04533C02}</Project>
-      <Name>IOC.Binding</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\IOC.Business\IOC.Business.csproj">
-      <Project>{a7f10f9e-2dbe-4f0d-86e7-e69b88d017e4}</Project>
-      <Name>IOC.Business</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\IOC.DAO\IOC.DAO.csproj">
-      <Project>{36586d23-f624-4d62-84c2-2d6d2a2bc4eb}</Project>
-      <Name>IOC.DAO</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\IOC.FW.Web.MVC\IOC.FW.Web.MVC.csproj">
-      <Project>{9A0F7B47-FBD0-48D3-B3C7-49C40D4E4877}</Project>
-      <Name>IOC.FW.Web.MVC</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\IOC.FW.Web\IOC.FW.Web.csproj">
-      <Project>{4682AE8E-90B7-4838-A4A6-B2FDD98BD7FE}</Project>
-      <Name>IOC.FW.Web</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\IOC.FW\IOC.FW.csproj">
-      <Project>{F7380D0C-AF5F-435A-8389-1E7344B20D86}</Project>
-      <Name>IOC.FW</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\IOC\IOC.csproj">
-      <Project>{F3BDA0A1-72A2-4C44-8406-B613FEDDE01C}</Project>
-      <Name>IOC</Name>
-    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config">
@@ -278,6 +248,84 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="DAO\" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\IOC.Abstraction\IOC.Abstraction.csproj">
+      <Project>{b6063b30-9f1c-44a2-847b-f112d851ae17}</Project>
+      <Name>IOC.Abstraction</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\IOC.Binding\IOC.Binding.csproj">
+      <Project>{00540df7-c93d-43c2-a270-8efe04533c02}</Project>
+      <Name>IOC.Binding</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\IOC.Business\IOC.Business.csproj">
+      <Project>{a7f10f9e-2dbe-4f0d-86e7-e69b88d017e4}</Project>
+      <Name>IOC.Business</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\IOC.DAO\IOC.DAO.csproj">
+      <Project>{36586d23-f624-4d62-84c2-2d6d2a2bc4eb}</Project>
+      <Name>IOC.DAO</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\IOC.FW.Authentication\IOC.FW.Authentication.csproj">
+      <Project>{9493dae8-2559-4a54-8ff2-8759b5cfa760}</Project>
+      <Name>IOC.FW.Authentication</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\IOC.FW.Configuration\IOC.FW.Configuration.csproj">
+      <Project>{28c6b3ed-c9b5-417c-8e99-c24b450de618}</Project>
+      <Name>IOC.FW.Configuration</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\IOC.FW.ContainerManager\IOC.FW.ContainerManager.csproj">
+      <Project>{82a88e93-4c95-4db7-ad7d-8f1f367c4034}</Project>
+      <Name>IOC.FW.ContainerManager</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\IOC.FW.Core\IOC.FW.Core.csproj">
+      <Project>{ad0698e7-cd21-4340-8e6d-b4c6624e8fa8}</Project>
+      <Name>IOC.FW.Core</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\IOC.FW.Cryptography\IOC.FW.Cryptography.csproj">
+      <Project>{9ca72a18-42db-4181-b011-36226861af35}</Project>
+      <Name>IOC.FW.Cryptography</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\IOC.FW.Extensions\IOC.FW.Extensions.csproj">
+      <Project>{68100b12-1020-42ca-bea6-3e0cd9ddd040}</Project>
+      <Name>IOC.FW.Extensions</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\IOC.FW.ImageTransformation\IOC.FW.ImageTransformation.csproj">
+      <Project>{370ff938-8cdb-4a93-8e48-c85d52808e03}</Project>
+      <Name>IOC.FW.ImageTransformation</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\IOC.FW.Logging\IOC.FW.Logging.csproj">
+      <Project>{6089782a-ea12-4f14-9d24-bcab9f9f0163}</Project>
+      <Name>IOC.FW.Logging</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\IOC.FW.Repository\IOC.FW.Repository.csproj">
+      <Project>{a2718b96-3f93-4d29-8942-e841f9eb5457}</Project>
+      <Name>IOC.FW.Repository</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\IOC.FW.Shared\IOC.FW.Shared.csproj">
+      <Project>{7323e348-0ae0-4f75-a2d8-adff0f03c04b}</Project>
+      <Name>IOC.FW.Shared</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\IOC.FW.Validation\IOC.FW.Validation.csproj">
+      <Project>{7a23f19f-96ee-44c7-81d9-3cdd4cb7b9f8}</Project>
+      <Name>IOC.FW.Validation</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\IOC.FW.Web.MVC\IOC.FW.Web.MVC.csproj">
+      <Project>{9a0f7b47-fbd0-48d3-b3c7-49c40d4e4877}</Project>
+      <Name>IOC.FW.Web.MVC</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\IOC.FW.Web\IOC.FW.Web.csproj">
+      <Project>{4682ae8e-90b7-4838-a4a6-b2fdd98bd7fe}</Project>
+      <Name>IOC.FW.Web</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\IOC.Web\IOC.Web.csproj">
+      <Project>{790b015b-1011-4ca8-bd9a-7b253436add2}</Project>
+      <Name>IOC.Web</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\IOC\IOC.csproj">
+      <Project>{f3bda0a1-72a2-4c44-8406-b613fedde01c}</Project>
+      <Name>IOC</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <Import Project="$(SolutionDir)\.nuget\NuGet.targets" Condition="Exists('$(SolutionDir)\.nuget\NuGet.targets')" />

@@ -1,11 +1,9 @@
 ﻿using System;
 using NUnit.Framework;
 using IOC.FW.Configuration;
-using SimpleInjector;
 using IOC.Abstraction.Business;
-using IOC.FW.Core.Implementation.DIContainer;
-using IOC.FW.Core.Abstraction.DIContainer.Binding;
-using IOC.FW.Core.Implementation.DIContainer.SimpleInjector;
+using IOC.FW.ContainerManager.SimpleInjector;
+using IOC.FW.Core.Abstraction.Container.Binding;
 
 namespace IOC.Test
 {
@@ -36,7 +34,7 @@ namespace IOC.Test
                     }
                 }
 
-                var business = DependencyResolver.Adapter.Resolve<INewsBusiness>();
+                var business = adapter.Resolve<INewsBusiness>();
                 Assert.IsNotNull(business);
             }
         }

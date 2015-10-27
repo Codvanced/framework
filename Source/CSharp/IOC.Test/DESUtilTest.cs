@@ -1,4 +1,4 @@
-﻿using IOC.FW.Core.Security.Cryptography;
+﻿using IOC.FW.Cryptography;
 using NUnit.Framework;
 
 namespace IOC.Test

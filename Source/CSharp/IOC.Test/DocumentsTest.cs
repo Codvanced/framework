@@ -1,4 +1,5 @@
-﻿using NUnit.Framework;
+﻿using IOC.FW.Validation;
+using NUnit.Framework;
 
 namespace IOC.Test
 {
@@ -7,10 +8,10 @@ namespace IOC.Test
     {
         public void ValidateCpfTest() 
         {
-            bool isValid = FW.Core.Helper.Documents.Validation.ValidateCpf("33546645847");
+            bool isValid = CPF.ValidateCpf("33546645847");
             Assert.True(isValid);
 
-            isValid = FW.Core.Helper.Documents.Validation.ValidateCpf("33646545848");
+            isValid = CPF.ValidateCpf("33646545848");
             Assert.False(isValid);
         }
     }

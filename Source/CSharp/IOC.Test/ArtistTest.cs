@@ -1,12 +1,10 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Text;
 using NUnit.Framework;
 using SimpleInjector;
 using IOC.Model;
 using IOC.FW.Core.Abstraction.Business;
-using IOC.FW.Core.Implementation.DIContainer;
+using IOC.FW.ContainerManager.SimpleInjector;
 
 namespace IOC.Test
 {
@@ -22,7 +20,8 @@ namespace IOC.Test
         {
             Assert.NotNull(simpleInjector);
 
-            var business = DependencyResolver.Adapter.Resolve<IBaseBusiness<Artist>>();
+            var adapter = new SimpleInjectorAdapter();
+            var business = adapter.Resolve<IBaseBusiness<Artist>>();
             Assert.NotNull(business);
 
             string nameGuid = string.Format("Artist-{0}", Guid.NewGuid().GetType());
@@ -44,7 +43,8 @@ namespace IOC.Test
         {
             Assert.NotNull(simpleInjector);
 
-            var business = DependencyResolver.Adapter.Resolve<IBaseBusiness<Artist>>();
+            var adapter = new SimpleInjectorAdapter();
+            var business = adapter.Resolve<IBaseBusiness<Artist>>();
             Assert.NotNull(business);
 
             var foundArtist = business.SelectAll();
@@ -67,7 +67,8 @@ namespace IOC.Test
         {
             Assert.NotNull(simpleInjector);
 
-            var business = DependencyResolver.Adapter.Resolve<IBaseBusiness<Artist>>();
+            var adapter = new SimpleInjectorAdapter();
+            var business = adapter.Resolve<IBaseBusiness<Artist>>();
             Assert.NotNull(business);
 
             var foundArtist = business.SelectAll();
