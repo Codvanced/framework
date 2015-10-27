@@ -1,9 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
+﻿using IOC.FW.Logging;
 using System.Web;
 using System.Web.Mvc;
-using IOC.FW.Core.Logging;
 
 namespace IOC.Web.Controllers
 {

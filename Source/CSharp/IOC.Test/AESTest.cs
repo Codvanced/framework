@@ -1,9 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using NUnit.Framework;
-using IOC.FW.Core.Security.Cryptography;
+﻿using NUnit.Framework;
+using IOC.FW.Cryptography;
 
 namespace IOC.Test
 {

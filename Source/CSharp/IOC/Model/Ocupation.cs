@@ -1,14 +1,11 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.ComponentModel.DataAnnotations.Schema;
-using System.ComponentModel.DataAnnotations;
 using IOC.FW.Core.Abstraction.Model;
+using System.ComponentModel.DataAnnotations;
+using System.Data.Linq.Mapping;
 
 namespace IOC.Model
 {
-    [Table("Ocupation")]
+    [Table(Name = "Ocupation")]
     public class Ocupation
         : IBaseModel
     {

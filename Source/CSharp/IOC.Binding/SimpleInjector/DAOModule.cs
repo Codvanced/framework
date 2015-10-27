@@ -1,17 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using SimpleInjector;
-using SimpleInjector.Extensions;
-using IOC.DAO.Implementation;
+﻿using IOC.DAO.Implementation;
 using IOC.Abstraction.DAO;
 using IOC.FW.Core.Abstraction.Repository;
-using IOC.FW.Core.Abstraction.DIContainer.Binding;
-using IOC.FW.Core.Abstraction.DIContainer;
-using IOC.FW.Core.Implementation.Repository.EntityFramework;
-using IOC.FW.Core;
-using IOC.Model;
+using IOC.FW.Core.Abstraction.Container.Binding;
+using IOC.FW.Core.Abstraction.Container;
+using IOC.FW.Shared.Enumerators;
+using IOC.FW.Repository.EntityFramework;
 
 namespace IOC.Binding.SimpleInjector
 {
@@ -23,12 +16,12 @@ namespace IOC.Binding.SimpleInjector
             adapter.Register(
                 typeof(IRepository<>),
                 typeof(EntityFrameworkRepository<>),
-                Enumerators.LifeCycleType.Transient
+                ContainerEnumerator.LifeCycle.Transient
             );
 
-            adapter.Register<IPersonDAO, PersonDAO>(Enumerators.LifeCycleType.Transient);
-            adapter.Register<INewsDAO, NewsDAO>(Enumerators.LifeCycleType.Transient);
-            adapter.Register<IOcupationDAO, OcupationDAO>(Enumerators.LifeCycleType.Transient);
+            adapter.Register<IPersonDAO, PersonDAO>(ContainerEnumerator.LifeCycle.Transient);
+            adapter.Register<INewsDAO, NewsDAO>(ContainerEnumerator.LifeCycle.Transient);
+            adapter.Register<IOcupationDAO, OcupationDAO>(ContainerEnumerator.LifeCycle.Transient);
         }
     }
 }

@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
@@ -30,6 +30,7 @@
     <SolutionDir Condition="$(SolutionDir) == '' Or $(SolutionDir) == '*Undefined*'">..\</SolutionDir>
     <RestorePackages>true</RestorePackages>
     <CodeContractsAssemblyMode>0</CodeContractsAssemblyMode>
+    <TargetFrameworkProfile />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -83,6 +84,7 @@
     <CodeContractsRuntimeCheckingLevel>Full</CodeContractsRuntimeCheckingLevel>
     <CodeContractsReferenceAssembly>%28none%29</CodeContractsReferenceAssembly>
     <CodeContractsAnalysisWarningLevel>0</CodeContractsAnalysisWarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugType>pdbonly</DebugType>
@@ -92,6 +94,7 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
     <CodeAnalysisRuleSet>AllRules.ruleset</CodeAnalysisRuleSet>
+    <Prefer32Bit>false</Prefer32Bit>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="log4net, Version=1.2.13.0, Culture=neutral, PublicKeyToken=669e0ddf0bb1aa2a, processorArchitecture=MSIL">
@@ -116,12 +119,6 @@
     <Compile Include="Helper\DeviceDetector.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\IOC.FW\IOC.FW.csproj">
-      <Project>{F7380D0C-AF5F-435A-8389-1E7344B20D86}</Project>
-      <Name>IOC.FW</Name>
-    </ProjectReference>
-  </ItemGroup>
-  <ItemGroup>
     <BootstrapperPackage Include=".NETFramework,Version=v4.0">
       <Visible>False</Visible>
       <ProductName>Microsoft .NET Framework 4 %28x86 and x64%29</ProductName>
@@ -142,6 +139,28 @@
       <ProductName>Windows Installer 3.1</ProductName>
       <Install>true</Install>
     </BootstrapperPackage>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\IOC.FW.Configuration\IOC.FW.Configuration.csproj">
+      <Project>{28c6b3ed-c9b5-417c-8e99-c24b450de618}</Project>
+      <Name>IOC.FW.Configuration</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\IOC.FW.Extensions\IOC.FW.Extensions.csproj">
+      <Project>{68100b12-1020-42ca-bea6-3e0cd9ddd040}</Project>
+      <Name>IOC.FW.Extensions</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\IOC.FW.ImageTransformation\IOC.FW.ImageTransformation.csproj">
+      <Project>{370ff938-8cdb-4a93-8e48-c85d52808e03}</Project>
+      <Name>IOC.FW.ImageTransformation</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\IOC.FW.Logging\IOC.FW.Logging.csproj">
+      <Project>{6089782a-ea12-4f14-9d24-bcab9f9f0163}</Project>
+      <Name>IOC.FW.Logging</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\IOC.FW.Shared\IOC.FW.Shared.csproj">
+      <Project>{7323e348-0ae0-4f75-a2d8-adff0f03c04b}</Project>
+      <Name>IOC.FW.Shared</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Import Project="$(SolutionDir)\.nuget\NuGet.targets" Condition="Exists('$(SolutionDir)\.nuget\NuGet.targets')" />

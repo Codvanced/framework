@@ -1,52 +1,48 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 using System.ComponentModel.DataAnnotations;
-using System.ComponentModel.DataAnnotations.Schema;
 using IOC.FW.Core.Abstraction.Miscellaneous;
-using System.Linq.Expressions;
+using System.Data.Linq.Mapping;
 
 namespace IOC.Model
 {
-    [Table("News")]
+    [Table(Name = "News")]
     public class News 
         : IPrioritySortable
     {
         [Key]
-        [Column("IdNews")]
+        [Column(Name = "IdNews")]
         [Display(Name = "Id da Notícia")]
         public int IdNews { get; set; }
 
-        [Column("Title")]
+        [Column(Name = "Title")]
         [Required(ErrorMessage = "Titulo não preenchido corretamente...")]
         [Display(Name = "Título")]
         public string Title { get; set; }
 
-        [Column("NewsDescription")]
+        [Column(Name = "NewsDescription")]
         [Required(ErrorMessage = "Descrição não preenchida corretamente...")]
         [Display(Name = "Descrição")]
         public string NewsDescription { get; set; }
 
-        [Column("Author")]
+        [Column(Name = "Author")]
         [Required(ErrorMessage = "Autor não preenchido corretamente...")]
         [Display(Name = "Autor")]
         public string Author { get; set; }
 
-        [Column("NewsDate")]
+        [Column(Name = "NewsDate")]
         [Required(ErrorMessage = "Data da Notícia não preenchida corretamente...")]
         [Display(Name = "Data da Notícia")]
         public DateTime NewsDate { get; set; }
 
-        [Column("Created")]
+        [Column(Name = "Created")]
         [Display(Name = "Data de Cadastro")]
         public DateTime Created { get; set; }
 
-        [Column("Updated")]
+        [Column(Name = "Updated")]
         [Display(Name = "Data de Alteração")]
         public DateTime? Updated { get; set; }
 
-        [Column("Priority")]
+        [Column(Name = "Priority")]
         public long Priority { get; set; }
 
         public override bool Equals(object obj)

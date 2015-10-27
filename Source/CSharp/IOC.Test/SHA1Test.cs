@@ -1,6 +1,6 @@
 ﻿using System;
 using NUnit.Framework;
-using IOC.FW.Core.Security.Cryptography;
+using IOC.FW.Cryptography;
 
 namespace IOC.Test
 {

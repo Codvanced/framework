@@ -1,8 +1,6 @@
-﻿using System;
+﻿using IOC.FW.Extensions;
+using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Web;
-using IOC.FW.Core;
 
 namespace IOC.FW.Web.Helper.Pagination
 {

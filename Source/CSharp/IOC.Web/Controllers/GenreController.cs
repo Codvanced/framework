@@ -1,14 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
-using System.Web.Mvc;
-using SimpleInjector;
+﻿using System.Web.Mvc;
 using IOC.Model;
-using IOC.Validation;
-using IOC.Abstraction.Business;
 using IOC.FW.Core.Abstraction.Business;
-using IOC.FW.Web.MVC.Base;
 
 namespace IOC.Web.Controllers
 {

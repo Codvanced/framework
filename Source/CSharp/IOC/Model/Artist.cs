@@ -1,14 +1,11 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
+﻿using System.Collections.Generic;
 using IOC.FW.Core.Abstraction.Model;
+using System.Data.Linq.Mapping;
 using System.ComponentModel.DataAnnotations;
-using System.ComponentModel.DataAnnotations.Schema;
 
 namespace IOC.Model
 {
-    [Table("Artist")]
+    [Table(Name = "Artist")]
     public class Artist
         : IModelCreating
     {
