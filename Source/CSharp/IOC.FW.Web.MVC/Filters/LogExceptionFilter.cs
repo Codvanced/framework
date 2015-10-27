@@ -1,10 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
+﻿using IOC.FW.Logging;
+using System;
 using System.Web.Mvc;
-using log4net;
-using IOC.FW.Core.Logging;
 
 namespace IOC.FW.Web.MVC.Filters
 {

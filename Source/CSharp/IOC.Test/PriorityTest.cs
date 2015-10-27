@@ -1,10 +1,9 @@
-﻿using System.Collections.Generic;
-using System.Linq;
+﻿using System.Linq;
 using NUnit.Framework;
 using SimpleInjector;
 using IOC.Abstraction.Business;
 using IOC.Model;
-using IOC.FW.Core.Implementation.DIContainer;
+using IOC.FW.ContainerManager.SimpleInjector;
 
 namespace IOC.Test
 {
@@ -20,7 +19,8 @@ namespace IOC.Test
         {
             Assert.NotNull(simpleInjector);
 
-            var business = DependencyResolver.Adapter.Resolve<INewsBusiness>();
+            var adapter = new SimpleInjectorAdapter();
+            var business = adapter.Resolve<INewsBusiness>();
             Assert.NotNull(business);
 
             var items = business.SelectAll();

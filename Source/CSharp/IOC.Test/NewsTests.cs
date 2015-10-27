@@ -2,15 +2,16 @@
 using System.Collections.Generic;
 using System.Linq;
 using IOC.Abstraction.Business;
-using IOC.FW.Core;
 using IOC.FW.Core.Abstraction.Business;
 using IOC.FW.Core.Abstraction.Repository;
 using IOC.Model;
 using NUnit.Framework;
 using SimpleInjector;
 using System.Linq.Expressions;
-using IOC.Validation;
-using IOC.FW.Core.Implementation.DIContainer;
+using IOC.FW.ContainerManager;
+using IOC.Business.Validation;
+using IOC.FW.Extensions;
+using IOC.FW.ContainerManager.SimpleInjector;
 
 namespace IOC.Test
 {
@@ -26,7 +27,8 @@ namespace IOC.Test
         {
             Assert.NotNull(simpleInjector);
 
-            var business = DependencyResolver.Adapter.Resolve<INewsBusiness>();
+            var adapter = new SimpleInjectorAdapter();
+            var business = adapter.Resolve<INewsBusiness>();
             Assert.NotNull(business);
 
             //ar news = business.Select(p => true).Take(2);
@@ -39,7 +41,8 @@ namespace IOC.Test
             Assert.NotNull(simpleInjector);
 
             //var business = DependencyResolver.Adapter.Resolve<INewsBusiness>();
-            var business = DependencyResolver.Adapter.Resolve<IBaseBusiness<News>>();
+            var adapter = new SimpleInjectorAdapter();
+            var business = adapter.Resolve<IBaseBusiness<News>>();
             Assert.NotNull(business);
 
             business.Insert(
@@ -68,7 +71,8 @@ namespace IOC.Test
         {
             Assert.NotNull(simpleInjector);
 
-            var business = DependencyResolver.Adapter.Resolve<INewsBusiness>();
+            var adapter = new SimpleInjectorAdapter();
+            var business = adapter.Resolve<INewsBusiness>();
             Assert.NotNull(business);
 
             var foundNews = business.SelectAll();
@@ -102,7 +106,8 @@ namespace IOC.Test
         {
             Assert.NotNull(simpleInjector);
 
-            var business = DependencyResolver.Adapter.Resolve<INewsBusiness>();
+            var adapter = new SimpleInjectorAdapter();
+            var business = adapter.Resolve<INewsBusiness>();
             Assert.NotNull(business);
 
             var foundNews = business.SelectAll();
@@ -122,7 +127,8 @@ namespace IOC.Test
         {
             Assert.NotNull(simpleInjector);
 
-            var business = DependencyResolver.Adapter.Resolve<INewsBusiness>();
+            var adapter = new SimpleInjectorAdapter();
+            var business = adapter.Resolve<INewsBusiness>();
             Assert.NotNull(business);
 
             business.Insert(
@@ -154,14 +160,15 @@ namespace IOC.Test
             Assert.NotNull(simpleInjector);
 
             //Teste validando título
-            var business = DependencyResolver.Adapter.Resolve<INewsBusiness>();
+            var adapter = new SimpleInjectorAdapter();
+            var business = adapter.Resolve<INewsBusiness>();
             Assert.NotNull(business);
 
             var result = business.TitleAlreadyExists("Titulo");
             Assert.NotNull(result);
 
             //Teste validando o Execute Scalar
-            var dao = DependencyResolver.Adapter.Resolve<IRepository<News>>();
+            var dao = adapter.Resolve<IRepository<News>>();
             Assert.NotNull(dao);
 
             var t = dao.ExecuteQuery(
@@ -226,7 +233,9 @@ namespace IOC.Test
         public void SelectOrderBy(Container simpleInjector)
         {
             Assert.NotNull(simpleInjector);
-            var business = DependencyResolver.Adapter.Resolve<IBaseBusiness<News>>();
+
+            var adapter = new SimpleInjectorAdapter();
+            var business = adapter.Resolve<IBaseBusiness<News>>();
             
             var result = business.Select(
                 where: w => w.IdNews > 5,

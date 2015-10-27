@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
@@ -21,12 +21,13 @@
     <MvcProjectUpgradeChecked>true</MvcProjectUpgradeChecked>
     <FileUpgradeFlags>40</FileUpgradeFlags>
     <UpgradeBackupLocation>C:\Projects\Source\Personal\Framework\Source\CSharp\Backup\</UpgradeBackupLocation>
-    <OldToolsVersion>4.0</OldToolsVersion>
+    <OldToolsVersion>12.0</OldToolsVersion>
     <IISExpressSSLPort />
     <IISExpressAnonymousAuthentication />
     <IISExpressWindowsAuthentication />
     <IISExpressUseClassicPipelineMode />
     <UseGlobalApplicationHostFile />
+    <TargetFrameworkProfile />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -39,6 +40,7 @@
     <DocumentationFile>bin\IOC.Web.XML</DocumentationFile>
     <CodeAnalysisRuleSet>AllRules.ruleset</CodeAnalysisRuleSet>
     <NoWarn>1591</NoWarn>
+    <Prefer32Bit>false</Prefer32Bit>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugType>pdbonly</DebugType>
@@ -48,6 +50,7 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
     <CodeAnalysisRuleSet>AllRules.ruleset</CodeAnalysisRuleSet>
+    <Prefer32Bit>false</Prefer32Bit>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="Antlr3.Runtime, Version=3.5.0.2, Culture=neutral, PublicKeyToken=eb42632606e9261f, processorArchitecture=MSIL">
@@ -117,6 +120,7 @@
     <Reference Include="System.Data">
       <Private>True</Private>
     </Reference>
+    <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="System.Data.SQLite">
       <HintPath>..\packages\System.Data.SQLite.Core.1.0.96.0\lib\net40\System.Data.SQLite.dll</HintPath>
       <EmbedInteropTypes>False</EmbedInteropTypes>
@@ -159,12 +163,7 @@
     <Reference Include="System.ComponentModel.DataAnnotations">
       <Private>True</Private>
     </Reference>
-    <Reference Include="System.Core">
-      <Private>True</Private>
-    </Reference>
-    <Reference Include="System.Data.DataSetExtensions">
-      <Private>True</Private>
-    </Reference>
+    <Reference Include="System.Web.Extensions" />
     <Reference Include="System.Web.Helpers, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\packages\Microsoft.AspNet.WebPages.2.0.20710.0\lib\net40\System.Web.Helpers.dll</HintPath>
       <Private>True</Private>
@@ -203,13 +202,7 @@
       <HintPath>..\packages\Microsoft.AspNet.WebPages.2.0.20710.0\lib\net40\System.Web.WebPages.Razor.dll</HintPath>
       <Private>True</Private>
     </Reference>
-    <Reference Include="System.Xml.Linq">
-      <Private>True</Private>
-    </Reference>
     <Reference Include="System.Web">
-      <Private>True</Private>
-    </Reference>
-    <Reference Include="System.Web.Extensions">
       <Private>True</Private>
     </Reference>
     <Reference Include="System.Web.Abstractions">
@@ -234,6 +227,7 @@
       <Private>True</Private>
       <HintPath>..\packages\Microsoft.Web.Infrastructure.1.0.0.0\lib\net40\Microsoft.Web.Infrastructure.dll</HintPath>
     </Reference>
+    <Reference Include="System.Xml.Linq" />
     <Reference Include="WebGrease">
       <HintPath>..\packages\WebGrease.1.6.0\lib\WebGrease.dll</HintPath>
     </Reference>
@@ -352,9 +346,6 @@
     <Content Include="Views\Shared\_Layout.cshtml" />
   </ItemGroup>
   <ItemGroup>
-    <WCFMetadata Include="Service References\" />
-  </ItemGroup>
-  <ItemGroup>
     <Content Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
@@ -362,13 +353,37 @@
       <Project>{6C3C0372-CF1B-4F97-A574-20E70F9EB0F9}</Project>
       <Name>IOC.Binding</Name>
     </ProjectReference>
-    <ProjectReference Include="..\IOC.Business\IOC.Business.csproj">
-      <Project>{1632E484-69D5-4525-A150-C044B28C85EC}</Project>
-      <Name>IOC.Business</Name>
-    </ProjectReference>
     <ProjectReference Include="..\IOC.Abstraction\IOC.Abstraction.csproj">
       <Project>{B6063B30-9F1C-44A2-847B-F112D851AE17}</Project>
       <Name>IOC.Abstraction</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\IOC.Business\IOC.Business.csproj">
+      <Project>{a7f10f9e-2dbe-4f0d-86e7-e69b88d017e4}</Project>
+      <Name>IOC.Business</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\IOC.FW.Configuration\IOC.FW.Configuration.csproj">
+      <Project>{28c6b3ed-c9b5-417c-8e99-c24b450de618}</Project>
+      <Name>IOC.FW.Configuration</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\IOC.FW.ContainerManager\IOC.FW.ContainerManager.csproj">
+      <Project>{82a88e93-4c95-4db7-ad7d-8f1f367c4034}</Project>
+      <Name>IOC.FW.ContainerManager</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\IOC.FW.Core\IOC.FW.Core.csproj">
+      <Project>{ad0698e7-cd21-4340-8e6d-b4c6624e8fa8}</Project>
+      <Name>IOC.FW.Core</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\IOC.FW.Extensions\IOC.FW.Extensions.csproj">
+      <Project>{68100b12-1020-42ca-bea6-3e0cd9ddd040}</Project>
+      <Name>IOC.FW.Extensions</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\IOC.FW.ImageTransformation\IOC.FW.ImageTransformation.csproj">
+      <Project>{370ff938-8cdb-4a93-8e48-c85d52808e03}</Project>
+      <Name>IOC.FW.ImageTransformation</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\IOC.FW.Logging\IOC.FW.Logging.csproj">
+      <Project>{6089782a-ea12-4f14-9d24-bcab9f9f0163}</Project>
+      <Name>IOC.FW.Logging</Name>
     </ProjectReference>
     <ProjectReference Include="..\IOC.FW.Web.MVC\IOC.FW.Web.MVC.csproj">
       <Project>{9A0F7B47-FBD0-48D3-B3C7-49C40D4E4877}</Project>
@@ -377,10 +392,6 @@
     <ProjectReference Include="..\IOC.FW.Web\IOC.FW.Web.csproj">
       <Project>{4682AE8E-90B7-4838-A4A6-B2FDD98BD7FE}</Project>
       <Name>IOC.FW.Web</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\IOC.FW\IOC.FW.csproj">
-      <Project>{F7380D0C-AF5F-435A-8389-1E7344B20D86}</Project>
-      <Name>IOC.FW</Name>
     </ProjectReference>
     <ProjectReference Include="..\IOC\IOC.csproj">
       <Project>{F3BDA0A1-72A2-4C44-8406-B613FEDDE01C}</Project>

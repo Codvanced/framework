@@ -1,14 +1,11 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
+﻿using System.Collections.Generic;
 using IOC.FW.Core.Abstraction.Model;
 using System.ComponentModel.DataAnnotations;
-using System.ComponentModel.DataAnnotations.Schema;
+using System.Data.Linq.Mapping;
 
 namespace IOC.Model
 {
-    [Table("Genre")]
+    [Table(Name = "Genre")]
     public class Genre
         : IModelCreating
     {

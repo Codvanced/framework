@@ -5,9 +5,10 @@ using System.Web.Mvc;
 using System.Web.Optimization;
 using System.Web.Routing;
 using SimpleInjector.Integration.Web.Mvc;
-using IOC.FW.Core.Logging;
-using IOC.FW.Core.Implementation.DIContainer.SimpleInjector;
 using IOC.Abstraction.Business;
+using IOC.FW.ContainerManager.SimpleInjector;
+using IOC.FW.Logging;
+using IOC.FW.Configuration;
 
 namespace IOC.Web
 {
@@ -17,7 +18,7 @@ namespace IOC.Web
         private log4net.ILog _log;
 
         protected void Application_Start()
-        {
+       {
             AreaRegistration.RegisterAllAreas();
             WebApiConfig.Register(GlobalConfiguration.Configuration);
             FilterConfig.RegisterGlobalFilters(GlobalFilters.Filters);
@@ -26,7 +27,8 @@ namespace IOC.Web
 
             // Create dapater and revolver dependency with framework
             var adapter = new SimpleInjectorAdapter();
-            FW.Core.Implementation.DIContainer.DependencyResolver.Resolve(adapter);
+            var resolverAdapter = new FW.ContainerManager.DependencyResolver();
+            resolverAdapter.Resolve(adapter);
 
             // Pass container of framework to dependency resolver of .NET MVC
             var resolve = new SimpleInjectorDependencyResolver(adapter._container);

@@ -1,11 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using IOC.Model;
+﻿using IOC.Model;
 using FluentValidation;
 
-namespace IOC.Validation
+namespace IOC.Business.Validation
 {
     public class NewsValidation 
         : AbstractValidator<News>

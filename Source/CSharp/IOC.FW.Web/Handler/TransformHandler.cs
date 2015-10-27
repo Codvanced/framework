@@ -1,13 +1,11 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Text;
 using System.Web;
 using System.IO;
 using System.Drawing;
 using IOC.FW.Configuration;
-using IOC.FW.Core.Imaging;
-using IOC.FW.Core.Logging;
+using IOC.FW.ImageTransformation;
+using IOC.FW.Logging;
 
 namespace IOC.FW.Web.Handler
 {

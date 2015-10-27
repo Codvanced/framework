@@ -9,6 +9,7 @@ using System.Reflection;
 using System.Web.Mvc;
 using IOC.FW.Web.MVC;
 using FluentValidation.Results;
+using IOC.FW.Extensions;
 
 namespace IOC.Test
 {

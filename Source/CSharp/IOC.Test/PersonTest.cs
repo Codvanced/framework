@@ -8,7 +8,7 @@ using IOC.Model;
 using IOC.FW.Core.Abstraction.Business;
 using IOC.FW.Core.Abstraction.Repository;
 using System.Diagnostics;
-using IOC.FW.Core.Implementation.DIContainer;
+using IOC.FW.ContainerManager.SimpleInjector;
 
 namespace IOC.Test
 {
@@ -27,11 +27,12 @@ namespace IOC.Test
 
             for (int i = 0; i < 50; i++)
             {
-                var objBiz = DependencyResolver.Adapter.Resolve<IBaseBusiness<Person>>();
+                var adapter = new SimpleInjectorAdapter();
+                var objBiz = adapter.Resolve<IBaseBusiness<Person>>();
                 hashcode1 = objBiz.GetHashCode();
                 Debug.WriteLine("Person: BaseBusiness = {0}", hashcode1);
 
-                var objDao = DependencyResolver.Adapter.Resolve<IRepository<Person>>();
+                var objDao = adapter.Resolve<IRepository<Person>>();
                 hashcode2 = objDao.GetHashCode();
                 Debug.WriteLine("Person: DaoBusiness = {0}", hashcode2);
                 
@@ -43,7 +44,8 @@ namespace IOC.Test
         {
             Assert.NotNull(simpleInjector);
 
-            var business = DependencyResolver.Adapter.Resolve<IPersonBusiness>();
+            var adapter = new SimpleInjectorAdapter();
+            var business = adapter.Resolve<IPersonBusiness>();
             Assert.NotNull(business);
 
             business.Insert(new Person
@@ -67,7 +69,8 @@ namespace IOC.Test
         {
             Assert.NotNull(simpleInjector);
 
-            var business = DependencyResolver.Adapter.Resolve<IPersonBusiness>();
+            var adapter = new SimpleInjectorAdapter();
+            var business = adapter.Resolve<IPersonBusiness>();
             Assert.NotNull(business);
 
             var foundPessoa = business.SelectAll();
@@ -88,7 +91,8 @@ namespace IOC.Test
         {
             Assert.NotNull(simpleInjector);
 
-            var business = DependencyResolver.Adapter.Resolve<IPersonBusiness>();
+            var adapter = new SimpleInjectorAdapter();
+            var business = adapter.Resolve<IPersonBusiness>();
             Assert.NotNull(business);
 
             var foundPessoa = business.SelectAll();
@@ -106,14 +110,15 @@ namespace IOC.Test
         {
             Assert.NotNull(simpleInjector);
 
-            var business = DependencyResolver.Adapter.Resolve<IPersonBusiness>();
+            var adapter = new SimpleInjectorAdapter();
+            var business = adapter.Resolve<IPersonBusiness>();
             Assert.NotNull(business);
 
             var pessoas = business.SelectAll(pessoa => pessoa.Ocupation);
             Assert.NotNull(pessoas);
             Assert.Greater(pessoas.Count, 0);
 
-            var dao = DependencyResolver.Adapter.Resolve<IRepository<Person>>();
+            var dao = adapter.Resolve<IRepository<Person>>();
             var abc = dao.ExecuteQuery(
                 "GetPerson",
                 new Dictionary<string, object> 
@@ -137,7 +142,8 @@ namespace IOC.Test
         {
             Assert.NotNull(simpleInjector);
 
-            var business = DependencyResolver.Adapter.Resolve<IPersonBusiness>();
+            var adapter = new SimpleInjectorAdapter();
+            var business = adapter.Resolve<IPersonBusiness>();
             Assert.NotNull(business);
 
         }
@@ -147,8 +153,9 @@ namespace IOC.Test
         {
             Assert.NotNull(simpleInjector);
 
-            var personBusiness = DependencyResolver.Adapter.Resolve<IBaseBusiness<Person>>();
-            var ocupationBusiness = DependencyResolver.Adapter.Resolve<IBaseBusiness<Ocupation>>();
+            var adapter = new SimpleInjectorAdapter();
+            var personBusiness = adapter.Resolve<IBaseBusiness<Person>>();
+            var ocupationBusiness = adapter.Resolve<IBaseBusiness<Ocupation>>();
 
             Assert.NotNull(personBusiness);
             Assert.NotNull(ocupationBusiness);
@@ -170,7 +177,8 @@ namespace IOC.Test
         {
             Assert.NotNull(simpleInjector);
 
-            var personBusiness = DependencyResolver.Adapter.Resolve<IBaseBusiness<Person>>();
+            var adapter = new SimpleInjectorAdapter();
+            var personBusiness = adapter.Resolve<IBaseBusiness<Person>>();
             //var allPersons = personBusiness.SelectAll();
             //var firstPerson = allPersons[0];
 
