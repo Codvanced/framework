@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-
-namespace IOC.FW.Core.Model
+﻿namespace IOC.FW.Core.Model
 {
     /// <summary>
     /// Classe base para retorno de Model tipado como dynamic

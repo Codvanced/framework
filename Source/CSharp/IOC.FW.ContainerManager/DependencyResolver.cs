@@ -4,8 +4,6 @@ using IOC.FW.Core.Abstraction.Container.Binding;
 using IOC.FW.ContainerManager.Binding;
 using IOC.FW.Configuration;
 using IOC.FW.Core.Abstraction.Repository;
-using IOC.FW.Shared.Enumerators;
-using System.Configuration;
 
 namespace IOC.FW.ContainerManager
 {

@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using SimpleInjector;
-using IOC.FW.Shared;
 using IOC.FW.Core.Abstraction.Container;
 using IOC.FW.Shared.Enumerators;
 

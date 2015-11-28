@@ -4,10 +4,8 @@ using System.Data;
 using System.Data.Common;
 using System.Linq;
 using System.Linq.Expressions;
-using System.Text;
 using IOC.FW.Core.Abstraction.Repository;
 using IOC.FW.Core.Abstraction.Miscellaneous;
-using IOC.FW.Shared;
 using IOC.FW.Shared.Enumerators;
 
 namespace IOC.FW.Core.Implementation.Base
@@ -21,13 +19,13 @@ namespace IOC.FW.Core.Implementation.Base
         {
             get
             {
-                return this._dao.Type;
+                return _dao.Type;
             }
         }
 
         public BaseRepository(IRepository<TModel> dao)
         {
-            this._dao = dao;
+            _dao = dao;
         }
         
         public IList<TModel> ExecuteQuery(
@@ -36,7 +34,7 @@ namespace IOC.FW.Core.Implementation.Base
             CommandType cmdType = CommandType.Text
         )
         {
-            return this._dao.ExecuteQuery(sql, parameters, cmdType);
+            return _dao.ExecuteQuery(sql, parameters, cmdType);
         }
 
         public object ExecuteScalar(
@@ -45,7 +43,7 @@ namespace IOC.FW.Core.Implementation.Base
             CommandType cmdType = CommandType.Text
         )
         {
-            return this._dao.ExecuteScalar(sql, parameters, cmdType);
+            return _dao.ExecuteScalar(sql, parameters, cmdType);
         }
 
         public IList<TModel> ExecuteQuery(
@@ -54,7 +52,7 @@ namespace IOC.FW.Core.Implementation.Base
             CommandType cmdType
         )
         {
-            return this._dao.ExecuteQuery(sql, parametersWithDirection, cmdType);
+            return _dao.ExecuteQuery(sql, parametersWithDirection, cmdType);
         }
 
         public TModel Model()
@@ -71,7 +69,7 @@ namespace IOC.FW.Core.Implementation.Base
             params Expression<Func<TModel, object>>[] navigationProperties
         )
         {
-            return this._dao.SelectAll(navigationProperties);
+            return _dao.SelectAll(navigationProperties);
         }
 
         public IList<TModel> SelectAll(
@@ -79,7 +77,7 @@ namespace IOC.FW.Core.Implementation.Base
             params Expression<Func<TModel, object>>[] navigationProperties
         )
         {
-            return this._dao.SelectAll(order, navigationProperties);
+            return _dao.SelectAll(order, navigationProperties);
         }
 
         public IList<TModel> Select(
@@ -88,7 +86,7 @@ namespace IOC.FW.Core.Implementation.Base
             params Expression<Func<TModel, object>>[] navigationProperties
         )
         {
-            return this._dao.Select(where, order, navigationProperties);
+            return _dao.Select(where, order, navigationProperties);
         }
 
         public IList<TModel> Select(
@@ -96,7 +94,7 @@ namespace IOC.FW.Core.Implementation.Base
             params Expression<Func<TModel, object>>[] navigationProperties
         )
         {
-            return this._dao.Select(where, navigationProperties);
+            return _dao.Select(where, navigationProperties);
         }
 
         public TModel SelectSingle(
@@ -104,12 +102,12 @@ namespace IOC.FW.Core.Implementation.Base
             params Expression<Func<TModel, object>>[] navigationProperties
         )
         {
-            return this._dao.SelectSingle(where, navigationProperties);
+            return _dao.SelectSingle(where, navigationProperties);
         }
 
         public void Insert(params TModel[] items)
         {
-            this._dao.Insert(items);
+            _dao.Insert(items);
         }
 
         public void Update(params TModel[] items)
@@ -127,45 +125,45 @@ namespace IOC.FW.Core.Implementation.Base
 
         public void Delete(params TModel[] items)
         {
-            this._dao.Delete(items);
+            _dao.Delete(items);
         }
 
         public void UpdatePriority<TPriorityModel>(
             params TPriorityModel[] items
         ) where TPriorityModel : TModel, IPrioritySortable
         {
-            this._dao.UpdatePriority<TPriorityModel>(items);
+            _dao.UpdatePriority<TPriorityModel>(items);
         }
 
         public int Count()
         {
-            return this._dao.Count();
+            return _dao.Count();
         }
 
         public int Count(
             Expression<Func<TModel, bool>> where
         )
         {
-            return this._dao.Count(where);
+            return _dao.Count(where);
         }
 
         public long LongCount()
         {
-            return this._dao.LongCount();
+            return _dao.LongCount();
         }
 
         public long LongCount(
             Expression<Func<TModel, bool>> where
         )
         {
-            return this._dao.LongCount(where);
+            return _dao.LongCount(where);
         }
 
         public void SetConnection(
             string nameOrConnectionString
         )
         {
-            this._dao.SetConnection(nameOrConnectionString);
+            _dao.SetConnection(nameOrConnectionString);
         }
 
         public void SetConnection(
@@ -173,7 +171,7 @@ namespace IOC.FW.Core.Implementation.Base
             DbTransaction transaction
         )
         {
-            this._dao.SetConnection(connection, transaction);
+            _dao.SetConnection(connection, transaction);
         }
 
         public void ExecuteWithTransaction(
@@ -182,7 +180,7 @@ namespace IOC.FW.Core.Implementation.Base
             Action<DbTransaction> transactionExecution
         )
         {
-            this._dao.ExecuteWithTransaction(isolation, DAOs, transactionExecution);
+            _dao.ExecuteWithTransaction(isolation, DAOs, transactionExecution);
         }
     }
 }

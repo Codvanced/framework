@@ -1,7 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 using System.Drawing;
 using System.Drawing.Drawing2D;
 using System.IO;
@@ -27,14 +24,14 @@ namespace IOC.FW.ImageTransformation
         )
         {
             if (img == null)
-	        {
+            {
                 throw new ArgumentNullException("img");
-	        }
+            }
 
             if (rectCrop == null)
-	        {
-		        throw new ArgumentNullException("rectCrop");
-	        } 
+            {
+                throw new ArgumentNullException("rectCrop");
+            }
 
             Bitmap finalThumb = new Bitmap(rectCrop.Width, rectCrop.Height);
             using (Graphics g = Graphics.FromImage(finalThumb))

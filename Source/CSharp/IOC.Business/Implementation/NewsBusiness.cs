@@ -25,14 +25,14 @@ namespace IOC.Business.Implementation
 
             if (id.HasValue && id.Value > 0)
             {
-                newsFound = this.Select(n =>
+                newsFound = Select(n =>
                     n.Title.Equals(Title, StringComparison.OrdinalIgnoreCase)
                     && n.IdNews != id.Value
                 );
             }
             else
             {
-                newsFound = this.Select(n =>
+                newsFound = Select(n =>
                     n.Title.Equals(Title, StringComparison.OrdinalIgnoreCase)
                 );
             }

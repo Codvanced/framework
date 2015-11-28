@@ -2,10 +2,8 @@
 using System.Collections.Generic;
 using System.Data;
 using System.Linq;
-using System.Text;
 using IOC.FW.Core.Abstraction.Repository;
 using IOC.FW.Core.Abstraction.Miscellaneous;
-using IOC.FW.Shared;
 using IOC.FW.Shared.Enumerators;
 
 namespace IOC.FW.Repository.ADO
@@ -23,12 +21,12 @@ namespace IOC.FW.Repository.ADO
             }
         }
 
-        public IList<TModel> ExecuteQuery(string sql, Dictionary<string, object> parameters, System.Data.CommandType cmdType = CommandType.Text)
+        public IList<TModel> ExecuteQuery(string sql, Dictionary<string, object> parameters, CommandType cmdType = CommandType.Text)
         {
             throw new NotImplementedException();
         }
 
-        public IList<TModel> ExecuteQuery(string sql, List<Tuple<System.Data.ParameterDirection, string, object>> parametersWithDirection, System.Data.CommandType cmdType)
+        public IList<TModel> ExecuteQuery(string sql, List<Tuple<ParameterDirection, string, object>> parametersWithDirection, CommandType cmdType)
         {
             throw new NotImplementedException();
         }
@@ -128,7 +126,7 @@ namespace IOC.FW.Repository.ADO
             throw new NotImplementedException();
         }
 
-        public void ExecuteWithTransaction(System.Data.IsolationLevel isolation, IBaseTransaction[] DAOs, Action<System.Data.Common.DbTransaction> transactionExecution)
+        public void ExecuteWithTransaction(IsolationLevel isolation, IBaseTransaction[] DAOs, Action<System.Data.Common.DbTransaction> transactionExecution)
         {
             throw new NotImplementedException();
         }

@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Configuration;
+﻿using System.Configuration;
 
 namespace IOC.FW.Configuration.Injection
 {
@@ -21,7 +17,7 @@ namespace IOC.FW.Configuration.Injection
         {
             get
             {
-                return (InjectionElement)base.BaseGet(key);
+                return (InjectionElement)BaseGet(key);
             }
         }
 
@@ -34,7 +30,7 @@ namespace IOC.FW.Configuration.Injection
         {
             get
             {
-                return (InjectionElement)base.BaseGet(index);
+                return (InjectionElement)BaseGet(index);
             }
         }
 

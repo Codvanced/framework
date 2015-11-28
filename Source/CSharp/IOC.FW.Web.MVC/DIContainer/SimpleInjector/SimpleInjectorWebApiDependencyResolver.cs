@@ -1,13 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Diagnostics;
-using System.Linq;
-using System.Reflection;
-using System.Web.Http.Controllers;
 using System.Web.Http.Dependencies;
-    
+
 using SimpleInjector;
-using SimpleInjector.Extensions;
 
 namespace IOC.FW.Web.MVC.DIContainer.SimpleInjector
 {
@@ -31,14 +27,14 @@ namespace IOC.FW.Web.MVC.DIContainer.SimpleInjector
         [DebuggerStepThrough]
         public object GetService(Type serviceType)
         {
-            return ((IServiceProvider)this.container)
+            return ((IServiceProvider)container)
                 .GetService(serviceType);
         }
 
         [DebuggerStepThrough]
         public IEnumerable<object> GetServices(Type serviceType)
         {
-            return this.container.GetAllInstances(serviceType);
+            return container.GetAllInstances(serviceType);
         }
 
         [DebuggerStepThrough]

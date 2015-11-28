@@ -1,12 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
+﻿using System.Linq;
 using System.Data.Entity;
-using System.Configuration;
 using IOC.FW.Core.Abstraction.Model;
 using System.Data.Common;
-using System.Data.Entity.Infrastructure;
 using IOC.FW.Core.Abstraction.Repository;
 
 namespace IOC.FW.Repository.EntityFramework
@@ -53,12 +48,12 @@ namespace IOC.FW.Repository.EntityFramework
 
         private void Setup()
         {
-            System.Data.Entity.Database.SetInitializer<EntityFrameworkContext<TModel>>(null);
-            this.DbQuery = this.DbObject;
-            this.Configuration.LazyLoadingEnabled = false;
-            this.Configuration.ProxyCreationEnabled = false;
-            this.Configuration.AutoDetectChangesEnabled = false;
-            this.Database.CommandTimeout = 99999;
+            Database.SetInitializer<EntityFrameworkContext<TModel>>(null);
+            DbQuery = DbObject;
+            Configuration.LazyLoadingEnabled = false;
+            Configuration.ProxyCreationEnabled = false;
+            Configuration.AutoDetectChangesEnabled = false;
+            Database.CommandTimeout = 99999;
         }
 
         /// <summary>
@@ -77,7 +72,7 @@ namespace IOC.FW.Repository.EntityFramework
 
         public virtual void SetState(TModel entity, EntityState state)
         {
-            this.Entry(entity).State = state;
+            Entry(entity).State = state;
         }
     }
 }

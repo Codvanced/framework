@@ -8,7 +8,6 @@ using IOC.FW.Core.Abstraction.Container;
 using IOC.FW.Repository;
 using IOC.FW.Repository.EntityFramework;
 using IOC.FW.Repository.ADO;
-using IOC.FW.Shared;
 using IOC.FW.Shared.Enumerators;
 
 namespace IOC.FW.ContainerManager.Binding

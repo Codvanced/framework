@@ -1,6 +1,5 @@
 ﻿using System.Linq;
 using IOC.FW.Core.Abstraction.Repository;
-using IOC.FW.Shared;
 using IOC.FW.Shared.Enumerators;
 using IOC.FW.Core.Abstraction.Container;
 

@@ -25,7 +25,7 @@ namespace IOC.DAO.Implementation
         {
             IList<News> news = null;
 
-            this.ExecuteWithTransaction(
+            ExecuteWithTransaction(
                 IsolationLevel.Serializable,
                 new IBaseTransaction[] { 
                     //_ocupationDAO
@@ -50,7 +50,7 @@ namespace IOC.DAO.Implementation
                             WHERE
                                 Title = @Title";
 
-            news = this.ExecuteQuery(query, parameters);
+            news = ExecuteQuery(query, parameters);
             _ocupationDAO.Insert(new Ocupation
             {
                 OcupationName = "Ocupation",

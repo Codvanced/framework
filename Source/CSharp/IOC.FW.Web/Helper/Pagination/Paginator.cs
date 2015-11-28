@@ -21,56 +21,56 @@ namespace IOC.FW.Web.Helper.Pagination
 
         public Paginator(uint page, uint totalItems, uint itemsPerPage, uint pageRange, string url = null, IDictionary<string, object> urlParams = null)
         {
-            if (String.IsNullOrEmpty(url))
-                url = String.Empty;
+            if (string.IsNullOrEmpty(url))
+                url = string.Empty;
 
-            this.Url = url;
+            Url = url;
 
             if (urlParams == null)
                 urlParams = new Dictionary<string, object>();
 
-            this.TotalPages = (uint)Math.Ceiling((decimal)totalItems / (decimal)itemsPerPage);
-            this.UrlParams = urlParams;
-            this.Page = page;
-            this.TotalItems = totalItems;
-            this.ItemsPerPage = itemsPerPage;
-            this.PageRange = pageRange;
-            this.FirstPageInRange = pageRange >= page ? 1 : page - pageRange;
-            this.LastPageInRange = Math.Min(this.TotalPages, page + pageRange);
-            this.PrevPage = this.Page <= 1 ? 1 : this.Page - 1;
-            this.NextPage = this.Page >= this.TotalPages ? this.TotalPages : this.Page + 1;
+            TotalPages = (uint)Math.Ceiling((decimal)totalItems / itemsPerPage);
+            UrlParams = urlParams;
+            Page = page;
+            TotalItems = totalItems;
+            ItemsPerPage = itemsPerPage;
+            PageRange = pageRange;
+            FirstPageInRange = pageRange >= page ? 1 : page - pageRange;
+            LastPageInRange = Math.Min(TotalPages, page + pageRange);
+            PrevPage = Page <= 1 ? 1 : Page - 1;
+            NextPage = Page >= TotalPages ? TotalPages : Page + 1;
 
         }
 
         public string GetPrevUrl()
         {
-            return this.GetPageUrl(this.PrevPage);
+            return GetPageUrl(PrevPage);
         }
 
         public string GetNextUrl()
         {
-            return this.GetPageUrl(this.NextPage);
+            return GetPageUrl(NextPage);
         }
 
         public string GetCurrentPageUrl()
         {
-            return this.GetPageUrl(this.Page);
+            return GetPageUrl(Page);
         }
 
         public string GetPageUrl(uint i)
         {
-            string queryString = this.GetQueryString(i);
+            string queryString = GetQueryString(i);
 
-            return String.Concat(this.Url, queryString);
+            return string.Concat(Url, queryString);
         }
 
         public string GetQueryString(uint i)
         {
             string queryString = "?{0}";
-            IDictionary<string, object> urlParams = new Dictionary<string, object>(this.UrlParams);
+            IDictionary<string, object> urlParams = new Dictionary<string, object>(UrlParams);
             urlParams.Add("page", i);
 
-            return String.Format(queryString, urlParams.ToQueryString());
+            return string.Format(queryString, urlParams.ToQueryString());
         }
     }
 }
