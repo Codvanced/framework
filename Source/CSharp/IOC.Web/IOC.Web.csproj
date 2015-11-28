@@ -20,7 +20,6 @@
     <RestorePackages>true</RestorePackages>
     <MvcProjectUpgradeChecked>true</MvcProjectUpgradeChecked>
     <FileUpgradeFlags>40</FileUpgradeFlags>
-    <UpgradeBackupLocation>C:\Projects\Source\Personal\Framework\Source\CSharp\Backup\</UpgradeBackupLocation>
     <OldToolsVersion>12.0</OldToolsVersion>
     <IISExpressSSLPort />
     <IISExpressAnonymousAuthentication />
@@ -28,6 +27,7 @@
     <IISExpressUseClassicPipelineMode />
     <UseGlobalApplicationHostFile />
     <TargetFrameworkProfile />
+    <UpgradeBackupLocation>C:\PERSONAL\CODE\GIT\Codvanced\framework\Source\CSharp\Backup\</UpgradeBackupLocation>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
