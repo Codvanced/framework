@@ -37,7 +37,7 @@ namespace IOC.FW.Web.MVC.Handler
             CancellationToken cancellationToken
         )
         {
-            var identity = this.ParseAuthorizationHeader(request);
+            var identity = ParseAuthorizationHeader(request);
             if (identity != null && OnAuthorize(identity))
             {
                 var principal = new GenericPrincipal(identity, null);
@@ -49,7 +49,7 @@ namespace IOC.FW.Web.MVC.Handler
 
             return
                 base.SendAsync(request, cancellationToken)
-                    .ContinueWith<HttpResponseMessage>(
+                    .ContinueWith(
                     task =>
                     {
                         var response = task.Result;

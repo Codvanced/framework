@@ -1,9 +1,4 @@
-﻿using IOC.FW.Shared;
-using IOC.FW.Shared.Enumerators;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
+﻿using IOC.FW.Shared.Enumerators;
 
 namespace IOC.FW.Core.Abstraction.Repository
 {

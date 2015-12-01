@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace IOC.FW.Shared.Enumerators
+﻿namespace IOC.FW.Shared.Enumerators
 {
     /// <summary>
     /// Classe utilizada para armazenar enumeradores de repositórios

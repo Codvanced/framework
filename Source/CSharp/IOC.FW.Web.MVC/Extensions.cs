@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
 using System.Web;
 using System.Text.RegularExpressions;
 using System.IO;
@@ -129,7 +128,7 @@ namespace IOC.FW.Web.MVC
                     }
                 }
 
-                checkbox.MergeAttributes<string, object>(attrs);
+                checkbox.MergeAttributes(attrs);
             }
 
             // create checked attribute

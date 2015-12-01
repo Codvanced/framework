@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using SimpleInjector;
-using IOC.FW.Shared;
 using IOC.FW.Core.Abstraction.Container;
 using IOC.FW.Shared.Enumerators;
 
@@ -123,26 +122,24 @@ namespace IOC.FW.ContainerManager.SimpleInjector
             return _container.GetInstance(service);
         }
 
-        public object Resolve(
-            Type service,
-            object serviceKey
-        )
-        {
-            //TODO: Implement serviceKey
-            return null;
-        }
-
         public TService Resolve<TService>()
             where TService : class
         {
             return _container.GetInstance<TService>();
         }
 
+        public object Resolve(
+            Type service,
+            object serviceKey
+        )
+        {
+            throw new NotImplementedException();
+        }
+
         public TService Resolve<TService>(object serviceKey)
             where TService : class
         {
-            //TODO: Implement serviceKey
-            return null;
+            throw new NotImplementedException();
         }
 
         public IEnumerable<TService> ResolveMany<TService>()

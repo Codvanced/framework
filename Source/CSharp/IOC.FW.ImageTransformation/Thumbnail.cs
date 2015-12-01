@@ -1,13 +1,7 @@
-﻿using IOC.FW.Shared.Enumerators;
-using System;
-using System.Collections.Generic;
-using System.Drawing;
+﻿using System.Drawing;
 using System.Drawing.Drawing2D;
 using System.Drawing.Imaging;
 using System.IO;
-using System.Linq;
-using System.Reflection;
-using System.Text;
 
 namespace IOC.FW.ImageTransformation
 {
@@ -109,8 +103,8 @@ namespace IOC.FW.ImageTransformation
         /// <returns></returns>
         private static Point GetStartPositionOnBottomRight(Size requested, Size proportional)
         {
-            int x = (int)(proportional.Width - requested.Width);
-            int y = (int)(proportional.Height - requested.Height);
+            int x = proportional.Width - requested.Width;
+            int y = proportional.Height - requested.Height;
             return new Point(x, y);
         }
 
@@ -122,8 +116,8 @@ namespace IOC.FW.ImageTransformation
         /// <returns></returns>
         private static Point GetStartPositionOnBottomCenter(Size requested, Size proportional)
         {
-            int x = (int)((proportional.Width - requested.Width) / 2);
-            int y = (int)(proportional.Height - requested.Height);
+            int x = (proportional.Width - requested.Width) / 2;
+            int y = proportional.Height - requested.Height;
             return new Point(x, y);
         }
 
@@ -136,7 +130,7 @@ namespace IOC.FW.ImageTransformation
         private static Point GetStartPositionOnBottomLeft(Size requested, Size proportional)
         {
             int x = 0;
-            int y = (int)(proportional.Height - requested.Height);
+            int y = proportional.Height - requested.Height;
             return new Point(x, y);
         }
 
@@ -148,8 +142,8 @@ namespace IOC.FW.ImageTransformation
         /// <returns></returns>
         private static Point GetStartPositionOnMiddleRight(Size requested, Size proportional)
         {
-            int x = (int)(proportional.Width - requested.Width);
-            int y = (int)((proportional.Height - requested.Height) / 2);
+            int x = proportional.Width - requested.Width;
+            int y = (proportional.Height - requested.Height) / 2;
             return new Point(x, y);
         }
 
@@ -161,8 +155,8 @@ namespace IOC.FW.ImageTransformation
         /// <returns></returns>
         private static Point GetStartPositionOnMiddleCenter(Size requested, Size proportional)
         {
-            int x = (int)((proportional.Width - requested.Width) / 2);
-            int y = (int)((proportional.Height - requested.Height) / 2);
+            int x = (proportional.Width - requested.Width) / 2;
+            int y = (proportional.Height - requested.Height) / 2;
             return new Point(x, y);
         }
 
@@ -175,7 +169,7 @@ namespace IOC.FW.ImageTransformation
         private static Point GetStartPositionOnMiddleLeft(Size requested, Size proportional)
         {
             int x = 0;
-            int y = (int)((proportional.Height - requested.Height) / 2);
+            int y = (proportional.Height - requested.Height) / 2;
             return new Point(x, y);
         }
 
@@ -187,7 +181,7 @@ namespace IOC.FW.ImageTransformation
         /// <returns></returns>
         private static Point GetStartPositionOnTopRight(Size requested, Size proportional)
         {
-            int x = (int)(proportional.Width - requested.Width);
+            int x = proportional.Width - requested.Width;
             int y = 0;
             return new Point(x, y);
         }
@@ -200,7 +194,7 @@ namespace IOC.FW.ImageTransformation
         /// <returns></returns>
         private static Point GetStartPositionOnTopCenter(Size requested, Size proportional)
         {
-            int x = (int)((proportional.Width - requested.Width) / 2);
+            int x = (proportional.Width - requested.Width) / 2;
             int y = 0;
             return new Point(x, y);
         }

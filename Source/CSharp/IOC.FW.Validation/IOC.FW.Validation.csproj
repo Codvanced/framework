@@ -43,6 +43,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Check.cs" />
     <Compile Include="CPF.cs" />
     <Compile Include="CreditCard.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

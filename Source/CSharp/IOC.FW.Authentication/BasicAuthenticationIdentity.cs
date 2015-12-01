@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Security.Principal;
+﻿using System.Security.Principal;
 
 namespace IOC.FW.Authentication
 {
@@ -33,7 +29,7 @@ namespace IOC.FW.Authentication
         public BasicAuthenticationIdentity(string name, string password)
             : base(name, "Basic")
         {
-            this.Password = password;
+            Password = password;
         }
     }
 }

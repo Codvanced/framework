@@ -1,20 +1,14 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
 using System.Data.Entity;
 using System.Configuration;
 using IOC.FW.Core.Abstraction.Repository;
 using System.Linq.Expressions;
 using IOC.FW.Core.Abstraction.Model;
-using System.Data.Entity.Infrastructure;
 using System.Data.Common;
 using System.Data;
-using System.ComponentModel.DataAnnotations.Schema;
-using System.ComponentModel.DataAnnotations;
 using IOC.FW.Core.Abstraction.Miscellaneous;
-using System.Reflection;
-using IOC.FW.Shared;
 using IOC.FW.Shared.Enumerators;
 
 namespace IOC.FW.Repository.EntityFramework
@@ -63,7 +57,7 @@ namespace IOC.FW.Repository.EntityFramework
         {
             //TODO: Modificar a atribuição de nome default para um configurador
             nameOrConnectionString = "DefaultConnection";
-            this._contextFactory = contextFactory;
+            _contextFactory = contextFactory;
         }
         #endregion
 
@@ -83,7 +77,7 @@ namespace IOC.FW.Repository.EntityFramework
             IQueryable<TModel> query = dbSet;
 
             foreach (Expression<Func<TModel, object>> navigationProperty in navigationProperties)
-                query = query.Include<TModel, object>(navigationProperty);
+                query = query.Include(navigationProperty);
 
             return query;
         }
@@ -102,8 +96,8 @@ namespace IOC.FW.Repository.EntityFramework
             foreach (var dao in daos)
             {
                 dao.SetConnection(
-                    this.connection,
-                    this.transaction
+                    connection,
+                    transaction
                 );
             }
         }
@@ -114,17 +108,17 @@ namespace IOC.FW.Repository.EntityFramework
         /// <returns>Contexto de repositório preparado para utilização</returns>
         private IContext<TModel> CreateContext()
         {
-            if (this.connection != null
-                && this.connection.State == ConnectionState.Open
+            if (connection != null
+                && connection.State == ConnectionState.Open
             )
             {
-                var context = this._contextFactory.GetContext(this.connection, false);
-                context.Database.UseTransaction(this.transaction);
+                var context = _contextFactory.GetContext(connection, false);
+                context.Database.UseTransaction(transaction);
                 return context;
             }
             else
             {
-                return this._contextFactory.GetContext(nameOrConnectionString);
+                return _contextFactory.GetContext(nameOrConnectionString);
             }
         }
 
@@ -143,12 +137,12 @@ namespace IOC.FW.Repository.EntityFramework
                 && context.Database.Connection is DbConnection
                 && context.Database.Connection.State != ConnectionState.Open)
             {
-                conn = ((DbConnection)context.Database.Connection);
+                conn = context.Database.Connection;
                 conn.Open();
             }
             else
             {
-                conn = this.connection;
+                conn = connection;
             }
 
             return conn;
@@ -185,9 +179,9 @@ namespace IOC.FW.Repository.EntityFramework
                 comm.CommandText = sql;
                 comm.CommandType = cmdType;
                 comm.CommandTimeout = 99999;
-                if (this.transaction != null)
+                if (transaction != null)
                 {
-                    comm.Transaction = this.transaction;
+                    comm.Transaction = transaction;
                 }
             }
 
@@ -387,7 +381,7 @@ namespace IOC.FW.Repository.EntityFramework
                 list = query
                    .AsNoTracking()
                    .Where(where)
-                   .ToList<TModel>();
+                   .ToList();
             }
 
             return list;
@@ -602,13 +596,13 @@ namespace IOC.FW.Repository.EntityFramework
             {
                 using (var context = CreateContext())
                 {
-                    var conn = this.OpenConnection(context);
+                    var conn = OpenConnection(context);
 
-                    var comm = this.CreateCommand(conn, sql, cmdType);
+                    var comm = CreateCommand(conn, sql, cmdType);
                     
                     if (parameters != null && parameters.Count > 0)
                     {
-                        this.SetParameter(comm, parameters);
+                        SetParameter(comm, parameters);
                     }
 
                     var reader = comm.ExecuteReader();
@@ -641,12 +635,12 @@ namespace IOC.FW.Repository.EntityFramework
             {
                 using (var context = CreateContext())
                 {
-                    var conn = this.OpenConnection(context);
-                    var comm = this.CreateCommand(conn, sql, cmdType);
+                    var conn = OpenConnection(context);
+                    var comm = CreateCommand(conn, sql, cmdType);
 
                     if (parametersWithDirection != null && parametersWithDirection.Count > 0)
                     {
-                        this.SetParameter(comm, parametersWithDirection);
+                        SetParameter(comm, parametersWithDirection);
                     }
 
                     var reader = comm.ExecuteReader();
@@ -696,16 +690,16 @@ namespace IOC.FW.Repository.EntityFramework
         {
             object result = null;
 
-            if (!String.IsNullOrEmpty(sql))
+            if (!string.IsNullOrEmpty(sql))
             {
                 using (var context = CreateContext())
                 {
-                    var conn = this.OpenConnection(context);
-                    var comm = this.CreateCommand(conn, sql, cmdType);
+                    var conn = OpenConnection(context);
+                    var comm = CreateCommand(conn, sql, cmdType);
 
                     if (parameters != null && parameters.Count > 0)
                     {
-                        this.SetParameter(comm, parameters);
+                        SetParameter(comm, parameters);
                     }
 
                     result = comm.ExecuteScalar();
@@ -735,13 +729,13 @@ namespace IOC.FW.Repository.EntityFramework
                 {
                     contextTransaction = context.Database.BeginTransaction(isolation);
 
-                    this.connection = context.Database.Connection;
-                    this.transaction = contextTransaction.UnderlyingTransaction;
+                    connection = context.Database.Connection;
+                    transaction = contextTransaction.UnderlyingTransaction;
 
                     ConfigureTransaction(DAOs);
-                    transactionExecution(this.transaction);
+                    transactionExecution(transaction);
 
-                    if (this.transaction.Connection != null)
+                    if (transaction.Connection != null)
                     {
                         contextTransaction.Commit();
                     }
@@ -749,7 +743,7 @@ namespace IOC.FW.Repository.EntityFramework
                 catch (Exception ex)
                 {
                     if (contextTransaction != null 
-                        && this.transaction.Connection != null)
+                        && transaction.Connection != null)
                     {
                         contextTransaction.Rollback();
                     }
@@ -757,8 +751,8 @@ namespace IOC.FW.Repository.EntityFramework
                     throw ex;
                 }
 
-                this.connection = null;
-                this.transaction = null;
+                connection = null;
+                transaction = null;
             }
         }
 
@@ -824,7 +818,7 @@ namespace IOC.FW.Repository.EntityFramework
             int count;
             using (var context = CreateContext())
             {
-                count = this.Count(where, context);
+                count = Count(where, context);
             }
 
             return count;
@@ -836,7 +830,7 @@ namespace IOC.FW.Repository.EntityFramework
         /// <returns>Quantidade de registros</returns>
         public long LongCount()
         {
-            return this.LongCount(m => true);
+            return LongCount(m => true);
         }
 
         /// <summary>
@@ -849,7 +843,7 @@ namespace IOC.FW.Repository.EntityFramework
             long count;
             using (var context = CreateContext())
             {
-                count = this.LongCount(where, context);
+                count = LongCount(where, context);
             }
 
             return count;

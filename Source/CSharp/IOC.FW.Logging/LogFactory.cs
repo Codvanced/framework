@@ -1,8 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Diagnostics;
-using System.Linq;
-using System.Text;
 using log4net;
 using log4net.Repository.Hierarchy;
 using log4net.Appender;
@@ -13,6 +10,8 @@ namespace IOC.FW.Logging
     /// <summary>
     /// Classe responsável pela criação dos objetos que fazem o log
     /// </summary>
+    /// 
+    [Obsolete("Use the interface ILogger and inject the wanted dependency")]
     public static class LogFactory
     {
         /// <summary>
@@ -32,7 +31,7 @@ namespace IOC.FW.Logging
 
                        if (connectionString == null)
                        {
-                           connectionString = String.Empty;
+                           connectionString = string.Empty;
                        }
 
                        adoNetAppender.ConnectionString = connectionString;

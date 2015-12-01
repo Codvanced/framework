@@ -40,7 +40,7 @@ namespace IOC.FW.Web.Handler
             var refpoint = ImageEnumerator.ReferencePoint.MiddleCenter;
 
             if (context.Request["refpoint"] != null)
-                Enum.TryParse<ImageEnumerator.ReferencePoint>(context.Request["refpoint"], out refpoint);
+                Enum.TryParse(context.Request["refpoint"], out refpoint);
 
             if (context.Request["width"] != null)
                 int.TryParse(context.Request["width"], out w);
@@ -97,7 +97,7 @@ namespace IOC.FW.Web.Handler
 
                 if (log.IsInfoEnabled)
                 {
-                    log.Info(String.Concat("Erro na URL ", context.Request.Url.AbsoluteUri), e);
+                    log.Info(string.Concat("Erro na URL ", context.Request.Url.AbsoluteUri), e);
                 }
             }
         }

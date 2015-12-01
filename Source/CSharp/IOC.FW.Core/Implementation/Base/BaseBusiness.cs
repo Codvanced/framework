@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
 using IOC.FW.Core.Abstraction.Business;
 using IOC.FW.Core.Abstraction.Repository;
 using System.Linq.Expressions;
@@ -46,7 +45,7 @@ namespace IOC.FW.Core.Implementation.Base
         /// <param name="dao">Implementação de Base DAO</param>
         public BaseBusiness(IRepository<TModel> dao)
         {
-            this._dao = dao;
+            _dao = dao;
         }
 
         /// <summary>
@@ -59,7 +58,7 @@ namespace IOC.FW.Core.Implementation.Base
             params Expression<Func<TModel, object>>[] navigationProperties
         )
         {
-            return this._dao.SelectAll(navigationProperties);
+            return _dao.SelectAll(navigationProperties);
         }
 
         /// <summary>
@@ -74,7 +73,7 @@ namespace IOC.FW.Core.Implementation.Base
             params Expression<Func<TModel, object>>[] navigationProperties
         )
         {
-            return this._dao.SelectAll(order, navigationProperties);
+            return _dao.SelectAll(order, navigationProperties);
         }
 
         /// <summary>
@@ -90,7 +89,7 @@ namespace IOC.FW.Core.Implementation.Base
             params Expression<Func<TModel, object>>[] navigationProperties
         )
         {
-            return this._dao.Select(where, order, navigationProperties);
+            return _dao.Select(where, order, navigationProperties);
         }
 
         /// <summary>
@@ -104,7 +103,7 @@ namespace IOC.FW.Core.Implementation.Base
             params Expression<Func<TModel, object>>[] navigationProperties
         )
         {
-            return this._dao.Select(where, navigationProperties);
+            return _dao.Select(where, navigationProperties);
         }
 
         /// <summary>
@@ -118,7 +117,7 @@ namespace IOC.FW.Core.Implementation.Base
             params Expression<Func<TModel, object>>[] navigationProperties
         )
         {
-            return this._dao.SelectSingle(where, navigationProperties);
+            return _dao.SelectSingle(where, navigationProperties);
         }
 
         /// <summary>
@@ -127,7 +126,7 @@ namespace IOC.FW.Core.Implementation.Base
         /// <param name="items">Coleção de registros a inserir na base</param>
         public void Insert(params TModel[] items)
         {
-            this._dao.Insert(items);
+            _dao.Insert(items);
         }
 
         /// <summary>
@@ -136,7 +135,7 @@ namespace IOC.FW.Core.Implementation.Base
         /// <param name="items">Coleção de registros a atualizar na base</param>
         public void Update(params TModel[] items)
         {
-            this._dao.Update(items);
+            _dao.Update(items);
         }
 
         /// <summary>
@@ -146,7 +145,7 @@ namespace IOC.FW.Core.Implementation.Base
         /// <param name="properties">Propriedades do objeto a atualizar na base</param>
         public void Update(TModel item, Expression<Func<TModel, object>>[] properties)
         {
-            this._dao.Update(item, properties);
+            _dao.Update(item, properties);
         }
 
         /// <summary>
@@ -155,7 +154,7 @@ namespace IOC.FW.Core.Implementation.Base
         /// <param name="items">Coleção de registros a deletar da base</param>
         public void Delete(params TModel[] items)
         {
-            this._dao.Delete(items);
+            _dao.Delete(items);
         }
 
         /// <summary>
@@ -165,7 +164,7 @@ namespace IOC.FW.Core.Implementation.Base
         /// <param name="items">Lista de models que implementam IPrioritySortable</param>
         public void UpdatePriority<TPriorityModel>(params TPriorityModel[] items) where TPriorityModel : TModel, IPrioritySortable
         {
-            this._dao.UpdatePriority<TPriorityModel>(items);
+            _dao.UpdatePriority<TPriorityModel>(items);
         }
 
         /// <summary>
@@ -174,7 +173,7 @@ namespace IOC.FW.Core.Implementation.Base
         /// <returns>Quantidade de registros</returns>
         public int Count()
         {
-            return this.Count(m => true);
+            return Count(m => true);
         }
 
         /// <summary>
@@ -184,7 +183,7 @@ namespace IOC.FW.Core.Implementation.Base
         /// <returns>Quantidade de registros</returns>
         public int Count(Expression<Func<TModel, bool>> where)
         {
-            return this._dao.Count(where);
+            return _dao.Count(where);
         }
 
         /// <summary>
@@ -193,7 +192,7 @@ namespace IOC.FW.Core.Implementation.Base
         /// <returns>Quantidade de registros</returns>
         public long LongCount()
         {
-            return this.LongCount(m => true);
+            return LongCount(m => true);
         }
 
         /// <summary>
@@ -203,7 +202,7 @@ namespace IOC.FW.Core.Implementation.Base
         /// <returns>Quantidade de registros</returns>
         public long LongCount(Expression<Func<TModel, bool>> where)
         {
-            return this._dao.LongCount(where);
+            return _dao.LongCount(where);
         }
     }
 }

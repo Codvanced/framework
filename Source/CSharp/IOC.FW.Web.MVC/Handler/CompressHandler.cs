@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Web;
 using System.Net.Http;
 using System.Threading.Tasks;
 using System.Threading;
@@ -21,7 +20,7 @@ namespace IOC.FW.Web.MVC.Handler
         {
             return 
                 base.SendAsync(request, cancellationToken)
-                .ContinueWith<HttpResponseMessage>((responseToCompleteTask) =>
+                .ContinueWith((responseToCompleteTask) =>
                 {
                     HttpResponseMessage response = responseToCompleteTask.Result;
 

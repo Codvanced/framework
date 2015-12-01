@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using SimpleInjector;
+﻿using SimpleInjector;
 using System.Web.Http;
 
 namespace IOC.FW.Web.MVC.DIContainer.SimpleInjector

@@ -1,14 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Linq.Expressions;
-using System.Data.Entity;
 using System.Data;
-using IOC.FW.Core.Abstraction.Miscellaneous;
 using IOC.FW.Core.Abstraction.Business;
 using IOC.FW.Core.Abstraction.Repository.Connection;
-using IOC.FW.Shared;
 using IOC.FW.Shared.Enumerators;
 
 namespace IOC.FW.Core.Abstraction.Repository

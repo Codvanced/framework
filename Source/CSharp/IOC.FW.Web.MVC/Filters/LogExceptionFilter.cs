@@ -21,7 +21,7 @@ namespace IOC.FW.Web.MVC.Filters
             if (null != filterContext && null != filterContext.Exception)
             {
                 log.Error(
-                        String.Format(
+                        string.Format(
                             "Erro na seguinte url => {0} {1}: {2}",
                             filterContext.HttpContext.Request.HttpMethod,
                             filterContext.HttpContext.Request.Url.AbsoluteUri,
