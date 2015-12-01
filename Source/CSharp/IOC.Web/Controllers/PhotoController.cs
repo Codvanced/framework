@@ -22,7 +22,8 @@ namespace IOC.Web.Controllers
             filename = Server.MapPath(filename);
             if (!System.IO.File.Exists(filename) || !filename.IsImage())
             {
-                filename = Server.MapPath(Configurations.Current.Thumb.NotFoundPath);
+                var configuration = ConfigManager.GetConfig();
+                filename = Server.MapPath(configuration.Thumb.NotFoundPath);
             }
 
             var image = Bitmap.FromFile(filename);

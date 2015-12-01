@@ -19,8 +19,8 @@
     <SolutionDir Condition="$(SolutionDir) == '' Or $(SolutionDir) == '*Undefined*'">..\</SolutionDir>
     <RestorePackages>true</RestorePackages>
     <MvcProjectUpgradeChecked>true</MvcProjectUpgradeChecked>
-    <FileUpgradeFlags>40</FileUpgradeFlags>
-    <UpgradeBackupLocation>C:\Projects\Source\Personal\Framework\Source\CSharp\Backup\</UpgradeBackupLocation>
+    <FileUpgradeFlags>0</FileUpgradeFlags>
+    <UpgradeBackupLocation>C:\Projects\Source\Personal\Framework\Source\CSharp\Backup1\</UpgradeBackupLocation>
     <OldToolsVersion>12.0</OldToolsVersion>
     <IISExpressSSLPort />
     <IISExpressAnonymousAuthentication />
@@ -422,7 +422,7 @@
     <Content Include="Views\Message\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Config\CustomSection.config">
+    <Content Include="Config\IoCFrameworkSection.config">
       <SubType>Designer</SubType>
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
