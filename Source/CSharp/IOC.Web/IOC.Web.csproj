@@ -426,7 +426,7 @@
     <Content Include="Views\Message\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Config\CustomSection.config">
+    <Content Include="Config\IoCFrameworkSection.config">
       <SubType>Designer</SubType>
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>

@@ -33,6 +33,7 @@ namespace IOC.FW.Web.Handler
         public void ProcessRequest(HttpContext context)
         {
             string filename = context.Request.FilePath.Replace(".transform.axd", string.Empty);
+            var configuration = ConfigManager.GetConfig();
 
             bool needResize = false,
                 needCrop = false;
@@ -133,7 +134,9 @@ namespace IOC.FW.Web.Handler
             if (File.Exists(filename))
                 img = Image.FromFile(filename);
             else
-                img = Image.FromFile(HttpContext.Current.Server.MapPath(Configurations.Current.Thumb.NotFoundPath));
+                img = Image.FromFile(
+                    HttpContext.Current.Server.MapPath(configuration.Thumb.NotFoundPath)
+                );
 
             try
             {

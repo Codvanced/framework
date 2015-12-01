@@ -12,7 +12,6 @@ namespace IOC.Web.Controllers
         : Controller
     {
         private readonly INewsBusiness _business;
-        private readonly IRepository<Ocupation> _xpto;
 
         public HomeController(INewsBusiness business)
         {
