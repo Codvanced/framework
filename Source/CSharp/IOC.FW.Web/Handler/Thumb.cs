@@ -30,6 +30,7 @@ namespace IOC.FW.Web.Handler
         public void ProcessRequest(HttpContext context)
         {
             string filename = context.Request.FilePath.Replace(".thumb.axd", string.Empty);
+            var configuration = ConfigManager.GetConfig();
 
             bool crop = false;
 
@@ -58,10 +59,10 @@ namespace IOC.FW.Web.Handler
                 bool.TryParse(context.Request["crop"], out crop);
 
             if (!width.HasValue)
-                width = Configurations.Current.Thumb.DefaultWidth;
+                width = configuration.Thumb.DefaultWidth;
 
             if (crop && !height.HasValue)
-                height = Configurations.Current.Thumb.DefaultHeight;
+                height = configuration.Thumb.DefaultHeight;
             else
                 height = h;
 
@@ -72,7 +73,9 @@ namespace IOC.FW.Web.Handler
             if (File.Exists(filename))
                 img = Image.FromFile(filename);
             else
-                img = Image.FromFile(HttpContext.Current.Server.MapPath(Configurations.Current.Thumb.NotFoundPath));
+                img = Image.FromFile(
+                    HttpContext.Current.Server.MapPath(configuration.Thumb.NotFoundPath)
+                );
 
             var size = new Size(width.Value, height.Value);
 
