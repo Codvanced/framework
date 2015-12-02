@@ -1,0 +1,36 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 14
+VisualStudioVersion = 14.0.23107.0
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "IoCFramework", "IoCFramework", "{E0E16939-198F-4111-A286-615014E9DD7F}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tests", "Tests", "{582CB4DF-D050-48DB-BAC8-E3B77F6B22BD}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "IOC.FW.Configuration", "..\..\..\source\CSharp\IoCFramework\IOC.FW.Configuration\IOC.FW.Configuration.csproj", "{28C6B3ED-C9B5-417C-8E99-C24B450DE618}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "IOC.FW.Configuration.Test", "IOC.FW.Configuration.Test\IOC.FW.Configuration.Test.csproj", "{B71B735E-9E8C-4056-BDFA-4088497E3C1D}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{28C6B3ED-C9B5-417C-8E99-C24B450DE618}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{28C6B3ED-C9B5-417C-8E99-C24B450DE618}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{28C6B3ED-C9B5-417C-8E99-C24B450DE618}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{28C6B3ED-C9B5-417C-8E99-C24B450DE618}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B71B735E-9E8C-4056-BDFA-4088497E3C1D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B71B735E-9E8C-4056-BDFA-4088497E3C1D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B71B735E-9E8C-4056-BDFA-4088497E3C1D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B71B735E-9E8C-4056-BDFA-4088497E3C1D}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{28C6B3ED-C9B5-417C-8E99-C24B450DE618} = {E0E16939-198F-4111-A286-615014E9DD7F}
+		{B71B735E-9E8C-4056-BDFA-4088497E3C1D} = {582CB4DF-D050-48DB-BAC8-E3B77F6B22BD}
+	EndGlobalSection
+EndGlobal
