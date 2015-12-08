@@ -56,6 +56,7 @@
     <Compile Include="Abstraction\Container\Binding\IBinding.cs" />
     <Compile Include="Abstraction\Container\IAdapter.cs" />
     <Compile Include="Abstraction\Container\IAdapterVerifiable.cs" />
+    <Compile Include="Abstraction\FTP\IFTP.cs" />
     <Compile Include="Abstraction\Logging\ILogger.cs" />
     <Compile Include="Abstraction\Miscellaneous\IPrioritySortable.cs" />
     <Compile Include="Abstraction\Model\IBaseModel.cs" />
@@ -71,6 +72,7 @@
     <Compile Include="Implementation\Base\BaseBusiness.cs" />
     <Compile Include="Implementation\Base\BaseRepository.cs" />
     <Compile Include="Model\BaseServiceModel.cs" />
+    <Compile Include="Model\FTP\FtpFileInfo.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
