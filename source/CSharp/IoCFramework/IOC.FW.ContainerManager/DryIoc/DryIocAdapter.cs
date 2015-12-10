@@ -11,20 +11,9 @@ namespace IOC.FW.ContainerManager.DryIoc
     {
         public readonly Container _container;
 
-        public DryIocAdapter(
-            Rules rules = null,
-            IScopeContext scopeContext = null
-        )
+        public DryIocAdapter()
         {
-            _container = new Container(rules, scopeContext);
-        }
-
-        public DryIocAdapter(
-            Func<Rules, Rules> configure,
-            IScopeContext scopeContext = null
-        )
-        {
-            _container = new Container(configure, scopeContext);
+            _container = new Container();
         }
 
         private IReuse GetLifeCycle(ContainerEnumerator.LifeCycle lifeCycle)
