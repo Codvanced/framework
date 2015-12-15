@@ -30,6 +30,10 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="DryIoc, Version=2.1.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\DryIoc.dll.2.1.0\lib\net40\DryIoc.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="FluentValidation, Version=5.6.2.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\FluentValidation.5.6.2.0\lib\portable-net40+sl50+wp80+win8+wpa81\FluentValidation.dll</HintPath>
       <Private>True</Private>
@@ -91,6 +95,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Base\BaseController.cs" />
+    <Compile Include="DIContainer\DryIoc\DryIocDependencyResolver.cs" />
     <Compile Include="DIContainer\SimpleInjector\Register.cs" />
     <Compile Include="DIContainer\SimpleInjector\SimpleInjectorWebApiDependencyResolver.cs" />
     <Compile Include="Extensions.cs" />
