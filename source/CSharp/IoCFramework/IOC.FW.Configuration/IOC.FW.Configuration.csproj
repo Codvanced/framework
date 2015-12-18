@@ -60,15 +60,15 @@
     <Compile Include="IoCFramework\Thumb\ThumbElement.cs" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="IoCFrameworkSection.xsd">
+      <SubType>Designer</SubType>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
     <ProjectReference Include="..\IOC.FW.Shared\IOC.FW.Shared.csproj">
       <Project>{7323e348-0ae0-4f75-a2d8-adff0f03c04b}</Project>
       <Name>IOC.FW.Shared</Name>
     </ProjectReference>
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="IoCFrameworkSection.xsd">
-      <SubType>Designer</SubType>
-    </None>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

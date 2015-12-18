@@ -124,10 +124,6 @@
       <Project>{6089782a-ea12-4f14-9d24-bcab9f9f0163}</Project>
       <Name>IOC.FW.Logging</Name>
     </ProjectReference>
-    <ProjectReference Include="..\IOC.FW.Web\IOC.FW.Web.csproj">
-      <Project>{92fd7376-973c-4e0d-8739-1a42ab860018}</Project>
-      <Name>IOC.FW.Web</Name>
-    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

@@ -1,5 +1,5 @@
 ﻿using DryIoc;
-using IOC.FW.Core.Abstraction.Container;
+using IOC.FW.Abstraction.Container;
 using IOC.FW.Shared.Enumerators;
 using System;
 using System.Collections.Generic;

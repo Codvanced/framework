@@ -1,6 +1,4 @@
-﻿using IOC.FW.Core.Abstraction.FTP;
-using IOC.FW.Core.Model.FTP;
-using IOC.FW.FTP.Handlers;
+﻿using IOC.FW.Abstraction.FTP;
 using IOC.FW.Validation;
 using System;
 using System.Collections.Generic;
@@ -13,7 +11,8 @@ using System.Threading;
 
 namespace IOC.FW.FTP
 {
-    public class FTP : IFTP
+    public class FTP
+        : IFTP
     {
         private string _host;
         private string _userName;
@@ -22,9 +21,6 @@ namespace IOC.FW.FTP
         private const int BufferSize = 1024;
         private const string SearchPattern = "*";
         private readonly int ChunkSize = (5 * 1024);
-
-        public delegate void ErrorHandler(ErrorHandlerArgs args);
-        public event ErrorHandler OnError;
 
         public FTP()
         {
@@ -263,107 +259,6 @@ namespace IOC.FW.FTP
             }
         }
 
-        public IEnumerable<FtpFileInfo> GetFiles(
-            string path,
-            string searchPattern,
-            SearchOption searchOption
-        )
-        {
-
-
-            Check.IfNullOrEmpty(
-                new Expression<Func<string>>[] {
-                    () => path,
-                    () => searchPattern
-                }
-            );
-
-            var request = Connect(path, WebRequestMethods.Ftp.ListDirectory);
-            var files = new List<FtpFileInfo>();
-            var subDirectories = new List<string>();
-
-            using (var response = (FtpWebResponse)request.GetResponse())
-            {
-                if (searchPattern != SearchPattern)
-                {
-                    searchPattern = searchPattern.Replace(SearchPattern, string.Empty);
-                }
-
-                ExecuteCommand(
-                    response.GetResponseStream(),
-                    (line) =>
-                    {
-                        var fileOrDirectory = line;
-                        bool isFile = Path.HasExtension(fileOrDirectory);
-
-                        if (!string.IsNullOrWhiteSpace(fileOrDirectory))
-                        {
-                            if (isFile)
-                            {
-                                if (
-                                    searchPattern.Equals(SearchPattern)
-                                    || fileOrDirectory.Contains(searchPattern)
-                                )
-                                {
-                                    var filePath = string.Concat(
-                                        path,
-                                        Path.AltDirectorySeparatorChar,
-                                        fileOrDirectory
-                                    );
-
-                                    var indexLastBackSlash = filePath.LastIndexOf('/');
-                                    var dirName = filePath.Substring(0, indexLastBackSlash);
-                                    var fileName = filePath.Substring(
-                                        indexLastBackSlash > 0
-                                            ? indexLastBackSlash + 1
-                                            : indexLastBackSlash,
-                                        filePath.Length - indexLastBackSlash - 1
-                                    );
-
-                                    var fileInfo = new FtpFileInfo
-                                    {
-                                        FullName = string.Concat(_host, filePath),
-                                        RelativePath = filePath,
-                                        DirectoryName = dirName,
-                                        Name = fileName,
-
-                                    };
-
-                                    Console.WriteLine(fileInfo.FullName);
-                                    files.Add(fileInfo);
-                                }
-                            }
-                            else
-                            {
-                                if (searchOption.Equals(SearchOption.AllDirectories))
-                                {
-                                    var newPath = string.Concat(
-                                        path,
-                                        Path.AltDirectorySeparatorChar,
-                                        fileOrDirectory
-                                    );
-                                    subDirectories.Add(newPath);
-                                }
-                            }
-                        }
-                    }
-                );
-
-                response.Close();
-            }
-
-            if (subDirectories.Count > 0)
-            {
-                foreach (var subDirectory in subDirectories)
-                {
-                    var moreFiles = GetFiles(subDirectory, searchPattern, searchOption);
-                    files.AddRange(moreFiles);
-                }
-            }
-
-            return files;
-        }
-
         private FtpWebRequest Connect(
             string requestUri,
             string requestMethod = WebRequestMethods.Ftp.ListDirectory
@@ -430,15 +325,6 @@ namespace IOC.FW.FTP
             }
             catch (WebException ex)
             {
-                if (OnError != null)
-                {
-                    OnError(new ErrorHandlerArgs
-                    {
-                        ErrorMessage = "Exception on (bool DirectoryExists (string path))",
-                        Exception = ex
-                    });
-                }
-
                 var response = (FtpWebResponse)ex.Response;
                 if (response != null
                     && response.StatusCode == FtpStatusCode.ActionNotTakenFileUnavailable
@@ -471,15 +357,6 @@ namespace IOC.FW.FTP
             }
             catch (WebException ex)
             {
-                if (OnError != null)
-                {
-                    OnError(new ErrorHandlerArgs
-                    {
-                        ErrorMessage = "Exception on (long GetFileSize(string path))",
-                        Exception = ex
-                    });
-                }
-
                 var response = (FtpWebResponse)ex.Response;
                 if (response != null
                     && response.StatusCode == FtpStatusCode.ActionNotTakenFileUnavailable
@@ -591,7 +468,89 @@ namespace IOC.FW.FTP
             }
         }
 
-        public IEnumerable<FtpFileInfo> GetFiles(string path, string searchPattern)
+        public IEnumerable<string> GetFiles(
+            string path,
+            string searchPattern,
+            SearchOption searchOption
+        )
+        {
+            Check.IfNullOrEmpty(
+                new Expression<Func<string>>[] {
+                    () => path,
+                    () => searchPattern
+                }
+            );
+
+            var request = Connect(path, WebRequestMethods.Ftp.ListDirectory);
+            var files = new List<string>();
+            var subDirectories = new List<string>();
+
+            using (var response = (FtpWebResponse)request.GetResponse())
+            {
+                if (searchPattern != SearchPattern)
+                {
+                    searchPattern = searchPattern.Replace(SearchPattern, string.Empty);
+                }
+
+                ExecuteCommand(
+                    response.GetResponseStream(),
+                    (line) =>
+                    {
+                        var fileOrDirectory = line;
+                        bool isFile = Path.HasExtension(fileOrDirectory);
+
+                        if (!string.IsNullOrWhiteSpace(fileOrDirectory))
+                        {
+                            if (isFile)
+                            {
+                                if (
+                                    searchPattern.Equals(SearchPattern)
+                                    || fileOrDirectory.Contains(searchPattern)
+                                )
+                                {
+                                    var filePath = string.Concat(
+                                        path,
+                                        Path.AltDirectorySeparatorChar,
+                                        fileOrDirectory
+                                    );
+                                    
+                                    files.Add(
+                                        string.Concat(_host, filePath)
+                                    );
+                                }
+                            }
+                            else
+                            {
+                                if (searchOption.Equals(SearchOption.AllDirectories))
+                                {
+                                    var newPath = string.Concat(
+                                        path,
+                                        Path.AltDirectorySeparatorChar,
+                                        fileOrDirectory
+                                    );
+                                    subDirectories.Add(newPath);
+                                }
+                            }
+                        }
+                    }
+                );
+
+                response.Close();
+            }
+
+            if (subDirectories.Count > 0)
+            {
+                foreach (var subDirectory in subDirectories)
+                {
+                    var moreFiles = GetFiles(subDirectory, searchPattern, searchOption);
+                    files.AddRange(moreFiles);
+                }
+            }
+
+            return files;
+        }
+
+        public IEnumerable<string> GetFiles(string path, string searchPattern)
         {
             Check.IfNullOrEmpty(
                 new Expression<Func<string>>[] {
@@ -600,28 +559,6 @@ namespace IOC.FW.FTP
                 }
             );
             return GetFiles(path, searchPattern, SearchOption.AllDirectories);
-        }
-
-        public FtpFileInfo GetFileInfo(string fileWithPath)
-        {
-            Check.IfNullOrEmpty(() => fileWithPath);
-
-            var indexLastBackSlash = fileWithPath.LastIndexOf('/');
-            var dirName = fileWithPath.Substring(0, indexLastBackSlash);
-            var fileName = fileWithPath.Substring(
-                indexLastBackSlash > 0
-                    ? indexLastBackSlash + 1
-                    : indexLastBackSlash,
-                fileWithPath.Length - indexLastBackSlash - 1
-            );
-
-            return new FtpFileInfo
-            {
-                FullName = string.Concat(_host, fileWithPath),
-                RelativePath = fileWithPath,
-                DirectoryName = dirName,
-                Name = fileName,
-            };
         }
     }
 }

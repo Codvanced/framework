@@ -3,12 +3,12 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Data.Entity;
 using System.Configuration;
-using IOC.FW.Core.Abstraction.Repository;
+using IOC.FW.Abstraction.Repository;
 using System.Linq.Expressions;
-using IOC.FW.Core.Abstraction.Model;
+using IOC.FW.Abstraction.Model;
 using System.Data.Common;
 using System.Data;
-using IOC.FW.Core.Abstraction.Miscellaneous;
+using IOC.FW.Abstraction.Miscellaneous;
 using IOC.FW.Shared.Enumerators;
 
 namespace IOC.FW.Repository.EntityFramework

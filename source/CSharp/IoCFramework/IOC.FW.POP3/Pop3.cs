@@ -1,4 +1,4 @@
-﻿using IOC.FW.POP3.Handlers;
+﻿using IOC.FW.Abstraction.Mail;
 using OpenPop.Mime;
 using OpenPop.Pop3;
 using System;
@@ -7,15 +7,10 @@ using System.Net.Mail;
 
 namespace IOC.FW.POP3
 {
-    public class Pop3 : IPop3
+    public class Pop3
+        : IPop3
     {
-        public delegate void DownloadEmailHandler(DownloadEmailHandlerArgs args);
-        public event DownloadEmailHandler OnDownloading;
-
-        public Pop3()
-        {
-
-        }
+        public Action<MailMessage> DownloadEmailHandler { get; set; }
 
         public void DownloadInbox(string host, int port, bool enableSSL, string username, string password)
         {
@@ -39,11 +34,8 @@ namespace IOC.FW.POP3
                     var uid = mailUids[i];
                     var msg = client.GetMessage(i + 1);
 
-                    if (OnDownloading != null)
-                        OnDownloading(new DownloadEmailHandlerArgs
-                        {
-                            Email = msg
-                        });
+                    if (DownloadEmailHandler != null)
+                        DownloadEmailHandler(msg.ToMailMessage());
                 }
             }
         }

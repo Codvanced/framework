@@ -6,7 +6,7 @@ using IOC.FW.Abstraction.Repository;
 using System.Linq.Expressions;
 using IOC.FW.Abstraction.Miscellaneous;
 
-namespace IOC.FW.Core.Implementation.Base
+namespace IOC.FW.Repository
 {
     /// <summary>
     /// Classe base para a utilização de Business padronizadas, utilizando Entity Framework como Reposiorio...

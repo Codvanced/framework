@@ -1,4 +1,4 @@
-﻿using IOC.FW.Core.Abstraction.Logging;
+﻿using IOC.FW.Abstraction.Logging;
 using log4net;
 using log4net.Appender;
 using System;

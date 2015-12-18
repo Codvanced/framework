@@ -8,7 +8,7 @@ using IOC.FW.Abstraction.Repository;
 using IOC.FW.Abstraction.Miscellaneous;
 using IOC.FW.Shared.Enumerators;
 
-namespace IOC.FW.Core.Implementation.Base
+namespace IOC.FW.Repository
 {
     public class BaseRepository<TModel>
         : IRepository<TModel>

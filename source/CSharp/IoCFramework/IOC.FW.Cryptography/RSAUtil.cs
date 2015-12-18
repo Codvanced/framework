@@ -32,10 +32,7 @@ namespace IOC.FW.Cryptography
                 parameters[1] = rsaProvider.ExportParameters(true);
             }
             catch (Exception ex)
-            {
-                Console.WriteLine("Exception generating a new key pair! More info:");
-                Console.WriteLine(ex.Message);
-            }
+            { }
 
             return parameters;
         }
@@ -74,8 +71,6 @@ namespace IOC.FW.Cryptography
             }
             catch (Exception ex)
             {
-                Console.WriteLine("Exception generating a new key pair! More info:");
-                Console.WriteLine(ex.Message);
             }
             finally
             {
@@ -132,8 +127,6 @@ namespace IOC.FW.Cryptography
             }
             catch (Exception ex)
             {
-                Console.WriteLine("Exception encrypting file! More info:");
-                Console.WriteLine(ex.Message);
             }
             finally
             {
@@ -178,8 +171,6 @@ namespace IOC.FW.Cryptography
             }
             catch (Exception ex)
             {
-                Console.WriteLine("Exception encrypting file! More info:");
-                Console.WriteLine(ex.Message);
             }
 
             return encryptedBytes;
@@ -229,8 +220,6 @@ namespace IOC.FW.Cryptography
             }
             catch (Exception ex)
             {
-                Console.WriteLine("Exception decrypting file! More info:");
-                Console.WriteLine(ex.Message);
             }
             finally
             {
@@ -276,8 +265,6 @@ namespace IOC.FW.Cryptography
             }
             catch (Exception ex)
             {
-                Console.WriteLine("Exception decrypting file! More info:");
-                Console.WriteLine(ex.Message);
             }
 
             return plainBytes;

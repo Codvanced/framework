@@ -52,34 +52,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Abstraction\Business\IBaseBusiness.cs" />
-    <Compile Include="Abstraction\Container\Binding\IBinding.cs" />
-    <Compile Include="Abstraction\Container\IAdapter.cs" />
-    <Compile Include="Abstraction\Container\IAdapterVerifiable.cs" />
-    <Compile Include="Abstraction\FTP\IFTP.cs" />
-    <Compile Include="Abstraction\Logging\ILogger.cs" />
-    <Compile Include="Abstraction\Miscellaneous\IPrioritySortable.cs" />
-    <Compile Include="Abstraction\Model\IBaseModel.cs" />
-    <Compile Include="Abstraction\Model\IModelCreating.cs" />
-    <Compile Include="Abstraction\Repository\Connection\IConnectionConfigurable.cs" />
-    <Compile Include="Abstraction\Repository\IBaseTransaction.cs" />
-    <Compile Include="Abstraction\Repository\IContext.cs" />
-    <Compile Include="Abstraction\Repository\IContextFactory.cs" />
-    <Compile Include="Abstraction\Repository\IDependencyResolver.cs" />
-    <Compile Include="Abstraction\Repository\IRepository.cs" />
-    <Compile Include="Abstraction\Repository\IRepositoryFactory.cs" />
     <Compile Include="Expressions\ParameterRebinder.cs" />
-    <Compile Include="Implementation\Base\BaseBusiness.cs" />
-    <Compile Include="Implementation\Base\BaseRepository.cs" />
     <Compile Include="Model\BaseServiceModel.cs" />
-    <Compile Include="Model\FTP\FtpFileInfo.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\IOC.FW.Shared\IOC.FW.Shared.csproj">
-      <Project>{7323e348-0ae0-4f75-a2d8-adff0f03c04b}</Project>
-      <Name>IOC.FW.Shared</Name>
-    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />

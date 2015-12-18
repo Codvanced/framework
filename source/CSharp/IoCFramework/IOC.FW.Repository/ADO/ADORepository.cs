@@ -2,8 +2,8 @@
 using System.Collections.Generic;
 using System.Data;
 using System.Linq;
-using IOC.FW.Core.Abstraction.Repository;
-using IOC.FW.Core.Abstraction.Miscellaneous;
+using IOC.FW.Abstraction.Repository;
+using IOC.FW.Abstraction.Miscellaneous;
 using IOC.FW.Shared.Enumerators;
 
 namespace IOC.FW.Repository.ADO

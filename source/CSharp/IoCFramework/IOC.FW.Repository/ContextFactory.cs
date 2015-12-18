@@ -1,5 +1,5 @@
 ﻿using System.Data.Common;
-using IOC.FW.Core.Abstraction.Repository;
+using IOC.FW.Abstraction.Repository;
 using IOC.FW.Repository.EntityFramework;
 
 namespace IOC.FW.Repository

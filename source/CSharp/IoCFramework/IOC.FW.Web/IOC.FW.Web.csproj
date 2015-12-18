@@ -53,6 +53,9 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
     <ProjectReference Include="..\IOC.FW.Configuration\IOC.FW.Configuration.csproj">
       <Project>{28c6b3ed-c9b5-417c-8e99-c24b450de618}</Project>
       <Name>IOC.FW.Configuration</Name>
@@ -73,9 +76,6 @@
       <Project>{7323e348-0ae0-4f75-a2d8-adff0f03c04b}</Project>
       <Name>IOC.FW.Shared</Name>
     </ProjectReference>
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="packages.config" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

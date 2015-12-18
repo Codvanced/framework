@@ -1,8 +1,8 @@
 ﻿using System.Linq;
 using System.Data.Entity;
-using IOC.FW.Core.Abstraction.Model;
+using IOC.FW.Abstraction.Model;
 using System.Data.Common;
-using IOC.FW.Core.Abstraction.Repository;
+using IOC.FW.Abstraction.Repository;
 
 namespace IOC.FW.Repository.EntityFramework
 {

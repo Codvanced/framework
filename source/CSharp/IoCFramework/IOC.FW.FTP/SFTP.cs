@@ -1,6 +1,4 @@
-﻿using IOC.FW.Core.Abstraction.FTP;
-using IOC.FW.Core.Model.FTP;
-using IOC.FW.FTP.Handlers;
+﻿using IOC.FW.Abstraction.FTP;
 using IOC.FW.Validation;
 using Renci.SshNet;
 using System;
@@ -10,7 +8,8 @@ using System.Linq.Expressions;
 
 namespace IOC.FW.FTP
 {
-    public class SFTP : IFTP
+    public class SFTP
+        : IFTP
     {
         private string _host;
         private string _userName;
@@ -18,9 +17,6 @@ namespace IOC.FW.FTP
         private int _port;
         private const int BufferSize = 1024;
         private const string SearchPattern = "*";
-
-        public delegate void ErrorHandler(ErrorHandlerArgs args);
-        public event ErrorHandler OnError;
 
         public SFTP()
         {
@@ -200,7 +196,7 @@ namespace IOC.FW.FTP
             );
         }
 
-        public IEnumerable<FtpFileInfo> GetFiles(string path, string searchPattern, SearchOption searchOption)
+        public IEnumerable<string> GetFiles(string path, string searchPattern, SearchOption searchOption)
         {
             Check.IfNullOrEmpty(
                 new Expression<Func<string>>[] {
@@ -209,7 +205,7 @@ namespace IOC.FW.FTP
                 }
             );
 
-            var filesFound = new List<FtpFileInfo>();
+            var filesFound = new List<string>();
 
             ExecuteCommand(
                sftp =>
@@ -244,27 +240,7 @@ namespace IOC.FW.FTP
                                   lastSlash
                                );
 
-                               filesFound.Add(new FtpFileInfo
-                               {
-                                   Name = file.Name,
-                                   FullName = file.FullName,
-                                   DirectoryName = directoryPath,
-                                   RelativePath = file.FullName,
-                                   Exists = true,
-                                   IsReadOnly = !file.OwnerCanWrite,
-                                   Length = file.Length
-                               });
-                           }
-                           else
-                           {
-                               if (OnError != null)
-                               {
-                                   OnError(new ErrorHandlerArgs
-                                   {
-                                       ErrorMessage = "Unknown file type!",
-                                       Exception = null
-                                   });
-                               }
+                               filesFound.Add(file.FullName);
                            }
                        }
                    }
@@ -274,7 +250,7 @@ namespace IOC.FW.FTP
             return filesFound;
         }
 
-        public IEnumerable<FtpFileInfo> GetFiles(string path, string searchPattern)
+        public IEnumerable<string> GetFiles(string path, string searchPattern)
         {
             Check.IfNullOrEmpty(
                 new Expression<Func<string>>[] {
@@ -284,32 +260,6 @@ namespace IOC.FW.FTP
             );
 
             return GetFiles(path, searchPattern, SearchOption.AllDirectories);
-        }
-
-        public FtpFileInfo GetFileInfo(string fileWithPath)
-        {
-            Check.IfNullOrEmpty(
-                new Expression<Func<string>>[] {
-                    () => fileWithPath
-                }
-            );
-
-            var indexLastBackSlash = fileWithPath.LastIndexOf('/');
-            var dirName = fileWithPath.Substring(0, indexLastBackSlash);
-            var fileName = fileWithPath.Substring(
-                indexLastBackSlash > 0
-                    ? indexLastBackSlash + 1
-                    : indexLastBackSlash,
-                fileWithPath.Length - indexLastBackSlash - 1
-            );
-
-            return new FtpFileInfo
-            {
-                FullName = string.Concat(_host, fileWithPath),
-                RelativePath = fileWithPath,
-                DirectoryName = dirName,
-                Name = fileName,
-            };
         }
     }
 }

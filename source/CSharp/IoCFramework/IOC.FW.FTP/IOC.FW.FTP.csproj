@@ -44,22 +44,21 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="FTP.cs" />
-    <Compile Include="Handlers\ErrorHandlerArgs.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="SFTP.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\IOC.FW.Core\IOC.FW.Core.csproj">
-      <Project>{ad0698e7-cd21-4340-8e6d-b4c6624e8fa8}</Project>
-      <Name>IOC.FW.Core</Name>
+    <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\IOC.FW.Abstraction\IOC.FW.Abstraction.csproj">
+      <Project>{5b3d5261-8415-433c-a27d-b22ca4e991b7}</Project>
+      <Name>IOC.FW.Abstraction</Name>
     </ProjectReference>
     <ProjectReference Include="..\IOC.FW.Validation\IOC.FW.Validation.csproj">
       <Project>{7a23f19f-96ee-44c7-81d9-3cdd4cb7b9f8}</Project>
       <Name>IOC.FW.Validation</Name>
     </ProjectReference>
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="packages.config" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

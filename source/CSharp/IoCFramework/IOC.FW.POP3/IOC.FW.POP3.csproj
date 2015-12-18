@@ -43,13 +43,17 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Handlers\DownloadEmailHandlerArgs.cs" />
-    <Compile Include="IPop3.cs" />
     <Compile Include="Pop3.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\IOC.FW.Abstraction\IOC.FW.Abstraction.csproj">
+      <Project>{5b3d5261-8415-433c-a27d-b22ca4e991b7}</Project>
+      <Name>IOC.FW.Abstraction</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
