@@ -5,6 +5,7 @@ using System.Linq;
 using IOC.FW.Abstraction.Repository;
 using IOC.FW.Abstraction.Miscellaneous;
 using IOC.FW.Shared.Enumerators;
+using IOC.FW.Shared.Model.Repository;
 
 namespace IOC.FW.Repository.ADO
 {
@@ -26,7 +27,7 @@ namespace IOC.FW.Repository.ADO
             throw new NotImplementedException();
         }
 
-        public IList<TModel> ExecuteQuery(string sql, List<Tuple<ParameterDirection, string, object>> parametersWithDirection, CommandType cmdType)
+        public IList<TModel> ExecuteQuery(string sql, List<ParameterData> parametersWithDirection, CommandType cmdType)
         {
             throw new NotImplementedException();
         }

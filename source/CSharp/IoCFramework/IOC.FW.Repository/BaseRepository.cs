@@ -7,6 +7,7 @@ using System.Linq.Expressions;
 using IOC.FW.Abstraction.Repository;
 using IOC.FW.Abstraction.Miscellaneous;
 using IOC.FW.Shared.Enumerators;
+using IOC.FW.Shared.Model.Repository;
 
 namespace IOC.FW.Repository
 {
@@ -48,7 +49,7 @@ namespace IOC.FW.Repository
 
         public IList<TModel> ExecuteQuery(
             string sql,
-            List<Tuple<ParameterDirection, string, object>> parametersWithDirection,
+            List<ParameterData> parametersWithDirection,
             CommandType cmdType
         )
         {

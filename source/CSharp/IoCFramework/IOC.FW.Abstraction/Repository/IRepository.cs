@@ -4,6 +4,7 @@ using System.Data;
 using IOC.FW.Abstraction.Business;
 using IOC.FW.Abstraction.Repository.Connection;
 using IOC.FW.Shared.Enumerators;
+using IOC.FW.Shared.Model.Repository;
 
 namespace IOC.FW.Abstraction.Repository
 {
@@ -39,7 +40,7 @@ namespace IOC.FW.Abstraction.Repository
         /// <returns>Objeto com o resultado obtido</returns>
         IList<TModel> ExecuteQuery(
             string sql,
-            List<Tuple<ParameterDirection, string, object>> parametersWithDirection,
+            List<ParameterData> parametersWithDirection,
             CommandType cmdType
         );
 

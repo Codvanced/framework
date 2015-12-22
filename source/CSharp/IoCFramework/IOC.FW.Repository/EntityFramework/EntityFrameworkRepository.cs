@@ -10,6 +10,7 @@ using System.Data.Common;
 using System.Data;
 using IOC.FW.Abstraction.Miscellaneous;
 using IOC.FW.Shared.Enumerators;
+using IOC.FW.Shared.Model.Repository;
 
 namespace IOC.FW.Repository.EntityFramework
 {
@@ -229,7 +230,7 @@ namespace IOC.FW.Repository.EntityFramework
         /// <param name="parameters">Lista de parametros a inserir</param>
         private void SetParameter(
             DbCommand comm,
-            List<Tuple<ParameterDirection, string, object>> parameters
+            List<ParameterData> parameters
         )
         {
             if (comm == null)
@@ -250,9 +251,11 @@ namespace IOC.FW.Repository.EntityFramework
             foreach (var item in parameters)
             {
                 var param = comm.CreateParameter();
-                param.Direction = item.Item1;
-                param.ParameterName = item.Item2;
-                param.Value = item.Item3;
+                param.Direction = item.Direction;
+                param.ParameterName = item.ParameterName;
+                param.Value = item.Value;
+                param.Size = item.Size;
+                param.DbType = item.Type;
                 comm.Parameters.Add(param);
             }
         }
@@ -323,7 +326,7 @@ namespace IOC.FW.Repository.EntityFramework
 
                 list = query
                    .AsNoTracking()
-                   .ToList<TModel>();
+                   .ToList();
             }
             return list;
         }
@@ -625,13 +628,13 @@ namespace IOC.FW.Repository.EntityFramework
         /// <returns>Objeto com o resultado obtido</returns>
         public IList<TModel> ExecuteQuery(
             string sql,
-            List<Tuple<ParameterDirection, string, object>> parametersWithDirection,
+            List<ParameterData> parametersWithDirection,
             CommandType cmdType
         )
         {
             List<TModel> list = null;
 
-            if (!String.IsNullOrEmpty(sql))
+            if (!string.IsNullOrEmpty(sql))
             {
                 using (var context = CreateContext())
                 {
@@ -656,16 +659,18 @@ namespace IOC.FW.Repository.EntityFramework
                             itemParam.Direction == ParameterDirection.ReturnValue)
                         {
                             var indexFound = parametersWithDirection.FindIndex(
-                                p => p.Item2 == itemParam.ParameterName
+                                p => p.ParameterName == itemParam.ParameterName
                             );
 
                             if (indexFound >= 0)
                             {
-                                parametersWithDirection[indexFound] = new Tuple<ParameterDirection, string, object>(
-                                    itemParam.Direction,
-                                    itemParam.ParameterName,
-                                    itemParam.Value
-                                );
+                                parametersWithDirection[indexFound] = new ParameterData {
+                                    Direction = itemParam.Direction,
+                                    Type = itemParam.DbType,
+                                    Size = itemParam.Size,
+                                    ParameterName = itemParam.ParameterName,
+                                    Value = itemParam.Value
+                                };
                             }
                         }
                     }
