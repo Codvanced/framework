@@ -19,7 +19,7 @@ namespace IOC.FW.ImageTransformation
         /// <param name="fitInside"></param>
         /// <returns></returns>
         public static Image Create(
-            System.Drawing.Image img, 
+            Image img, 
             Size cropArea,
             Shared.Enumerators.ImageEnumerator.ReferencePoint refPoint = Shared.Enumerators.ImageEnumerator.ReferencePoint.MiddleCenter, 
             bool fitInside = false
@@ -93,6 +93,32 @@ namespace IOC.FW.ImageTransformation
             }
 
             return result;
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="img"></param>
+        /// <param name="size"></param>
+        /// <returns></returns>
+        public static Image Resize(Image img, Size size)
+        {
+
+            var image = new Bitmap(img);
+            int oldWidth = image.Width;
+            int oldHeight = image.Height;
+            int newHeight = (oldHeight * size.Width / oldWidth);
+
+            var newImage = new Bitmap(size.Width, newHeight);
+            using (var graphic = Graphics.FromImage(newImage))
+            {
+                graphic.SmoothingMode = SmoothingMode.AntiAlias;
+                graphic.InterpolationMode = InterpolationMode.HighQualityBicubic;
+                graphic.PixelOffsetMode = PixelOffsetMode.HighQuality;
+                graphic.DrawImage(image, new Rectangle(0, 0, size.Width, newHeight));
+            }
+
+            return newImage;
         }
 
         /// <summary>
@@ -267,32 +293,6 @@ namespace IOC.FW.ImageTransformation
                     break;
             }
             return result;
-        }
-
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <param name="img"></param>
-        /// <param name="size"></param>
-        /// <returns></returns>
-        public static Image Resize(System.Drawing.Image img, Size size)
-        {
-
-            var image = new Bitmap(img);
-            int oldWidth = image.Width;
-            int oldHeight = image.Height;
-            int newHeight = (oldHeight * size.Width / oldWidth);
-            
-            var newImage = new Bitmap(size.Width, newHeight);
-            using (var graphic = Graphics.FromImage(newImage))
-            {
-                graphic.SmoothingMode = SmoothingMode.AntiAlias;
-                graphic.InterpolationMode = InterpolationMode.HighQualityBicubic;
-                graphic.PixelOffsetMode = PixelOffsetMode.HighQuality;
-                graphic.DrawImage(image, new Rectangle(0, 0, size.Width, newHeight));
-            }
-
-            return newImage;
         }
     }
 }

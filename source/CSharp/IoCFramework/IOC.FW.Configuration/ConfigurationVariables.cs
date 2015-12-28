@@ -7,6 +7,7 @@ namespace IOC.FW.Configuration
 {
     sealed class ConfigurationVariables
     {
+        public const string IocFrameworkSectionKey = "iocFramework";
         public const string ContainerManagerKey = "containerManager";
         public const string ModulesKey = "modules";
         public const string ModuleKey = "module";
@@ -33,5 +34,12 @@ namespace IOC.FW.Configuration
         public const string UserNameKey = "userName";
         public const string PasswordKey = "password";
         public const string PathKey = "path";
+        public const string NotFoundPathKey = "notFoundPath";
+        public const string DefaultWidthKey = "defaultWidth";
+        public const string DefaultHeightKey = "defaultHeight";
+        public const string EnableCacheKey = "enableCache";
+        public const string ExpirationKey = "expiration";
+        public const string SlidingExpirationKey = "slindingExpiration";
+        public const string CachePriorityKey = "cachePriority";
     }
 }

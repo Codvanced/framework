@@ -5,7 +5,7 @@ using System.IO;
 using System.Drawing;
 using IOC.FW.Configuration;
 using IOC.FW.ImageTransformation;
-using IOC.FW.Logging;
+using System.Web.Caching;
 
 namespace IOC.FW.Web.Handler
 {
@@ -20,7 +20,7 @@ namespace IOC.FW.Web.Handler
         /// </summary>
         public bool IsReusable
         {
-            get { return true; }
+            get { return false; }
         }
 
         /// <summary>
@@ -32,8 +32,8 @@ namespace IOC.FW.Web.Handler
         /// <param name="context">Contexto da requisição</param>
         public void ProcessRequest(HttpContext context)
         {
-            string filename = context.Request.FilePath.Replace(".transform.axd", string.Empty);
             var configuration = ConfigManager.GetConfig();
+            var filePath = CleanFilePath(context.Request.FilePath);
 
             bool needResize = false,
                 needCrop = false;
@@ -128,18 +128,16 @@ namespace IOC.FW.Web.Handler
                 }
             }
 
-            filename = HttpContext.Current.Server.MapPath(filename);
+            filePath = HttpContext.Current.Server.MapPath(filePath);
             Image img = null;
 
-            if (File.Exists(filename))
-                img = Image.FromFile(filename);
+            if (File.Exists(filePath))
+                img = Image.FromFile(filePath);
             else
                 img = Image.FromFile(
                     HttpContext.Current.Server.MapPath(configuration.Thumb.NotFoundPath)
                 );
 
-            try
-            {
                 if (needResize || needCrop)
                 {
                     if (needResize)
@@ -152,21 +150,56 @@ namespace IOC.FW.Web.Handler
                         img = Transform.Crop(img, crop);
                     }
 
+                    var fileName = Path.GetFileName(filePath);
                     var stream = Transform.Convert(img);
                     context.Response.ContentType = "image/png";
                     context.Response.BinaryWrite(stream.ToArray());
                     context.Response.Flush();
-                }
-            }
-            catch (Exception e)
-            {
-                var log = LogFactory.CreateLog(typeof(Thumb));
 
-                if (log.IsInfoEnabled)
+                    if (configuration.Thumb.EnableCache
+                                && context.Cache[fileName] == null
+                            )
+                    {
+                        var cachePriority = CacheItemPriority.Normal;
+                        if (configuration.Thumb.CachePriority > 0)
+                        {
+                            Enum.TryParse(configuration.Thumb.CachePriority.ToString(), out cachePriority);
+                        }
+
+                        context.Cache.Add(
+                            fileName,
+                            img,
+                            null,
+                            DateTime.Now.AddMilliseconds(configuration.Thumb.Expiration),
+                            TimeSpan.FromMilliseconds(configuration.Thumb.SlidingExpiration),
+                            cachePriority,
+                            null
+                        );
+                    }
+                }
+        }
+
+        private string CleanFilePath(string filePath)
+        {
+            var fileName = Path.GetFileName(filePath);
+
+            if (!string.IsNullOrWhiteSpace(fileName))
+            {
+                var fileNameFragments = fileName.Split('.');
+                if (fileNameFragments.Length > 1)
                 {
-                    log.Info(String.Concat("Erro na URL ", context.Request.Url.AbsoluteUri), e);
+                    filePath = filePath.Replace(
+                        fileName,
+                        string.Format(
+                            "{0}.{1}",
+                            fileNameFragments[0],
+                            fileNameFragments[1]
+                        )
+                    );
                 }
             }
+
+            return filePath;
         }
     }
 }
