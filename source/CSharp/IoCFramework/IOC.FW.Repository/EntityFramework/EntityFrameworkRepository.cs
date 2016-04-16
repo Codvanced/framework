@@ -71,7 +71,7 @@ namespace IOC.FW.Repository.EntityFramework
         /// <returns>Objeto utilizado na query já possuindo a referencia relacional de chave estrangeira</returns>
         private IQueryable<TModel> IncludeReference(
             DbSet<TModel> dbSet,
-            params Expression<Func<TModel, object>>[] navigationProperties
+            Expression<Func<TModel, object>>[] navigationProperties
         )
         {
             IQueryable<TModel> query = dbSet;
@@ -318,7 +318,7 @@ namespace IOC.FW.Repository.EntityFramework
         /// <param name="navigationProperties">Objetos de uma Model referentes a chaves estrangeiras no database</param>
         /// <returns>Implementação de IList com os registros encontrados.</returns>
         public IList<TModel> SelectAll(
-            params Expression<Func<TModel, object>>[] navigationProperties
+            Expression<Func<TModel, object>>[] navigationProperties
         )
         {
             return SelectAll(null, navigationProperties);
@@ -704,7 +704,7 @@ namespace IOC.FW.Repository.EntityFramework
                     var conn = OpenConnection(context);
 
                     var comm = CreateCommand(conn, sql, cmdType);
-                    
+
                     if (parameters != null && parameters.Count > 0)
                     {
                         SetParameter(comm, parameters);
@@ -766,7 +766,8 @@ namespace IOC.FW.Repository.EntityFramework
 
                             if (indexFound >= 0)
                             {
-                                parametersWithDirection[indexFound] = new ParameterData {
+                                parametersWithDirection[indexFound] = new ParameterData
+                                {
                                     Direction = itemParam.Direction,
                                     Type = itemParam.DbType,
                                     Size = itemParam.Size,
@@ -849,7 +850,7 @@ namespace IOC.FW.Repository.EntityFramework
                 }
                 catch (Exception ex)
                 {
-                    if (contextTransaction != null 
+                    if (contextTransaction != null
                         && transaction.Connection != null)
                     {
                         contextTransaction.Rollback();
