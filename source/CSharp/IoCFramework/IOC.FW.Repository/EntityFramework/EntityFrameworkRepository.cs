@@ -22,10 +22,9 @@ namespace IOC.FW.Repository.EntityFramework
         : IRepository<TModel>
         where TModel : class, new()
     {
-
         public RepositoryEnumerator.RepositoryType Type
         {
-            get 
+            get
             {
                 return RepositoryEnumerator.RepositoryType.EntityFramework;
             }
@@ -78,7 +77,7 @@ namespace IOC.FW.Repository.EntityFramework
             IQueryable<TModel> query = dbSet;
 
             foreach (Expression<Func<TModel, object>> navigationProperty in navigationProperties)
-                query = query.Include(navigationProperty);
+                query = query.Include(navigationProperty) ?? query;
 
             return query;
         }
@@ -306,29 +305,10 @@ namespace IOC.FW.Repository.EntityFramework
         /// Implementação de método de IBaseDAO destinado a encontrar todos os registros de uma tabela vinculada a uma Model.
         /// Há possibilidade de incluir objetos referenciais a chaves estrangeiras
         /// </summary>
-        /// <param name="order">Delegate contendo parâmetros de ordenação</param>
-        /// <param name="navigationProperties">Objetos de uma Model referentes a chaves estrangeiras no database</param>
         /// <returns>Implementação de IList com os registros encontrados.</returns>
-        public IList<TModel> SelectAll(
-            Func<IQueryable<TModel>, IOrderedQueryable<TModel>> order,
-            params Expression<Func<TModel, object>>[] navigationProperties
-        )
+        public IList<TModel> SelectAll()
         {
-            List<TModel> list;
-
-            using (var context = CreateContext())
-            {
-                var query = context.DbQuery;
-                query = IncludeReference(context.DbObject, navigationProperties);
-
-                if (order != null)
-                    query = order(query);
-
-                list = query
-                   .AsNoTracking()
-                   .ToList();
-            }
-            return list;
+            return SelectAll(null, null);
         }
 
         /// <summary>
@@ -345,6 +325,45 @@ namespace IOC.FW.Repository.EntityFramework
         }
 
         /// <summary>
+        /// Implementação de método de IBaseDAO destinado a encontrar todos os registros de uma tabela vinculada a uma Model.
+        /// Há possibilidade de incluir objetos referenciais a chaves estrangeiras
+        /// </summary>
+        /// <param name="navigationProperties">Objetos de uma Model referentes a chaves estrangeiras no database</param>
+        /// <returns>Implementação de IList com os registros encontrados.</returns>
+        public IList<TModel> SelectAll(
+            Func<IQueryable<TModel>, IOrderedQueryable<TModel>> order
+        )
+        {
+            return SelectAll(order, null);
+        }
+
+        /// <summary>
+        /// Implementação de método de IBaseDAO destinado a encontrar todos os registros de uma tabela vinculada a uma Model.
+        /// Há possibilidade de incluir objetos referenciais a chaves estrangeiras
+        /// </summary>
+        /// <param name="order">Delegate contendo parâmetros de ordenação</param>
+        /// <param name="navigationProperties">Objetos de uma Model referentes a chaves estrangeiras no database</param>
+        /// <returns>Implementação de IList com os registros encontrados.</returns>
+        public IList<TModel> SelectAll(
+            Func<IQueryable<TModel>, IOrderedQueryable<TModel>> order,
+            Expression<Func<TModel, object>>[] navigationProperties
+        )
+        {
+            return Select(null, order, navigationProperties);
+        }
+
+        /// <summary>
+        /// Implementação de método de IBaseDAO destinado a encontrar todos os registros de uma tabela vinculada a uma model. 
+        /// </summary>
+        /// <param name="where">Delegate contendo parâmetros para composição de WHERE</param>
+        /// <param name="navigationProperties">Objetos de uma Model referentes a chaves estrangeiras no database</param>
+        /// <returns>Implementação de IList com os registros encontrados.</returns>
+        public IList<TModel> Select(Expression<Func<TModel, bool>> where)
+        {
+            return Select(where, null, null);
+        }
+
+        /// <summary>
         /// Implementação de método de IBaseDAO destinado a encontrar todos os registros de uma tabela vinculada a uma model. 
         /// </summary>
         /// <param name="where">Delegate contendo parâmetros para composição de WHERE</param>
@@ -352,10 +371,24 @@ namespace IOC.FW.Repository.EntityFramework
         /// <returns>Implementação de IList com os registros encontrados.</returns>
         public IList<TModel> Select(
             Expression<Func<TModel, bool>> where,
-            params Expression<Func<TModel, object>>[] navigationProperties
+            Expression<Func<TModel, object>>[] navigationProperties
         )
         {
             return Select(where, null, navigationProperties);
+        }
+
+        /// <summary>
+        /// Implementação de método de IBaseDAO destinado a encontrar todos os registros de uma tabela vinculada a uma model. 
+        /// </summary>
+        /// <param name="where">Delegate contendo parâmetros para composição de WHERE</param>
+        /// <param name="navigationProperties">Objetos de uma Model referentes a chaves estrangeiras no database</param>
+        /// <returns>Implementação de IList com os registros encontrados.</returns>
+        public IList<TModel> Select(
+            Expression<Func<TModel, bool>> where,
+            Func<IQueryable<TModel>, IOrderedQueryable<TModel>> order
+        )
+        {
+            return Select(where, order, null);
         }
 
         /// <summary>
@@ -368,7 +401,7 @@ namespace IOC.FW.Repository.EntityFramework
         public IList<TModel> Select(
             Expression<Func<TModel, bool>> where,
             Func<IQueryable<TModel>, IOrderedQueryable<TModel>> order,
-            params Expression<Func<TModel, object>>[] navigationProperties
+            Expression<Func<TModel, object>>[] navigationProperties
         )
         {
             List<TModel> list;
@@ -376,18 +409,47 @@ namespace IOC.FW.Repository.EntityFramework
             using (var context = CreateContext())
             {
                 var query = context.DbQuery;
-                query = IncludeReference(context.DbObject, navigationProperties);
+                Expression<Func<TModel, bool>> whereClause = p => true;
+
+                if (navigationProperties != null && navigationProperties.Length > 0)
+                    query = IncludeReference(context.DbObject, navigationProperties);
 
                 if (order != null)
                     query = order(query);
 
+                if (where != null)
+                    whereClause = where;
+
                 list = query
                    .AsNoTracking()
-                   .Where(where)
+                   .Where(whereClause)
                    .ToList();
             }
 
             return list;
+        }
+
+        /// <summary>
+        /// Implementação de método de IBaseDAO destinado a encontrar um unico registro de uma tabela vinculada a uma model. 
+        /// </summary>
+        /// <returns>Objeto de classe modelo preenchido com registro encontrado</returns>
+        public TModel SelectSingle(
+            Func<IQueryable<TModel>, IOrderedQueryable<TModel>> order
+        )
+        {
+            return SelectSingle(null, order, null);
+        }
+
+        /// <summary>
+        /// Implementação de método de IBaseDAO destinado a encontrar um unico registro de uma tabela vinculada a uma model. 
+        /// </summary>
+        /// <returns>Objeto de classe modelo preenchido com registro encontrado</returns>
+        public TModel SelectSingle(
+            Expression<Func<TModel, bool>> where,
+            Func<IQueryable<TModel>, IOrderedQueryable<TModel>> order
+        )
+        {
+            return SelectSingle(where, order, null);
         }
 
         /// <summary>
@@ -398,18 +460,58 @@ namespace IOC.FW.Repository.EntityFramework
         /// <returns>Objeto de classe modelo preenchido com registro encontrado</returns>
         public TModel SelectSingle(
             Expression<Func<TModel, bool>> where,
-            params Expression<Func<TModel, object>>[] navigationProperties
+            Expression<Func<TModel, object>>[] navigationProperties
+        )
+        {
+            return SelectSingle(where, null, navigationProperties);
+        }
+
+        /// <summary>
+        /// Implementação de método de IBaseDAO destinado a encontrar um unico registro de uma tabela vinculada a uma model. 
+        /// </summary>
+        /// <param name="where">Delegate contendo parâmetros para composição de WHERE</param>
+        /// <param name="navigationProperties">Objetos de uma Model referentes a chaves estrangeiras no database</param>
+        /// <returns>Objeto de classe modelo preenchido com registro encontrado</returns>
+        public TModel SelectSingle(
+            Func<IQueryable<TModel>, IOrderedQueryable<TModel>> order,
+            Expression<Func<TModel, object>>[] navigationProperties
+        )
+        {
+            return SelectSingle(null, order, navigationProperties);
+        }
+
+        /// <summary>
+        /// Implementação de método de IBaseDAO destinado a encontrar um unico registro de uma tabela vinculada a uma model. 
+        /// </summary>
+        /// <param name="where">Delegate contendo parâmetros para composição de WHERE</param>
+        /// <param name="navigationProperties">Objetos de uma Model referentes a chaves estrangeiras no database</param>
+        /// <returns>Objeto de classe modelo preenchido com registro encontrado</returns>
+        public TModel SelectSingle(
+            Expression<Func<TModel, bool>> where,
+            Func<IQueryable<TModel>, IOrderedQueryable<TModel>> order,
+            Expression<Func<TModel, object>>[] navigationProperties
         )
         {
             TModel item = null;
 
             using (var context = CreateContext())
             {
-                context.DbQuery = IncludeReference(context.DbObject, navigationProperties);
+                Expression<Func<TModel, bool>> whereClause = p => true;
 
-                item = context.DbQuery
+                var query = context.DbQuery;
+
+                if (navigationProperties != null && navigationProperties.Length > 0)
+                    query = IncludeReference(context.DbObject, navigationProperties);
+
+                if (order != null)
+                    query = order(query);
+
+                if (where != null)
+                    whereClause = where;
+
+                item = query
                     .AsNoTracking()
-                    .FirstOrDefault(where);
+                    .FirstOrDefault(whereClause);
             }
 
             return item;
@@ -810,7 +912,7 @@ namespace IOC.FW.Repository.EntityFramework
         /// <returns>Quantidade de registros</returns>
         public int Count()
         {
-            return this.Count(m => true);
+            return Count(m => true);
         }
 
         /// <summary>

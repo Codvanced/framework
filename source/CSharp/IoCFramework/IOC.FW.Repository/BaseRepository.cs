@@ -61,11 +61,25 @@ namespace IOC.FW.Repository
             return new TModel();
         }
 
-        public List<TModel> List()
+        public List<TModel> List()  
         {
             return new List<TModel>();
         }
 
+        /// <summary>
+        /// Implementação de método de IBaseDAO destinado a encontrar todos os registros de uma tabela vinculada a uma Model.
+        /// </summary>
+        /// <returns>Implementação de IList com os registros encontrados.</returns>
+        public IList<TModel> SelectAll()
+        {
+            return _dao.SelectAll();
+        }
+
+        /// <summary>
+        /// Implementação de método de IBaseDAO destinado a encontrar todos os registros de uma tabela vinculada a uma Model.
+        /// </summary>
+        /// <param name="navigationProperties">Objetos de uma Model referentes a chaves estrangeiras no database</param>
+        /// <returns>Implementação de IList com os registros encontrados.</returns>
         public IList<TModel> SelectAll(
             params Expression<Func<TModel, object>>[] navigationProperties
         )
@@ -73,37 +87,158 @@ namespace IOC.FW.Repository
             return _dao.SelectAll(navigationProperties);
         }
 
+        /// <summary>
+        /// Implementação de método de IBaseDAO destinado a encontrar todos os registros de uma tabela vinculada a uma Model.
+        /// Há possibilidade de incluir objetos referenciais a chaves estrangeiras
+        /// </summary>
+        /// <param name="order">Delegate contendo parâmetros de ordenação</param>
+        /// <returns>Implementação de IList com os registros encontrados.</returns>
+        public IList<TModel> SelectAll(
+            Func<IQueryable<TModel>, IOrderedQueryable<TModel>> order
+        )
+        {
+            return _dao.SelectAll(order);
+        }
+
+
+        /// <summary>
+        /// Implementação de método de IBaseDAO destinado a encontrar todos os registros de uma tabela vinculada a uma Model.
+        /// Há possibilidade de incluir objetos referenciais a chaves estrangeiras
+        /// </summary>
+        /// <param name="order">Delegate contendo parâmetros de ordenação</param>
+        /// <param name="navigationProperties">Objetos de uma Model referentes a chaves estrangeiras no database</param>
+        /// <returns>Implementação de IList com os registros encontrados.</returns>
         public IList<TModel> SelectAll(
             Func<IQueryable<TModel>, IOrderedQueryable<TModel>> order,
-            params Expression<Func<TModel, object>>[] navigationProperties
+            Expression<Func<TModel, object>>[] navigationProperties
         )
         {
             return _dao.SelectAll(order, navigationProperties);
         }
 
-        public IList<TModel> Select(
-            Expression<Func<TModel, bool>> where,
-            Func<IQueryable<TModel>, IOrderedQueryable<TModel>> order,
-            params Expression<Func<TModel, object>>[] navigationProperties
-        )
+
+        /// <summary>
+        /// Implementação de método de IBaseDAO destinado a encontrar todos os registros de uma tabela vinculada a uma model. 
+        /// </summary>
+        /// <param name="where">Delegate contendo parâmetros para composição de WHERE</param>
+        /// <returns>Implementação de IList com os registros encontrados.</returns>
+        public IList<TModel> Select(Expression<Func<TModel, bool>> where)
         {
-            return _dao.Select(where, order, navigationProperties);
+            return _dao.Select(where);
         }
 
+        /// <summary>
+        /// Implementação de método de IBaseDAO destinado a encontrar todos os registros de uma tabela vinculada a uma model. 
+        /// </summary>
+        /// <param name="where">Delegate contendo parâmetros para composição de WHERE</param>
+        /// <param name="navigationProperties">Objetos de uma Model referentes a chaves estrangeiras no database</param>
+        /// <returns>Implementação de IList com os registros encontrados.</returns>
         public IList<TModel> Select(
             Expression<Func<TModel, bool>> where,
-            params Expression<Func<TModel, object>>[] navigationProperties
+            Expression<Func<TModel, object>>[] navigationProperties
         )
         {
             return _dao.Select(where, navigationProperties);
         }
 
+        /// <summary>
+        /// Implementação de método de IBaseDAO destinado a encontrar todos os registros de uma tabela vinculada a uma model. 
+        /// </summary>
+        /// <param name="where">Delegate contendo parâmetros para composição de WHERE</param>
+        /// <param name="order">Delegate contendo parâmetros de ordenação</param>
+        /// <returns>Implementação de IList com os registros encontrados.</returns>
+        public IList<TModel> Select(
+            Expression<Func<TModel, bool>> where,
+            Func<IQueryable<TModel>, IOrderedQueryable<TModel>> order
+        )
+        {
+            return _dao.Select(where, order);
+        }
+
+        /// <summary>
+        /// Implementação de método de IBaseDAO destinado a encontrar todos os registros de uma tabela vinculada a uma model. 
+        /// </summary>
+        /// <param name="where">Delegate contendo parâmetros para composição de WHERE</param>
+        /// <param name="order">Delegate contendo parâmetros de ordenação</param>
+        /// <param name="navigationProperties">Objetos de uma Model referentes a chaves estrangeiras no database</param>
+        /// <returns>Implementação de IList com os registros encontrados.</returns>
+        public IList<TModel> Select(
+            Expression<Func<TModel, bool>> where,
+            Func<IQueryable<TModel>, IOrderedQueryable<TModel>> order,
+            Expression<Func<TModel, object>>[] navigationProperties
+        )
+        {
+            return _dao.Select(where, order, navigationProperties);
+        }
+
+        /// <summary>
+        /// Implementação de método de IBaseDAO destinado a encontrar um unico registro de uma tabela vinculada a uma model. 
+        /// </summary>
+        /// <param name="order">Delegate contendo parâmetros de ordenação</param>
+        /// <returns>Objeto de classe modelo preenchido com registro encontrado</returns>
+        public TModel SelectSingle(
+            Func<IQueryable<TModel>, IOrderedQueryable<TModel>> order
+        )
+        {
+            return _dao.SelectSingle(order);
+        }
+
+        /// <summary>
+        /// Implementação de método de IBaseDAO destinado a encontrar um unico registro de uma tabela vinculada a uma model. 
+        /// <param name="where">Delegate contendo parâmetros para composição de WHERE</param>
+        /// <param name="order">Delegate contendo parâmetros de ordenação</param>
+        /// </summary>
+        /// <returns>Objeto de classe modelo preenchido com registro encontrado</returns>
         public TModel SelectSingle(
             Expression<Func<TModel, bool>> where,
-            params Expression<Func<TModel, object>>[] navigationProperties
+            Func<IQueryable<TModel>, IOrderedQueryable<TModel>> order
+        )
+        {
+            return _dao.SelectSingle(where, order);
+        }
+
+        /// <summary>
+        /// Implementação de método de IBaseDAO destinado a encontrar um unico registro de uma tabela vinculada a uma model. 
+        /// </summary>
+        /// <param name="where">Delegate contendo parâmetros para composição de WHERE</param>
+        /// <param name="navigationProperties">Objetos de uma Model referentes a chaves estrangeiras no database</param>
+        /// <returns>Objeto de classe modelo preenchido com registro encontrado</returns>
+        public TModel SelectSingle(
+            Expression<Func<TModel, bool>> where,
+            Expression<Func<TModel, object>>[] navigationProperties
         )
         {
             return _dao.SelectSingle(where, navigationProperties);
+        }
+
+        /// <summary>
+        /// Implementação de método de IBaseDAO destinado a encontrar um unico registro de uma tabela vinculada a uma model. 
+        /// </summary>
+        /// <param name="order">Delegate contendo parâmetros de ordenação</param>
+        /// <param name="navigationProperties">Objetos de uma Model referentes a chaves estrangeiras no database</param>
+        /// <returns>Objeto de classe modelo preenchido com registro encontrado</returns>
+        public TModel SelectSingle(
+            Func<IQueryable<TModel>, IOrderedQueryable<TModel>> order,
+            Expression<Func<TModel, object>>[] navigationProperties
+        )
+        {
+            return _dao.SelectSingle(order, navigationProperties);
+        }
+
+        /// <summary>
+        /// Implementação de método de IBaseDAO destinado a encontrar um unico registro de uma tabela vinculada a uma model. 
+        /// </summary>
+        /// <param name="where">Delegate contendo parâmetros para composição de WHERE</param>
+        /// <param name="order">Delegate contendo parâmetros de ordenação</param>
+        /// <param name="navigationProperties">Objetos de uma Model referentes a chaves estrangeiras no database</param>
+        /// <returns>Objeto de classe modelo preenchido com registro encontrado</returns>
+        public TModel SelectSingle(
+            Expression<Func<TModel, bool>> where,
+            Func<IQueryable<TModel>, IOrderedQueryable<TModel>> order,
+            Expression<Func<TModel, object>>[] navigationProperties
+        )
+        {
+            return _dao.SelectSingle(where, order, navigationProperties);
         }
 
         public void Insert(params TModel[] items)

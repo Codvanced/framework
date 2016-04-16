@@ -6,6 +6,7 @@ using IOC.FW.Abstraction.Repository;
 using IOC.FW.Abstraction.Miscellaneous;
 using IOC.FW.Shared.Enumerators;
 using IOC.FW.Shared.Model.Repository;
+using System.Linq.Expressions;
 
 namespace IOC.FW.Repository.ADO
 {
@@ -43,31 +44,6 @@ namespace IOC.FW.Repository.ADO
         }
 
         public List<TModel> List()
-        {
-            throw new NotImplementedException();
-        }
-
-        public IList<TModel> SelectAll(params System.Linq.Expressions.Expression<Func<TModel, object>>[] navigationProperties)
-        {
-            throw new NotImplementedException();
-        }
-
-        public IList<TModel> SelectAll(Func<IQueryable<TModel>, IOrderedQueryable<TModel>> order, params System.Linq.Expressions.Expression<Func<TModel, object>>[] navigationProperties)
-        {
-            throw new NotImplementedException();
-        }
-
-        public IList<TModel> Select(System.Linq.Expressions.Expression<Func<TModel, bool>> where, Func<IQueryable<TModel>, IOrderedQueryable<TModel>> order, params System.Linq.Expressions.Expression<Func<TModel, object>>[] navigationProperties)
-        {
-            throw new NotImplementedException();
-        }
-
-        public IList<TModel> Select(System.Linq.Expressions.Expression<Func<TModel, bool>> where, params System.Linq.Expressions.Expression<Func<TModel, object>>[] navigationProperties)
-        {
-            throw new NotImplementedException();
-        }
-
-        public TModel SelectSingle(System.Linq.Expressions.Expression<Func<TModel, bool>> where, params System.Linq.Expressions.Expression<Func<TModel, object>>[] navigationProperties)
         {
             throw new NotImplementedException();
         }
@@ -128,6 +104,71 @@ namespace IOC.FW.Repository.ADO
         }
 
         public void ExecuteWithTransaction(IsolationLevel isolation, IBaseTransaction[] DAOs, Action<System.Data.Common.DbTransaction> transactionExecution)
+        {
+            throw new NotImplementedException();
+        }
+
+        public IList<TModel> SelectAll()
+        {
+            throw new NotImplementedException();
+        }
+
+        public IList<TModel> SelectAll(params Expression<Func<TModel, object>>[] navigationProperties)
+        {
+            throw new NotImplementedException();
+        }
+
+        public IList<TModel> SelectAll(Func<IQueryable<TModel>, IOrderedQueryable<TModel>> order)
+        {
+            throw new NotImplementedException();
+        }
+
+        public IList<TModel> SelectAll(Func<IQueryable<TModel>, IOrderedQueryable<TModel>> order, Expression<Func<TModel, object>>[] navigationProperties)
+        {
+            throw new NotImplementedException();
+        }
+
+        public IList<TModel> Select(Expression<Func<TModel, bool>> where)
+        {
+            throw new NotImplementedException();
+        }
+
+        public IList<TModel> Select(Expression<Func<TModel, bool>> where, Expression<Func<TModel, object>>[] navigationProperties)
+        {
+            throw new NotImplementedException();
+        }
+
+        public IList<TModel> Select(Expression<Func<TModel, bool>> where, Func<IQueryable<TModel>, IOrderedQueryable<TModel>> order)
+        {
+            throw new NotImplementedException();
+        }
+
+        public IList<TModel> Select(Expression<Func<TModel, bool>> where, Func<IQueryable<TModel>, IOrderedQueryable<TModel>> order, Expression<Func<TModel, object>>[] navigationProperties)
+        {
+            throw new NotImplementedException();
+        }
+
+        public TModel SelectSingle(Expression<Func<TModel, bool>> where, Func<IQueryable<TModel>, IOrderedQueryable<TModel>> order)
+        {
+            throw new NotImplementedException();
+        }
+
+        public TModel SelectSingle(Expression<Func<TModel, bool>> where, Expression<Func<TModel, object>>[] navigationProperties)
+        {
+            throw new NotImplementedException();
+        }
+
+        public TModel SelectSingle(Func<IQueryable<TModel>, IOrderedQueryable<TModel>> order, Expression<Func<TModel, object>>[] navigationProperties)
+        {
+            throw new NotImplementedException();
+        }
+
+        public TModel SelectSingle(Expression<Func<TModel, bool>> where, Func<IQueryable<TModel>, IOrderedQueryable<TModel>> order, Expression<Func<TModel, object>>[] navigationProperties)
+        {
+            throw new NotImplementedException();
+        }
+
+        public TModel SelectSingle(Func<IQueryable<TModel>, IOrderedQueryable<TModel>> order)
         {
             throw new NotImplementedException();
         }
