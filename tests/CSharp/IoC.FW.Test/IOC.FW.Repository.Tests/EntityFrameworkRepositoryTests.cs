@@ -66,7 +66,7 @@ namespace IOC.FW.Repository.Tests
             ).Returns(_context);
         }
 
-        [Fact(DisplayName = "Should order by descending when call SelectSingle")]
+        [Fact(DisplayName = "[EF_REP] : Should order by descending when call SelectSingle")]
         public void Should_order_by_descending_when_call_SelectSingle()
         {
             //arrange 
@@ -81,7 +81,7 @@ namespace IOC.FW.Repository.Tests
             Assert.Equal(onlyOneItem.Id, _modelsList.Last().Id);
         }
 
-        [Fact(DisplayName = "Should order by descending and navigate when call SelectSingle")]
+        [Fact(DisplayName = "[EF_REP] : Should order by descending and navigate when call SelectSingle")]
         public void Should_order_by_descending_and_navigate_when_call_SelectSingle()
         {
             //arrange 
@@ -99,7 +99,7 @@ namespace IOC.FW.Repository.Tests
             Assert.Equal(onlyOneItem.Id, _modelsList.Last().Id);
         }
 
-        [Fact(DisplayName = "Should filter by name and order by ascending when call SelectSingle")]
+        [Fact(DisplayName = "[EF_REP] : Should filter by name and order by ascending when call SelectSingle")]
         public void Should_filter_by_name_and_order_by_ascending_when_call_SelectSingle()
         {
             //arrange 
@@ -115,7 +115,7 @@ namespace IOC.FW.Repository.Tests
             Assert.Equal(onlyOneItem.Id, _modelsList.ToArray()[1].Id);
         }
 
-        [Fact(DisplayName = "Should filter by name and order by ascending when call SelectSingle")]
+        [Fact(DisplayName = "[EF_REP] : Should filter by name and order by ascending when call SelectSingle")]
         public void Should_filter_by_name_adding_navigation_and_order_by_ascending_when_call_SelectSingle()
         {
             //arrange 
@@ -134,7 +134,7 @@ namespace IOC.FW.Repository.Tests
             Assert.Equal(onlyOneItem.Id, _modelsList.ToArray()[1].Id);
         }
 
-        [Fact(DisplayName = "Should filter by id and order by descending when call Select")]
+        [Fact(DisplayName = "[EF_REP] : Should filter by id and order by descending when call Select")]
         public void Should_filter_by_id_and_order_by_descending_when_call_Select()
         {
             //arrange 
@@ -150,7 +150,7 @@ namespace IOC.FW.Repository.Tests
             Assert.Equal(onlyOneItem.Count, 1);
         }
 
-        [Fact(DisplayName = "Should filter by id and order by descending when call Select")]
+        [Fact(DisplayName = "[EF_REP] : Should filter by id and order by descending when call Select")]
         public void Should_filter_by_id_when_call_Select()
         {
             //arrange 
@@ -165,7 +165,7 @@ namespace IOC.FW.Repository.Tests
             Assert.Equal(onlyOneItem.Count, 1);
         }
 
-        [Fact(DisplayName = "Should order by id when call SelectAll")]
+        [Fact(DisplayName = "[EF_REP] : Should order by id when call SelectAll")]
         public void Should_order_by_id_when_call_SelectAll()
         {
             //arrange 
@@ -180,7 +180,7 @@ namespace IOC.FW.Repository.Tests
             Assert.Equal(items.First().Id, 4);
         }
 
-        [Fact(DisplayName = "Should order by id adding navigation when call SelectAll")]
+        [Fact(DisplayName = "[EF_REP] : Should order by id adding navigation when call SelectAll")]
         public void Should_order_by_id_adding_navigation_when_call_SelectAll()
         {
             //arrange 
@@ -199,7 +199,7 @@ namespace IOC.FW.Repository.Tests
             Assert.Equal(items.First().Id, 4);
         }
 
-        [Fact(DisplayName = "Should get all items when call SelectAll")]
+        [Fact(DisplayName = "[EF_REP] : Should get all items when call SelectAll")]
         public void Should_get_all_items_when_call_SelectAll()
         {
             //arrange 

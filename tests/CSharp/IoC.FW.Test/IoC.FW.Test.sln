@@ -19,6 +19,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "IOC.FW.Shared", "..\..\..\S
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "IOC.FW.Abstraction", "..\..\..\Source\CSharp\IoCFramework\IOC.FW.Abstraction\IOC.FW.Abstraction.csproj", "{5B3D5261-8415-433C-A27D-B22CA4E991B7}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Integration.Tests", "Integration.Tests", "{3BD81E41-6BDB-4D08-B57D-5D67D7B3FEE9}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "IOC.FW.Repository.IntegrationTests.Sqlite", "IOC.FW.Repository.IntegrationTests.Sqlite\IOC.FW.Repository.IntegrationTests.Sqlite.csproj", "{8796582A-28BC-4673-86DB-549FCF3F2D6A}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -49,6 +53,10 @@ Global
 		{5B3D5261-8415-433C-A27D-B22CA4E991B7}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{5B3D5261-8415-433C-A27D-B22CA4E991B7}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{5B3D5261-8415-433C-A27D-B22CA4E991B7}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8796582A-28BC-4673-86DB-549FCF3F2D6A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8796582A-28BC-4673-86DB-549FCF3F2D6A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8796582A-28BC-4673-86DB-549FCF3F2D6A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8796582A-28BC-4673-86DB-549FCF3F2D6A}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -60,5 +68,6 @@ Global
 		{A2718B96-3F93-4D29-8942-E841F9EB5457} = {E0E16939-198F-4111-A286-615014E9DD7F}
 		{7323E348-0AE0-4F75-A2D8-ADFF0F03C04B} = {E0E16939-198F-4111-A286-615014E9DD7F}
 		{5B3D5261-8415-433C-A27D-B22CA4E991B7} = {E0E16939-198F-4111-A286-615014E9DD7F}
+		{8796582A-28BC-4673-86DB-549FCF3F2D6A} = {3BD81E41-6BDB-4D08-B57D-5D67D7B3FEE9}
 	EndGlobalSection
 EndGlobal
