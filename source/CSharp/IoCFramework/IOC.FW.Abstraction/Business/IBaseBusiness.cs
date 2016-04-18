@@ -14,18 +14,6 @@ namespace IOC.FW.Abstraction.Business
         where TModel : class, new()
     {
         /// <summary>
-        /// Implementação de método de IBaseDAO destinado a retornar uma implementação de model
-        /// </summary>
-        /// <returns>Uma nova instância de TModel</returns>
-        TModel Model();
-
-        /// <summary>
-        /// Implementação de método de IBaseDAO destinado a retornar uma implementação de lista de model
-        /// </summary>
-        /// <returns>Uma nova instância de lista de TModel</returns>
-        List<TModel> List();
-
-        /// <summary>
         /// Implementação de método de IBaseDAO destinado a encontrar todos os registros de uma tabela vinculada a uma Model.
         /// </summary>
         /// <returns>Implementação de IList com os registros encontrados.</returns>

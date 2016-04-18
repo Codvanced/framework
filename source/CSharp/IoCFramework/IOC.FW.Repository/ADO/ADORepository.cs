@@ -38,16 +38,6 @@ namespace IOC.FW.Repository.ADO
             throw new NotImplementedException();
         }
 
-        public TModel Model()
-        {
-            throw new NotImplementedException();
-        }
-
-        public List<TModel> List()
-        {
-            throw new NotImplementedException();
-        }
-
         public void Insert(params TModel[] items)
         {
             throw new NotImplementedException();

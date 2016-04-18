@@ -890,24 +890,6 @@ namespace IOC.FW.Repository.EntityFramework
         }
 
         /// <summary>
-        /// Implementacao de método para devolver um objeto de model
-        /// </summary>
-        /// <returns>Retorna novo objeto</returns>
-        public TModel Model()
-        {
-            return new TModel();
-        }
-
-        /// <summary>
-        /// Implementacao de método para devolver uma listade de model
-        /// </summary>
-        /// <returns>Retorna nova lista</returns>
-        public List<TModel> List()
-        {
-            return new List<TModel>();
-        }
-
-        /// <summary>
         /// Implementação de método para retornar um count da tabela vinculada ao objeto
         /// </summary>
         /// <returns>Quantidade de registros</returns>

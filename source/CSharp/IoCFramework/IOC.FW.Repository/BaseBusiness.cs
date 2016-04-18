@@ -22,24 +22,6 @@ namespace IOC.FW.Repository
         private readonly IRepository<TModel> _dao;
 
         /// <summary>
-        /// Implementação de método de IBaseDAO destinado a retornar uma implementação de model
-        /// </summary>
-        /// <returns>Uma nova instância de TModel</returns>
-        public TModel Model()
-        {
-            return new TModel();
-        }
-
-        /// <summary>
-        /// Implementação de método de IBaseDAO destinado a retornar uma implementação de lista de model
-        /// </summary>
-        /// <returns>Uma nova instância de lista de TModel</returns>
-        public List<TModel> List()
-        {
-            return new List<TModel>();
-        }
-
-        /// <summary>
         /// Constructor recebendo uma implementação de DAO
         /// </summary>
         /// <param name="dao">Implementação de Base DAO</param>

@@ -56,16 +56,6 @@ namespace IOC.FW.Repository
             return _dao.ExecuteQuery(sql, parametersWithDirection, cmdType);
         }
 
-        public TModel Model()
-        {
-            return new TModel();
-        }
-
-        public List<TModel> List()  
-        {
-            return new List<TModel>();
-        }
-
         /// <summary>
         /// Implementação de método de IBaseDAO destinado a encontrar todos os registros de uma tabela vinculada a uma Model.
         /// </summary>
