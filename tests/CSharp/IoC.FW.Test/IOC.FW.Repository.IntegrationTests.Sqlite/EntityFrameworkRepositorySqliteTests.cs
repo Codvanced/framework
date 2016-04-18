@@ -213,6 +213,17 @@ INSERT INTO ModelRef(IdRef, Name) VALUES(2, 'Ref Test 5');
             Assert.Equal(2, item.Id);
         }
 
+        [Fact(DisplayName = "[EF_REP_INTEGRATION] : Should return only one data filtered when call SelectSingle with where clause")]
+        public void Should_return_only_one_data_filtered_when_call_SelectSingle_with_where_clause()
+        {
+            var item = _repository.SelectSingle(
+                where: w => w.Name.Contains("Test 2")
+            );
+
+            Assert.NotNull(item);
+            Assert.Equal(2, item.Id);
+        }
+
         [Fact(DisplayName = "[EF_REP_INTEGRATION] : Should return only one data ordered when call SelectSingle with where clause and order")]
         public void Should_return_only_one_data_ordered_when_call_SelectSingle_with_where_clause_and_order()
         {

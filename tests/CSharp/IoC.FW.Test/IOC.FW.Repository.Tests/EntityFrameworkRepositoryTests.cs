@@ -115,6 +115,21 @@ namespace IOC.FW.Repository.Tests
             Assert.Equal(onlyOneItem.Id, _modelsList.ToArray()[1].Id);
         }
 
+        [Fact(DisplayName = "[EF_REP] : Should filter by name when call SelectSingle")]
+        public void Should_filter_by_name_when_call_SelectSingle()
+        {
+            //arrange 
+            var repository = new EntityFrameworkRepository<Model>(_contextFactory);
+
+            //act
+            var onlyOneItem = repository.SelectSingle(
+                where: w => w.Name.Contains("Test 2")
+            );
+
+            //assert
+            Assert.Equal(onlyOneItem.Id, _modelsList.ToArray()[1].Id);
+        }
+
         [Fact(DisplayName = "[EF_REP] : Should filter by name and order by ascending when call SelectSingle")]
         public void Should_filter_by_name_adding_navigation_and_order_by_ascending_when_call_SelectSingle()
         {

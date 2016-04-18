@@ -28,7 +28,7 @@ namespace IOC.FW.Repository
         {
             _dao = dao;
         }
-        
+
         public IList<TModel> ExecuteQuery(
             string sql,
             Dictionary<string, object> parameters,
@@ -171,6 +171,18 @@ namespace IOC.FW.Repository
         )
         {
             return _dao.SelectSingle(order);
+        }
+
+        /// <summary>
+        /// Implementação de método de IBaseDAO destinado a encontrar um unico registro de uma tabela vinculada a uma model. 
+        /// </summary>
+        /// <param name="where">Delegate contendo parâmetros para composição de WHERE</param>
+        /// <returns>Objeto de classe modelo preenchido com registro encontrado</returns>
+        public TModel SelectSingle(
+            Expression<Func<TModel, bool>> where
+        )
+        {
+            return _dao.SelectSingle(where);
         }
 
         /// <summary>

@@ -143,6 +143,11 @@ namespace IOC.FW.Repository.ADO
             throw new NotImplementedException();
         }
 
+        public TModel SelectSingle(Expression<Func<TModel, bool>> where)
+        {
+            throw new NotImplementedException();
+        }
+
         public IList<TModel> Select()
         {
             throw new NotImplementedException();

@@ -445,6 +445,17 @@ namespace IOC.FW.Repository.EntityFramework
         /// </summary>
         /// <returns>Objeto de classe modelo preenchido com registro encontrado</returns>
         public TModel SelectSingle(
+            Expression<Func<TModel, bool>> where
+        )
+        {
+            return SelectSingle(where, null, null);
+        }
+
+        /// <summary>
+        /// Implementação de método de IBaseDAO destinado a encontrar um unico registro de uma tabela vinculada a uma model. 
+        /// </summary>
+        /// <returns>Objeto de classe modelo preenchido com registro encontrado</returns>
+        public TModel SelectSingle(
             Expression<Func<TModel, bool>> where,
             Func<IQueryable<TModel>, IOrderedQueryable<TModel>> order
         )

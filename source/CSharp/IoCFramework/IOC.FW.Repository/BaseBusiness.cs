@@ -149,6 +149,18 @@ namespace IOC.FW.Repository
 
         /// <summary>
         /// Implementação de método de IBaseDAO destinado a encontrar um unico registro de uma tabela vinculada a uma model. 
+        /// </summary>
+        /// <param name="where">Delegate contendo parâmetros para composição de WHERE</param>
+        /// <returns>Objeto de classe modelo preenchido com registro encontrado</returns>
+        public TModel SelectSingle(
+            Expression<Func<TModel, bool>> where
+        )
+        {
+            return _dao.SelectSingle(where);
+        }
+
+        /// <summary>
+        /// Implementação de método de IBaseDAO destinado a encontrar um unico registro de uma tabela vinculada a uma model. 
         /// <param name="where">Delegate contendo parâmetros para composição de WHERE</param>
         /// <param name="order">Delegate contendo parâmetros de ordenação</param>
         /// </summary>
