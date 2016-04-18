@@ -90,7 +90,7 @@ INSERT INTO ModelRef(IdRef, Name) VALUES(2, 'Ref Test 5');
         [Fact(DisplayName = "[EF_REP_INTEGRATION] : Should select all data inserted on setup phase")]
         public void Should_select_all_data_inserted_on_setup_phase()
         {
-            var allItems = _repository.SelectAll();
+            var allItems = _repository.Select();
 
             Assert.NotEmpty(allItems);
             Assert.Equal(initialModelSetup.Length, allItems.Count);
@@ -100,7 +100,7 @@ INSERT INTO ModelRef(IdRef, Name) VALUES(2, 'Ref Test 5');
         [Fact(DisplayName = "[EF_REP_INTEGRATION] : Should select all data ordered by id desc inserted on setup phase")]
         public void Should_select_all_data_ordered_by_id_desc_inserted_on_setup_phase()
         {
-            var allItems = _repository.SelectAll(
+            var allItems = _repository.Select(
                 order: o => o.OrderByDescending(p => p.Id)
             );
 
@@ -112,7 +112,11 @@ INSERT INTO ModelRef(IdRef, Name) VALUES(2, 'Ref Test 5');
         [Fact(DisplayName = "[EF_REP_INTEGRATION] : Should return all data with references when call SelectAll with navigation properties")]
         public void Should_return_all_data_with_references_when_call_SelectAll_with_navigation_properties()
         {
-            var allItems = _repository.SelectAll(navigationProperties: n => n.ModelRefs);
+            var allItems = _repository.Select(
+                navigationProperties: _expressionHelper.Add(
+                    n => n.ModelRefs
+                ).Evaluate()
+            );
 
             Assert.NotEmpty(allItems);
             Assert.Equal(initialModelSetup.Length, allItems.Count);
@@ -124,7 +128,7 @@ INSERT INTO ModelRef(IdRef, Name) VALUES(2, 'Ref Test 5');
         [Fact(DisplayName = "[EF_REP_INTEGRATION] : Should return all data with references and ordered when call SelectAll with navigation properties and order")]
         public void Should_return_all_data_with_references_and_ordered_when_call_SelectAll_with_navigation_properties_and_order()
         {
-            var allItems = _repository.SelectAll(
+            var allItems = _repository.Select(
                 order: o => o.OrderByDescending(p => p.Id),
                 navigationProperties: _expressionHelper.Add(n => n.ModelRefs).Evaluate()
             );

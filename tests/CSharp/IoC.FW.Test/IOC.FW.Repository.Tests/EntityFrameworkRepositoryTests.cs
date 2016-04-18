@@ -172,7 +172,7 @@ namespace IOC.FW.Repository.Tests
             var repository = new EntityFrameworkRepository<Model>(_contextFactory);
 
             //act
-            var items = repository.SelectAll(
+            var items = repository.Select(
                 order: p => p.OrderByDescending(o => o.Id)
             );
 
@@ -187,7 +187,7 @@ namespace IOC.FW.Repository.Tests
             var repository = new EntityFrameworkRepository<Model>(_contextFactory);
 
             //act
-            var items = repository.SelectAll(
+            var items = repository.Select(
                 order: p => p.OrderByDescending(o => o.Id),
                 navigationProperties: _expressionHelper
                     .Add(p => p.Id)
@@ -206,7 +206,7 @@ namespace IOC.FW.Repository.Tests
             var repository = new EntityFrameworkRepository<Model>(_contextFactory);
 
             //act
-            var items = repository.SelectAll();
+            var items = repository.Select();
 
             //assert
             Assert.Equal(items.Count, 4);

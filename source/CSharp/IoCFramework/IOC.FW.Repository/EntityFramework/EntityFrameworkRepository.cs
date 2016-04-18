@@ -306,9 +306,9 @@ namespace IOC.FW.Repository.EntityFramework
         /// Há possibilidade de incluir objetos referenciais a chaves estrangeiras
         /// </summary>
         /// <returns>Implementação de IList com os registros encontrados.</returns>
-        public IList<TModel> SelectAll()
+        public IList<TModel> Select()
         {
-            return SelectAll(null, null);
+            return Select(null, null, null);
         }
 
         /// <summary>
@@ -317,11 +317,11 @@ namespace IOC.FW.Repository.EntityFramework
         /// </summary>
         /// <param name="navigationProperties">Objetos de uma Model referentes a chaves estrangeiras no database</param>
         /// <returns>Implementação de IList com os registros encontrados.</returns>
-        public IList<TModel> SelectAll(
+        public IList<TModel> Select(
             Expression<Func<TModel, object>>[] navigationProperties
         )
         {
-            return SelectAll(null, navigationProperties);
+            return Select(null, null, navigationProperties);
         }
 
         /// <summary>
@@ -330,11 +330,11 @@ namespace IOC.FW.Repository.EntityFramework
         /// </summary>
         /// <param name="navigationProperties">Objetos de uma Model referentes a chaves estrangeiras no database</param>
         /// <returns>Implementação de IList com os registros encontrados.</returns>
-        public IList<TModel> SelectAll(
+        public IList<TModel> Select(
             Func<IQueryable<TModel>, IOrderedQueryable<TModel>> order
         )
         {
-            return SelectAll(order, null);
+            return Select(null, order, null);
         }
 
         /// <summary>
@@ -344,7 +344,7 @@ namespace IOC.FW.Repository.EntityFramework
         /// <param name="order">Delegate contendo parâmetros de ordenação</param>
         /// <param name="navigationProperties">Objetos de uma Model referentes a chaves estrangeiras no database</param>
         /// <returns>Implementação de IList com os registros encontrados.</returns>
-        public IList<TModel> SelectAll(
+        public IList<TModel> Select(
             Func<IQueryable<TModel>, IOrderedQueryable<TModel>> order,
             Expression<Func<TModel, object>>[] navigationProperties
         )

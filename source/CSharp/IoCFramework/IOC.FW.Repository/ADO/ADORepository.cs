@@ -108,26 +108,6 @@ namespace IOC.FW.Repository.ADO
             throw new NotImplementedException();
         }
 
-        public IList<TModel> SelectAll()
-        {
-            throw new NotImplementedException();
-        }
-
-        public IList<TModel> SelectAll(params Expression<Func<TModel, object>>[] navigationProperties)
-        {
-            throw new NotImplementedException();
-        }
-
-        public IList<TModel> SelectAll(Func<IQueryable<TModel>, IOrderedQueryable<TModel>> order)
-        {
-            throw new NotImplementedException();
-        }
-
-        public IList<TModel> SelectAll(Func<IQueryable<TModel>, IOrderedQueryable<TModel>> order, Expression<Func<TModel, object>>[] navigationProperties)
-        {
-            throw new NotImplementedException();
-        }
-
         public IList<TModel> Select(Expression<Func<TModel, bool>> where)
         {
             throw new NotImplementedException();
@@ -169,6 +149,26 @@ namespace IOC.FW.Repository.ADO
         }
 
         public TModel SelectSingle(Func<IQueryable<TModel>, IOrderedQueryable<TModel>> order)
+        {
+            throw new NotImplementedException();
+        }
+
+        public IList<TModel> Select()
+        {
+            throw new NotImplementedException();
+        }
+
+        public IList<TModel> Select(params Expression<Func<TModel, object>>[] navigationProperties)
+        {
+            throw new NotImplementedException();
+        }
+
+        public IList<TModel> Select(Func<IQueryable<TModel>, IOrderedQueryable<TModel>> order)
+        {
+            throw new NotImplementedException();
+        }
+
+        public IList<TModel> Select(Func<IQueryable<TModel>, IOrderedQueryable<TModel>> order, Expression<Func<TModel, object>>[] navigationProperties)
         {
             throw new NotImplementedException();
         }

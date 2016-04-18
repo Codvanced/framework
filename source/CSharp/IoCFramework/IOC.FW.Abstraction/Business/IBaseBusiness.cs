@@ -29,15 +29,15 @@ namespace IOC.FW.Abstraction.Business
         /// Implementação de método de IBaseDAO destinado a encontrar todos os registros de uma tabela vinculada a uma Model.
         /// </summary>
         /// <returns>Implementação de IList com os registros encontrados.</returns>
-        IList<TModel> SelectAll();
+        IList<TModel> Select();
 
         /// <summary>
         /// Implementação de método de IBaseDAO destinado a encontrar todos os registros de uma tabela vinculada a uma Model.
         /// </summary>
         /// <param name="navigationProperties">Objetos de uma Model referentes a chaves estrangeiras no database</param>
         /// <returns>Implementação de IList com os registros encontrados.</returns>
-        IList<TModel> SelectAll(
-            params Expression<Func<TModel, object>>[] navigationProperties
+        IList<TModel> Select(
+            Expression<Func<TModel, object>>[] navigationProperties
         );
 
         /// <summary>
@@ -46,7 +46,7 @@ namespace IOC.FW.Abstraction.Business
         /// </summary>
         /// <param name="order">Delegate contendo parâmetros de ordenação</param>
         /// <returns>Implementação de IList com os registros encontrados.</returns>
-        IList<TModel> SelectAll(
+        IList<TModel> Select(
             Func<IQueryable<TModel>, IOrderedQueryable<TModel>> order
         );
 
@@ -58,11 +58,10 @@ namespace IOC.FW.Abstraction.Business
         /// <param name="order">Delegate contendo parâmetros de ordenação</param>
         /// <param name="navigationProperties">Objetos de uma Model referentes a chaves estrangeiras no database</param>
         /// <returns>Implementação de IList com os registros encontrados.</returns>
-        IList<TModel> SelectAll(
+        IList<TModel> Select(
             Func<IQueryable<TModel>, IOrderedQueryable<TModel>> order,
             Expression<Func<TModel, object>>[] navigationProperties
         );
-
 
         /// <summary>
         /// Implementação de método de IBaseDAO destinado a encontrar todos os registros de uma tabela vinculada a uma model. 
