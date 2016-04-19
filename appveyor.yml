@@ -7,17 +7,6 @@ image: Visual Studio 2013
 environment:
   matrix:
   - {}
-before_build:
-- cmd: >-
-    cd source\CSharp\IoCFramework
-
-    nuget restore
-build:
-  project: C:\projects\framework\source\CSharp\IoCFramework\IoCFramework.sln
-  parallel: true
-  verbosity: minimal
-before_test:
-- cmd: >-
-    cd C:\projects\framework\tests\CSharp\IoC.FW.Test\
-
-    nuget restore
+build-script:
+	build.bat
+test: off

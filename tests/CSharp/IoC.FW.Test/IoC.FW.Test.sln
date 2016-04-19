@@ -3,6 +3,11 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 14
 VisualStudioVersion = 14.0.23107.0
 MinimumVisualStudioVersion = 10.0.40219.1
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".paket", ".paket", "{1A75B6D3-0B2E-4179-AA17-861AF2C422FB}"
+	ProjectSection(SolutionItems) = preProject
+		..\..\..\paket.dependencies = ..\..\..\paket.dependencies
+	EndProjectSection
+EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "IoCFramework", "IoCFramework", "{E0E16939-198F-4111-A286-615014E9DD7F}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tests", "Tests", "{582CB4DF-D050-48DB-BAC8-E3B77F6B22BD}"
