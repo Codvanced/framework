@@ -1,0 +1,12 @@
+EntityFramework
+System.Data.SQLite
+System.Data.SQLite.Core
+System.Data.SQLite.EF6
+System.Data.SQLite.Linq
+xunit
+xunit.abstractions
+xunit.assert
+xunit.core
+xunit.extensibility.core
+xunit.extensibility.execution
+xunit.runner.visualstudio
