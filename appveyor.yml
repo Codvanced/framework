@@ -7,6 +7,6 @@ image: Visual Studio 2013
 environment:
   matrix:
   - {}
-build-script:
-	build.bat
+build_script:
+- cmd: build.bat
 test: off
