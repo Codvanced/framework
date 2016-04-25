@@ -167,5 +167,15 @@ namespace IOC.FW.Repository.ADO
         {
             throw new NotImplementedException();
         }
+
+        public TResult Max<TResult>(Expression<Func<TModel, bool>> where, Func<TModel, TResult> maxSelector)
+        {
+            throw new NotImplementedException();
+        }
+
+        public TResult Min<TResult>(Expression<Func<TModel, bool>> where, Func<TModel, TResult> minSelector)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

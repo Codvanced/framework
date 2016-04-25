@@ -1,10 +1,12 @@
 ﻿using IOC.FW.Abstraction.Repository;
 using IOC.FW.Repository.EntityFramework;
 using IOC.FW.Shared.Model.Repository;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
+using System.Linq.Expressions;
 using Xunit;
 
 namespace IOC.FW.Repository.IntegrationTests.Sqlite
@@ -259,6 +261,49 @@ INSERT INTO ModelRef(IdRef, Name) VALUES(2, 'Ref Test 5');
 
             Assert.NotNull(item);
             Assert.Equal(item.Id, 5);
+        }
+
+
+        [Fact(DisplayName = "[EF_REP_INTEGRATION] : Should return the max value when call Max with where clause")]
+        public void Should_return_the_max_value_when_call_Max_with_where_clause()
+        {
+            Expression<Func<Model, bool>> whereClause = (w => w.Name.Contains("Test "));
+            Func<Model, int> maxSelector = s => s.Id;
+
+            var item = _repository.Max(
+                where: whereClause,
+                maxSelector: maxSelector
+            );
+
+            Assert.NotNull(item);
+            Assert.Equal(
+                initialModelSetup
+                    .AsQueryable()
+                    .Where(whereClause)
+                    .Max(maxSelector),
+                item
+            );
+        }
+
+        [Fact(DisplayName = "[EF_REP_INTEGRATION] : Should return the min value when call Max with where clause")]
+        public void Should_return_the_min_value_when_call_Min_with_where_clause()
+        {
+            Expression<Func<Model, bool>> whereClause = (w => w.Name.Contains("Test "));
+            Func<Model, int> minSelector = s => s.Id;
+
+            var item = _repository.Min(
+                where: whereClause,
+                minSelector: minSelector
+            );
+
+            Assert.NotNull(item);
+            Assert.Equal(
+                initialModelSetup
+                    .AsQueryable()
+                    .Where(whereClause)
+                    .Min(minSelector), 
+                item
+            );
         }
 
     }

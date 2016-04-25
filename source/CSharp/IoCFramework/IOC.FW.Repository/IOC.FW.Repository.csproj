@@ -35,6 +35,30 @@
     <Prefer32Bit>false</Prefer32Bit>
   </PropertyGroup>
   <ItemGroup>
+    <Content Include="net40\app.config.install.xdt">
+      <Paket>True</Paket>
+    </Content>
+    <Content Include="net40\web.config.install.xdt">
+      <Paket>True</Paket>
+    </Content>
+    <Content Include="net45\app.config.install.xdt">
+      <Paket>True</Paket>
+    </Content>
+    <Content Include="net45\web.config.install.xdt">
+      <Paket>True</Paket>
+    </Content>
+    <Content Include="net451\app.config.install.xdt">
+      <Paket>True</Paket>
+    </Content>
+    <Content Include="net451\web.config.install.xdt">
+      <Paket>True</Paket>
+    </Content>
+    <Content Include="net46\app.config.install.xdt">
+      <Paket>True</Paket>
+    </Content>
+    <Content Include="net46\web.config.install.xdt">
+      <Paket>True</Paket>
+    </Content>
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Configuration" />

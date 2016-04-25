@@ -217,6 +217,22 @@ namespace IOC.FW.Repository
             return _dao.SelectSingle(where, order, navigationProperties);
         }
 
+        public TResult Max<TResult>(
+            Expression<Func<TModel, bool>> where,
+            Func<TModel, TResult> maxSelector
+        )
+        {
+            return _dao.Max(where, maxSelector);
+        }
+
+        public TResult Min<TResult>(
+            Expression<Func<TModel, bool>> where,
+            Func<TModel, TResult> maxSelector
+        )
+        {
+            return _dao.Min(where, maxSelector);
+        }
+
         /// <summary>
         /// Implementação de método de IBaseDAO destinado a atualizar uma coleção de registros.
         /// </summary>

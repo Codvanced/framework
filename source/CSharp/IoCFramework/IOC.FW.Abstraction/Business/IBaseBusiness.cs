@@ -157,6 +157,17 @@ namespace IOC.FW.Abstraction.Business
             Expression<Func<TModel, object>>[] navigationProperties
         );
 
+
+        TResult Max<TResult>(
+            Expression<Func<TModel, bool>> where,
+            Func<TModel, TResult> maxSelector
+        );
+
+        TResult Min<TResult>(
+            Expression<Func<TModel, bool>> where,
+            Func<TModel, TResult> minSelector
+        );
+
         /// <summary>
         /// Implementação de método de IBaseDAO destinado a atualizar uma coleção de registros.
         /// </summary>

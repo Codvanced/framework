@@ -30,13 +30,13 @@ namespace IOC.FW.Repository.EntityFramework
             }
         }
 
+        public readonly IContextFactory<TModel> _contextFactory;
+
         #region Fields
         /// <summary>
         /// Nome de conexão ou a string propriamente dita
         /// </summary>
         private string nameOrConnectionString = string.Empty;
-
-        public readonly IContextFactory<TModel> _contextFactory;
 
         /// <summary>
         /// Field responsável por guardar o estado de uma conexão
@@ -392,6 +392,41 @@ namespace IOC.FW.Repository.EntityFramework
         }
 
         /// <summary>
+        /// Método auxiliar de construção de estruturas IQueryable<>
+        /// </summary>
+        /// <param name="context">Contexto do EntityFramework aberto para execuções de comandos</param>
+        /// <param name="where">Delegate contendo parâmetros para composição de WHERE</param>
+        /// <param name="order">Delegate contendo parâmetros de ordenação</param>
+        /// <param name="navigationProperties">Objetos de uma Model referentes a chaves estrangeiras no database</param>
+        /// <returns></returns>
+        private IQueryable<TModel> PrepareQueryable(
+            IContext<TModel> context,
+            Expression<Func<TModel, bool>> where,
+            Func<IQueryable<TModel>, IOrderedQueryable<TModel>> order,
+            Expression<Func<TModel, object>>[] navigationProperties
+        )
+        {
+            var query = context.DbQuery;
+            Expression<Func<TModel, bool>> whereClause = p => true;
+
+            if (navigationProperties != null && navigationProperties.Length > 0)
+                query = IncludeReference(context.DbObject, navigationProperties);
+
+            if (order != null)
+                query = order(query);
+
+            if (where != null)
+                whereClause = where;
+
+            query = query
+               .AsNoTracking()
+               .Where(whereClause);
+
+            return query;
+        }
+
+
+        /// <summary>
         /// Implementação de método de IBaseDAO destinado a encontrar todos os registros de uma tabela vinculada a uma model. 
         /// </summary>
         /// <param name="where">Delegate contendo parâmetros para composição de WHERE</param>
@@ -408,25 +443,75 @@ namespace IOC.FW.Repository.EntityFramework
 
             using (var context = CreateContext())
             {
-                var query = context.DbQuery;
-                Expression<Func<TModel, bool>> whereClause = p => true;
+                var queryable = PrepareQueryable(
+                    context: context,
+                    where: where,
+                    order: order,
+                    navigationProperties: navigationProperties
+                );
 
-                if (navigationProperties != null && navigationProperties.Length > 0)
-                    query = IncludeReference(context.DbObject, navigationProperties);
-
-                if (order != null)
-                    query = order(query);
-
-                if (where != null)
-                    whereClause = where;
-
-                list = query
-                   .AsNoTracking()
-                   .Where(whereClause)
-                   .ToList();
+                list = queryable.ToList();
             }
 
             return list;
+        }
+
+        /// <summary>
+        /// Implementação de método de IBaseDAO destinado a encontrar o valor máximo de uma tabela vinculada a uma model. 
+        /// </summary>
+        /// <typeparam name="TResult"></typeparam>
+        /// <param name="where">Delegate contendo parâmetros para composição de WHERE</param>
+        /// <param name="maxSelector">Delegate contendo a propriedade a se encontrar o Max e retornar o tipo definido por TResult</param>
+        /// <returns></returns>
+        public TResult Max<TResult>(
+            Expression<Func<TModel, bool>> where,
+            Func<TModel, TResult> maxSelector
+        )
+        {
+            TResult item;
+
+            using (var context = CreateContext())
+            {
+                var queryable = PrepareQueryable(
+                    context: context,
+                    where: where,
+                    order: null,
+                    navigationProperties: null
+                );
+
+                item = queryable.Max(maxSelector);
+            }
+
+            return item;
+        }
+
+        /// <summary>
+        /// Implementação de método de IBaseDAO destinado a encontrar o valor mínimo de uma tabela vinculada a uma model. 
+        /// </summary>
+        /// <typeparam name="TResult"></typeparam>
+        /// <param name="where">Delegate contendo parâmetros para composição de WHERE</param>
+        /// <param name="maxSelector">Delegate contendo a propriedade a se encontrar o Max e retornar o tipo definido por TResult</param>
+        /// <returns></returns>
+        public TResult Min<TResult>(
+            Expression<Func<TModel, bool>> where,
+            Func<TModel, TResult> minSelector
+        )
+        {
+            TResult item;
+
+            using (var context = CreateContext())
+            {
+                var queryable = PrepareQueryable(
+                    context: context,
+                    where: where,
+                    order: null,
+                    navigationProperties: null
+                );
+
+                item = queryable.Min(minSelector);
+            }
+
+            return item;
         }
 
         /// <summary>
@@ -507,22 +592,14 @@ namespace IOC.FW.Repository.EntityFramework
 
             using (var context = CreateContext())
             {
-                Expression<Func<TModel, bool>> whereClause = p => true;
+                var queryable = PrepareQueryable(
+                    context: context,
+                    where: where,
+                    order: order,
+                    navigationProperties: null
+                );
 
-                var query = context.DbQuery;
-
-                if (navigationProperties != null && navigationProperties.Length > 0)
-                    query = IncludeReference(context.DbObject, navigationProperties);
-
-                if (order != null)
-                    query = order(query);
-
-                if (where != null)
-                    whereClause = where;
-
-                item = query
-                    .AsNoTracking()
-                    .FirstOrDefault(whereClause);
+                item = queryable.FirstOrDefault();
             }
 
             return item;
@@ -649,7 +726,7 @@ namespace IOC.FW.Repository.EntityFramework
 
                 foreach (var property in properties)
                 {
-                    context.Entry<TModel>(item).Property(property).IsModified = true;
+                    context.Entry(item).Property(property).IsModified = true;
                 }
 
                 context.SaveChanges();
@@ -708,7 +785,7 @@ namespace IOC.FW.Repository.EntityFramework
         {
             List<TModel> list = null;
 
-            if (!String.IsNullOrEmpty(sql))
+            if (!string.IsNullOrEmpty(sql))
             {
                 using (var context = CreateContext())
                 {
@@ -723,7 +800,7 @@ namespace IOC.FW.Repository.EntityFramework
 
                     var reader = comm.ExecuteReader();
 
-                    ORM or = new ORM();
+                    var or = new ORM();
                     var props = or.GetProperties(typeof(TModel));
                     list = or.GetModel<TModel>(reader, props);
                 }
@@ -761,7 +838,7 @@ namespace IOC.FW.Repository.EntityFramework
 
                     var reader = comm.ExecuteReader();
 
-                    ORM or = new ORM();
+                    var or = new ORM();
                     var props = or.GetProperties(typeof(TModel));
                     list = or.GetModel<TModel>(reader, props);
 

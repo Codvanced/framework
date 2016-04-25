@@ -8,6 +8,8 @@ using System.Linq;
 using System.Collections.Generic;
 using System.Data.Entity;
 using IOC.FW.Shared.Model.Repository;
+using System.Linq.Expressions;
+using System;
 
 namespace IOC.FW.Repository.Tests
 {
@@ -225,6 +227,56 @@ namespace IOC.FW.Repository.Tests
 
             //assert
             Assert.Equal(items.Count, 4);
+        }
+
+        [Fact(DisplayName = "[EF_REP] : Should return the max value when call Max with where clause")]
+        public void Should_return_the_max_value_when_call_Max_with_where_clause()
+        {
+            //arrange 
+            var repository = new EntityFrameworkRepository<Model>(_contextFactory);
+            Expression<Func<Model, bool>> whereClause = (w => w.Name.Contains("Test "));
+            Func<Model, int> maxSelector = s => s.Id;
+
+            //act
+            var item = repository.Max(
+                where: whereClause,
+                maxSelector: maxSelector
+            );
+
+            //assert
+            Assert.NotNull(item);
+            Assert.Equal(
+                _modelsList
+                    .AsQueryable()
+                    .Where(whereClause)
+                    .Max(maxSelector),
+                item
+            );
+        }
+
+        [Fact(DisplayName = "[EF_REP] : Should return the min value when call Max with where clause")]
+        public void Should_return_the_min_value_when_call_Min_with_where_clause()
+        {
+            //arrange 
+            var repository = new EntityFrameworkRepository<Model>(_contextFactory);
+            Expression<Func<Model, bool>> whereClause = (w => w.Name.Contains("Test "));
+            Func<Model, int> minSelector = s => s.Id;
+
+            //act
+            var item = repository.Min(
+                where: whereClause,
+                minSelector: minSelector
+            );
+
+            //assert
+            Assert.NotNull(item);
+            Assert.Equal(
+                _modelsList
+                    .AsQueryable()
+                    .Where(whereClause)
+                    .Min(minSelector),
+                item
+            );
         }
     }
 
