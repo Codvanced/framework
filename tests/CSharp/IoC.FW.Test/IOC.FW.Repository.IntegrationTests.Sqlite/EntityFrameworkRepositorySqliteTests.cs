@@ -268,7 +268,7 @@ INSERT INTO ModelRef(IdRef, Name) VALUES(2, 'Ref Test 5');
         public void Should_return_the_max_value_when_call_Max_with_where_clause()
         {
             Expression<Func<Model, bool>> whereClause = (w => w.Name.Contains("Test "));
-            Func<Model, int> maxSelector = s => s.Id;
+            Expression<Func<Model, int>> maxSelector = s => s.Id;
 
             var item = _repository.Max(
                 where: whereClause,
@@ -289,7 +289,7 @@ INSERT INTO ModelRef(IdRef, Name) VALUES(2, 'Ref Test 5');
         public void Should_return_the_min_value_when_call_Min_with_where_clause()
         {
             Expression<Func<Model, bool>> whereClause = (w => w.Name.Contains("Test "));
-            Func<Model, int> minSelector = s => s.Id;
+            Expression<Func<Model, int>> minSelector = s => s.Id;
 
             var item = _repository.Min(
                 where: whereClause,

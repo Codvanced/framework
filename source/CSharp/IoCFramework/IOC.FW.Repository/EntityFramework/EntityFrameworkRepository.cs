@@ -465,7 +465,7 @@ namespace IOC.FW.Repository.EntityFramework
         /// <returns></returns>
         public TResult Max<TResult>(
             Expression<Func<TModel, bool>> where,
-            Func<TModel, TResult> maxSelector
+            Expression<Func<TModel, TResult>> maxSelector
         )
         {
             TResult item;
@@ -494,7 +494,7 @@ namespace IOC.FW.Repository.EntityFramework
         /// <returns></returns>
         public TResult Min<TResult>(
             Expression<Func<TModel, bool>> where,
-            Func<TModel, TResult> minSelector
+            Expression<Func<TModel, TResult>> minSelector
         )
         {
             TResult item;

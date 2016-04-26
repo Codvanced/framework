@@ -235,7 +235,7 @@ namespace IOC.FW.Repository.Tests
             //arrange 
             var repository = new EntityFrameworkRepository<Model>(_contextFactory);
             Expression<Func<Model, bool>> whereClause = (w => w.Name.Contains("Test "));
-            Func<Model, int> maxSelector = s => s.Id;
+            Expression<Func<Model, int>> maxSelector = s => s.Id;
 
             //act
             var item = repository.Max(
@@ -260,7 +260,7 @@ namespace IOC.FW.Repository.Tests
             //arrange 
             var repository = new EntityFrameworkRepository<Model>(_contextFactory);
             Expression<Func<Model, bool>> whereClause = (w => w.Name.Contains("Test "));
-            Func<Model, int> minSelector = s => s.Id;
+            Expression<Func<Model, int>> minSelector = s => s.Id;
 
             //act
             var item = repository.Min(

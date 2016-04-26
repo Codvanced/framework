@@ -219,7 +219,7 @@ namespace IOC.FW.Repository
 
         public TResult Max<TResult>(
             Expression<Func<TModel, bool>> where,
-            Func<TModel, TResult> maxSelector
+            Expression<Func<TModel, TResult>> maxSelector
         )
         {
             return _dao.Max(where, maxSelector);
@@ -227,7 +227,7 @@ namespace IOC.FW.Repository
 
         public TResult Min<TResult>(
             Expression<Func<TModel, bool>> where,
-            Func<TModel, TResult> maxSelector
+            Expression<Func<TModel, TResult>> maxSelector
         )
         {
             return _dao.Min(where, maxSelector);
