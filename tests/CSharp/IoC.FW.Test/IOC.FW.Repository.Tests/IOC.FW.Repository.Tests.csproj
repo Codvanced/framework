@@ -61,6 +61,10 @@
       <Project>{28c6b3ed-c9b5-417c-8e99-c24b450de618}</Project>
       <Name>IOC.FW.Configuration</Name>
     </ProjectReference>
+    <ProjectReference Include="..\..\..\..\source\CSharp\IoCFramework\IOC.FW.Repository.EF6\IOC.FW.Repository.EF6.csproj">
+      <Project>{5ce716f2-e7c2-4149-abf8-4ad319bf96d8}</Project>
+      <Name>IOC.FW.Repository.EF6</Name>
+    </ProjectReference>
     <ProjectReference Include="..\..\..\..\Source\CSharp\IoCFramework\IOC.FW.Repository\IOC.FW.Repository.csproj">
       <Project>{a2718b96-3f93-4d29-8942-e841f9eb5457}</Project>
       <Name>IOC.FW.Repository</Name>
@@ -98,7 +102,7 @@
       </PropertyGroup>
     </When>
   </Choose>
-  <Import Project="..\..\..\..\packages\xunit.runner.visualstudio.2.1.0\build\$(__paket__xunit_runner_visualstudio_props).props" Condition="Exists('..\..\..\..\packages\xunit.runner.visualstudio.2.1.0\build\$(__paket__xunit_runner_visualstudio_props).props')" Label="Paket" />
+  <Import Project="..\..\..\..\packages\xunit.runner.visualstudio.2.1\build\$(__paket__xunit_runner_visualstudio_props).props" Condition="Exists('..\..\..\..\packages\xunit.runner.visualstudio.2.1\build\$(__paket__xunit_runner_visualstudio_props).props')" Label="Paket" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
   <Target Name="BeforeBuild">
@@ -192,5 +196,5 @@
       </ItemGroup>
     </When>
   </Choose>
-  <Import Project="..\..\..\..\packages\xunit.runner.visualstudio.2.1.0\build\$(__paket__xunit_runner_visualstudio_targets).targets" Condition="Exists('..\..\..\..\packages\xunit.runner.visualstudio.2.1.0\build\$(__paket__xunit_runner_visualstudio_targets).targets')" Label="Paket" />
+  <Import Project="..\..\..\..\packages\xunit.runner.visualstudio.2.1\build\$(__paket__xunit_runner_visualstudio_targets).targets" Condition="Exists('..\..\..\..\packages\xunit.runner.visualstudio.2.1\build\$(__paket__xunit_runner_visualstudio_targets).targets')" Label="Paket" />
 </Project>

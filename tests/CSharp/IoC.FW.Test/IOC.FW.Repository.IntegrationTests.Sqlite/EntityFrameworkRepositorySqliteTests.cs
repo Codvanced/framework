@@ -1,5 +1,5 @@
 ﻿using IOC.FW.Abstraction.Repository;
-using IOC.FW.Repository.EntityFramework;
+using IOC.FW.Repository.EF6;
 using IOC.FW.Shared.Model.Repository;
 using System;
 using System.Collections.Generic;
@@ -50,7 +50,7 @@ INSERT INTO ModelRef(IdRef, Name) VALUES(2, 'Ref Test 5');
         public EntityFrameworkRepositorySqliteTests()
         {
             _expressionHelper = new ExpressionAppender<Model>();
-            _contextFactory = new ContextFactory<Model>();
+            _contextFactory = new EntityFrameworkContextFactory<Model>();
             _repository = new EntityFrameworkRepository<Model>(_contextFactory);
 
             initialModelRefSetup = new ModelRef[] {

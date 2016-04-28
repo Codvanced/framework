@@ -4,7 +4,7 @@ using System.Linq;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Data;
 
-namespace IOC.FW.Repository
+namespace IOC.FW.Repository.EF6
 {
     /// <summary>
     /// Classe com o propósito de ter métodos úteis a mapeamento de objetos relacionais

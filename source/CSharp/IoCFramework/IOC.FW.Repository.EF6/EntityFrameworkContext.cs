@@ -4,7 +4,7 @@ using IOC.FW.Abstraction.Model;
 using System.Data.Common;
 using IOC.FW.Abstraction.Repository;
 
-namespace IOC.FW.Repository.EntityFramework
+namespace IOC.FW.Repository.EF6
 {
     /// <summary>
     /// Classe utilizada como interface entre a aplicação e o database, é utilizada como UnitOfWork de DbContext e desabilita a criação automatica de tabelas.

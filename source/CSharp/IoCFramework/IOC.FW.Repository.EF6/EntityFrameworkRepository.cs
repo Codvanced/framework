@@ -12,7 +12,7 @@ using IOC.FW.Abstraction.Miscellaneous;
 using IOC.FW.Shared.Enumerators;
 using IOC.FW.Shared.Model.Repository;
 
-namespace IOC.FW.Repository.EntityFramework
+namespace IOC.FW.Repository.EF6
 {
     /// <summary>
     /// Classe base para a utilização de Repositorios padronizadas, utilizando Entity Framework como Reposiorio Base...

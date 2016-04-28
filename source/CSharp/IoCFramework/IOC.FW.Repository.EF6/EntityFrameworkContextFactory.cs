@@ -1,10 +1,9 @@
 ﻿using System.Data.Common;
 using IOC.FW.Abstraction.Repository;
-using IOC.FW.Repository.EntityFramework;
 
-namespace IOC.FW.Repository
+namespace IOC.FW.Repository.EF6
 {
-    public class ContextFactory<TModel>
+    public class EntityFrameworkContextFactory<TModel>
         : IContextFactory<TModel>
         where TModel : class, new()
     {
