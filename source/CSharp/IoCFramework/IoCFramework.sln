@@ -42,6 +42,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "IOC.FW.Abstraction", "IOC.F
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "IOC.FW.Repository.EF6", "IOC.FW.Repository.EF6\IOC.FW.Repository.EF6.csproj", "{5CE716F2-E7C2-4149-ABF8-4AD319BF96D8}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "IOC.FW.ContainerManager.DryIoc", "IOC.FW.ContainerManager.DryIoc\IOC.FW.ContainerManager.DryIoc.csproj", "{D629C88B-A329-493E-8FF8-9F40BE902DCB}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -116,6 +118,10 @@ Global
 		{5CE716F2-E7C2-4149-ABF8-4AD319BF96D8}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{5CE716F2-E7C2-4149-ABF8-4AD319BF96D8}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{5CE716F2-E7C2-4149-ABF8-4AD319BF96D8}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D629C88B-A329-493E-8FF8-9F40BE902DCB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D629C88B-A329-493E-8FF8-9F40BE902DCB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D629C88B-A329-493E-8FF8-9F40BE902DCB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D629C88B-A329-493E-8FF8-9F40BE902DCB}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
