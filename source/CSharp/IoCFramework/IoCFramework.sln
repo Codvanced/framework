@@ -44,6 +44,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "IOC.FW.Repository.EF6", "IO
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "IOC.FW.ContainerManager.DryIoc", "IOC.FW.ContainerManager.DryIoc\IOC.FW.ContainerManager.DryIoc.csproj", "{D629C88B-A329-493E-8FF8-9F40BE902DCB}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "IOC.FW.ContainerManager.SimpleInjector", "IOC.FW.ContainerManager.SimpleInjector\IOC.FW.ContainerManager.SimpleInjector.csproj", "{70C1E43B-42F4-4969-B1F5-9F769BE37EE1}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -122,6 +124,10 @@ Global
 		{D629C88B-A329-493E-8FF8-9F40BE902DCB}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{D629C88B-A329-493E-8FF8-9F40BE902DCB}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{D629C88B-A329-493E-8FF8-9F40BE902DCB}.Release|Any CPU.Build.0 = Release|Any CPU
+		{70C1E43B-42F4-4969-B1F5-9F769BE37EE1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{70C1E43B-42F4-4969-B1F5-9F769BE37EE1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{70C1E43B-42F4-4969-B1F5-9F769BE37EE1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{70C1E43B-42F4-4969-B1F5-9F769BE37EE1}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
