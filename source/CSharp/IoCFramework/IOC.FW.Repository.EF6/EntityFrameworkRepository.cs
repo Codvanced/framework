@@ -953,6 +953,99 @@ namespace IOC.FW.Repository.EF6
         }
 
         /// <summary>
+        /// Implementação de método de IBaseDAO destinado a executar querys customizadas e procedures.
+        /// </summary>
+        /// <param name="sql">Query ou nome de procedure</param>
+        /// <param name="setupCommand"></param>
+        /// <param name="callback">Delegate para receber um data reader preenchido</param>
+        /// <param name="cmdType">Tipo de comando</param>
+        /// <param name="behaviour">Comportamento de execução</param>
+        public void ExecuteReader(
+            string sql,
+            Action<DbDataReader> callback,
+            Action<DbCommand> setupCommand,
+            CommandType cmdType = CommandType.Text,
+            CommandBehavior behaviour = CommandBehavior.Default
+        )
+        {
+            if (!string.IsNullOrEmpty(sql))
+            {
+                using (var context = CreateContext())
+                {
+                    var conn = OpenConnection(context);
+                    var comm = CreateCommand(conn, sql, cmdType);
+
+                    if (setupCommand != null)
+                        setupCommand(comm);
+
+                    var result = comm.ExecuteReader(behaviour);
+
+                    if (callback != null && result != null && result.HasRows)
+                    {
+                        while (result.Read())
+                            callback(result);
+                    }
+                }
+            }
+        }
+
+        /// <summary>
+        /// Implementação de método de IBaseDAO destinado a executar querys customizadas e procedures.
+        /// </summary>
+        /// <param name="sql">Query ou nome de procedure</param>
+        /// <param name="callback">Delegate para receber um data reader preenchido</param>
+        /// <param name="parameters">Dicionaário com os parâmetros e valores a incluir</param>
+        /// <param name="cmdType"></param>
+        /// <param name="behaviour"></param>
+        public void ExecuteReader(
+            string sql,
+            Action<DbDataReader> callback,
+            Dictionary<string, object> parameters = null,
+            CommandType cmdType = CommandType.Text,
+            CommandBehavior behaviour = CommandBehavior.Default
+        )
+        {
+            ExecuteReader(
+                sql,
+                callback,
+                command => {
+                    if (parameters != null && parameters.Count > 0)
+                        SetParameter(command, parameters);
+                },
+                cmdType, 
+                behaviour
+            );
+        }
+
+        /// <summary>
+        /// Implementação de método de IBaseDAO destinado a executar querys customizadas e procedures.
+        /// </summary>
+        /// <param name="sql">Query ou nome de procedure</param>
+        /// <param name="callback">Delegate para receber um data reader preenchido</param>
+        /// <param name="parametersWithDirection">Lista de tupla com a direção dos parâmetros e valores a incluir</param>
+        /// <param name="cmdType">Tipo de comando</param>
+        /// <param name="behaviour">Comportamento de execução</param>
+        public void ExecuteReader(
+            string sql,
+            Action<DbDataReader> callback,
+            List<ParameterData> parametersWithDirection,
+            CommandType cmdType = CommandType.Text,
+            CommandBehavior behaviour = CommandBehavior.Default
+        )
+        {
+            ExecuteReader(
+                sql,
+                callback,
+                command => {
+                    if (parametersWithDirection != null && parametersWithDirection.Count > 0)
+                        SetParameter(command, parametersWithDirection);
+                },
+                cmdType,
+                behaviour
+            );
+        }
+
+        /// <summary>
         /// Implementacao de método para atualizar a prioridade do elemento na tabela
         /// </summary>
         /// <typeparam name="TPriorityModel">Tipo do model que implementa IPrioritySortable</typeparam>

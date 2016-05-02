@@ -321,6 +321,14 @@ namespace IOC.FW.Repository
             _dao.SetConnection(nameOrConnectionString);
         }
 
+        /// <summary>
+        /// Implementação de método de IBaseDAO destinado a executar querys customizadas e procedures.
+        /// </summary>
+        /// <param name="sql">Query ou nome de procedure</param>
+        /// <param name="setupCommand"></param>
+        /// <param name="callback">Delegate para receber um data reader preenchido</param>
+        /// <param name="cmdType">Tipo de comando</param>
+        /// <param name="behaviour">Comportamento de execução</param>
         public void SetConnection(
             DbConnection connection, 
             DbTransaction transaction
@@ -329,6 +337,14 @@ namespace IOC.FW.Repository
             _dao.SetConnection(connection, transaction);
         }
 
+        /// <summary>
+        /// Implementação de método de IBaseDAO destinado a executar querys customizadas e procedures.
+        /// </summary>
+        /// <param name="sql">Query ou nome de procedure</param>
+        /// <param name="callback">Delegate para receber um data reader preenchido</param>
+        /// <param name="parameters">Dicionaário com os parâmetros e valores a incluir</param>
+        /// <param name="cmdType"></param>
+        /// <param name="behaviour"></param>
         public void ExecuteWithTransaction(
             IsolationLevel isolation,
             IBaseTransaction[] DAOs,
@@ -336,6 +352,47 @@ namespace IOC.FW.Repository
         )
         {
             _dao.ExecuteWithTransaction(isolation, DAOs, transactionExecution);
+        }
+
+        public void ExecuteReader(
+            string sql,
+            Action<DbDataReader> callback,
+            Action<DbCommand> setupCommand, 
+            CommandType cmdType = CommandType.Text, 
+            CommandBehavior behaviour = CommandBehavior.Default
+        )
+        {
+            ExecuteReader(sql, callback, setupCommand, cmdType, behaviour);
+        }
+
+        public void ExecuteReader(
+            string sql,
+            Action<DbDataReader> callback,
+            Dictionary<string, object> parameters = null, 
+            CommandType cmdType = CommandType.Text, 
+            CommandBehavior behaviour = CommandBehavior.Default
+        )
+        {
+            ExecuteReader(sql, callback, parameters, cmdType, behaviour);
+        }
+
+        /// <summary>
+        /// Implementação de método de IBaseDAO destinado a executar querys customizadas e procedures.
+        /// </summary>
+        /// <param name="sql">Query ou nome de procedure</param>
+        /// <param name="callback">Delegate para receber um data reader preenchido</param>
+        /// <param name="parametersWithDirection">Lista de tupla com a direção dos parâmetros e valores a incluir</param>
+        /// <param name="cmdType">Tipo de comando</param>
+        /// <param name="behaviour">Comportamento de execução</param>
+        public void ExecuteReader(
+            string sql,
+            Action<DbDataReader> callback,
+            List<ParameterData> parametersWithDirection, 
+            CommandType cmdType = CommandType.Text, 
+            CommandBehavior behaviour = CommandBehavior.Default
+        )
+        {
+            ExecuteReader(sql, callback, parametersWithDirection);
         }
     }
 }

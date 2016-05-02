@@ -263,7 +263,6 @@ INSERT INTO ModelRef(IdRef, Name) VALUES(2, 'Ref Test 5');
             Assert.Equal(item.Id, 5);
         }
 
-
         [Fact(DisplayName = "[EF_REP_INTEGRATION] : Should return the max value when call Max with where clause")]
         public void Should_return_the_max_value_when_call_Max_with_where_clause()
         {
@@ -301,11 +300,46 @@ INSERT INTO ModelRef(IdRef, Name) VALUES(2, 'Ref Test 5');
                 initialModelSetup
                     .AsQueryable()
                     .Where(whereClause)
-                    .Min(minSelector), 
+                    .Min(minSelector),
                 item
             );
         }
 
+        [Fact(DisplayName = "[EF_REP_INTEGRATION] : Should return a valid datareader when call executereader with sql")]
+        public void Should_return_a_valid_datareader_when_call_executereader_with_sql()
+        {
+            var listResult = new List<string>();
+            var attribute = (new Model())
+                .GetType()
+                .GetCustomAttributes(
+                    typeof(TableAttribute), false
+                )[0] as TableAttribute;
+
+            var columnName = (new Model())
+                .GetType()
+                .GetProperties()
+                .Where(
+                    w => w.PropertyType == typeof(string)
+                )
+                .Select(
+                    s => s.Name
+                ).First();
+
+            _repository.ExecuteReader(
+                sql: $"SELECT {columnName} FROM {attribute.Name}",
+                parameters: null,
+                callback: reader => 
+                    listResult.Add(reader[columnName].ToString())
+            );
+
+            Assert.NotEmpty(listResult);
+            Assert.Equal(
+                listResult, 
+                initialModelSetup.Select(
+                    p => p.Name
+                )
+            );
+        }
     }
 
     [Table("Model")]
