@@ -55,7 +55,7 @@
     <Compile Include="Repository\IBaseTransaction.cs" />
     <Compile Include="Repository\IContext.cs" />
     <Compile Include="Repository\IContextFactory.cs" />
-    <Compile Include="Repository\IDependencyResolver.cs" />
+    <Compile Include="Container\IDependencyResolver.cs" />
     <Compile Include="Repository\IRepository.cs" />
     <Compile Include="Repository\IRepositoryFactory.cs" />
   </ItemGroup>
