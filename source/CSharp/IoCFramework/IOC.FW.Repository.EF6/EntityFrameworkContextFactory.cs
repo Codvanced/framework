@@ -1,5 +1,5 @@
 ﻿using System.Data.Common;
-using IOC.FW.Abstraction.Repository;
+using IOC.FW.Repository.EF6.Abstraction.Repository;
 
 namespace IOC.FW.Repository.EF6
 {
