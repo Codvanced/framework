@@ -1,6 +1,6 @@
 ﻿using System.Data.Common;
 
-namespace IOC.FW.Abstraction.Repository
+namespace IOC.FW.Repository.EF6.Abstraction.Repository
 {
     public interface IContextFactory<TModel>
         where TModel : class, new()

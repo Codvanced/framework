@@ -5,7 +5,7 @@ using System.Data.Entity.Infrastructure;
 using System.Data.Entity.Validation;
 using System.Linq;
 
-namespace IOC.FW.Abstraction.Repository
+namespace IOC.FW.Repository.EF6.Abstraction.Repository
 {
     public interface IContext<TModel>
         : IDisposable
@@ -21,7 +21,7 @@ namespace IOC.FW.Abstraction.Repository
         
         DbContextConfiguration Configuration { get; }
 
-        System.Data.Entity.Database Database { get; }
+        Database Database { get; }
         
         DbEntityEntry Entry(object entity);
         

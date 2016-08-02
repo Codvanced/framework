@@ -11,6 +11,7 @@ using System.Data;
 using IOC.FW.Abstraction.Miscellaneous;
 using IOC.FW.Shared.Enumerators;
 using IOC.FW.Shared.Model.Repository;
+using IOC.FW.Repository.EF6.Abstraction.Repository;
 
 namespace IOC.FW.Repository.EF6
 {
