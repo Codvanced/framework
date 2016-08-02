@@ -1,5 +1,6 @@
 ﻿using IOC.FW.Abstraction.Repository;
 using IOC.FW.Repository.EF6;
+using IOC.FW.Repository.EF6.Abstraction.Repository;
 using IOC.FW.Shared.Model.Repository;
 using System;
 using System.Collections.Generic;

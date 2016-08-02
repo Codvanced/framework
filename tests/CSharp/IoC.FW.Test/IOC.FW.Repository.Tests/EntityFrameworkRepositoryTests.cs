@@ -8,6 +8,7 @@ using IOC.FW.Shared.Model.Repository;
 using System.Linq.Expressions;
 using System;
 using IOC.FW.Repository.EF6;
+using IOC.FW.Repository.EF6.Abstraction.Repository;
 
 namespace IOC.FW.Repository.Tests
 {
