@@ -1,6 +1,6 @@
 ﻿using System.Data.Entity;
 
-namespace IOC.FW.Abstraction.Model
+namespace IOC.FW.Repository.EF6.Abstraction.Model
 {
     /// <summary>
     /// Interface responsável por criar integridade referencial entre entidades do EntityFramework
