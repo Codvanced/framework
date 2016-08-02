@@ -1,5 +1,4 @@
-﻿using IOC.FW.Logging;
-using System;
+﻿using IOC.FW.Abstraction.Logging;
 using System.Web.Mvc;
 
 namespace IOC.FW.Web.MVC.Filters
@@ -10,28 +9,34 @@ namespace IOC.FW.Web.MVC.Filters
     public class LogExceptionFilter
         : IExceptionFilter
     {
+        private readonly ILogger _logger;
+
+        public LogExceptionFilter(ILogger logger)
+        {
+            _logger = logger;
+        }
+
         /// <summary>
         /// Método responsável por logar exceções
         /// </summary>
         /// <param name="filterContext">Contexto da action que gerou a exceção</param>
         public void OnException(ExceptionContext filterContext)
         {
-            var log = LogFactory.CreateLog(filterContext.Controller.GetType());
-
-            if (null != filterContext && null != filterContext.Exception)
+            if (filterContext != null && filterContext.Exception != null)
             {
-                log.Error(
-                        string.Format(
-                            "Erro na seguinte url => {0} {1}: {2}",
-                            filterContext.HttpContext.Request.HttpMethod,
-                            filterContext.HttpContext.Request.Url.AbsoluteUri,
-                            filterContext.Exception.Message
-                        ),
-                    filterContext.Exception);
+                _logger.Error(
+                    string.Format(
+                        "Erro na seguinte url => {0} {1}: {2}",
+                        filterContext.HttpContext.Request.HttpMethod,
+                        filterContext.HttpContext.Request.Url.AbsoluteUri,
+                        filterContext.Exception.Message
+                    ),
+                    filterContext.Exception
+                );
             }
             else
             {
-                log.Error("LogExceptionFilter: filterContext ou filterContext.Exception nulos");
+                _logger.Error("LogExceptionFilter: filterContext ou filterContext.Exception nulos");
             }
         }
     }
