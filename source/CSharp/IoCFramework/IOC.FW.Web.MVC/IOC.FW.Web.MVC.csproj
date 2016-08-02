@@ -56,18 +56,12 @@
     <Compile Include="Filters\NonCacheAttribute.cs" />
     <Compile Include="Handler\BasicAuthenticationHandler.cs" />
     <Compile Include="Handler\CompressHandler.cs" />
-    <Compile Include="Model\BasicAuthenticationIdentity.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="app.config" />
     <None Include="paket.references" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\IOC.FW.Authentication\IOC.FW.Authentication.csproj">
-      <Project>{9493dae8-2559-4a54-8ff2-8759b5cfa760}</Project>
-      <Name>IOC.FW.Authentication</Name>
-    </ProjectReference>
     <ProjectReference Include="..\IOC.FW.Core\IOC.FW.Core.csproj">
       <Project>{ad0698e7-cd21-4340-8e6d-b4c6624e8fa8}</Project>
       <Name>IOC.FW.Core</Name>
@@ -75,6 +69,10 @@
     <ProjectReference Include="..\IOC.FW.Logging\IOC.FW.Logging.csproj">
       <Project>{6089782a-ea12-4f14-9d24-bcab9f9f0163}</Project>
       <Name>IOC.FW.Logging</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\IOC.FW.Web\IOC.FW.Web.csproj">
+      <Project>{92fd7376-973c-4e0d-8739-1a42ab860018}</Project>
+      <Name>IOC.FW.Web</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
