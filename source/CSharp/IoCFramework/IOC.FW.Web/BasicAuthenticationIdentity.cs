@@ -1,6 +1,6 @@
 ﻿using System.Security.Principal;
 
-namespace IOC.FW.Authentication
+namespace IOC.FW.Web
 {
     /// <summary>
     /// Extensão de classe GenericAuthentication destinada a implementar BasicAuhtentication (RESTful)

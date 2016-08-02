@@ -8,8 +8,6 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".paket", ".paket", "{428C9F
 		..\..\..\paket.dependencies = ..\..\..\paket.dependencies
 	EndProjectSection
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "IOC.FW.Authentication", "IOC.FW.Authentication\IOC.FW.Authentication.csproj", "{9493DAE8-2559-4A54-8FF2-8759B5CFA760}"
-EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "IOC.FW.Configuration", "IOC.FW.Configuration\IOC.FW.Configuration.csproj", "{28C6B3ED-C9B5-417C-8E99-C24B450DE618}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "IOC.FW.ContainerManager", "IOC.FW.ContainerManager\IOC.FW.ContainerManager.csproj", "{82A88E93-4C95-4DB7-AD7D-8F1F367C4034}"
@@ -52,10 +50,6 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{9493DAE8-2559-4A54-8FF2-8759B5CFA760}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{9493DAE8-2559-4A54-8FF2-8759B5CFA760}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{9493DAE8-2559-4A54-8FF2-8759B5CFA760}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{9493DAE8-2559-4A54-8FF2-8759B5CFA760}.Release|Any CPU.Build.0 = Release|Any CPU
 		{28C6B3ED-C9B5-417C-8E99-C24B450DE618}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{28C6B3ED-C9B5-417C-8E99-C24B450DE618}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{28C6B3ED-C9B5-417C-8E99-C24B450DE618}.Release|Any CPU.ActiveCfg = Release|Any CPU

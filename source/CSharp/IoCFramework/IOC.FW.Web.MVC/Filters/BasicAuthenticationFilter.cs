@@ -4,7 +4,6 @@ using System.Threading;
 using System.Text;
 using System.Security.Principal;
 using System.Net;
-using IOC.FW.Authentication;
 using System.Web.Http.Filters;
 using System.Web.Http.Controllers;
 using System.Net.Http;

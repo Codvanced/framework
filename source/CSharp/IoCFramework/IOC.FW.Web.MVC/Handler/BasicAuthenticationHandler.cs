@@ -6,7 +6,6 @@ using System.Threading;
 using System.Security.Principal;
 using System.Web;
 using System.Net;
-using IOC.FW.Authentication;
 
 namespace IOC.FW.Web.MVC.Handler
 {
