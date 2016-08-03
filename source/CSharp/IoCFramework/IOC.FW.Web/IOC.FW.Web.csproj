@@ -60,8 +60,6 @@
   <ItemGroup>
     <Compile Include="Handler\ThumbHandler.cs" />
     <Compile Include="Handler\TransformHandler.cs" />
-    <Compile Include="Helper\DeviceDetector.cs" />
-    <Compile Include="Helper\Pagination\Paginator.cs" />
     <Compile Include="BasicAuthenticationIdentity.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
