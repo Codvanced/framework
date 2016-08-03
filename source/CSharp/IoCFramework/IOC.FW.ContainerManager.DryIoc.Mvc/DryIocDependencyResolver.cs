@@ -7,7 +7,7 @@ using System.Text;
 using System.Web.Mvc;
 using System.Web.Compilation;
 
-namespace IOC.FW.Web.MVC.DIContainer.DryIoc
+namespace IOC.FW.ContainerManager.DryIoc.Mvc
 {
     public class DryIocDependencyResolver
         : IDependencyResolver
