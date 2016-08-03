@@ -2,10 +2,9 @@
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Web.Http.Dependencies;
-
 using SimpleInjector;
 
-namespace IOC.FW.Web.MVC.DIContainer.SimpleInjector
+namespace IOC.FW.ContainerManager.SimpleInjector.WebApi
 {
     public sealed class SimpleInjectorWebApiDependencyResolver
      : IDependencyResolver

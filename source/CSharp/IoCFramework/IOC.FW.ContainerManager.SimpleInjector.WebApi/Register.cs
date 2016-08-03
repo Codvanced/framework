@@ -1,7 +1,7 @@
 ﻿using SimpleInjector;
 using System.Web.Http;
 
-namespace IOC.FW.Web.MVC.DIContainer.SimpleInjector
+namespace IOC.FW.ContainerManager.SimpleInjector.WebApi
 {
     public class Register
     {
@@ -11,7 +11,6 @@ namespace IOC.FW.Web.MVC.DIContainer.SimpleInjector
             var controllerTypes = services.GetHttpControllerTypeResolver()
                 .GetControllerTypes(services.GetAssembliesResolver());
 
-            // register Web API controllers (important! http://bit.ly/1aMbBW0)
             foreach (var controllerType in controllerTypes)
             {
                 container.Register(controllerType);
