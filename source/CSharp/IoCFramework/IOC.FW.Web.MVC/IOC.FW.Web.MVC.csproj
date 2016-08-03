@@ -46,8 +46,6 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="DIContainer\SimpleInjector\Register.cs" />
-    <Compile Include="DIContainer\SimpleInjector\SimpleInjectorWebApiDependencyResolver.cs" />
     <Compile Include="Extensions.cs" />
     <Compile Include="Filters\BasicAuthenticationFilter.cs" />
     <Compile Include="Filters\LogExceptionFilter.cs" />
