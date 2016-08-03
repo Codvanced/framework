@@ -10,7 +10,7 @@
         /// </summary>
         public enum RepositoryType : byte
         {
-            EntityFramework = 0,
+            EF6 = 0,
             NHabernate = 1,
             ADO = 2,
             TextFile = 3,

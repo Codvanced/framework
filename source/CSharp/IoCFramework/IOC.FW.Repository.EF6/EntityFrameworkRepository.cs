@@ -27,7 +27,7 @@ namespace IOC.FW.Repository.EF6
         {
             get
             {
-                return RepositoryEnumerator.RepositoryType.EntityFramework;
+                return RepositoryEnumerator.RepositoryType.EF6;
             }
         }
 
