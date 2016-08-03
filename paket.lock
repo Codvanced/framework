@@ -1,7 +1,7 @@
 NUGET
   remote: https://www.nuget.org/api/v2
   specs:
-    DryIoc.dll (2.1) - framework: >= net40
+    DryIoc.dll (2.1)
       System.Collections (>= 4.0)
       System.Diagnostics.Debug (>= 4.0)
       System.Diagnostics.Tools (>= 4.0)
@@ -24,6 +24,8 @@ NUGET
     Microsoft.AspNet.WebPages (2.0.20710) - framework: >= net40
       Microsoft.AspNet.Razor (>= 2.0.20710 < 2.1)
       Microsoft.Web.Infrastructure (>= 1.0)
+    Microsoft.NETCore.Platforms (1.0.1) - framework: dnxcore50
+    Microsoft.NETCore.Targets (1.0.1) - framework: dnxcore50
     Microsoft.Web.Infrastructure (1.0) - framework: >= net40
     MySql.Data (6.9.8) - framework: >= net40
     MySql.Data.Entity (6.9.8) - framework: >= net40
@@ -34,7 +36,13 @@ NUGET
     OpenPop.NET (2.0.6.1120) - framework: >= net40
     SimpleInjector (3.1.1) - framework: >= net40
     SSH.NET (2014.4.6-beta2) - framework: >= net40
-    System.Collections (4.0.10) - framework: >= net40
+    System.Collections (4.0.10)
+      System.Diagnostics.Debug (>= 4.0) - framework: dnxcore50
+      System.Resources.ResourceManager (>= 4.0) - framework: dnxcore50
+      System.Runtime (>= 4.0) - framework: dnxcore50
+      System.Runtime (>= 4.0.20) - framework: dnxcore50
+      System.Runtime.Extensions (>= 4.0) - framework: dnxcore50
+      System.Threading (>= 4.0) - framework: dnxcore50
     System.Data.SQLite (1.0.100)
       System.Data.SQLite.Core (>= 1.0.100) - framework: net20, net40, net45, net451, >= net46
       System.Data.SQLite.EF6 (>= 1.0.100) - framework: net40, net45, net451, >= net46
@@ -43,15 +51,103 @@ NUGET
     System.Data.SQLite.EF6 (1.0.100)
       EntityFramework (>= 6.0) - framework: net40, net45, net451, >= net46
     System.Data.SQLite.Linq (1.0.100)
-    System.Diagnostics.Debug (4.0.10) - framework: >= net40
-    System.Diagnostics.Tools (4.0) - framework: >= net40
-    System.Linq (4.0) - framework: >= net40
-    System.Linq.Expressions (4.0.10) - framework: >= net40
-    System.Reflection (4.0.10) - framework: >= net40
-    System.Reflection.Extensions (4.0) - framework: >= net40
-    System.Runtime (4.0.20) - framework: >= net40
-    System.Runtime.Extensions (4.0.10) - framework: >= net40
-    System.Threading (4.0.10) - framework: >= net40
+    System.Diagnostics.Contracts (4.0) - framework: dnxcore50
+      System.Runtime (>= 4.0) - framework: dnxcore50
+    System.Diagnostics.Debug (4.0.10)
+      System.Runtime (>= 4.0) - framework: dnxcore50
+    System.Diagnostics.Tools (4.0)
+      System.Runtime (>= 4.0) - framework: dnxcore50
+    System.Globalization (4.0.10) - framework: dnxcore50
+      System.Runtime (>= 4.0) - framework: dnxcore50
+    System.IO (4.0.10) - framework: dnxcore50
+      System.Globalization (>= 4.0) - framework: dnxcore50
+      System.Runtime (>= 4.0.20) - framework: dnxcore50
+      System.Text.Encoding (>= 4.0) - framework: dnxcore50
+      System.Text.Encoding (>= 4.0.10) - framework: dnxcore50
+      System.Text.Encoding.Extensions (>= 4.0) - framework: dnxcore50
+      System.Threading (>= 4.0) - framework: dnxcore50
+      System.Threading.Tasks (>= 4.0) - framework: dnxcore50
+    System.Linq (4.0)
+      System.Collections (>= 4.0.10) - framework: dnxcore50
+      System.Diagnostics.Debug (>= 4.0.10) - framework: dnxcore50
+      System.Resources.ResourceManager (>= 4.0) - framework: dnxcore50
+      System.Runtime (>= 4.0.20) - framework: dnxcore50
+      System.Runtime.Extensions (>= 4.0.10) - framework: dnxcore50
+    System.Linq.Expressions (4.0.10)
+      System.Collections (>= 4.0) - framework: dnxcore50
+      System.Diagnostics.Debug (>= 4.0) - framework: dnxcore50
+      System.Globalization (>= 4.0) - framework: dnxcore50
+      System.IO (>= 4.0) - framework: dnxcore50
+      System.Linq (>= 4.0) - framework: dnxcore50
+      System.ObjectModel (>= 4.0) - framework: dnxcore50
+      System.Reflection (>= 4.0) - framework: dnxcore50
+      System.Reflection.Emit (>= 4.0) - framework: dnxcore50
+      System.Reflection.Extensions (>= 4.0) - framework: dnxcore50
+      System.Reflection.Primitives (>= 4.0) - framework: dnxcore50
+      System.Reflection.TypeExtensions (>= 4.0) - framework: dnxcore50
+      System.Resources.ResourceManager (>= 4.0) - framework: dnxcore50
+      System.Runtime (>= 4.0) - framework: dnxcore50
+      System.Runtime (>= 4.0.20) - framework: dnxcore50
+      System.Runtime.Extensions (>= 4.0) - framework: dnxcore50
+      System.Threading (>= 4.0) - framework: dnxcore50
+    System.ObjectModel (4.0.10) - framework: dnxcore50
+      System.Collections (>= 4.0.10) - framework: dnxcore50
+      System.Diagnostics.Debug (>= 4.0.10) - framework: dnxcore50
+      System.Resources.ResourceManager (>= 4.0) - framework: dnxcore50
+      System.Runtime (>= 4.0.20) - framework: dnxcore50
+      System.Threading (>= 4.0.10) - framework: dnxcore50
+    System.Private.Uri (4.0.1) - framework: dnxcore50
+      Microsoft.NETCore.Platforms (>= 1.0.1)
+      Microsoft.NETCore.Targets (>= 1.0.1)
+    System.Reflection (4.0.10)
+      System.IO (>= 4.0) - framework: dnxcore50
+      System.Reflection.Primitives (>= 4.0) - framework: dnxcore50
+      System.Runtime (>= 4.0.20) - framework: dnxcore50
+    System.Reflection.Emit (4.0.1) - framework: dnxcore50
+    System.Reflection.Extensions (4.0)
+      System.Diagnostics.Debug (>= 4.0.10) - framework: dnxcore50
+      System.Reflection (>= 4.0) - framework: dnxcore50
+      System.Reflection (>= 4.0.10) - framework: dnxcore50
+      System.Reflection.Primitives (>= 4.0) - framework: dnxcore50
+      System.Reflection.TypeExtensions (>= 4.0) - framework: dnxcore50
+      System.Resources.ResourceManager (>= 4.0) - framework: dnxcore50
+      System.Runtime (>= 4.0) - framework: dnxcore50
+      System.Runtime (>= 4.0.20) - framework: dnxcore50
+      System.Runtime.Extensions (>= 4.0.10) - framework: dnxcore50
+    System.Reflection.Primitives (4.0) - framework: dnxcore50
+      System.Runtime (>= 4.0) - framework: dnxcore50
+      System.Threading (>= 4.0) - framework: dnxcore50
+    System.Reflection.TypeExtensions (4.0) - framework: dnxcore50
+      System.Diagnostics.Contracts (>= 4.0) - framework: dnxcore50
+      System.Diagnostics.Debug (>= 4.0.10) - framework: dnxcore50
+      System.Linq (>= 4.0) - framework: dnxcore50
+      System.Reflection (>= 4.0) - framework: dnxcore50
+      System.Reflection (>= 4.0.10) - framework: dnxcore50
+      System.Reflection.Primitives (>= 4.0) - framework: dnxcore50
+      System.Resources.ResourceManager (>= 4.0) - framework: dnxcore50
+      System.Runtime (>= 4.0) - framework: dnxcore50
+      System.Runtime (>= 4.0.20) - framework: dnxcore50
+      System.Runtime.Extensions (>= 4.0.10) - framework: dnxcore50
+    System.Resources.ResourceManager (4.0) - framework: dnxcore50
+      System.Globalization (>= 4.0) - framework: dnxcore50
+      System.Reflection (>= 4.0) - framework: dnxcore50
+      System.Reflection (>= 4.0.10) - framework: dnxcore50
+      System.Runtime (>= 4.0) - framework: dnxcore50
+      System.Runtime (>= 4.0.20) - framework: dnxcore50
+    System.Runtime (4.0.20)
+      System.Private.Uri (>= 4.0) - framework: dnxcore50
+    System.Runtime.Extensions (4.0.10)
+      System.Runtime (>= 4.0.20) - framework: dnxcore50
+    System.Text.Encoding (4.0.10) - framework: dnxcore50
+      System.Runtime (>= 4.0) - framework: dnxcore50
+    System.Text.Encoding.Extensions (4.0.10) - framework: dnxcore50
+      System.Runtime (>= 4.0) - framework: dnxcore50
+      System.Text.Encoding (>= 4.0.10) - framework: dnxcore50
+    System.Threading (4.0.10)
+      System.Runtime (>= 4.0) - framework: dnxcore50
+      System.Threading.Tasks (>= 4.0) - framework: dnxcore50
+    System.Threading.Tasks (4.0.10) - framework: dnxcore50
+      System.Runtime (>= 4.0) - framework: dnxcore50
     xunit (2.1) - framework: >= net45
       xunit.assert (2.1)
       xunit.core (2.1)
