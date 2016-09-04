@@ -9,6 +9,7 @@ using System.Linq.Expressions;
 using System;
 using IOC.FW.Repository.EF6;
 using IOC.FW.Repository.EF6.Abstraction.Repository;
+using IOC.FW.Expressions;
 
 namespace IOC.FW.Repository.Tests
 {

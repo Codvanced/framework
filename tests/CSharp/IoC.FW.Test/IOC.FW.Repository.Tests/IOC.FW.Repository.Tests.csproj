@@ -61,6 +61,10 @@
       <Project>{28c6b3ed-c9b5-417c-8e99-c24b450de618}</Project>
       <Name>IOC.FW.Configuration</Name>
     </ProjectReference>
+    <ProjectReference Include="..\..\..\..\source\CSharp\IoCFramework\IOC.FW.Expressions\IOC.FW.Expressions.csproj">
+      <Project>{10ba2aa7-0828-4dd2-8c22-a123255e207c}</Project>
+      <Name>IOC.FW.Expressions</Name>
+    </ProjectReference>
     <ProjectReference Include="..\..\..\..\source\CSharp\IoCFramework\IOC.FW.Repository.EF6\IOC.FW.Repository.EF6.csproj">
       <Project>{5ce716f2-e7c2-4149-abf8-4ad319bf96d8}</Project>
       <Name>IOC.FW.Repository.EF6</Name>
