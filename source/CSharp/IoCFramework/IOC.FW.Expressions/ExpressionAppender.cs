@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Linq.Expressions;
 
-namespace IOC.FW.Shared.Model.Repository
+namespace IOC.FW.Expressions
 {
     public class ExpressionAppender<TModel>
     {
