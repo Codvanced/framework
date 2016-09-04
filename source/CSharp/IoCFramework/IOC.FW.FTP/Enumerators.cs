@@ -3,9 +3,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
-namespace IOC.FW.Shared.Enumerators
+namespace IOC.FW.FTP
 {
-    public class TransferEnumerator
+    public class Enumerators
     {
         public enum StructureType
             : byte

@@ -1,4 +1,5 @@
-﻿using IOC.FW.Shared.Enumerators;
+﻿using IOC.FW.FTP;
+using IOC.FW.Shared.Enumerators;
 using System;
 using System.Configuration;
 
@@ -7,12 +8,12 @@ namespace IOC.FW.Configuration.IoCFramework.DataTransfer.Abstraction
     public abstract class TransferElementAbstract
         : ConfigurationElement
     {
-        [ConfigurationProperty(ConfigurationVariables.TypeKey, DefaultValue = TransferEnumerator.StructureType.LocalEnvironment, IsKey = true)]
-        public virtual TransferEnumerator.StructureType Type
+        [ConfigurationProperty(ConfigurationVariables.TypeKey, DefaultValue = FTP.Enumerators.StructureType.LocalEnvironment, IsKey = true)]
+        public virtual FTP.Enumerators.StructureType Type
         {
             get
             {
-                var ret = default(TransferEnumerator.StructureType);
+                var ret = default(FTP.Enumerators.StructureType);
 
                 Enum.TryParse(
                     this[ConfigurationVariables.TypeKey].ToString(),

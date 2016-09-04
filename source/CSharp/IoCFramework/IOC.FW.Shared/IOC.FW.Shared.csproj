@@ -43,10 +43,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Enumerators\ImageEnumerator.cs" />
-    <Compile Include="Enumerators\RepositoryEnumerator.cs" />
     <Compile Include="Enumerators\ContainerEnumerator.cs" />
-    <Compile Include="Enumerators\TransferEnumerator.cs" />
+    <Compile Include="Enumerators\RepositoryEnumerator.cs" />
     <Compile Include="Model\Repository\ParameterData.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

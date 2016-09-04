@@ -66,6 +66,10 @@
     </None>
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\IOC.FW.FTP\IOC.FW.FTP.csproj">
+      <Project>{6671d840-ca72-4f9a-9624-7e3ffa97f520}</Project>
+      <Name>IOC.FW.FTP</Name>
+    </ProjectReference>
     <ProjectReference Include="..\IOC.FW.Shared\IOC.FW.Shared.csproj">
       <Project>{7323e348-0ae0-4f75-a2d8-adff0f03c04b}</Project>
       <Name>IOC.FW.Shared</Name>
