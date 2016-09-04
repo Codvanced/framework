@@ -54,6 +54,10 @@
       <Project>{5b3d5261-8415-433c-a27d-b22ca4e991b7}</Project>
       <Name>IOC.FW.Abstraction</Name>
     </ProjectReference>
+    <ProjectReference Include="..\IOC.FW.Data\IOC.FW.Data.csproj">
+      <Project>{4e0a9c6c-3368-4b83-92f5-6fda2679c434}</Project>
+      <Name>IOC.FW.Data</Name>
+    </ProjectReference>
     <ProjectReference Include="..\IOC.FW.Repository\IOC.FW.Repository.csproj">
       <Project>{a2718b96-3f93-4d29-8942-e841f9eb5457}</Project>
       <Name>IOC.FW.Repository</Name>

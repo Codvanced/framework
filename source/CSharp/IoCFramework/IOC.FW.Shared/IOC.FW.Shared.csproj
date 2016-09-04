@@ -44,7 +44,6 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Enumerators\ContainerEnumerator.cs" />
-    <Compile Include="Enumerators\RepositoryEnumerator.cs" />
     <Compile Include="Model\Repository\ParameterData.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

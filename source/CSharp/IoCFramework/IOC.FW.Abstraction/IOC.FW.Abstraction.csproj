@@ -57,6 +57,10 @@
     <Compile Include="Repository\IRepositoryFactory.cs" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\IOC.FW.Data\IOC.FW.Data.csproj">
+      <Project>{4e0a9c6c-3368-4b83-92f5-6fda2679c434}</Project>
+      <Name>IOC.FW.Data</Name>
+    </ProjectReference>
     <ProjectReference Include="..\IOC.FW.Shared\IOC.FW.Shared.csproj">
       <Project>{7323e348-0ae0-4f75-a2d8-adff0f03c04b}</Project>
       <Name>IOC.FW.Shared</Name>

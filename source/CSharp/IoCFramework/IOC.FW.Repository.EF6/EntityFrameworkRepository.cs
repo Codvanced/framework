@@ -9,9 +9,9 @@ using IOC.FW.Abstraction.Model;
 using System.Data.Common;
 using System.Data;
 using IOC.FW.Abstraction.Miscellaneous;
-using IOC.FW.Shared.Enumerators;
 using IOC.FW.Shared.Model.Repository;
 using IOC.FW.Repository.EF6.Abstraction.Repository;
+using IOC.FW.Data;
 
 namespace IOC.FW.Repository.EF6
 {
@@ -23,11 +23,11 @@ namespace IOC.FW.Repository.EF6
         : IRepository<TModel>
         where TModel : class, new()
     {
-        public RepositoryEnumerator.RepositoryType Type
+        public Enumerators.RepositoryType Type
         {
             get
             {
-                return RepositoryEnumerator.RepositoryType.EF6;
+                return Enumerators.RepositoryType.EF6;
             }
         }
 

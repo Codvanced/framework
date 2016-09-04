@@ -2,6 +2,7 @@
 using IOC.FW.Abstraction.Repository;
 using IOC.FW.Shared.Enumerators;
 using IOC.FW.Abstraction.Container;
+using IOC.FW.Data;
 
 namespace IOC.FW.Repository
 {
@@ -16,7 +17,7 @@ namespace IOC.FW.Repository
             _adapter = adapter;
         }
 
-        public IRepository<TModel> Resolve(RepositoryEnumerator.RepositoryType type)
+        public IRepository<TModel> Resolve(Enumerators.RepositoryType type)
         {
             var repository = default(IRepository<TModel>);
             var instances = _adapter.ResolveMany<IRepository<TModel>>();
