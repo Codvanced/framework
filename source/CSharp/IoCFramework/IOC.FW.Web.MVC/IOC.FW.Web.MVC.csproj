@@ -46,6 +46,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Authentication\BasicAuthenticationIdentity.cs" />
     <Compile Include="Extensions.cs" />
     <Compile Include="Filters\BasicAuthenticationFilter.cs" />
     <Compile Include="Filters\LogExceptionFilter.cs" />
