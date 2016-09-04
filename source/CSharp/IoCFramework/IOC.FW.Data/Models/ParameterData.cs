@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Data;
 
-namespace IOC.FW.Shared.Model.Repository
+namespace IOC.FW.Data.Models
 {
     [Serializable]
     public class ParameterData

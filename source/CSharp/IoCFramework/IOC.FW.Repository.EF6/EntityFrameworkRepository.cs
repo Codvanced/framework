@@ -9,9 +9,9 @@ using IOC.FW.Abstraction.Model;
 using System.Data.Common;
 using System.Data;
 using IOC.FW.Abstraction.Miscellaneous;
-using IOC.FW.Shared.Model.Repository;
 using IOC.FW.Repository.EF6.Abstraction.Repository;
 using IOC.FW.Data;
+using IOC.FW.Data.Models;
 
 namespace IOC.FW.Repository.EF6
 {

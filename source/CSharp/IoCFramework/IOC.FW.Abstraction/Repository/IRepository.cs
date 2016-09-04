@@ -3,10 +3,9 @@ using System.Collections.Generic;
 using System.Data;
 using IOC.FW.Abstraction.Business;
 using IOC.FW.Abstraction.Repository.Connection;
-using IOC.FW.Shared.Enumerators;
-using IOC.FW.Shared.Model.Repository;
 using System.Data.Common;
 using IOC.FW.Data;
+using IOC.FW.Data.Models;
 
 namespace IOC.FW.Abstraction.Repository
 {
