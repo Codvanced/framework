@@ -30,7 +30,7 @@ namespace IOC.FW.Web.Handler
         public void ProcessRequest(HttpContext context)
         {
             var configuration = ConfigManager.GetConfig();
-            var refpoint = ImageEnumerator.ReferencePoint.MiddleCenter;
+            var refpoint = ImageTransformation.Enumerators.ReferencePoint.MiddleCenter;
             var crop = false;
             var width = configuration.Thumb.DefaultWidth;
             var height = configuration.Thumb.DefaultHeight;
