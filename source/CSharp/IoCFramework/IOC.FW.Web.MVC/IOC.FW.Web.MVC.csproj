@@ -53,6 +53,7 @@
     <Compile Include="Filters\NonCacheAttribute.cs" />
     <Compile Include="Handler\BasicAuthenticationHandler.cs" />
     <Compile Include="Handler\CompressHandler.cs" />
+    <Compile Include="Models\BaseServiceModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -62,10 +63,6 @@
     <ProjectReference Include="..\IOC.FW.Abstraction\IOC.FW.Abstraction.csproj">
       <Project>{5b3d5261-8415-433c-a27d-b22ca4e991b7}</Project>
       <Name>IOC.FW.Abstraction</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\IOC.FW.Core\IOC.FW.Core.csproj">
-      <Project>{ad0698e7-cd21-4340-8e6d-b4c6624e8fa8}</Project>
-      <Name>IOC.FW.Core</Name>
     </ProjectReference>
     <ProjectReference Include="..\IOC.FW.Web\IOC.FW.Web.csproj">
       <Project>{92fd7376-973c-4e0d-8739-1a42ab860018}</Project>

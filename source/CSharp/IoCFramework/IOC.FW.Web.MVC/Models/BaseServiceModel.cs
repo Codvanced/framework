@@ -1,4 +1,4 @@
-﻿namespace IOC.FW.Core.Model
+﻿namespace IOC.FW.Web.MVC.Models
 {
     /// <summary>
     /// Classe base para retorno de Model tipado como dynamic

@@ -54,12 +54,6 @@
     <Compile Include="StreamExtensions.cs" />
     <Compile Include="StringExtensions.cs" />
   </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\IOC.FW.Core\IOC.FW.Core.csproj">
-      <Project>{ad0698e7-cd21-4340-8e6d-b4c6624e8fa8}</Project>
-      <Name>IOC.FW.Core</Name>
-    </ProjectReference>
-  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
