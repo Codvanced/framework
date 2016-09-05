@@ -30,8 +30,6 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "IOC.FW.Expressions", "..\..
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "IOC.FW.Data", "..\..\..\source\CSharp\IoCFramework\IOC.FW.Data\IOC.FW.Data.csproj", "{4E0A9C6C-3368-4B83-92F5-6FDA2679C434}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "IOC.FW.Shared", "..\..\..\source\CSharp\IoCFramework\IOC.FW.Shared\IOC.FW.Shared.csproj", "{7323E348-0AE0-4F75-A2D8-ADFF0F03C04B}"
-EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -70,10 +68,6 @@ Global
 		{4E0A9C6C-3368-4B83-92F5-6FDA2679C434}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{4E0A9C6C-3368-4B83-92F5-6FDA2679C434}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{4E0A9C6C-3368-4B83-92F5-6FDA2679C434}.Release|Any CPU.Build.0 = Release|Any CPU
-		{7323E348-0AE0-4F75-A2D8-ADFF0F03C04B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{7323E348-0AE0-4F75-A2D8-ADFF0F03C04B}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{7323E348-0AE0-4F75-A2D8-ADFF0F03C04B}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{7323E348-0AE0-4F75-A2D8-ADFF0F03C04B}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -87,6 +81,5 @@ Global
 		{5CE716F2-E7C2-4149-ABF8-4AD319BF96D8} = {E0E16939-198F-4111-A286-615014E9DD7F}
 		{10BA2AA7-0828-4DD2-8C22-A123255E207C} = {E0E16939-198F-4111-A286-615014E9DD7F}
 		{4E0A9C6C-3368-4B83-92F5-6FDA2679C434} = {E0E16939-198F-4111-A286-615014E9DD7F}
-		{7323E348-0AE0-4F75-A2D8-ADFF0F03C04B} = {E0E16939-198F-4111-A286-615014E9DD7F}
 	EndGlobalSection
 EndGlobal
