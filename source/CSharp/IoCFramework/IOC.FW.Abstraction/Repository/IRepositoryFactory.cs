@@ -1,5 +1,4 @@
 ﻿using IOC.FW.Data;
-using IOC.FW.Shared.Enumerators;
 
 namespace IOC.FW.Abstraction.Repository
 {
