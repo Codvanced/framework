@@ -21,7 +21,7 @@ namespace IOC.FW.ImageTransformation
         public static Image Create(
             Image img, 
             Size cropArea,
-            Shared.Enumerators.ImageEnumerator.ReferencePoint refPoint = Shared.Enumerators.ImageEnumerator.ReferencePoint.MiddleCenter, 
+            Enumerators.ReferencePoint refPoint = Enumerators.ReferencePoint.MiddleCenter, 
             bool fitInside = false
         )
         {
@@ -53,38 +53,38 @@ namespace IOC.FW.ImageTransformation
         public static Point GetStartPosition(
             Size requested, 
             Size proportional,
-            Shared.Enumerators.ImageEnumerator.ReferencePoint refPoint
+            Enumerators.ReferencePoint refPoint
         )
         {
             Point result;
 
             switch (refPoint)
             {
-                case Shared.Enumerators.ImageEnumerator.ReferencePoint.TopLeft:
+                case Enumerators.ReferencePoint.TopLeft:
                     result = GetStartPositionOnTopLeft(requested, proportional);
                     break;
-                case Shared.Enumerators.ImageEnumerator.ReferencePoint.TopCenter:
+                case Enumerators.ReferencePoint.TopCenter:
                     result = GetStartPositionOnTopCenter(requested, proportional);
                     break;
-                case Shared.Enumerators.ImageEnumerator.ReferencePoint.TopRight:
+                case Enumerators.ReferencePoint.TopRight:
                     result = GetStartPositionOnTopRight(requested, proportional);
                     break;
-                case Shared.Enumerators.ImageEnumerator.ReferencePoint.MiddleLeft:
+                case Enumerators.ReferencePoint.MiddleLeft:
                     result = GetStartPositionOnMiddleLeft(requested, proportional);
                     break;
-                case Shared.Enumerators.ImageEnumerator.ReferencePoint.MiddleCenter:
+                case Enumerators.ReferencePoint.MiddleCenter:
                     result = GetStartPositionOnMiddleCenter(requested, proportional);
                     break;
-                case Shared.Enumerators.ImageEnumerator.ReferencePoint.MiddleRight:
+                case Enumerators.ReferencePoint.MiddleRight:
                     result = GetStartPositionOnMiddleRight(requested, proportional);
                     break;
-                case Shared.Enumerators.ImageEnumerator.ReferencePoint.BottomLeft:
+                case Enumerators.ReferencePoint.BottomLeft:
                     result = GetStartPositionOnBottomLeft(requested, proportional);
                     break;
-                case Shared.Enumerators.ImageEnumerator.ReferencePoint.BottomCenter:
+                case Enumerators.ReferencePoint.BottomCenter:
                     result = GetStartPositionOnBottomCenter(requested, proportional);
                     break;
-                case Shared.Enumerators.ImageEnumerator.ReferencePoint.BottomRight:
+                case Enumerators.ReferencePoint.BottomRight:
                     result = GetStartPositionOnBottomRight(requested, proportional);
                     break;
                 default:

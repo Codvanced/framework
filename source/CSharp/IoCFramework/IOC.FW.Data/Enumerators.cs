@@ -1,9 +1,9 @@
-﻿namespace IOC.FW.Shared.Enumerators
+﻿namespace IOC.FW.Data
 {
     /// <summary>
     /// Classe utilizada para armazenar enumeradores de repositórios
     /// </summary>
-    public class RepositoryEnumerator
+    public class Enumerators
     {
         /// <summary>
         /// Enum responsável por pontos de referência para configuração de qual ORM a DAO utilizará.

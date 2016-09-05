@@ -1,10 +1,8 @@
-﻿using IOC.FW.Abstraction.Repository;
-using Xunit;
+﻿using Xunit;
 using FakeItEasy;
 using System.Linq;
 using System.Collections.Generic;
 using System.Data.Entity;
-using IOC.FW.Shared.Model.Repository;
 using System.Linq.Expressions;
 using System;
 using IOC.FW.Repository.EF6;

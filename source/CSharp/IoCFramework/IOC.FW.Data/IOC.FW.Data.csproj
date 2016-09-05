@@ -4,11 +4,11 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{82A88E93-4C95-4DB7-AD7D-8F1F367C4034}</ProjectGuid>
+    <ProjectGuid>{4E0A9C6C-3368-4B83-92F5-6FDA2679C434}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>IOC.FW.ContainerManager</RootNamespace>
-    <AssemblyName>IOC.FW.ContainerManager</AssemblyName>
+    <RootNamespace>IOC.FW.Data</RootNamespace>
+    <AssemblyName>IOC.FW.Data</AssemblyName>
     <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <TargetFrameworkProfile />
@@ -21,7 +21,6 @@
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
-    <Prefer32Bit>false</Prefer32Bit>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugType>pdbonly</DebugType>
@@ -30,11 +29,9 @@
     <DefineConstants>TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
-    <Prefer32Bit>false</Prefer32Bit>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
-    <Reference Include="System.Configuration" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
@@ -44,27 +41,11 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Binding\DefaultBinding.cs" />
-    <Compile Include="DependencyResolver.cs" />
+    <Compile Include="Models\ParameterData.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Enumerators.cs" />
   </ItemGroup>
-  <ItemGroup>
-    <None Include="paket.references" />
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\IOC.FW.Abstraction\IOC.FW.Abstraction.csproj">
-      <Project>{5b3d5261-8415-433c-a27d-b22ca4e991b7}</Project>
-      <Name>IOC.FW.Abstraction</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\IOC.FW.Configuration\IOC.FW.Configuration.csproj">
-      <Project>{28c6b3ed-c9b5-417c-8e99-c24b450de618}</Project>
-      <Name>IOC.FW.Configuration</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\IOC.FW.Shared\IOC.FW.Shared.csproj">
-      <Project>{7323e348-0ae0-4f75-a2d8-adff0f03c04b}</Project>
-      <Name>IOC.FW.Shared</Name>
-    </ProjectReference>
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
@@ -73,5 +54,4 @@
   <Target Name="AfterBuild">
   </Target>
   -->
-  <Import Project="..\..\..\..\.paket\paket.targets" />
 </Project>

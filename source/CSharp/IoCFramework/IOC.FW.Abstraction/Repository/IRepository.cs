@@ -3,9 +3,9 @@ using System.Collections.Generic;
 using System.Data;
 using IOC.FW.Abstraction.Business;
 using IOC.FW.Abstraction.Repository.Connection;
-using IOC.FW.Shared.Enumerators;
-using IOC.FW.Shared.Model.Repository;
 using System.Data.Common;
+using IOC.FW.Data;
+using IOC.FW.Data.Models;
 
 namespace IOC.FW.Abstraction.Repository
 {
@@ -17,7 +17,7 @@ namespace IOC.FW.Abstraction.Repository
         : IBaseBusiness<TModel>, IConnectionConfigurable, IBaseTransaction
         where TModel: class, new()
     {
-        RepositoryEnumerator.RepositoryType Type { get; }
+        Enumerators.RepositoryType Type { get; }
 
         /// <summary>
         /// Implementação de método de IBaseDAO destinado a executar querys customizadas e procedures.

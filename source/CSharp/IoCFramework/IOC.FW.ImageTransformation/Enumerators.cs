@@ -1,9 +1,9 @@
-﻿namespace IOC.FW.Shared.Enumerators
+﻿namespace IOC.FW.ImageTransformation
 {
     /// <summary>
     /// Classe utilizada para armazenar enumeradores de image transforme
     /// </summary>
-    public class ImageEnumerator
+    public class Enumerators
     {
         /// <summary>
         /// Enum responsável por pontos de referência para geração de thumbnails

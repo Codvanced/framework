@@ -2,10 +2,10 @@
 using System.Reflection;
 using System.Runtime.InteropServices;
 
-[assembly: AssemblyTitleAttribute("IOC.FW.Shared")]
-[assembly: AssemblyDescriptionAttribute("IOC.FW.Shared")]
-[assembly: AssemblyProductAttribute("Shared")]
-[assembly: GuidAttribute("7323e348-0ae0-4f75-a2d8-adff0f03c04b")]
+[assembly: AssemblyTitleAttribute("IOC.FW.Data")]
+[assembly: AssemblyDescriptionAttribute("IOC.FW.Data")]
+[assembly: AssemblyProductAttribute("Data")]
+[assembly: GuidAttribute("4e0a9c6c-3368-4b83-92f5-6fda2679c434")]
 [assembly: AssemblyVersionAttribute("3.0.0")]
 [assembly: AssemblyFileVersionAttribute("3.0.0")]
 namespace System {

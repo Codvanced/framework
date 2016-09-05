@@ -1,7 +1,7 @@
 ﻿using System.Linq;
 using IOC.FW.Abstraction.Repository;
-using IOC.FW.Shared.Enumerators;
-using IOC.FW.Abstraction.Container;
+using IOC.FW.Data;
+using System.Collections.Generic;
 
 namespace IOC.FW.Repository
 {
@@ -9,23 +9,22 @@ namespace IOC.FW.Repository
         : IRepositoryFactory<TModel>
         where TModel : class, new()
     {
-        private readonly IAdapter _adapter;
+        private readonly IEnumerable<IRepository<TModel>> _repositories;
 
-        public RepositoryFactory(IAdapter adapter)
+        public RepositoryFactory(IEnumerable<IRepository<TModel>> repositories)
         {
-            _adapter = adapter;
+            _repositories = repositories;
         }
 
-        public IRepository<TModel> Resolve(RepositoryEnumerator.RepositoryType type)
+        public IRepository<TModel> Resolve(Enumerators.RepositoryType type)
         {
             var repository = default(IRepository<TModel>);
-            var instances = _adapter.ResolveMany<IRepository<TModel>>();
 
-            if (instances != null
-                && instances.Count() > 0
+            if (_repositories != null
+                && _repositories.Count() > 0
             )
             {
-                repository = instances.FirstOrDefault(
+                repository = _repositories.FirstOrDefault(
                     i => i.Type == type
                 );
             }

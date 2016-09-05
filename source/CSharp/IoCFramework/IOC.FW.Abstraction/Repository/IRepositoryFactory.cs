@@ -1,4 +1,4 @@
-﻿using IOC.FW.Shared.Enumerators;
+﻿using IOC.FW.Data;
 
 namespace IOC.FW.Abstraction.Repository
 {
@@ -6,7 +6,7 @@ namespace IOC.FW.Abstraction.Repository
         where TModel : class, new()
     {
         IRepository<TModel> Resolve(
-            RepositoryEnumerator.RepositoryType type
+            Enumerators.RepositoryType type
         );
     }
 }
