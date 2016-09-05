@@ -3,7 +3,6 @@ using System.Web;
 using System.IO;
 using System.Drawing;
 using IOC.FW.Configuration;
-using IOC.FW.Shared.Enumerators;
 using IOC.FW.ImageTransformation;
 using System.Web.Caching;
 
