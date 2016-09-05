@@ -1,5 +1,4 @@
 ﻿using IOC.FW.FTP;
-using IOC.FW.Shared.Enumerators;
 using System;
 using System.Configuration;
 

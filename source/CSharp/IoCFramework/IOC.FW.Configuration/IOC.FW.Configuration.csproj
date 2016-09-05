@@ -47,9 +47,6 @@
   <ItemGroup>
     <Compile Include="ConfigManager.cs" />
     <Compile Include="ConfigurationVariables.cs" />
-    <Compile Include="IoCFramework\ContainerManager\ModuleElement.cs" />
-    <Compile Include="IoCFramework\ContainerManager\ModulesElementCollection.cs" />
-    <Compile Include="IoCFramework\ContainerManager\ContainerManagerConfigurationElement.cs" />
     <Compile Include="IoCFrameworkSection.cs" />
     <Compile Include="IoCFramework\DataTransfer\Abstraction\TransferElementAbstract.cs" />
     <Compile Include="IoCFramework\DataTransfer\DataTransferConfigurationElement.cs" />
