@@ -28,14 +28,6 @@ Target "SetVersions" (fun _ ->
          Attribute.Version version
          Attribute.FileVersion version]
 
-    CreateCSharpAssemblyInfo "./Source/CSharp/IoCFramework/IOC.FW.Authentication/Properties/AssemblyInfo.cs"
-        [Attribute.Title "IOC.FW.Authentication"
-         Attribute.Description "IOC.FW.Authentication"
-         Attribute.Product "Authentication"
-         Attribute.Guid "9493dae8-2559-4a54-8ff2-8759b5cfa760"
-         Attribute.Version version
-         Attribute.FileVersion version]
-
     CreateCSharpAssemblyInfo "./Source/CSharp/IoCFramework/IOC.FW.Configuration/Properties/AssemblyInfo.cs"
         [Attribute.Title "IOC.FW.Configuration"
          Attribute.Description "IOC.FW.Configuration"
@@ -44,22 +36,22 @@ Target "SetVersions" (fun _ ->
          Attribute.Version version
          Attribute.FileVersion version]
 
-    CreateCSharpAssemblyInfo "./Source/CSharp/IoCFramework/IOC.FW.ContainerManager/Properties/AssemblyInfo.cs"
-        [Attribute.Title "IOC.FW.ContainerManager"
-         Attribute.Description "IOC.FW.ContainerManager"
-         Attribute.Product "ContainerManager"
-         Attribute.Guid "82a88e93-4c95-4db7-ad7d-8f1f367c4034"
+    CreateCSharpAssemblyInfo "./Source/CSharp/IoCFramework/IOC.FW.ContainerManager.DryIoc.Mvc/Properties/AssemblyInfo.cs"
+        [Attribute.Title "IOC.FW.ContainerManager.DryIoc.Mvc"
+         Attribute.Description "IOC.FW.ContainerManager.DryIoc.Mvc"
+         Attribute.Product "ContainerManager DryIoc Mvc"
+         Attribute.Guid "1e10e9fa-c756-465f-b106-a985940da8cb"
          Attribute.Version version
          Attribute.FileVersion version]
-    
-    CreateCSharpAssemblyInfo "./Source/CSharp/IoCFramework/IOC.FW.Core/Properties/AssemblyInfo.cs"
-        [Attribute.Title "IOC.FW.Core"
-         Attribute.Description "IOC.FW.Core"
-         Attribute.Product "Core"
-         Attribute.Guid "ad0698e7-cd21-4340-8e6d-b4c6624e8fa8"
+
+    CreateCSharpAssemblyInfo "./Source/CSharp/IoCFramework/IOC.FW.ContainerManager.SimpleInjector.WebApi/Properties/AssemblyInfo.cs"
+        [Attribute.Title "IOC.FW.ContainerManager.SimpleInjector.WebApi"
+         Attribute.Description "IOC.FW.ContainerManager.SimpleInjector.WebApi"
+         Attribute.Product "ContainerManager SimpleInjector WebApi"
+         Attribute.Guid "41a971f9-06d1-4e50-ab3a-7fedb7fc4710"
          Attribute.Version version
          Attribute.FileVersion version]
-    
+
     CreateCSharpAssemblyInfo "./Source/CSharp/IoCFramework/IOC.FW.Cryptography/Properties/AssemblyInfo.cs"
         [Attribute.Title "IOC.FW.Cryptography"
          Attribute.Description "IOC.FW.Cryptography"
@@ -67,7 +59,23 @@ Target "SetVersions" (fun _ ->
          Attribute.Guid "9ca72a18-42db-4181-b011-36226861af35"
          Attribute.Version version
          Attribute.FileVersion version]
+
+    CreateCSharpAssemblyInfo "./Source/CSharp/IoCFramework/IOC.FW.Data/Properties/AssemblyInfo.cs"
+        [Attribute.Title "IOC.FW.Data"
+         Attribute.Description "IOC.FW.Data"
+         Attribute.Product "Data"
+         Attribute.Guid "4e0a9c6c-3368-4b83-92f5-6fda2679c434"
+         Attribute.Version version
+         Attribute.FileVersion version]
     
+    CreateCSharpAssemblyInfo "./Source/CSharp/IoCFramework/IOC.FW.Expressions/Properties/AssemblyInfo.cs"
+        [Attribute.Title "IOC.FW.Expressions"
+         Attribute.Description "IOC.FW.Expressions"
+         Attribute.Product "Expressions"
+         Attribute.Guid "10ba2aa7-0828-4dd2-8c22-a123255e207c"
+         Attribute.Version version
+         Attribute.FileVersion version]
+
     CreateCSharpAssemblyInfo "./Source/CSharp/IoCFramework/IOC.FW.Extensions/Properties/AssemblyInfo.cs"
         [Attribute.Title "IOC.FW.Extensions"
          Attribute.Description "IOC.FW.Extensions"
@@ -115,12 +123,12 @@ Target "SetVersions" (fun _ ->
          Attribute.Guid "a2718b96-3f93-4d29-8942-e841f9eb5457"
          Attribute.Version version
          Attribute.FileVersion version]
-    
-    CreateCSharpAssemblyInfo "./Source/CSharp/IoCFramework/IOC.FW.Shared/Properties/AssemblyInfo.cs"
-        [Attribute.Title "IOC.FW.Shared"
-         Attribute.Description "IOC.FW.Shared"
-         Attribute.Product "Shared"
-         Attribute.Guid "7323e348-0ae0-4f75-a2d8-adff0f03c04b"
+
+    CreateCSharpAssemblyInfo "./Source/CSharp/IoCFramework/IOC.FW.Repository.EF6/Properties/AssemblyInfo.cs"
+        [Attribute.Title "IOC.FW.Repository.EF6"
+         Attribute.Description "IOC.FW.Repository.EF6"
+         Attribute.Product "Repository Entity Framework 6"
+         Attribute.Guid "5ce716f2-e7c2-4149-abf8-4ad319bf96d8"
          Attribute.Version version
          Attribute.FileVersion version]
     
