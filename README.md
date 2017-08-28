@@ -1,7 +1,7 @@
 #Codvanced Framework (a.k.a IOC FW)
 **Simplesmente um framework baseado em inversão de controle.**
 
-[![Build status](https://ci.appveyor.com/api/projects/status/b2ojfywi3i2rgqki/branch/develop?svg=true)](https://ci.appveyor.com/project/Codvanced/framework/branch/develop)
+[![Build status](https://ci.appveyor.com/api/projects/status/b2ojfywi3i2rgqki/branch/master?svg=true)](https://ci.appveyor.com/project/Codvanced/framework/branch/master)
 
 A ideia é agilizar ainda mais o processo de concepção e estruturação de um projeto mantendo os princípíos que afirmam a orientação a objetos descritos como [SOLID](http://en.wikipedia.org/wiki/SOLID_%28object-oriented_design%29).
 
