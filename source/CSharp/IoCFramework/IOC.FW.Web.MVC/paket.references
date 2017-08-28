@@ -1,0 +1,9 @@
+DryIoc.dll
+FluentValidation
+log4net
+Microsoft.AspNet.Mvc
+Microsoft.AspNet.Razor
+Microsoft.AspNet.WebPages
+Microsoft.Web.Infrastructure
+Newtonsoft.Json
+SimpleInjector

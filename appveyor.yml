@@ -1,0 +1,12 @@
+version: 1.0.{build}
+branches:
+  only:
+  - develop
+skip_tags: true
+image: Visual Studio 2015
+environment:
+  matrix:
+  - {}
+build_script:
+- cmd: build.bat
+test: off
